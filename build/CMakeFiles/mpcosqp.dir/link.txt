@@ -1,0 +1,2 @@
+/usr/bin/ar qc libmpcosqp.a  CMakeFiles/mpcosqp.dir/mpc_osqp/mpc_osqp.cpp.o
+/usr/bin/ranlib libmpcosqp.a

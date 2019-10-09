@@ -1,0 +1,1 @@
+/usr/bin/c++   -std=c++11 -O2 -g -Wall  -lm   CMakeFiles/hello.dir/main.cpp.o  -o hello  -L/usr/local/lib -rdynamic -lglog -lgflags -lpthread -lglog -lgflags -lpthread libosqp.a libmpcosqp.a libosqp.a -lglog -lgflags -lpthread -ldl -Wl,-rpath,/usr/local/lib 
