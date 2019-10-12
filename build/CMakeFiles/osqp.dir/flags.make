@@ -6,5 +6,5 @@ C_FLAGS =
 
 C_DEFINES = 
 
-C_INCLUDES = -I/usr/local/include -I/home/ccg/File/osqp/hello_for_osqpbackup/include -I/home/ccg/File/osqp/hello_for_osqpbackup/osqp/include -I/home/ccg/File/osqp/hello_for_osqpbackup/osqp/include/qdldl -I/home/ccg/File/osqp/hello_for_osqpbackup/osqp/include/qdldl/include -I/home/ccg/File/osqp/hello_for_osqpbackup/osqp/include/pardiso -I/home/ccg/File/osqp/hello_for_osqpbackup/mpc_osqp -isystem /usr/include/eigen3 
+C_INCLUDES = -I/usr/local/include -I/home/ccg/File/osqp_demo/include -I/home/ccg/File/osqp_demo/osqp/include -I/home/ccg/File/osqp_demo/osqp/include/qdldl -I/home/ccg/File/osqp_demo/osqp/include/qdldl/include -I/home/ccg/File/osqp_demo/osqp/include/pardiso -I/home/ccg/File/osqp_demo/mpc_osqp -isystem /usr/include/eigen3 
 

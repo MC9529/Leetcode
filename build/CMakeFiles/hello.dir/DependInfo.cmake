@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/ccg/File/osqp/hello_for_osqpbackup/main.cpp" "/home/ccg/File/osqp/hello_for_osqpbackup/build/CMakeFiles/hello.dir/main.cpp.o"
+  "/home/ccg/File/osqp_demo/main.cpp" "/home/ccg/File/osqp_demo/build/CMakeFiles/hello.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -22,8 +22,8 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/ccg/File/osqp/hello_for_osqpbackup/build/CMakeFiles/osqp.dir/DependInfo.cmake"
-  "/home/ccg/File/osqp/hello_for_osqpbackup/build/CMakeFiles/mpcosqp.dir/DependInfo.cmake"
+  "/home/ccg/File/osqp_demo/build/CMakeFiles/osqp.dir/DependInfo.cmake"
+  "/home/ccg/File/osqp_demo/build/CMakeFiles/mpcosqp.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

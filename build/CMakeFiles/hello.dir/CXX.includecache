@@ -70,7 +70,7 @@ sys/time.h
 stdio.h
 -
 
-/home/ccg/File/osqp/hello_for_osqpbackup/main.cpp
+/home/ccg/File/osqp_demo/main.cpp
 algorithm
 -
 iomanip
@@ -82,29 +82,29 @@ utility
 vector
 -
 Eigen/LU
-/home/ccg/File/osqp/hello_for_osqpbackup/Eigen/LU
+/home/ccg/File/osqp_demo/Eigen/LU
 osqp.h
-/home/ccg/File/osqp/hello_for_osqpbackup/osqp.h
+/home/ccg/File/osqp_demo/osqp.h
 mpc_osqp/mpc_osqp.h
-/home/ccg/File/osqp/hello_for_osqpbackup/mpc_osqp/mpc_osqp.h
+/home/ccg/File/osqp_demo/mpc_osqp/mpc_osqp.h
 iostream
 -
 
-/home/ccg/File/osqp/hello_for_osqpbackup/mpc_osqp/binary.h
+/home/ccg/File/osqp_demo/mpc_osqp/binary.h
 string
 -
 
-/home/ccg/File/osqp/hello_for_osqpbackup/mpc_osqp/log.h
+/home/ccg/File/osqp_demo/mpc_osqp/log.h
 stdarg.h
 -
 binary.h
-/home/ccg/File/osqp/hello_for_osqpbackup/mpc_osqp/binary.h
+/home/ccg/File/osqp_demo/mpc_osqp/binary.h
 glog/logging.h
-/home/ccg/File/osqp/hello_for_osqpbackup/mpc_osqp/glog/logging.h
+/home/ccg/File/osqp_demo/mpc_osqp/glog/logging.h
 glog/raw_logging.h
-/home/ccg/File/osqp/hello_for_osqpbackup/mpc_osqp/glog/raw_logging.h
+/home/ccg/File/osqp_demo/mpc_osqp/glog/raw_logging.h
 
-/home/ccg/File/osqp/hello_for_osqpbackup/mpc_osqp/mpc_osqp.h
+/home/ccg/File/osqp_demo/mpc_osqp/mpc_osqp.h
 algorithm
 -
 limits
@@ -116,11 +116,11 @@ utility
 vector
 -
 Eigen/Eigen
-/home/ccg/File/osqp/hello_for_osqpbackup/mpc_osqp/Eigen/Eigen
+/home/ccg/File/osqp_demo/mpc_osqp/Eigen/Eigen
 log.h
-/home/ccg/File/osqp/hello_for_osqpbackup/mpc_osqp/log.h
+/home/ccg/File/osqp_demo/mpc_osqp/log.h
 osqp.h
-/home/ccg/File/osqp/hello_for_osqpbackup/mpc_osqp/osqp.h
+/home/ccg/File/osqp_demo/mpc_osqp/osqp.h
 
 /usr/include/eigen3/Eigen/Cholesky
 Core

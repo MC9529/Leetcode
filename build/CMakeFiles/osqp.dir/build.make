@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ccg/File/osqp/hello_for_osqpbackup
+CMAKE_SOURCE_DIR = /home/ccg/File/osqp_demo
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ccg/File/osqp/hello_for_osqpbackup/build
+CMAKE_BINARY_DIR = /home/ccg/File/osqp_demo/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/osqp.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/osqp.dir/flags.make
 
 CMakeFiles/osqp.dir/osqp/src/auxil.c.o: CMakeFiles/osqp.dir/flags.make
 CMakeFiles/osqp.dir/osqp/src/auxil.c.o: ../osqp/src/auxil.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp/hello_for_osqpbackup/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/osqp.dir/osqp/src/auxil.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/auxil.c.o   -c /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/auxil.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/osqp.dir/osqp/src/auxil.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/auxil.c.o   -c /home/ccg/File/osqp_demo/osqp/src/auxil.c
 
 CMakeFiles/osqp.dir/osqp/src/auxil.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/osqp.dir/osqp/src/auxil.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/auxil.c > CMakeFiles/osqp.dir/osqp/src/auxil.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp_demo/osqp/src/auxil.c > CMakeFiles/osqp.dir/osqp/src/auxil.c.i
 
 CMakeFiles/osqp.dir/osqp/src/auxil.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/osqp.dir/osqp/src/auxil.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/auxil.c -o CMakeFiles/osqp.dir/osqp/src/auxil.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp_demo/osqp/src/auxil.c -o CMakeFiles/osqp.dir/osqp/src/auxil.c.s
 
 CMakeFiles/osqp.dir/osqp/src/auxil.c.o.requires:
 
@@ -83,16 +83,16 @@ CMakeFiles/osqp.dir/osqp/src/auxil.c.o.provides.build: CMakeFiles/osqp.dir/osqp/
 
 CMakeFiles/osqp.dir/osqp/src/cs.c.o: CMakeFiles/osqp.dir/flags.make
 CMakeFiles/osqp.dir/osqp/src/cs.c.o: ../osqp/src/cs.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp/hello_for_osqpbackup/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/osqp.dir/osqp/src/cs.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/cs.c.o   -c /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/cs.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/osqp.dir/osqp/src/cs.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/cs.c.o   -c /home/ccg/File/osqp_demo/osqp/src/cs.c
 
 CMakeFiles/osqp.dir/osqp/src/cs.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/osqp.dir/osqp/src/cs.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/cs.c > CMakeFiles/osqp.dir/osqp/src/cs.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp_demo/osqp/src/cs.c > CMakeFiles/osqp.dir/osqp/src/cs.c.i
 
 CMakeFiles/osqp.dir/osqp/src/cs.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/osqp.dir/osqp/src/cs.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/cs.c -o CMakeFiles/osqp.dir/osqp/src/cs.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp_demo/osqp/src/cs.c -o CMakeFiles/osqp.dir/osqp/src/cs.c.s
 
 CMakeFiles/osqp.dir/osqp/src/cs.c.o.requires:
 
@@ -107,16 +107,16 @@ CMakeFiles/osqp.dir/osqp/src/cs.c.o.provides.build: CMakeFiles/osqp.dir/osqp/src
 
 CMakeFiles/osqp.dir/osqp/src/ctrlc.c.o: CMakeFiles/osqp.dir/flags.make
 CMakeFiles/osqp.dir/osqp/src/ctrlc.c.o: ../osqp/src/ctrlc.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp/hello_for_osqpbackup/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/osqp.dir/osqp/src/ctrlc.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/ctrlc.c.o   -c /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/ctrlc.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/osqp.dir/osqp/src/ctrlc.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/ctrlc.c.o   -c /home/ccg/File/osqp_demo/osqp/src/ctrlc.c
 
 CMakeFiles/osqp.dir/osqp/src/ctrlc.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/osqp.dir/osqp/src/ctrlc.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/ctrlc.c > CMakeFiles/osqp.dir/osqp/src/ctrlc.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp_demo/osqp/src/ctrlc.c > CMakeFiles/osqp.dir/osqp/src/ctrlc.c.i
 
 CMakeFiles/osqp.dir/osqp/src/ctrlc.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/osqp.dir/osqp/src/ctrlc.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/ctrlc.c -o CMakeFiles/osqp.dir/osqp/src/ctrlc.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp_demo/osqp/src/ctrlc.c -o CMakeFiles/osqp.dir/osqp/src/ctrlc.c.s
 
 CMakeFiles/osqp.dir/osqp/src/ctrlc.c.o.requires:
 
@@ -131,16 +131,16 @@ CMakeFiles/osqp.dir/osqp/src/ctrlc.c.o.provides.build: CMakeFiles/osqp.dir/osqp/
 
 CMakeFiles/osqp.dir/osqp/src/kkt.c.o: CMakeFiles/osqp.dir/flags.make
 CMakeFiles/osqp.dir/osqp/src/kkt.c.o: ../osqp/src/kkt.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp/hello_for_osqpbackup/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/osqp.dir/osqp/src/kkt.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/kkt.c.o   -c /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/kkt.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/osqp.dir/osqp/src/kkt.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/kkt.c.o   -c /home/ccg/File/osqp_demo/osqp/src/kkt.c
 
 CMakeFiles/osqp.dir/osqp/src/kkt.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/osqp.dir/osqp/src/kkt.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/kkt.c > CMakeFiles/osqp.dir/osqp/src/kkt.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp_demo/osqp/src/kkt.c > CMakeFiles/osqp.dir/osqp/src/kkt.c.i
 
 CMakeFiles/osqp.dir/osqp/src/kkt.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/osqp.dir/osqp/src/kkt.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/kkt.c -o CMakeFiles/osqp.dir/osqp/src/kkt.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp_demo/osqp/src/kkt.c -o CMakeFiles/osqp.dir/osqp/src/kkt.c.s
 
 CMakeFiles/osqp.dir/osqp/src/kkt.c.o.requires:
 
@@ -155,16 +155,16 @@ CMakeFiles/osqp.dir/osqp/src/kkt.c.o.provides.build: CMakeFiles/osqp.dir/osqp/sr
 
 CMakeFiles/osqp.dir/osqp/src/lib_handler.c.o: CMakeFiles/osqp.dir/flags.make
 CMakeFiles/osqp.dir/osqp/src/lib_handler.c.o: ../osqp/src/lib_handler.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp/hello_for_osqpbackup/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/osqp.dir/osqp/src/lib_handler.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/lib_handler.c.o   -c /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/lib_handler.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/osqp.dir/osqp/src/lib_handler.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/lib_handler.c.o   -c /home/ccg/File/osqp_demo/osqp/src/lib_handler.c
 
 CMakeFiles/osqp.dir/osqp/src/lib_handler.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/osqp.dir/osqp/src/lib_handler.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/lib_handler.c > CMakeFiles/osqp.dir/osqp/src/lib_handler.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp_demo/osqp/src/lib_handler.c > CMakeFiles/osqp.dir/osqp/src/lib_handler.c.i
 
 CMakeFiles/osqp.dir/osqp/src/lib_handler.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/osqp.dir/osqp/src/lib_handler.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/lib_handler.c -o CMakeFiles/osqp.dir/osqp/src/lib_handler.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp_demo/osqp/src/lib_handler.c -o CMakeFiles/osqp.dir/osqp/src/lib_handler.c.s
 
 CMakeFiles/osqp.dir/osqp/src/lib_handler.c.o.requires:
 
@@ -179,16 +179,16 @@ CMakeFiles/osqp.dir/osqp/src/lib_handler.c.o.provides.build: CMakeFiles/osqp.dir
 
 CMakeFiles/osqp.dir/osqp/src/lin_alg.c.o: CMakeFiles/osqp.dir/flags.make
 CMakeFiles/osqp.dir/osqp/src/lin_alg.c.o: ../osqp/src/lin_alg.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp/hello_for_osqpbackup/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/osqp.dir/osqp/src/lin_alg.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/lin_alg.c.o   -c /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/lin_alg.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/osqp.dir/osqp/src/lin_alg.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/lin_alg.c.o   -c /home/ccg/File/osqp_demo/osqp/src/lin_alg.c
 
 CMakeFiles/osqp.dir/osqp/src/lin_alg.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/osqp.dir/osqp/src/lin_alg.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/lin_alg.c > CMakeFiles/osqp.dir/osqp/src/lin_alg.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp_demo/osqp/src/lin_alg.c > CMakeFiles/osqp.dir/osqp/src/lin_alg.c.i
 
 CMakeFiles/osqp.dir/osqp/src/lin_alg.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/osqp.dir/osqp/src/lin_alg.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/lin_alg.c -o CMakeFiles/osqp.dir/osqp/src/lin_alg.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp_demo/osqp/src/lin_alg.c -o CMakeFiles/osqp.dir/osqp/src/lin_alg.c.s
 
 CMakeFiles/osqp.dir/osqp/src/lin_alg.c.o.requires:
 
@@ -203,16 +203,16 @@ CMakeFiles/osqp.dir/osqp/src/lin_alg.c.o.provides.build: CMakeFiles/osqp.dir/osq
 
 CMakeFiles/osqp.dir/osqp/src/lin_sys.c.o: CMakeFiles/osqp.dir/flags.make
 CMakeFiles/osqp.dir/osqp/src/lin_sys.c.o: ../osqp/src/lin_sys.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp/hello_for_osqpbackup/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/osqp.dir/osqp/src/lin_sys.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/lin_sys.c.o   -c /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/lin_sys.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/osqp.dir/osqp/src/lin_sys.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/lin_sys.c.o   -c /home/ccg/File/osqp_demo/osqp/src/lin_sys.c
 
 CMakeFiles/osqp.dir/osqp/src/lin_sys.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/osqp.dir/osqp/src/lin_sys.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/lin_sys.c > CMakeFiles/osqp.dir/osqp/src/lin_sys.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp_demo/osqp/src/lin_sys.c > CMakeFiles/osqp.dir/osqp/src/lin_sys.c.i
 
 CMakeFiles/osqp.dir/osqp/src/lin_sys.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/osqp.dir/osqp/src/lin_sys.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/lin_sys.c -o CMakeFiles/osqp.dir/osqp/src/lin_sys.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp_demo/osqp/src/lin_sys.c -o CMakeFiles/osqp.dir/osqp/src/lin_sys.c.s
 
 CMakeFiles/osqp.dir/osqp/src/lin_sys.c.o.requires:
 
@@ -227,16 +227,16 @@ CMakeFiles/osqp.dir/osqp/src/lin_sys.c.o.provides.build: CMakeFiles/osqp.dir/osq
 
 CMakeFiles/osqp.dir/osqp/src/osqp.c.o: CMakeFiles/osqp.dir/flags.make
 CMakeFiles/osqp.dir/osqp/src/osqp.c.o: ../osqp/src/osqp.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp/hello_for_osqpbackup/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/osqp.dir/osqp/src/osqp.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/osqp.c.o   -c /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/osqp.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/osqp.dir/osqp/src/osqp.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/osqp.c.o   -c /home/ccg/File/osqp_demo/osqp/src/osqp.c
 
 CMakeFiles/osqp.dir/osqp/src/osqp.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/osqp.dir/osqp/src/osqp.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/osqp.c > CMakeFiles/osqp.dir/osqp/src/osqp.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp_demo/osqp/src/osqp.c > CMakeFiles/osqp.dir/osqp/src/osqp.c.i
 
 CMakeFiles/osqp.dir/osqp/src/osqp.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/osqp.dir/osqp/src/osqp.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/osqp.c -o CMakeFiles/osqp.dir/osqp/src/osqp.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp_demo/osqp/src/osqp.c -o CMakeFiles/osqp.dir/osqp/src/osqp.c.s
 
 CMakeFiles/osqp.dir/osqp/src/osqp.c.o.requires:
 
@@ -251,16 +251,16 @@ CMakeFiles/osqp.dir/osqp/src/osqp.c.o.provides.build: CMakeFiles/osqp.dir/osqp/s
 
 CMakeFiles/osqp.dir/osqp/src/polish.c.o: CMakeFiles/osqp.dir/flags.make
 CMakeFiles/osqp.dir/osqp/src/polish.c.o: ../osqp/src/polish.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp/hello_for_osqpbackup/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/osqp.dir/osqp/src/polish.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/polish.c.o   -c /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/polish.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/osqp.dir/osqp/src/polish.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/polish.c.o   -c /home/ccg/File/osqp_demo/osqp/src/polish.c
 
 CMakeFiles/osqp.dir/osqp/src/polish.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/osqp.dir/osqp/src/polish.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/polish.c > CMakeFiles/osqp.dir/osqp/src/polish.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp_demo/osqp/src/polish.c > CMakeFiles/osqp.dir/osqp/src/polish.c.i
 
 CMakeFiles/osqp.dir/osqp/src/polish.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/osqp.dir/osqp/src/polish.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/polish.c -o CMakeFiles/osqp.dir/osqp/src/polish.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp_demo/osqp/src/polish.c -o CMakeFiles/osqp.dir/osqp/src/polish.c.s
 
 CMakeFiles/osqp.dir/osqp/src/polish.c.o.requires:
 
@@ -275,16 +275,16 @@ CMakeFiles/osqp.dir/osqp/src/polish.c.o.provides.build: CMakeFiles/osqp.dir/osqp
 
 CMakeFiles/osqp.dir/osqp/src/proj.c.o: CMakeFiles/osqp.dir/flags.make
 CMakeFiles/osqp.dir/osqp/src/proj.c.o: ../osqp/src/proj.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp/hello_for_osqpbackup/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/osqp.dir/osqp/src/proj.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/proj.c.o   -c /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/proj.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/osqp.dir/osqp/src/proj.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/proj.c.o   -c /home/ccg/File/osqp_demo/osqp/src/proj.c
 
 CMakeFiles/osqp.dir/osqp/src/proj.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/osqp.dir/osqp/src/proj.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/proj.c > CMakeFiles/osqp.dir/osqp/src/proj.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp_demo/osqp/src/proj.c > CMakeFiles/osqp.dir/osqp/src/proj.c.i
 
 CMakeFiles/osqp.dir/osqp/src/proj.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/osqp.dir/osqp/src/proj.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/proj.c -o CMakeFiles/osqp.dir/osqp/src/proj.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp_demo/osqp/src/proj.c -o CMakeFiles/osqp.dir/osqp/src/proj.c.s
 
 CMakeFiles/osqp.dir/osqp/src/proj.c.o.requires:
 
@@ -299,16 +299,16 @@ CMakeFiles/osqp.dir/osqp/src/proj.c.o.provides.build: CMakeFiles/osqp.dir/osqp/s
 
 CMakeFiles/osqp.dir/osqp/src/scaling.c.o: CMakeFiles/osqp.dir/flags.make
 CMakeFiles/osqp.dir/osqp/src/scaling.c.o: ../osqp/src/scaling.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp/hello_for_osqpbackup/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/osqp.dir/osqp/src/scaling.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/scaling.c.o   -c /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/scaling.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/osqp.dir/osqp/src/scaling.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/scaling.c.o   -c /home/ccg/File/osqp_demo/osqp/src/scaling.c
 
 CMakeFiles/osqp.dir/osqp/src/scaling.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/osqp.dir/osqp/src/scaling.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/scaling.c > CMakeFiles/osqp.dir/osqp/src/scaling.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp_demo/osqp/src/scaling.c > CMakeFiles/osqp.dir/osqp/src/scaling.c.i
 
 CMakeFiles/osqp.dir/osqp/src/scaling.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/osqp.dir/osqp/src/scaling.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/scaling.c -o CMakeFiles/osqp.dir/osqp/src/scaling.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp_demo/osqp/src/scaling.c -o CMakeFiles/osqp.dir/osqp/src/scaling.c.s
 
 CMakeFiles/osqp.dir/osqp/src/scaling.c.o.requires:
 
@@ -323,16 +323,16 @@ CMakeFiles/osqp.dir/osqp/src/scaling.c.o.provides.build: CMakeFiles/osqp.dir/osq
 
 CMakeFiles/osqp.dir/osqp/src/util.c.o: CMakeFiles/osqp.dir/flags.make
 CMakeFiles/osqp.dir/osqp/src/util.c.o: ../osqp/src/util.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp/hello_for_osqpbackup/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/osqp.dir/osqp/src/util.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/util.c.o   -c /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/util.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/osqp.dir/osqp/src/util.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/util.c.o   -c /home/ccg/File/osqp_demo/osqp/src/util.c
 
 CMakeFiles/osqp.dir/osqp/src/util.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/osqp.dir/osqp/src/util.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/util.c > CMakeFiles/osqp.dir/osqp/src/util.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp_demo/osqp/src/util.c > CMakeFiles/osqp.dir/osqp/src/util.c.i
 
 CMakeFiles/osqp.dir/osqp/src/util.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/osqp.dir/osqp/src/util.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/util.c -o CMakeFiles/osqp.dir/osqp/src/util.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp_demo/osqp/src/util.c -o CMakeFiles/osqp.dir/osqp/src/util.c.s
 
 CMakeFiles/osqp.dir/osqp/src/util.c.o.requires:
 
@@ -347,16 +347,16 @@ CMakeFiles/osqp.dir/osqp/src/util.c.o.provides.build: CMakeFiles/osqp.dir/osqp/s
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/qdldl_interface.c.o: CMakeFiles/osqp.dir/flags.make
 CMakeFiles/osqp.dir/osqp/src/qdldl/qdldl_interface.c.o: ../osqp/src/qdldl/qdldl_interface.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp/hello_for_osqpbackup/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/osqp.dir/osqp/src/qdldl/qdldl_interface.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/qdldl/qdldl_interface.c.o   -c /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/qdldl_interface.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/osqp.dir/osqp/src/qdldl/qdldl_interface.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/qdldl/qdldl_interface.c.o   -c /home/ccg/File/osqp_demo/osqp/src/qdldl/qdldl_interface.c
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/qdldl_interface.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/osqp.dir/osqp/src/qdldl/qdldl_interface.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/qdldl_interface.c > CMakeFiles/osqp.dir/osqp/src/qdldl/qdldl_interface.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp_demo/osqp/src/qdldl/qdldl_interface.c > CMakeFiles/osqp.dir/osqp/src/qdldl/qdldl_interface.c.i
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/qdldl_interface.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/osqp.dir/osqp/src/qdldl/qdldl_interface.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/qdldl_interface.c -o CMakeFiles/osqp.dir/osqp/src/qdldl/qdldl_interface.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp_demo/osqp/src/qdldl/qdldl_interface.c -o CMakeFiles/osqp.dir/osqp/src/qdldl/qdldl_interface.c.s
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/qdldl_interface.c.o.requires:
 
@@ -371,16 +371,16 @@ CMakeFiles/osqp.dir/osqp/src/qdldl/qdldl_interface.c.o.provides.build: CMakeFile
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/qdldl.c.o: CMakeFiles/osqp.dir/flags.make
 CMakeFiles/osqp.dir/osqp/src/qdldl/qdldl.c.o: ../osqp/src/qdldl/qdldl.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp/hello_for_osqpbackup/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/osqp.dir/osqp/src/qdldl/qdldl.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/qdldl/qdldl.c.o   -c /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/qdldl.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/osqp.dir/osqp/src/qdldl/qdldl.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/qdldl/qdldl.c.o   -c /home/ccg/File/osqp_demo/osqp/src/qdldl/qdldl.c
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/qdldl.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/osqp.dir/osqp/src/qdldl/qdldl.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/qdldl.c > CMakeFiles/osqp.dir/osqp/src/qdldl/qdldl.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp_demo/osqp/src/qdldl/qdldl.c > CMakeFiles/osqp.dir/osqp/src/qdldl/qdldl.c.i
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/qdldl.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/osqp.dir/osqp/src/qdldl/qdldl.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/qdldl.c -o CMakeFiles/osqp.dir/osqp/src/qdldl/qdldl.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp_demo/osqp/src/qdldl/qdldl.c -o CMakeFiles/osqp.dir/osqp/src/qdldl/qdldl.c.s
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/qdldl.c.o.requires:
 
@@ -395,16 +395,16 @@ CMakeFiles/osqp.dir/osqp/src/qdldl/qdldl.c.o.provides.build: CMakeFiles/osqp.dir
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_1.c.o: CMakeFiles/osqp.dir/flags.make
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_1.c.o: ../osqp/src/qdldl/amd/src/amd_1.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp/hello_for_osqpbackup/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_1.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_1.c.o   -c /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/amd/src/amd_1.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_1.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_1.c.o   -c /home/ccg/File/osqp_demo/osqp/src/qdldl/amd/src/amd_1.c
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_1.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_1.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/amd/src/amd_1.c > CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_1.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp_demo/osqp/src/qdldl/amd/src/amd_1.c > CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_1.c.i
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_1.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_1.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/amd/src/amd_1.c -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_1.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp_demo/osqp/src/qdldl/amd/src/amd_1.c -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_1.c.s
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_1.c.o.requires:
 
@@ -419,16 +419,16 @@ CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_1.c.o.provides.build: CMakeFiles/
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_2.c.o: CMakeFiles/osqp.dir/flags.make
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_2.c.o: ../osqp/src/qdldl/amd/src/amd_2.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp/hello_for_osqpbackup/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_2.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_2.c.o   -c /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/amd/src/amd_2.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_2.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_2.c.o   -c /home/ccg/File/osqp_demo/osqp/src/qdldl/amd/src/amd_2.c
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_2.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_2.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/amd/src/amd_2.c > CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_2.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp_demo/osqp/src/qdldl/amd/src/amd_2.c > CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_2.c.i
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_2.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_2.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/amd/src/amd_2.c -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_2.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp_demo/osqp/src/qdldl/amd/src/amd_2.c -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_2.c.s
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_2.c.o.requires:
 
@@ -443,16 +443,16 @@ CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_2.c.o.provides.build: CMakeFiles/
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_aat.c.o: CMakeFiles/osqp.dir/flags.make
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_aat.c.o: ../osqp/src/qdldl/amd/src/amd_aat.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp/hello_for_osqpbackup/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_aat.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_aat.c.o   -c /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/amd/src/amd_aat.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_aat.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_aat.c.o   -c /home/ccg/File/osqp_demo/osqp/src/qdldl/amd/src/amd_aat.c
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_aat.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_aat.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/amd/src/amd_aat.c > CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_aat.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp_demo/osqp/src/qdldl/amd/src/amd_aat.c > CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_aat.c.i
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_aat.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_aat.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/amd/src/amd_aat.c -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_aat.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp_demo/osqp/src/qdldl/amd/src/amd_aat.c -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_aat.c.s
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_aat.c.o.requires:
 
@@ -467,16 +467,16 @@ CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_aat.c.o.provides.build: CMakeFile
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_control.c.o: CMakeFiles/osqp.dir/flags.make
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_control.c.o: ../osqp/src/qdldl/amd/src/amd_control.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp/hello_for_osqpbackup/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_control.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_control.c.o   -c /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/amd/src/amd_control.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_control.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_control.c.o   -c /home/ccg/File/osqp_demo/osqp/src/qdldl/amd/src/amd_control.c
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_control.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_control.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/amd/src/amd_control.c > CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_control.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp_demo/osqp/src/qdldl/amd/src/amd_control.c > CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_control.c.i
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_control.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_control.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/amd/src/amd_control.c -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_control.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp_demo/osqp/src/qdldl/amd/src/amd_control.c -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_control.c.s
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_control.c.o.requires:
 
@@ -491,16 +491,16 @@ CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_control.c.o.provides.build: CMake
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_defaults.c.o: CMakeFiles/osqp.dir/flags.make
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_defaults.c.o: ../osqp/src/qdldl/amd/src/amd_defaults.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp/hello_for_osqpbackup/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_defaults.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_defaults.c.o   -c /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/amd/src/amd_defaults.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_defaults.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_defaults.c.o   -c /home/ccg/File/osqp_demo/osqp/src/qdldl/amd/src/amd_defaults.c
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_defaults.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_defaults.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/amd/src/amd_defaults.c > CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_defaults.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp_demo/osqp/src/qdldl/amd/src/amd_defaults.c > CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_defaults.c.i
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_defaults.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_defaults.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/amd/src/amd_defaults.c -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_defaults.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp_demo/osqp/src/qdldl/amd/src/amd_defaults.c -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_defaults.c.s
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_defaults.c.o.requires:
 
@@ -515,16 +515,16 @@ CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_defaults.c.o.provides.build: CMak
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_info.c.o: CMakeFiles/osqp.dir/flags.make
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_info.c.o: ../osqp/src/qdldl/amd/src/amd_info.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp/hello_for_osqpbackup/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_info.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_info.c.o   -c /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/amd/src/amd_info.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_info.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_info.c.o   -c /home/ccg/File/osqp_demo/osqp/src/qdldl/amd/src/amd_info.c
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_info.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_info.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/amd/src/amd_info.c > CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_info.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp_demo/osqp/src/qdldl/amd/src/amd_info.c > CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_info.c.i
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_info.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_info.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/amd/src/amd_info.c -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_info.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp_demo/osqp/src/qdldl/amd/src/amd_info.c -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_info.c.s
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_info.c.o.requires:
 
@@ -539,16 +539,16 @@ CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_info.c.o.provides.build: CMakeFil
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_order.c.o: CMakeFiles/osqp.dir/flags.make
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_order.c.o: ../osqp/src/qdldl/amd/src/amd_order.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp/hello_for_osqpbackup/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_order.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_order.c.o   -c /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/amd/src/amd_order.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_order.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_order.c.o   -c /home/ccg/File/osqp_demo/osqp/src/qdldl/amd/src/amd_order.c
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_order.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_order.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/amd/src/amd_order.c > CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_order.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp_demo/osqp/src/qdldl/amd/src/amd_order.c > CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_order.c.i
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_order.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_order.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/amd/src/amd_order.c -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_order.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp_demo/osqp/src/qdldl/amd/src/amd_order.c -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_order.c.s
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_order.c.o.requires:
 
@@ -563,16 +563,16 @@ CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_order.c.o.provides.build: CMakeFi
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_postorder.c.o: CMakeFiles/osqp.dir/flags.make
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_postorder.c.o: ../osqp/src/qdldl/amd/src/amd_postorder.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp/hello_for_osqpbackup/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_postorder.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_postorder.c.o   -c /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/amd/src/amd_postorder.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_postorder.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_postorder.c.o   -c /home/ccg/File/osqp_demo/osqp/src/qdldl/amd/src/amd_postorder.c
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_postorder.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_postorder.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/amd/src/amd_postorder.c > CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_postorder.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp_demo/osqp/src/qdldl/amd/src/amd_postorder.c > CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_postorder.c.i
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_postorder.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_postorder.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/amd/src/amd_postorder.c -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_postorder.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp_demo/osqp/src/qdldl/amd/src/amd_postorder.c -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_postorder.c.s
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_postorder.c.o.requires:
 
@@ -587,16 +587,16 @@ CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_postorder.c.o.provides.build: CMa
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_post_tree.c.o: CMakeFiles/osqp.dir/flags.make
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_post_tree.c.o: ../osqp/src/qdldl/amd/src/amd_post_tree.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp/hello_for_osqpbackup/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building C object CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_post_tree.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_post_tree.c.o   -c /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/amd/src/amd_post_tree.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building C object CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_post_tree.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_post_tree.c.o   -c /home/ccg/File/osqp_demo/osqp/src/qdldl/amd/src/amd_post_tree.c
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_post_tree.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_post_tree.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/amd/src/amd_post_tree.c > CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_post_tree.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp_demo/osqp/src/qdldl/amd/src/amd_post_tree.c > CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_post_tree.c.i
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_post_tree.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_post_tree.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/amd/src/amd_post_tree.c -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_post_tree.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp_demo/osqp/src/qdldl/amd/src/amd_post_tree.c -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_post_tree.c.s
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_post_tree.c.o.requires:
 
@@ -611,16 +611,16 @@ CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_post_tree.c.o.provides.build: CMa
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_preprocess.c.o: CMakeFiles/osqp.dir/flags.make
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_preprocess.c.o: ../osqp/src/qdldl/amd/src/amd_preprocess.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp/hello_for_osqpbackup/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_preprocess.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_preprocess.c.o   -c /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/amd/src/amd_preprocess.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_preprocess.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_preprocess.c.o   -c /home/ccg/File/osqp_demo/osqp/src/qdldl/amd/src/amd_preprocess.c
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_preprocess.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_preprocess.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/amd/src/amd_preprocess.c > CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_preprocess.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp_demo/osqp/src/qdldl/amd/src/amd_preprocess.c > CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_preprocess.c.i
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_preprocess.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_preprocess.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/amd/src/amd_preprocess.c -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_preprocess.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp_demo/osqp/src/qdldl/amd/src/amd_preprocess.c -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_preprocess.c.s
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_preprocess.c.o.requires:
 
@@ -635,16 +635,16 @@ CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_preprocess.c.o.provides.build: CM
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_valid.c.o: CMakeFiles/osqp.dir/flags.make
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_valid.c.o: ../osqp/src/qdldl/amd/src/amd_valid.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp/hello_for_osqpbackup/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_valid.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_valid.c.o   -c /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/amd/src/amd_valid.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_valid.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_valid.c.o   -c /home/ccg/File/osqp_demo/osqp/src/qdldl/amd/src/amd_valid.c
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_valid.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_valid.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/amd/src/amd_valid.c > CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_valid.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp_demo/osqp/src/qdldl/amd/src/amd_valid.c > CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_valid.c.i
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_valid.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_valid.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/amd/src/amd_valid.c -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_valid.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp_demo/osqp/src/qdldl/amd/src/amd_valid.c -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_valid.c.s
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_valid.c.o.requires:
 
@@ -659,16 +659,16 @@ CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/amd_valid.c.o.provides.build: CMakeFi
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/SuiteSparse_config.c.o: CMakeFiles/osqp.dir/flags.make
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/SuiteSparse_config.c.o: ../osqp/src/qdldl/amd/src/SuiteSparse_config.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp/hello_for_osqpbackup/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/SuiteSparse_config.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/SuiteSparse_config.c.o   -c /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/amd/src/SuiteSparse_config.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/SuiteSparse_config.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/SuiteSparse_config.c.o   -c /home/ccg/File/osqp_demo/osqp/src/qdldl/amd/src/SuiteSparse_config.c
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/SuiteSparse_config.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/SuiteSparse_config.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/amd/src/SuiteSparse_config.c > CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/SuiteSparse_config.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp_demo/osqp/src/qdldl/amd/src/SuiteSparse_config.c > CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/SuiteSparse_config.c.i
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/SuiteSparse_config.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/SuiteSparse_config.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/qdldl/amd/src/SuiteSparse_config.c -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/SuiteSparse_config.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp_demo/osqp/src/qdldl/amd/src/SuiteSparse_config.c -o CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/SuiteSparse_config.c.s
 
 CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/SuiteSparse_config.c.o.requires:
 
@@ -683,16 +683,16 @@ CMakeFiles/osqp.dir/osqp/src/qdldl/amd/src/SuiteSparse_config.c.o.provides.build
 
 CMakeFiles/osqp.dir/osqp/src/pardiso/pardiso_interface.c.o: CMakeFiles/osqp.dir/flags.make
 CMakeFiles/osqp.dir/osqp/src/pardiso/pardiso_interface.c.o: ../osqp/src/pardiso/pardiso_interface.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp/hello_for_osqpbackup/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/osqp.dir/osqp/src/pardiso/pardiso_interface.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/pardiso/pardiso_interface.c.o   -c /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/pardiso/pardiso_interface.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/osqp.dir/osqp/src/pardiso/pardiso_interface.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/pardiso/pardiso_interface.c.o   -c /home/ccg/File/osqp_demo/osqp/src/pardiso/pardiso_interface.c
 
 CMakeFiles/osqp.dir/osqp/src/pardiso/pardiso_interface.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/osqp.dir/osqp/src/pardiso/pardiso_interface.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/pardiso/pardiso_interface.c > CMakeFiles/osqp.dir/osqp/src/pardiso/pardiso_interface.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp_demo/osqp/src/pardiso/pardiso_interface.c > CMakeFiles/osqp.dir/osqp/src/pardiso/pardiso_interface.c.i
 
 CMakeFiles/osqp.dir/osqp/src/pardiso/pardiso_interface.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/osqp.dir/osqp/src/pardiso/pardiso_interface.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/pardiso/pardiso_interface.c -o CMakeFiles/osqp.dir/osqp/src/pardiso/pardiso_interface.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp_demo/osqp/src/pardiso/pardiso_interface.c -o CMakeFiles/osqp.dir/osqp/src/pardiso/pardiso_interface.c.s
 
 CMakeFiles/osqp.dir/osqp/src/pardiso/pardiso_interface.c.o.requires:
 
@@ -707,16 +707,16 @@ CMakeFiles/osqp.dir/osqp/src/pardiso/pardiso_interface.c.o.provides.build: CMake
 
 CMakeFiles/osqp.dir/osqp/src/pardiso/pardiso_loader.c.o: CMakeFiles/osqp.dir/flags.make
 CMakeFiles/osqp.dir/osqp/src/pardiso/pardiso_loader.c.o: ../osqp/src/pardiso/pardiso_loader.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp/hello_for_osqpbackup/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/osqp.dir/osqp/src/pardiso/pardiso_loader.c.o"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/pardiso/pardiso_loader.c.o   -c /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/pardiso/pardiso_loader.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/osqp.dir/osqp/src/pardiso/pardiso_loader.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/osqp.dir/osqp/src/pardiso/pardiso_loader.c.o   -c /home/ccg/File/osqp_demo/osqp/src/pardiso/pardiso_loader.c
 
 CMakeFiles/osqp.dir/osqp/src/pardiso/pardiso_loader.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/osqp.dir/osqp/src/pardiso/pardiso_loader.c.i"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/pardiso/pardiso_loader.c > CMakeFiles/osqp.dir/osqp/src/pardiso/pardiso_loader.c.i
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/ccg/File/osqp_demo/osqp/src/pardiso/pardiso_loader.c > CMakeFiles/osqp.dir/osqp/src/pardiso/pardiso_loader.c.i
 
 CMakeFiles/osqp.dir/osqp/src/pardiso/pardiso_loader.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/osqp.dir/osqp/src/pardiso/pardiso_loader.c.s"
-	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp/hello_for_osqpbackup/osqp/src/pardiso/pardiso_loader.c -o CMakeFiles/osqp.dir/osqp/src/pardiso/pardiso_loader.c.s
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/ccg/File/osqp_demo/osqp/src/pardiso/pardiso_loader.c -o CMakeFiles/osqp.dir/osqp/src/pardiso/pardiso_loader.c.s
 
 CMakeFiles/osqp.dir/osqp/src/pardiso/pardiso_loader.c.o.requires:
 
@@ -793,7 +793,7 @@ libosqp.a: CMakeFiles/osqp.dir/osqp/src/pardiso/pardiso_interface.c.o
 libosqp.a: CMakeFiles/osqp.dir/osqp/src/pardiso/pardiso_loader.c.o
 libosqp.a: CMakeFiles/osqp.dir/build.make
 libosqp.a: CMakeFiles/osqp.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ccg/File/osqp/hello_for_osqpbackup/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Linking C static library libosqp.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ccg/File/osqp_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Linking C static library libosqp.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/osqp.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/osqp.dir/link.txt --verbose=$(VERBOSE)
 
@@ -838,6 +838,6 @@ CMakeFiles/osqp.dir/clean:
 .PHONY : CMakeFiles/osqp.dir/clean
 
 CMakeFiles/osqp.dir/depend:
-	cd /home/ccg/File/osqp/hello_for_osqpbackup/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ccg/File/osqp/hello_for_osqpbackup /home/ccg/File/osqp/hello_for_osqpbackup /home/ccg/File/osqp/hello_for_osqpbackup/build /home/ccg/File/osqp/hello_for_osqpbackup/build /home/ccg/File/osqp/hello_for_osqpbackup/build/CMakeFiles/osqp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ccg/File/osqp_demo/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ccg/File/osqp_demo /home/ccg/File/osqp_demo /home/ccg/File/osqp_demo/build /home/ccg/File/osqp_demo/build /home/ccg/File/osqp_demo/build/CMakeFiles/osqp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/osqp.dir/depend
 

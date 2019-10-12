@@ -10,10 +10,10 @@ CMakeFiles/mpcosqp.dir/mpc_osqp/mpc_osqp.cpp.o
  ../osqp/include/osqp_configure.h
  ../osqp/include/types.h
  ../osqp/include/util.h
- /home/ccg/File/osqp/hello_for_osqpbackup/mpc_osqp/binary.h
- /home/ccg/File/osqp/hello_for_osqpbackup/mpc_osqp/log.h
- /home/ccg/File/osqp/hello_for_osqpbackup/mpc_osqp/mpc_osqp.cpp
- /home/ccg/File/osqp/hello_for_osqpbackup/mpc_osqp/mpc_osqp.h
+ /home/ccg/File/osqp_demo/mpc_osqp/binary.h
+ /home/ccg/File/osqp_demo/mpc_osqp/log.h
+ /home/ccg/File/osqp_demo/mpc_osqp/mpc_osqp.cpp
+ /home/ccg/File/osqp_demo/mpc_osqp/mpc_osqp.h
  /usr/include/eigen3/Eigen/Cholesky
  /usr/include/eigen3/Eigen/Core
  /usr/include/eigen3/Eigen/Dense

@@ -17,6 +17,7 @@ MpcOsqp::MpcOsqp(const Eigen::MatrixXd &matrix_a,const Eigen::MatrixXd &matrix_b
   num_param_ = state_dim_ * (horizon_ + 1) + control_dim_ * horizon_;
 }
 
+/*
 Eigen::MatrixXd csc2matrix (csc *cscA)
 {
   Eigen::MatrixXd res_matrix = Eigen::MatrixXd::Zero(cscA->m, cscA->n);
@@ -37,7 +38,7 @@ Eigen::MatrixXd csc2matrix (csc *cscA)
   }
   return res_matrix;
 
-}
+}*/
 
 void MpcOsqp::CalculateKernel(std::vector<c_float> *P_data,
                               std::vector<c_int> *P_indices,
@@ -265,8 +266,8 @@ OSQPData *MpcOsqp::Data() {
                  kernel_dim, A_data.size(), CopyData(A_data),
                  CopyData(A_indices), CopyData(A_indptr));
   ADEBUG << "Get A matrix";
-  Eigen::VectorXd matrix_A= csc2matrix (date->A);
-  std::cout << "the A matrix in 246:\n"<< matrix_A << std::endl;
+  //Eigen::VectorXd matrix_A= csc2matrix (date->A);
+  //std::cout << "the A matrix in 246:\n"<< matrix_A << std::endl;
   data->l = lowerBound_.data();
   data->u = upperBound_.data();
   std::cout << "the l matrix :\n"<< data->l << std::endl;

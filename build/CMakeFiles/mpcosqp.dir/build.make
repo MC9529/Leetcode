@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ccg/File/osqp/hello_for_osqpbackup
+CMAKE_SOURCE_DIR = /home/ccg/File/osqp_demo
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ccg/File/osqp/hello_for_osqpbackup/build
+CMAKE_BINARY_DIR = /home/ccg/File/osqp_demo/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/mpcosqp.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/mpcosqp.dir/flags.make
 
 CMakeFiles/mpcosqp.dir/mpc_osqp/mpc_osqp.cpp.o: CMakeFiles/mpcosqp.dir/flags.make
 CMakeFiles/mpcosqp.dir/mpc_osqp/mpc_osqp.cpp.o: ../mpc_osqp/mpc_osqp.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp/hello_for_osqpbackup/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/mpcosqp.dir/mpc_osqp/mpc_osqp.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mpcosqp.dir/mpc_osqp/mpc_osqp.cpp.o -c /home/ccg/File/osqp/hello_for_osqpbackup/mpc_osqp/mpc_osqp.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/osqp_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/mpcosqp.dir/mpc_osqp/mpc_osqp.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mpcosqp.dir/mpc_osqp/mpc_osqp.cpp.o -c /home/ccg/File/osqp_demo/mpc_osqp/mpc_osqp.cpp
 
 CMakeFiles/mpcosqp.dir/mpc_osqp/mpc_osqp.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mpcosqp.dir/mpc_osqp/mpc_osqp.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ccg/File/osqp/hello_for_osqpbackup/mpc_osqp/mpc_osqp.cpp > CMakeFiles/mpcosqp.dir/mpc_osqp/mpc_osqp.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ccg/File/osqp_demo/mpc_osqp/mpc_osqp.cpp > CMakeFiles/mpcosqp.dir/mpc_osqp/mpc_osqp.cpp.i
 
 CMakeFiles/mpcosqp.dir/mpc_osqp/mpc_osqp.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mpcosqp.dir/mpc_osqp/mpc_osqp.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ccg/File/osqp/hello_for_osqpbackup/mpc_osqp/mpc_osqp.cpp -o CMakeFiles/mpcosqp.dir/mpc_osqp/mpc_osqp.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ccg/File/osqp_demo/mpc_osqp/mpc_osqp.cpp -o CMakeFiles/mpcosqp.dir/mpc_osqp/mpc_osqp.cpp.s
 
 CMakeFiles/mpcosqp.dir/mpc_osqp/mpc_osqp.cpp.o.requires:
 
@@ -91,7 +91,7 @@ mpcosqp_EXTERNAL_OBJECTS =
 libmpcosqp.a: CMakeFiles/mpcosqp.dir/mpc_osqp/mpc_osqp.cpp.o
 libmpcosqp.a: CMakeFiles/mpcosqp.dir/build.make
 libmpcosqp.a: CMakeFiles/mpcosqp.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ccg/File/osqp/hello_for_osqpbackup/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libmpcosqp.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ccg/File/osqp_demo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libmpcosqp.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/mpcosqp.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mpcosqp.dir/link.txt --verbose=$(VERBOSE)
 
@@ -109,6 +109,6 @@ CMakeFiles/mpcosqp.dir/clean:
 .PHONY : CMakeFiles/mpcosqp.dir/clean
 
 CMakeFiles/mpcosqp.dir/depend:
-	cd /home/ccg/File/osqp/hello_for_osqpbackup/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ccg/File/osqp/hello_for_osqpbackup /home/ccg/File/osqp/hello_for_osqpbackup /home/ccg/File/osqp/hello_for_osqpbackup/build /home/ccg/File/osqp/hello_for_osqpbackup/build /home/ccg/File/osqp/hello_for_osqpbackup/build/CMakeFiles/mpcosqp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ccg/File/osqp_demo/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ccg/File/osqp_demo /home/ccg/File/osqp_demo /home/ccg/File/osqp_demo/build /home/ccg/File/osqp_demo/build /home/ccg/File/osqp_demo/build/CMakeFiles/mpcosqp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/mpcosqp.dir/depend
 
