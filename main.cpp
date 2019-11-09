@@ -14,7 +14,7 @@ using namespace std;
 using namespace Eigen;
 
 
-////Permute_46
+////Permute_46   全排列
 /*
 int main(int argc, char **argv)
 {
@@ -34,13 +34,11 @@ int main(int argc, char **argv)
 }
 */
 
-///NQueue_51
-
+//////NQueue_51  N皇后
+/*
 int main(){
   vector<vector<string>> res;
-  //std::cout << "pass in 41" << std::endl;
   sloveNQueue_51_Solution s1;
-  //std::cout << "pass in 41" << std::endl;
   int n = 4;
   res = s1.sloveNQueue(4);
   std::cout << "pass in 41" << std::endl;
@@ -55,5 +53,34 @@ int main(){
   }
   return 0;
 }
+*/
+////totalNQueue_52   N皇后2
+/*
+int main(){
+  int n = 4;
+  int res;
+  totalNQueue_52_Solution s1;
+  cout << "pass in 62" << endl;
+  res = s1.totalNQueue(n);
+  cout << "pass in 64" << endl;
+  std::cout << "the res: " << res << std::endl;
+  return 0;
+}
+*/
 
+///////
+/// 括号生成
 
+int main(){
+  vector<string> result;
+  generateParenthesis_22_Solution s1;
+  int n = 3;
+  result = s1.generateParenthesis(n);
+  for(vector<string>::size_type i = 0; i < result.size(); i++){
+    for(int j = 0; j < n * 2; j++){
+      cout << result[i][j];
+    }
+    cout << endl;
+  }
+  return 0;
+}

@@ -62,7 +62,7 @@ vector<vector<string>> sloveNQueue_51_Solution::sloveNQueue(int n){
 
 void sloveNQueue_51_Solution::DFS(vector<vector<string>> &res, vector<string> &temp, 
     int n, int curRow, vector<int> route){
-    if(route.size() == n){
+    if((int)route.size() == n){
         for (int i =0; i<n; i++){
             for(int j=0; j< n; j++){
             std::cout << temp[i][j];
@@ -71,7 +71,7 @@ void sloveNQueue_51_Solution::DFS(vector<vector<string>> &res, vector<string> &t
         }
         res.push_back(temp);
         //temp.clear();
-        for(int i =0; i<route.size(); i++){
+        for(vector<int>::size_type i =0; i<route.size(); i++){
             std::cout << route[i];
         }
         std::cout << std::endl;
@@ -100,4 +100,72 @@ bool sloveNQueue_51_Solution::valid(vector<int> route, int n){
         }
     }
     return true;
+}
+////////////////
+/////totalNQueue_52
+int totalNQueue_52_Solution::totalNQueue(int n)
+{
+    vector<vector<int>> res;
+    vector<int> temp;
+    DFS(res, temp, n, 0);
+
+    return (int)res.size();
+}
+
+void totalNQueue_52_Solution::DFS(vector<vector<int>> &res, vector<int> &temp, int n, int curRow){
+    if(int(temp.size() == n)){
+        res.push_back(temp);
+        //temp.clear();
+        return;
+    }
+    for(int i = 0; i < n; i++){
+        if(valid(temp, i)){
+            temp.push_back(i);
+            DFS(res, temp, n, curRow + 1);
+            temp.pop_back();
+        }
+    }
+
+}
+bool totalNQueue_52_Solution::valid(vector<int> temp, int n){
+    int row = temp.size();
+    if(row < 1) return true;
+    for(int j = 0; j < row; j++){
+        int c = temp[j];
+        if(c == n||abs(c - n) == abs(j - row)){
+            return false;
+        }
+    }
+    return true;
+}
+
+//////////
+
+vector<string> generateParenthesis_22_Solution::generateParenthesis(int n){
+    vector<string> res;
+    string temp;
+    //string s="()";
+    DFS(res, temp, 0, n);
+
+    return res;
+}
+
+void generateParenthesis_22_Solution::DFS(vector<string> &res, string &temp, 
+        int num, int n){
+    if(temp.size() == 2 *n && num == 0){
+        res.push_back(temp);
+        return ;
+    }
+    if(num < 0||(temp.size() == 2*n && num != 0)){
+        return ;
+    }
+    int v1 = num + 1;
+    int v2 = num - 1;
+    temp.push_back('(');
+    string temp1 = temp;
+    temp.pop_back();
+    temp.push_back(')');
+    string temp2 = temp;
+    DFS(res, temp1, v1, n);
+    DFS(res, temp2, v2, n);
 }
