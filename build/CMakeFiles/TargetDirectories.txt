@@ -1,5 +1,3 @@
-/home/ccg/File/osqp_demo/build/CMakeFiles/edit_cache.dir
-/home/ccg/File/osqp_demo/build/CMakeFiles/osqp.dir
-/home/ccg/File/osqp_demo/build/CMakeFiles/hello.dir
-/home/ccg/File/osqp_demo/build/CMakeFiles/mpcosqp.dir
-/home/ccg/File/osqp_demo/build/CMakeFiles/rebuild_cache.dir
+/home/ccg/File/cpp/leetcode/build/CMakeFiles/edit_cache.dir
+/home/ccg/File/cpp/leetcode/build/CMakeFiles/rebuild_cache.dir
+/home/ccg/File/cpp/leetcode/build/CMakeFiles/hello.dir
