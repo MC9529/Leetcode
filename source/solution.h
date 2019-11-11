@@ -25,9 +25,17 @@ public:
     void DFS(vector<vector<int>> &res, vector<int> &temp, int n, int curRow);
     bool valid(vector<int> temp, int n);
 };
-////////////
+////////////生成括号
 class generateParenthesis_22_Solution {
 public:
     vector<string> generateParenthesis(int n);
     void DFS(vector<string> &res, string &temp, int num, int n);
+};
+///////////////解数独
+class SuDu_37_Solution{
+public:
+    void solveSuDu(vector<vector<char>> &board);
+    void DFS(vector<vector<char>> &board, vector<vector<int>> &rows, vector<vector<int>> &cols, 
+        vector<vector<int>> &cell, int i, int j, vector<vector<char>> &res);
+
 };

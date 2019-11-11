@@ -113,7 +113,7 @@ int totalNQueue_52_Solution::totalNQueue(int n)
 }
 
 void totalNQueue_52_Solution::DFS(vector<vector<int>> &res, vector<int> &temp, int n, int curRow){
-    if(int(temp.size() == n)){
+    if((int)temp.size() == n){
         res.push_back(temp);
         //temp.clear();
         return;
@@ -152,11 +152,11 @@ vector<string> generateParenthesis_22_Solution::generateParenthesis(int n){
 
 void generateParenthesis_22_Solution::DFS(vector<string> &res, string &temp, 
         int num, int n){
-    if(temp.size() == 2 *n && num == 0){
+    if((int)temp.size() == 2 *n && num == 0){
         res.push_back(temp);
         return ;
     }
-    if(num < 0||(temp.size() == 2*n && num != 0)){
+    if((int)num < 0||((int)temp.size() == 2*n && num != 0)){
         return ;
     }
     int v1 = num + 1;
@@ -168,4 +168,53 @@ void generateParenthesis_22_Solution::DFS(vector<string> &res, string &temp,
     string temp2 = temp;
     DFS(res, temp1, v1, n);
     DFS(res, temp2, v2, n);
+}
+/////////////////解数独
+void SuDu_37_Solution::solveSuDu(vector<vector<char>> &board)
+{
+    const int N = 10;
+    vector<vector<int>> rows(N, vector<int>(N, 0));
+    vector<vector<int>> cols(N, vector<int>(N, 0));
+    vector<vector<int>> cell(N, vector<int>(N, 0));
+    for(int i = 0; i < 9; i++){
+        for(int j = 0; j < 9; j++){
+            if(board[i][j]=='.') continue;
+            int n = board[i][j]-'0';
+            int k = i / 3 * 3 + j / 3;
+            cell[k][n] = 1;
+            rows[i][n] = 1;
+            cols[j][n] = 1;
+        }
+    }
+    vector<vector<char>> res(board);
+    //bool done = false;
+    DFS(board, rows, cols, cell, 0, 0, res);
+    swap(res, board);
+    
+}
+
+void SuDu_37_Solution::DFS(vector<vector<char>> &board, vector<vector<int>> &rows, vector<vector<int>> &cols, 
+        vector<vector<int>> &cell, int i, int j, vector<vector<char>> &res){
+    if(i * 9 + j == 81){
+        res = board;
+        return;
+    }
+    int k = i / 3 * 3 + j / 3;
+    int t = i * 9 + j + 1;
+    int r = t / 9;
+    int c = t % 9;
+    if(board[i][j] != '.'){
+        DFS(board, rows, cols, cell, r, c, res);
+        return;
+    }
+    for(int num = 1; num <= 9; num++){
+        if(rows[i][num] != 1 && cols[j][num] != 1 && cell[k][num] != 1){
+            rows[i][num] = cols[j][num] = cell[k][num] = 1;
+            board[i][j] = num + '0';
+            DFS(board, rows, cols, cell, r, c, res);
+            rows[i][num] = cols[j][num] = cell[k][num] = 0;
+            board[i][j] = '.';
+
+        }
+    }
 }
