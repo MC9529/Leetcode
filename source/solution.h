@@ -39,3 +39,11 @@ public:
         vector<vector<int>> &cell, int i, int j, vector<vector<char>> &res);
 
 };
+
+/////////组合总和
+class combinationSum_39_Solution {
+public:
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target);
+    void DFS(vector<vector<int>> &res, vector<int> &temp, vector<int>& candidates, 
+        int target, int sum, int posi);
+};

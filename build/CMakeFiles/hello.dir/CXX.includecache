@@ -41,6 +41,8 @@ stack
 -
 algorithm
 -
+numeric
+-
 
 /home/ccg/File/cpp/leetcode/source/solution.h
 iostream

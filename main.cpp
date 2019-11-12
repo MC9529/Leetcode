@@ -86,6 +86,8 @@ int main(){
 }*/
 
 /////////解数独
+
+/*
 int main(){
 
   vector<vector<char>> board;
@@ -103,6 +105,26 @@ int main(){
   for(int i = 0; i< 9; i++){
     for(int j = 0; j< 9; j++){
       cout << board[i][j] << " ";
+    }
+    cout << endl;
+  }
+
+  return 0;
+}
+*/
+
+////组合总和
+
+int main(){
+  vector<vector<int>> res;
+  vector<int> candi = {2, 3, 6, 7};
+  int target = 7;
+  combinationSum_39_Solution s1;
+  res = s1.combinationSum(candi, target);
+  for(int i =0; i< res.size(); i++){
+    for(auto iter : res[i]){
+
+        cout << iter << " ";
     }
     cout << endl;
   }

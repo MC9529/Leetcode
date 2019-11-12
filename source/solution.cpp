@@ -2,6 +2,7 @@
 #include <vector>
 #include <stack>
 #include <algorithm>
+#include <numeric>
 using namespace std;
 
 ///回溯算法
@@ -187,7 +188,6 @@ void SuDu_37_Solution::solveSuDu(vector<vector<char>> &board)
         }
     }
     vector<vector<char>> res(board);
-    //bool done = false;
     DFS(board, rows, cols, cell, 0, 0, res);
     swap(res, board);
     
@@ -199,22 +199,51 @@ void SuDu_37_Solution::DFS(vector<vector<char>> &board, vector<vector<int>> &row
         res = board;
         return;
     }
-    int k = i / 3 * 3 + j / 3;
-    int t = i * 9 + j + 1;
-    int r = t / 9;
-    int c = t % 9;
-    if(board[i][j] != '.'){
-        DFS(board, rows, cols, cell, r, c, res);
+    int k = i / 3 * 3 + j / 3;  ///第几个cell
+    int t = i * 9 + j + 1;   //下一个
+    int r = t / 9;    //下一个在第几行
+    int c = t % 9;   //下一个在第几列
+    if(board[i][j] != '.'){  ////有数
+        DFS(board, rows, cols, cell, r, c, res); //下一个
         return;
     }
     for(int num = 1; num <= 9; num++){
-        if(rows[i][num] != 1 && cols[j][num] != 1 && cell[k][num] != 1){
+        if(rows[i][num] != 1 && cols[j][num] != 1 && cell[k][num] != 1){ ///行列块都满足。
             rows[i][num] = cols[j][num] = cell[k][num] = 1;
             board[i][j] = num + '0';
             DFS(board, rows, cols, cell, r, c, res);
             rows[i][num] = cols[j][num] = cell[k][num] = 0;
             board[i][j] = '.';
+        }
+    }
+}
 
+
+////////组合总和
+
+vector<vector<int>> combinationSum_39_Solution::combinationSum(vector<int>& candidates, 
+         int target){
+    int sum = target;
+    vector<vector<int>> res;
+    vector<int> temp;
+    //sort(candidates.begin(), candidates.end());
+    DFS(res, temp, candidates, target, sum, 0);
+    return res;
+}
+void combinationSum_39_Solution::DFS(vector<vector<int>> &res, vector<int> &temp, 
+         vector<int>& candidates, int target, int sum, int posi){
+    if(accumulate(temp.begin(),temp.end(),0) == sum){
+        res.push_back(temp);
+        return;
+    }
+    for(int i = posi ; i< (int)candidates.size(); i++){
+        if(target>0){
+            target = target - candidates[i];
+            temp.push_back(candidates[i]);
+            //DFS(res, temp, candidates, target, sum, i + 1);
+            DFS(res, temp, candidates, target, sum, i);
+            target = target + candidates[i];
+            temp.pop_back();
         }
     }
 }
