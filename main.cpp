@@ -133,6 +133,7 @@ int main(){
 */
 ////组合总和    每个数值只能使用1次
 
+/*
 int main(){
   vector<vector<int>> res;
   //vector<int> candi = {10, 1, 2, 7, 6, 1, 5};
@@ -147,5 +148,24 @@ int main(){
     }
     cout << endl;
   }
+  return 0;
+}
+*/
+
+//// 单词搜索  79
+int main(){
+  bool res;
+  vector<vector<char>> board = {{'A', 'B', 'C', 'E'},
+                               {'S', 'F', 'C', 'S'},
+                               {'A', 'D', 'E', 'E'} };
+  string word = "ABCCE";
+  //string word = {"ABCCE"};  word == vector<string>
+  Search_79_Solution s1;
+  res = s1.solve1(board, word);
+  if(res == true || res == false){
+    cout << " the type of res is bool" << endl;
+  }
+  cout << "the res : " << res << endl;
+  cout << endl;
   return 0;
 }

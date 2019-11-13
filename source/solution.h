@@ -54,3 +54,11 @@ public:
     void DFS2(vector<vector<int>> &res, vector<int> &temp, vector<int> candidates, 
         int target, int sum, int posi);
 };
+
+///////  单词搜索 79 
+class Search_79_Solution {
+public:
+    bool solve1(vector<vector<char>>& board1, string word1);
+    void DFS(vector<vector<char>> board, string word, string temp, int posi_board, 
+         int posi_word, bool &res, int sum);
+};

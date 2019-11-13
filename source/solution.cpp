@@ -288,3 +288,38 @@ void combinationSum_40_Solution::DFS2(vector<vector<int>> &res, vector<int> &tem
         }
     }
 }
+
+////// 单词搜索， 79 
+
+bool Search_79_Solution::solve1(vector<vector<char>>& board, string word)
+{
+   bool res;
+   int sum = board.size() * board[0].size();
+   string temp;
+   DFS(board, word, temp, 0, 0, res, sum);
+
+   return res;
+}
+void Search_79_Solution::DFS(vector<vector<char>> board, string word, string temp, 
+       int posi_board, int posi_word, bool &res, int sum){
+    if(posi_board <= sum &&temp == word){
+        res = true;
+        return;
+    }
+    if(posi_board > sum && temp != word){
+        res = false;
+        return;
+    }
+    for(int i = posi_board; i < sum; i++){
+        for(int j = posi_word; j < (int)word.size(); j++){
+            int r = posi_board / board[0].size();
+            int c = posi_board % board[0].size();
+            if(board[r][c] != word[j]){
+                DFS(board, word, temp, posi_board + 1, posi_word, res, sum);
+                return;
+            }
+            temp.push_back(word[j]);
+            DFS(board, word, temp, posi_board + 1, posi_word + 1, res, sum);
+        }
+    }
+}
