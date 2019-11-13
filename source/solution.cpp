@@ -219,7 +219,7 @@ void SuDu_37_Solution::DFS(vector<vector<char>> &board, vector<vector<int>> &row
 }
 
 
-////////组合总和
+////////组合总和  每个数值可以使用多次
 
 vector<vector<int>> combinationSum_39_Solution::combinationSum(vector<int>& candidates, 
          int target){
@@ -231,7 +231,7 @@ vector<vector<int>> combinationSum_39_Solution::combinationSum(vector<int>& cand
     return res;
 }
 void combinationSum_39_Solution::DFS(vector<vector<int>> &res, vector<int> &temp, 
-         vector<int>& candidates, int target, int sum, int posi){
+         vector<int> candidates, int target, int sum, int posi){
     if(accumulate(temp.begin(),temp.end(),0) == sum){
         res.push_back(temp);
         return;
@@ -241,9 +241,50 @@ void combinationSum_39_Solution::DFS(vector<vector<int>> &res, vector<int> &temp
             target = target - candidates[i];
             temp.push_back(candidates[i]);
             //DFS(res, temp, candidates, target, sum, i + 1);
-            DFS(res, temp, candidates, target, sum, i);
+            DFS(res, temp, candidates, target, sum, i); ///又从相同位置出发
             target = target + candidates[i];
             temp.pop_back();
+        }
+    }
+}
+
+////////组合总和  每个数值只能使用1次
+
+vector<vector<int>> combinationSum_40_Solution::combinationSum2(vector<int>& candidates, 
+         int target){
+    int sum = target;
+    vector<vector<int>> res;
+    vector<int> temp;
+    sort(candidates.begin(), candidates.end());
+    //vector<int> used((int)candidates.size(), 0); //标记是否用过
+    DFS2(res, temp, candidates, target, sum, 0);
+    ///v.erase(unique(v.begin(), v.end()), v.end());
+    //res.erase(unique(res.begin(), res.end(), res.end()));
+
+    return res;
+}
+void combinationSum_40_Solution::DFS2(vector<vector<int>> &res, vector<int> &temp, 
+         vector<int> candidates, int target, int sum, int posi){
+    if(accumulate(temp.begin(),temp.end(),0) == sum){
+        res.push_back(temp);
+        //used((int)candidates.size(), 0);
+        return;
+    }
+    for(int i = posi ; i< (int)candidates.size(); i++){
+        /*if(used[i]== 1){
+            DFS2(res, temp, candidates, target, sum, i + 1);
+            continue;
+        }*/
+        if(i > posi && candidates[i]==candidates[i-1]) continue; ///如果当前这个数和上一个数相等， 则跳过
+        if(target > 0){
+            target = target - candidates[i];
+            temp.push_back(candidates[i]);
+            //used[i] = 1;
+            DFS2(res, temp, candidates, target, sum, i + 1); //从下一个位置出发
+            //DFS2(res, temp, candidates, target, sum, i);
+            target = target + candidates[i];
+            temp.pop_back();
+            //used[i] = 0;
         }
     }
 }

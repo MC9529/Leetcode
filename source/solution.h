@@ -40,10 +40,17 @@ public:
 
 };
 
-/////////组合总和
+/////////组合总和  每个数值可以使用多次
 class combinationSum_39_Solution {
 public:
     vector<vector<int>> combinationSum(vector<int>& candidates, int target);
-    void DFS(vector<vector<int>> &res, vector<int> &temp, vector<int>& candidates, 
+    void DFS(vector<vector<int>> &res, vector<int> &temp, vector<int> candidates, 
+        int target, int sum, int posi);
+};
+///////组合总和  每个数值只能使用1次
+class combinationSum_40_Solution {
+public:
+    vector<vector<int>> combinationSum2(vector<int>& candidates, int target);
+    void DFS2(vector<vector<int>> &res, vector<int> &temp, vector<int> candidates, 
         int target, int sum, int posi);
 };
