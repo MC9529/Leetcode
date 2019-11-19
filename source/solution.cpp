@@ -293,33 +293,107 @@ void combinationSum_40_Solution::DFS2(vector<vector<int>> &res, vector<int> &tem
 
 bool Search_79_Solution::solve1(vector<vector<char>>& board, string word)
 {
-   bool res;
-   int sum = board.size() * board[0].size();
-   string temp;
-   DFS(board, word, temp, 0, 0, res, sum);
-
-   return res;
+    vector<vector<bool>> used(board.size(), vector<bool>(board[0].size(), false));
+   for(int i = 0; i < board.size(); i++){
+       for(int j = 0; j < board[0].size(); j++){
+           if(board[i][j]= word[0] && DFS(board, i, j, word, 0, used)){
+               return true;
+           }
+       }
+   }
+   return false;
 }
-void Search_79_Solution::DFS(vector<vector<char>> board, string word, string temp, 
-       int posi_board, int posi_word, bool &res, int sum){
-    if(posi_board <= sum &&temp == word){
-        res = true;
-        return;
+bool Search_79_Solution::DFS(vector<vector<char>> &board, int i, int j, string word, 
+   int length, vector<vector<bool>> &used){
+    if(i >= board.size() || j >= board[0].size() || length >= word.size() 
+    || board[i][j] != word[length] ||used[i][j]){
+        return false;
     }
-    if(posi_board > sum && temp != word){
-        res = false;
-        return;
+    else if(length = word.size() - 1 && board[i][j] == word[length]){
+        return true;
     }
-    for(int i = posi_board; i < sum; i++){
-        for(int j = posi_word; j < (int)word.size(); j++){
-            int r = posi_board / board[0].size();
-            int c = posi_board % board[0].size();
-            if(board[r][c] != word[j]){
-                DFS(board, word, temp, posi_board + 1, posi_word, res, sum);
-                return;
+    else{
+        used[i][j] = true;
+        bool m1 = DFS(board, i - 1, j, word, length + 1, used);
+        if(m1) return true;
+        bool m2 = DFS(board, i + 1, j, word, length + 1, used);
+        if(m2) return true;
+        bool m3 = DFS(board, i, j + 1, word, length + 1, used);
+        if(m3) return true;
+        bool m4 = DFS(board, i, j - 1, word, length + 1, used);
+        if(m4) return true;
+        used[i][j] = false;
+        return false;
+    }
+
+}
+
+
+///////子集 90
+
+vector<vector<int>> subset_90_Solution::solve(vector<int> &nums){
+    vector<vector<int>> res;
+    vector<int> temp;
+    res.push_back({});
+    sort(nums.begin(), nums.end());
+    for(int i = 1; i <= nums.size(); i++){
+        DFS(temp, res, nums, i, 0);
+    }
+
+    return res;
+
+
+}
+void subset_90_Solution::DFS(vector<int> &temp, vector<vector<int>> &res, vector<int> nums, int len, int posi){
+       if(temp.size() == len){
+        int flag = 0;
+        for(int i = 0; i < res.size(); i++){
+            if(temp == res[i]){
+                 flag = 1;
             }
-            temp.push_back(word[j]);
-            DFS(board, word, temp, posi_board + 1, posi_word + 1, res, sum);
         }
+        if(flag == 0) res.push_back(temp);
+        //temp.clear();
+        //DFS(temp, res, nums, len, posi + 1);
+        return;
     }
+    for(int i = posi; i < nums.size(); i++){
+        if((nums[i] == nums[i-1] && i > posi) ){
+            continue;
+        }
+        temp.push_back(nums[i]);
+        DFS(temp, res, nums, len, i + 1);
+        temp.pop_back();
+    }
+}
+////有效括号
+ bool isValid_20_Solution::isValid(string s){
+     if(s.empty()) return true;
+     stack<char> temp;
+     //int posi = 0;
+     temp.push(s[0]);
+     //cout << "pass in 374" << endl;
+     for(int i = 1; i < s.size(); i++){
+        if(temp.empty()){
+            temp.push(s[i]);
+        }
+        else if(compare(temp.top(), s[i])){
+             temp.pop();
+             //cout << "pass in 378" << endl;
+             
+        }
+        else{
+        temp.push(s[i]);
+        //cout << "pass in 382" << endl;
+        }
+     }
+     //return temp.empty();
+     cout << "the size of temp :" << temp.size()<<endl;
+     //return temp.size() == 0? true:false;
+     return temp.empty();
+ }
+
+ bool isValid_20_Solution::compare(char &c1, char &c2){
+     return(c1=='['&&c2==']'||c1=='{'&&c2=='}'||c1=='('&&c2==')');
+
 }

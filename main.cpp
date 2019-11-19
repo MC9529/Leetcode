@@ -153,19 +153,55 @@ int main(){
 */
 
 //// 单词搜索  79
+
+/*
 int main(){
   bool res;
   vector<vector<char>> board = {{'A', 'B', 'C', 'E'},
                                {'S', 'F', 'C', 'S'},
                                {'A', 'D', 'E', 'E'} };
-  string word = "ABCCE";
+  string word = "ABCB";
   //string word = {"ABCCE"};  word == vector<string>
   Search_79_Solution s1;
   res = s1.solve1(board, word);
+  cout << "passed in 165 " << endl;
   if(res == true || res == false){
     cout << " the type of res is bool" << endl;
   }
   cout << "the res : " << res << endl;
   cout << endl;
+  return 0;
+}
+*/
+///// 子集 2 
+/*
+int main(){
+
+  vector<vector<int>> res;
+  vector<int> nums = {1, 2, 2};
+  subset_90_Solution s1; 
+  res = s1.solve(nums);
+  cout << "the len of res: " << res.size();
+  for(int i = 0; i < res.size(); i++){
+    for(auto iter: res[i]){
+      cout << iter << " ";
+    }
+    cout << endl;
+  }
+  cout << endl;
+
+  return 0;
+}
+*/
+
+///////有效括号 20
+
+int main(){
+  string str = "()[][";
+  isValid_20_Solution s1;
+  bool res = s1.isValid(str);
+
+  cout << "the res : " << res << endl;
+
   return 0;
 }

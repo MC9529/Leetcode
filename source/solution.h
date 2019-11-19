@@ -59,6 +59,22 @@ public:
 class Search_79_Solution {
 public:
     bool solve1(vector<vector<char>>& board1, string word1);
-    void DFS(vector<vector<char>> board, string word, string temp, int posi_board, 
-         int posi_word, bool &res, int sum);
+
+    bool DFS(vector<vector<char>> &board, int i, int j, string word, 
+   int length, vector<vector<bool>> &used);
 };
+//////////子集 90
+
+class subset_90_Solution{
+public:
+    vector<vector<int>> solve(vector<int> &nums);
+    void DFS(vector<int> &temp, vector<vector<int>> &res, vector<int> nums, int len, int posi);
+};
+
+/////有效括号
+class isValid_20_Solution {
+public:
+    bool isValid(string s);
+    bool compare(char &s1, char &s2);
+};
+
