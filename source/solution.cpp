@@ -397,3 +397,67 @@ void subset_90_Solution::DFS(vector<int> &temp, vector<vector<int>> &res, vector
      return(c1=='['&&c2==']'||c1=='{'&&c2=='}'||c1=='('&&c2==')');
 
 }
+
+///动态规划 不同路径1  62
+/////
+int uniquePaths_62_Solution::uniquePaths(int m, int n){
+     /// m -> col   n -> row
+    int res;
+    vector<vector<int>> route;
+    vector<int> temp;  ////0  代表向右移动， 1 代表向下移动
+    vector<int> start = {0, 0};
+    vector<int> target = {n - 1, m - 1};
+    /*
+    for(int i = 0; i < target.size(); i++){
+        cout << target[i] << " ";
+    }
+    cout<< endl;*/
+
+    DFS(route, temp, start, target);
+    for(int i =0; i < route.size(); i++){
+        for(auto iter : route[i]){
+            cout << iter << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+    res = route.size();
+    return res;
+}
+void uniquePaths_62_Solution::DFS(vector<vector<int>> &route, vector<int> &temp,
+     vector<int> &start, vector<int> &target){
+    /*
+    cout << "temp :" <<endl;
+    for(int k = 0; k < temp.size(); k++){
+        cout << temp[k] << " ";
+    }
+    cout << endl;
+    */
+    if((start[1] == target[1]) && (start[0] == target[0]))
+    {
+        route.push_back(temp);
+        //temp.clear();
+        return;
+    }
+    if( ((start[1] > target[1]) || (start[0] > target[0])) ){
+            //temp.clear();
+            return;
+    }
+    for(int i = 0; i < 2; i++){
+        if(i == 0){
+        start [1] = start [1] + 1;
+        temp.push_back(0);
+        DFS(route, temp, start, target);
+        start [1] = start [1] - 1;
+        temp.pop_back();
+        }
+
+        if( i == 1){
+        start [0] = start [0] + 1;
+        temp.push_back(1);
+        DFS(route, temp, start, target);
+        start [0] = start [0] - 1;
+        temp.pop_back();
+        }
+    }
+}

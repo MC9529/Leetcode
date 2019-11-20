@@ -195,7 +195,7 @@ int main(){
 */
 
 ///////有效括号 20
-
+/*
 int main(){
   string str = "()[][";
   isValid_20_Solution s1;
@@ -203,5 +203,18 @@ int main(){
 
   cout << "the res : " << res << endl;
 
+  return 0;
+}
+*/
+
+/////不同路径1  62
+
+int main(){
+
+  int m = 3, n =2;
+  uniquePaths_62_Solution s1;
+  int res = s1.uniquePaths(3, 2);
+
+  cout << "the num of route : " << res << endl;
   return 0;
 }

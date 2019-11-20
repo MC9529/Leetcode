@@ -70,11 +70,20 @@ public:
     vector<vector<int>> solve(vector<int> &nums);
     void DFS(vector<int> &temp, vector<vector<int>> &res, vector<int> nums, int len, int posi);
 };
-
-/////有效括号
+////栈
+/////有效括号 20
 class isValid_20_Solution {
 public:
     bool isValid(string s);
     bool compare(char &s1, char &s2);
+};
+
+///动态规划 不同路径1  62
+class uniquePaths_62_Solution {
+public:
+    int uniquePaths(int m, int n);
+    void DFS(vector<vector<int>> &route, vector<int> &temp, vector<int> &start, vector<int> &target);
+    
+    
 };
 
