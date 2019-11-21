@@ -407,11 +407,6 @@ int uniquePaths_62_Solution::uniquePaths(int m, int n){
     vector<int> temp;  ////0  代表向右移动， 1 代表向下移动
     vector<int> start = {0, 0};
     vector<int> target = {n - 1, m - 1};
-    /*
-    for(int i = 0; i < target.size(); i++){
-        cout << target[i] << " ";
-    }
-    cout<< endl;*/
 
     DFS(route, temp, start, target);
     for(int i =0; i < route.size(); i++){
@@ -426,13 +421,6 @@ int uniquePaths_62_Solution::uniquePaths(int m, int n){
 }
 void uniquePaths_62_Solution::DFS(vector<vector<int>> &route, vector<int> &temp,
      vector<int> &start, vector<int> &target){
-    /*
-    cout << "temp :" <<endl;
-    for(int k = 0; k < temp.size(); k++){
-        cout << temp[k] << " ";
-    }
-    cout << endl;
-    */
     if((start[1] == target[1]) && (start[0] == target[0]))
     {
         route.push_back(temp);
@@ -458,6 +446,69 @@ void uniquePaths_62_Solution::DFS(vector<vector<int>> &route, vector<int> &temp,
         DFS(route, temp, start, target);
         start [0] = start [0] - 1;
         temp.pop_back();
+        }
+    }
+}
+
+///动态规划 不同路径2  63
+/////
+
+int uniquePathsWithObstacles_63_Solution::uniquePathsWithObstacles(
+    vector<vector<int>> &obstacleGrid){
+    int res;
+    vector<vector<int>> route;
+    vector<int> temp;  ////0  代表向右移动， 1 代表向下移动
+    vector<int> start = {0, 0};
+    int n = obstacleGrid.size();
+    int m = obstacleGrid[0].size();
+    vector<int> target = {n - 1, m - 1};
+    DFS(route, temp, start, target, obstacleGrid);
+    for(int i =0; i < route.size(); i++){
+        for(auto iter : route[i]){
+            cout << iter << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+    res = route.size();
+    return res;
+}
+void uniquePathsWithObstacles_63_Solution::DFS(
+    vector<vector<int>> &route, vector<int> &temp, vector<int> &start, vector<int> &target, 
+    vector<vector<int>> &obstacleGrid){
+    //cout << "the first in 482 :" << obstacleGrid[0][0] << endl;
+    if((start[1] == target[1]) && (start[0] == target[0]))
+    {
+        route.push_back(temp);
+        //temp.clear();
+        return;
+    }
+    if( ((start[1] > target[1]) || (start[0] > target[0])) ){
+            //temp.clear();
+        return;
+    }
+    for(int i = 0; i < 2; i++){
+        int row = start[0];
+        int col = start[1];
+        if(i == 0 && col + 1 < obstacleGrid[0].size()){
+        if(obstacleGrid[row][col + 1] == 0)
+        {
+        start [1] = start [1] + 1;
+        temp.push_back(0);
+        DFS(route, temp, start, target, obstacleGrid);
+        start [1] = start [1] - 1;
+        temp.pop_back();
+        }
+        }
+        if( i == 1  && row + 1 < obstacleGrid.size()){
+        if((obstacleGrid[row + 1][col] == 0))
+        {
+        start [0] = start [0] + 1;
+        temp.push_back(1);
+        DFS(route, temp, start, target, obstacleGrid);
+        start [0] = start [0] - 1;
+        temp.pop_back();
+        }
         }
     }
 }

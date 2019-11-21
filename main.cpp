@@ -208,7 +208,7 @@ int main(){
 */
 
 /////不同路径1  62
-
+/*
 int main(){
 
   int m = 3, n =2;
@@ -218,3 +218,17 @@ int main(){
   cout << "the num of route : " << res << endl;
   return 0;
 }
+*/
+/////不同路径1  63
+
+int main(){
+  vector<vector<int>> obstacleGrid = {{0, 0, 0},
+                                      {0, 1, 0},
+                                      {0, 0, 0}};
+  uniquePathsWithObstacles_63_Solution s1;
+  int res = s1.uniquePathsWithObstacles(obstacleGrid);
+
+  cout << "the num of route : " << res << endl;
+  return 0;
+}
+
