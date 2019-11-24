@@ -455,6 +455,7 @@ void uniquePaths_62_Solution::DFS(vector<vector<int>> &route, vector<int> &temp,
 
 int uniquePathsWithObstacles_63_Solution::uniquePathsWithObstacles(
     vector<vector<int>> &obstacleGrid){
+    if(obstacleGrid.size() == 1 && obstacleGrid[0].size() == 1) return 0;
     int res;
     vector<vector<int>> route;
     vector<int> temp;  ////0  代表向右移动， 1 代表向下移动
@@ -511,4 +512,61 @@ void uniquePathsWithObstacles_63_Solution::DFS(
         }
         }
     }
+}
+
+///////最大子序列   LeetCode 53  并且记录所在位置
+int maxSubArray_53_Solution::maxSubArray(vector<int> &nums){
+    int res;
+    vector<int> temp;  //记录加入的数
+    DFS(nums, temp, res);
+
+    for(int i = 0; i < temp.size(); i++){
+        cout << temp[i] << " ";
+    }
+    cout << endl;
+
+    return res;
+}
+
+void maxSubArray_53_Solution::DFS(vector<int> nums, vector<int> &temp, int &res){
+    int len = nums.size();
+    int result = 0;
+    vector<int> dp(len); ///以nums[i]为结尾的最大子序列
+    dp[0] = nums[0];  ///以nums[i]为结尾的最大子序列
+    result = dp[0];
+    int result_i = 0;
+    temp.push_back(nums[0]);
+    for(int i = 1; i < len; i++){
+
+        if(dp[i-1] + nums[i] > nums[i]){
+            temp.push_back(nums[i]);  ///新产生的dp[i]（dp[i-1] + nums[i]）比nums[i]大，将nums[i]加入到temp中
+        }
+        else{   
+        //新产生的dp[i]（dp[i-1] + nums[i]）比nums[i]小，将nums[i]作为最大子序列，其他去除
+            temp.clear();
+            temp.push_back(nums[i]);
+        }
+        dp[i] = max(dp[i-1] + nums[i], nums[i]);  ///产生最大的子序列
+        if(result > dp[i]){
+        ////新产生的子序列没有原来的大，将新加入的nums[i]去除
+            temp.pop_back(); 
+        }
+        else{
+            /////新产生的子序列比原来的大，但是发现从result所在的位置，到dp[i]存在间距，
+            ////需要将中间的nums加入，并且dp[i]不是仅仅由nums[i]组成
+            if(i - result_i > 1 && dp[i] != nums[i]){  ////
+                temp.pop_back();
+                for(int j = result_i + 1; j < i ; j++){
+                    temp.push_back(nums[j]);
+                }
+                temp.push_back(nums[i]);
+            }
+            result_i = i; ///记录result所在的位置
+            //cout << result_i << " ";
+        }
+
+        result = max(result, dp[i]);
+    }
+
+    res = result;
 }

@@ -221,6 +221,7 @@ int main(){
 */
 /////不同路径1  63
 
+/*
 int main(){
   vector<vector<int>> obstacleGrid = {{0, 0, 0},
                                       {0, 1, 0},
@@ -231,4 +232,18 @@ int main(){
   cout << "the num of route : " << res << endl;
   return 0;
 }
+*/
 
+////////////最大子序列   LeetCode 53
+int main(){
+  //      dp[i] = max(dp[i-1] + nums[i], nums[i]);
+  //      result = max(result, dp[i]);
+  vector<int> nums = {-2, 1, -3, 4, -1, 2, 1, -5, 9};
+  //vector<int> nums = {2, 3, -6, 2 ,4};
+  maxSubArray_53_Solution s1;
+  int res = s1.maxSubArray(nums);
+  cout << "the max of maxsubArray :" << res << endl;
+
+
+  return 0;
+}

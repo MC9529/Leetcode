@@ -95,3 +95,11 @@ public:
     void DFS(vector<vector<int>> &route, vector<int> &temp, vector<int> &start, 
        vector<int> &target, vector<vector<int>> &obstacleGrid);
 };
+
+///////最大子序列   LeetCode 53
+class maxSubArray_53_Solution
+{
+public:
+    int maxSubArray(vector<int> &nums);
+    void DFS(vector<int> nums, vector<int> &temp, int &res);
+};
