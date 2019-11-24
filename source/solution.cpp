@@ -478,7 +478,7 @@ void uniquePathsWithObstacles_63_Solution::DFS(
     vector<vector<int>> &route, vector<int> &temp, vector<int> &start, vector<int> &target, 
     vector<vector<int>> &obstacleGrid){
     //cout << "the first in 482 :" << obstacleGrid[0][0] << endl;
-    if((start[1] == target[1]) && (start[0] == target[0]))
+    if((start[1] == target[1]) && (start[0] == target[0])) 
     {
         route.push_back(temp);
         //temp.clear();
@@ -564,9 +564,76 @@ void maxSubArray_53_Solution::DFS(vector<int> nums, vector<int> &temp, int &res)
             result_i = i; ///记录result所在的位置
             //cout << result_i << " ";
         }
-
         result = max(result, dp[i]);
     }
-
     res = result;
+}
+
+int minPathSum_64_Solution::minPathSum(vector<vector<int>>& grid){
+    int min_len;
+    vector<vector<int>> min_path;
+    vector<int> route;
+    min_path = grid;
+    DFS(grid, min_len, min_path, route);
+    cout << "the route: " << endl;
+    for(int i = 0; i < route.size(); i++){
+        cout << route[i] << " ";
+    }
+    cout << endl;
+    return min_len;
+
+
+}
+void minPathSum_64_Solution::DFS(vector<vector<int>> grid, 
+         int &min_len, vector<vector<int>> &min_path, vector<int> &route){
+    for(int i = grid.size() - 1; i >= 0; i --){
+        for(int j = grid[0].size() - 1; j >= 0 ; j--){
+            if( i == grid[0].size() - 1 && j != grid[0].size()- 1 ){
+                min_path[i][j] = grid [i][j] + min_path[i][j + 1];
+            }
+            else if( i != grid[0].size() - 1 && j == grid[0].size()- 1 ){
+                min_path[i][j] = grid [i][j] + min_path[i + 1][j];
+            }
+            else if(i != grid[0].size() - 1 && j != grid[0].size()- 1){
+                min_path[i][j] = grid[i][j] + min(min_path[i][j+1], min_path[i+1][j]);
+            }
+            else{
+                min_path[i][j] = grid[i][j];
+                //route.push_back(grid[i][j]);
+            }
+        }
+    }
+    min_len = min_path[0][0];
+    path(grid, min_path, route, 0, 0); ////记录路径
+    return;
+}
+
+void minPathSum_64_Solution::path(vector<vector<int>> grid, vector<vector<int>> min_path, 
+     vector<int> &route, int row, int col){
+    route.push_back(grid[row][col]);
+    while(row < min_path.size() && col < min_path[0].size()){
+        //route.push_back(grid[row][col]);
+        if(row == min_path.size() - 1 && col < min_path[0].size()){  ///达到下边界， 只能向右走
+            for(int i = col + 1; i < min_path[0].size(); i++){
+                route.push_back(grid[row][i]);
+            }
+            return;
+        } 
+        if(row < min_path.size() && col == min_path[0].size() - 1){  ///到达右边界，只能向下走
+            for(int j = row + 1; j < min_path.size(); j ++){
+                route.push_back(grid[j][col]);
+            }
+            return;
+        }
+
+        if(min_path[row + 1][col] > min_path[row][col + 1]){ //向右走小
+            route.push_back(grid[row][col + 1]);
+            col++;
+        }
+        else{ ////向下走小
+            route.push_back(grid[row][col]);
+            row ++;
+        }
+    }
+    return;
 }

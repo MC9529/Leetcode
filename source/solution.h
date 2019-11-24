@@ -103,3 +103,13 @@ public:
     int maxSubArray(vector<int> &nums);
     void DFS(vector<int> nums, vector<int> &temp, int &res);
 };
+
+////最小路径和 leetcode_64
+class minPathSum_64_Solution {
+public:
+    int minPathSum(vector<vector<int>>& grid);
+    void DFS(vector<vector<int>> grid, int &min_len, vector<vector<int>> &min_path, 
+         vector<int> &route);
+    void path(vector<vector<int>> grid, vector<vector<int>> min_path, vector<int> &route,
+        int row, int col);
+};

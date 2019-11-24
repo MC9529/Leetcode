@@ -235,6 +235,8 @@ int main(){
 */
 
 ////////////最大子序列   LeetCode 53
+
+/*
 int main(){
   //      dp[i] = max(dp[i-1] + nums[i], nums[i]);
   //      result = max(result, dp[i]);
@@ -245,5 +247,19 @@ int main(){
   cout << "the max of maxsubArray :" << res << endl;
 
 
+  return 0;
+}
+*/
+
+/////最小路径和 leetcode_64
+
+int main(){
+  vector<vector<int>> Grid = {{1, 3, 1},
+                              {1, 5, 1},
+                              {4, 2, 1}};
+  minPathSum_64_Solution s1;
+  int res = s1.minPathSum(Grid);
+
+  cout << "the sum of route : " << res << endl;
   return 0;
 }
