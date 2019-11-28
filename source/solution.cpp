@@ -588,13 +588,13 @@ void minPathSum_64_Solution::DFS(vector<vector<int>> grid,
          int &min_len, vector<vector<int>> &min_path, vector<int> &route){
     for(int i = grid.size() - 1; i >= 0; i --){
         for(int j = grid[0].size() - 1; j >= 0 ; j--){
-            if( i == grid[0].size() - 1 && j != grid[0].size()- 1 ){
+            if( i == grid.size() - 1 && j != grid[0].size()- 1 ){
                 min_path[i][j] = grid [i][j] + min_path[i][j + 1];
             }
-            else if( i != grid[0].size() - 1 && j == grid[0].size()- 1 ){
+            else if( i != grid.size() - 1 && j == grid[0].size()- 1 ){
                 min_path[i][j] = grid [i][j] + min_path[i + 1][j];
             }
-            else if(i != grid[0].size() - 1 && j != grid[0].size()- 1){
+            else if(i != grid.size() - 1 && j != grid[0].size()- 1){
                 min_path[i][j] = grid[i][j] + min(min_path[i][j+1], min_path[i+1][j]);
             }
             else{
@@ -636,4 +636,66 @@ void minPathSum_64_Solution::path(vector<vector<int>> grid, vector<vector<int>> 
         }
     }
     return;
+}
+
+/// 爬楼梯 leetcode _70
+int climbStair_70_Solution::climbStairs(int n){
+    int res;
+    vector<int> temp;;
+    vector<vector<int>> route;
+    int count = 0;
+    DFS(n, route, temp, count);
+
+    for(int i = 0; i < route.size(); i++){
+        for(auto iter : route[i]){
+            cout << iter << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+    res = route.size();
+    return res;
+}
+void climbStair_70_Solution::DFS(int n, vector<vector<int>> &route, vector<int> &temp, int &count){
+    if(n == 0){
+        route.push_back(temp);
+        //temp.clear();
+        return;
+    }
+    if(n == 1) {
+        temp.push_back(1);
+        DFS(0, route, temp, count);
+        //route.push_back(temp);
+        //return;
+    }
+    if(n == 2){
+        temp.push_back(2);
+        //route.push_back(temp);
+        DFS(0, route, temp, count);
+        temp.pop_back();
+        temp.push_back(1);
+        DFS(1, route, temp, count);
+        //count = count + 2;
+    }
+    if(n > 2){
+          /*
+        for( int i = 2; i > 0; i--){
+            temp.push_back(i);
+            DFS(n - i, route, temp, count);
+            temp.pop_back();
+        }*/
+        //int m = n -2;
+
+        temp.push_back(2);
+        vector<int> temp1 = temp;
+        DFS(n - 2, route, temp, count);
+
+        temp1.pop_back();
+        //temp.push_back(2);
+        //int g = n -1;
+        temp1.push_back(1);
+        DFS(n -1 , route, temp1, count);
+
+    }
+
 }

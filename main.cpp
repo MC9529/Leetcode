@@ -252,14 +252,31 @@ int main(){
 */
 
 /////最小路径和 leetcode_64
-
+/*
 int main(){
-  vector<vector<int>> Grid = {{1, 3, 1},
+ vector<vector<int>> Grid = {{1, 3, 1},
                               {1, 5, 1},
                               {4, 2, 1}};
+                    
+ vector<vector<int>> Grid = {{1, 2, 5},
+                              {3, 2, 1}};
   minPathSum_64_Solution s1;
   int res = s1.minPathSum(Grid);
 
   cout << "the sum of route : " << res << endl;
   return 0;
 }
+*/
+
+////// /// 爬楼梯 leetcode _70
+int main(){
+
+  int  num_stair = 5;
+  climbStair_70_Solution s1;
+  int res = s1.climbStairs(num_stair);
+
+  cout << "the res :" << res << endl;
+
+  return 0;
+}
+

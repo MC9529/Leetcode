@@ -113,3 +113,9 @@ public:
     void path(vector<vector<int>> grid, vector<vector<int>> min_path, vector<int> &route,
         int row, int col);
 };
+/// 爬楼梯 leetcode _70
+class climbStair_70_Solution {
+public:
+    int climbStairs(int n);
+    void DFS(int n, vector<vector<int>> &route, vector<int> &temp, int &count);
+};
