@@ -128,10 +128,18 @@ public:
     void print(vector<string> str);
 };
 
-///贪心算法， 跳跃游戏 , leetcode_45
+///贪心算法， 跳跃游戏 , leetcode_45_and_55
 class jump_45_Solution{
     public:
-    int jump(vector<int> &nums);
-    void DFS(vector<int> nums, vector<int> &path, int &current);
-    int current_best_path(int current, vector<int> nums);
+    bool jump(vector<int> &nums);
+    void DFS(vector<int> nums, vector<int> &path, int &current, int &end, bool &res);
+    int current_best_path(int current, vector<int> nums, int end);
+};
+
+///贪心算法， 买卖股票的最佳时机, leetcode_122
+class maxProfit_122_Solution {
+public:
+    int maxProfit(vector<int>& prices);
+    void DFS(int &res, vector<vector<int>> &way, vector<int> prices, int &buy, 
+         int &sell, int &temp, vector<int> &temp_way);
 };

@@ -727,11 +727,13 @@ void numDecodings_91_Solution::DFS(string s, vector<string> &str, string &str_te
      cout << endl;
  }
 
-int jump_45_Solution::jump(vector<int> &nums){
+///贪心算法， 跳跃游戏 , leetcode_45_and_55
+bool jump_45_Solution::jump(vector<int> &nums){
     vector<int> path;
     int current = 0;
-    DFS(nums, path, current);
-    int res = path.size();
+    int end = 1;
+    bool res;
+    DFS(nums, path, current, end, res);
     for(int i = 0; i < path.size(); i++){
         cout << path[i] << " ";
     }
@@ -739,25 +741,36 @@ int jump_45_Solution::jump(vector<int> &nums){
     return res;
 
 }
-void jump_45_Solution::DFS(vector<int> nums, vector<int> &path, int &current){
+void jump_45_Solution::DFS(vector<int> nums, vector<int> &path, int &current, int &end, bool &res){
+    
     if(current >= nums.size()-1){
+        res = true;
         return;
     }
-    int next = current_best_path(current, nums); //绝对位置
-    cout << "the next:" << next;
+    if(nums[current] == 0 && current < nums.size()-1){ ///该位置的值为0, 且还没有到终点
+        cout << "can not reache the last point" << endl;
+        res = false;
+        return;
+    }
+    int next = current_best_path(current, nums, end); //绝对位置
+    //cout << "the next:" << next;
     current = next; 
     path.push_back(next);
-    DFS(nums, path, current);
+    DFS(nums, path, current, end, res);
 
 }
 
-int jump_45_Solution::current_best_path(int current, vector<int> nums){
+int jump_45_Solution::current_best_path(int current, vector<int> nums, int end){
     int best = 0;
     int posi = 0;
+    if(current + nums[current] >= nums.size()-1){
+        posi = nums.size() - 1;
+        return posi;
+    }
     for(int i = 1; i <= nums[current]; i++){
         if((current + i) < nums.size()){ //找下一个位置
-            if(nums[current + i] > best){
-                best = nums[current + i];
+            if(nums[current + i] + current + i >= best){  ///比较哪个位置能到达更远的位置
+                best = nums[current + i] + current + i;
                 posi = current + i;
             }
         }
@@ -765,4 +778,67 @@ int jump_45_Solution::current_best_path(int current, vector<int> nums){
 
     //cout << "the posi :" << posi;
     return posi; //绝对位置
+}
+///贪心算法， 买卖股票的最佳时机, leetcode_122
+int maxProfit_122_Solution::maxProfit(vector<int>& prices){
+    vector<vector<int>> way;//买卖股票的方法， 什么时候买入， 什么时候卖出
+    int res = 0;
+    int buy = 0; // 买入价格
+    int sell = 1; //卖出价格
+    int temp; //某次买卖的利润
+    vector<int> temp_way; //用于存储某次买卖的买入和卖出
+    if(prices.size() == 0){
+        return 0;
+    }
+    for(int i = 1; i < prices.size() - 1; i++){
+        if(prices[i] < prices[buy]){
+        //选择第一次小于第一天的价格为买入价格， 
+        //如果一直大于第一天价格， 则以第一天价格买入
+            buy = i;
+            cout << "the buy :" << buy << endl;
+        }
+        break;
+    }
+    DFS(res, way, prices, buy, sell, temp, temp_way);
+    if(way.size() >= 1){
+    for(int i = 0; i < way.size(); i++){
+        for(auto iter : way[i]){
+            cout << iter << " ";
+        }
+        cout << endl;
+    }
+    }
+
+    return res;
+}
+void maxProfit_122_Solution::DFS(int &res, vector<vector<int>> &way, vector<int> prices,
+    int &buy, int &sell, int &temp, vector<int> &temp_way){
+
+        for(int i = buy  + 1; i < prices.size(); i++){
+            cout << "the i : " << i << endl;
+            temp = prices[i] - prices[i - 1]; //某一天价格和前一天比
+            if(temp > 0){ //上涨则不卖出
+                res = res + temp;
+                if(i == prices.size() - 1){
+                    temp_way.push_back(buy);
+                    temp_way.push_back(i);
+                    way.push_back(temp_way);
+                    temp_way.clear();
+                }
+            }
+            ///不涨， 卖出
+            else{
+                //判断是不是一直不涨
+                if(res > 0){
+                temp_way.push_back(buy);
+                temp_way.push_back(i-1);
+                cout << "the buy:" << buy << " " << "the sell: " << i-1 << endl;
+                way.push_back(temp_way);
+                temp_way.clear();
+                buy = i;
+                }
+            }
+        }
+
+        return;
 }

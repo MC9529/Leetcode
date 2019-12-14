@@ -295,14 +295,30 @@ int main(){
   return 0;
 }
 */
-
+/////动态规划  leetcode_45 and 55
+/*
 int main(){
-  vector<int> nums = {2, 3, 1, 1, 4, 3};
-
+  vector<int> nums = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 1, 0};
+  //vector<int> nums = {3, 2, 1, 0, 4};
+  //vector<int> nums = {0, 1};
   jump_45_Solution s1;
-  int res = s1.jump(nums);
+  bool res = s1.jump(nums);
 
-  cout << "the res :" << res << endl;
+  cout << "can reach the last ?(1-yes, 0-no) :" << (bool)res << endl;
+
+  return 0;
+}*/
+
+///贪心算法， 买卖股票的最佳时机, leetcode_122
+int main(){
+  vector<int> nums = {7, 1, 5, 3, 6, 4};
+  //vector<int> nums = {1, 2, 3, 4, 5};
+  //vector<int> nums = {5, 4, 3, 2, 1};
+  //vector<int> nums = {0, 1};
+  maxProfit_122_Solution s1;
+  int res = s1.maxProfit(nums);
+
+  cout << "the max_profit :" << res << endl;
 
   return 0;
 }
