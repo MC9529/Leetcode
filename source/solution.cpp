@@ -678,13 +678,6 @@ void climbStair_70_Solution::DFS(int n, vector<vector<int>> &route, vector<int> 
         //count = count + 2;
     }
     if(n > 2){
-          /*
-        for( int i = 2; i > 0; i--){
-            temp.push_back(i);
-            DFS(n - i, route, temp, count);
-            temp.pop_back();
-        }*/
-        //int m = n -2;
 
         temp.push_back(2);
         vector<int> temp1 = temp;
@@ -695,7 +688,81 @@ void climbStair_70_Solution::DFS(int n, vector<vector<int>> &route, vector<int> 
         //int g = n -1;
         temp1.push_back(1);
         DFS(n -1 , route, temp1, count);
+    }
+}
+////解码方法  leetcode_91
+int numDecodings_91_Solution::numDecoding(string s){
+    int res;
+    vector<string> str;
+    string str_temp;
+    int res_len = 0;
+    DFS(s, str, str_temp, res_len);
+    res = str.size();
+    for(int i = 0; i < res; i++){
+        cout << str[i] << " ";
+    }
+    cout << endl;
+    return res;
+}
+void numDecodings_91_Solution::DFS(string s, vector<string> &str, string &str_temp, int &res_len){
+    if (res_len == s.size()){
+        str.push_back(str_temp);
+        return;
+    }
+    for(int i = res_len; i < s.size(); i++){
+        if((int)s[i] > 0){
+            str_temp.push_back('A' + ((int)s[i] - 1));
+            res_len ++ ;
+            DFS(s, str, str_temp, res_len);
 
+        }
+    }
+}
+ void numDecodings_91_Solution::print(vector<string> str){
+     int len = str.size();
+     cout << "the str: ";
+     for(int i = 0; i < len; i++){
+         cout << str[i];
+     }
+     cout << endl;
+ }
+
+int jump_45_Solution::jump(vector<int> &nums){
+    vector<int> path;
+    int current = 0;
+    DFS(nums, path, current);
+    int res = path.size();
+    for(int i = 0; i < path.size(); i++){
+        cout << path[i] << " ";
+    }
+    cout << endl;
+    return res;
+
+}
+void jump_45_Solution::DFS(vector<int> nums, vector<int> &path, int &current){
+    if(current >= nums.size()-1){
+        return;
+    }
+    int next = current_best_path(current, nums); //绝对位置
+    cout << "the next:" << next;
+    current = next; 
+    path.push_back(next);
+    DFS(nums, path, current);
+
+}
+
+int jump_45_Solution::current_best_path(int current, vector<int> nums){
+    int best = 0;
+    int posi = 0;
+    for(int i = 1; i <= nums[current]; i++){
+        if((current + i) < nums.size()){ //找下一个位置
+            if(nums[current + i] > best){
+                best = nums[current + i];
+                posi = current + i;
+            }
+        }
     }
 
+    //cout << "the posi :" << posi;
+    return posi; //绝对位置
 }

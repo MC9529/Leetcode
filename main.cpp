@@ -269,6 +269,8 @@ int main(){
 */
 
 ////// /// 爬楼梯 leetcode _70
+
+/*
 int main(){
 
   int  num_stair = 5;
@@ -279,4 +281,28 @@ int main(){
 
   return 0;
 }
+*/
+//////解码方法  leetcode_91
+/*
+int main(){
 
+  string string_num = "226";
+  numDecodings_91_Solution s1;
+  int res = s1.numDecoding(string_num);
+
+  cout << "the res :" << res << endl;
+
+  return 0;
+}
+*/
+
+int main(){
+  vector<int> nums = {2, 3, 1, 1, 4, 3};
+
+  jump_45_Solution s1;
+  int res = s1.jump(nums);
+
+  cout << "the res :" << res << endl;
+
+  return 0;
+}

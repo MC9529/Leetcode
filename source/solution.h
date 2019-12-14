@@ -119,3 +119,19 @@ public:
     int climbStairs(int n);
     void DFS(int n, vector<vector<int>> &route, vector<int> &temp, int &count);
 };
+
+////解码方法  leetcode_91
+class numDecodings_91_Solution{
+public:
+    int numDecoding(string s);
+    void DFS(string s, vector<string> &str, string &str_temp, int &res_len);
+    void print(vector<string> str);
+};
+
+///贪心算法， 跳跃游戏 , leetcode_45
+class jump_45_Solution{
+    public:
+    int jump(vector<int> &nums);
+    void DFS(vector<int> nums, vector<int> &path, int &current);
+    int current_best_path(int current, vector<int> nums);
+};
