@@ -842,3 +842,63 @@ void maxProfit_122_Solution::DFS(int &res, vector<vector<int>> &way, vector<int>
 
         return;
 }
+///贪心算法， 加油站 leetcode_134
+int canCompleteCircuit_134_Solution::canCompleteCircuit(vector<int>& gas, 
+     vector<int>& cost){
+    int res = -1; //假设不能
+    int start = 0; 
+    int res_gas; //剩余汽油
+    for(int i = 0; i < gas.size(); i++){
+        //寻找能够出发的点
+        if(cost[i] <= gas [i]){
+            start = i;
+            cout << "the start: " << start << endl; 
+            res_gas = gas[start];
+            cout << "the res_gas:" << res_gas << endl;
+            ///开始尝试
+            DFS(start, gas, cost, res, res_gas);
+        }
+
+        ///找到第一个可以到的,退出
+        if(res != -1){ 
+            break;
+        }
+    }
+
+    return res;
+
+}
+void canCompleteCircuit_134_Solution::DFS(int start, vector<int> gas, 
+     vector<int> cost, int &res, int &res_gas){
+         for(int i = 1; i < gas.size() + 1; i++){
+             int posi = start + i;
+             int posi_before = posi - 1;
+             ///过了末尾油站
+             actual_posi(posi, gas);
+             actual_posi(posi_before, gas);
+             cout << "the posi :" << posi << endl;
+             ///够不够去下一站
+             if(res_gas < cost[posi_before]){
+                 res = -1;
+                 cout << "you are in posi " << posi << endl;
+                 cout << "the res_gas: " << res_gas <<" "<< "you need: " << cost[posi_before] << endl;
+                 return;
+
+             }
+             res_gas = res_gas - cost[posi_before] + gas[posi];
+             cout << "the res_gas:" << res_gas << endl;
+
+             if(res_gas >= 0 && posi == start){
+                 res = start;
+                 return;
+             }
+
+    }
+}
+
+void canCompleteCircuit_134_Solution::actual_posi(int &posi, vector<int> &gas){
+    if(posi > gas.size() - 1){
+        posi = posi - gas.size();
+    }
+
+}

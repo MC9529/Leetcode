@@ -310,6 +310,7 @@ int main(){
 }*/
 
 ///贪心算法， 买卖股票的最佳时机, leetcode_122
+/*
 int main(){
   vector<int> nums = {7, 1, 5, 3, 6, 4};
   //vector<int> nums = {1, 2, 3, 4, 5};
@@ -319,6 +320,22 @@ int main(){
   int res = s1.maxProfit(nums);
 
   cout << "the max_profit :" << res << endl;
+
+  return 0;
+}
+*/
+
+///贪心算法， 加油站 leetcode_134
+int main(){
+  //vector<int> gas = {1, 2, 3, 4, 5};
+  //vector<int> cost = {3, 4, 5, 1, 2};
+  vector<int> gas = {2};
+  vector<int> cost = {2};
+  //vector<int> nums = {0, 1};
+  canCompleteCircuit_134_Solution s1;
+  int res = s1.canCompleteCircuit(gas, cost);
+
+  cout << "can reach?(-1:no , other: the start) :" << res << endl;
 
   return 0;
 }

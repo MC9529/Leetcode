@@ -143,3 +143,10 @@ public:
     void DFS(int &res, vector<vector<int>> &way, vector<int> prices, int &buy, 
          int &sell, int &temp, vector<int> &temp_way);
 };
+///贪心算法， 加油站 leetcode_134
+class canCompleteCircuit_134_Solution {
+public:
+    int canCompleteCircuit(vector<int>& gas, vector<int>& cost);
+    void DFS(int start, vector<int> gas, vector<int> cost, int &res, int &res_gas);
+    void actual_posi(int &posi, vector<int> &gas);
+};
