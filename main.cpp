@@ -326,6 +326,7 @@ int main(){
 */
 
 ///贪心算法， 加油站 leetcode_134
+/*
 int main(){
   //vector<int> gas = {1, 2, 3, 4, 5};
   //vector<int> cost = {3, 4, 5, 1, 2};
@@ -336,6 +337,20 @@ int main(){
   int res = s1.canCompleteCircuit(gas, cost);
 
   cout << "can reach?(-1:no , other: the start) :" << res << endl;
+
+  return 0;
+}
+
+*/
+////贪心算法， leetcode_135
+int main(){
+  //vector<int> ratings = {1, 2, 2};
+  vector<int> ratings = {1, 3, 4, 5, 2};
+  //vector<int> ratings = {1, 2, 87, 87, 87, 2, 1};
+  candy_135_Solution s1;
+  int res = s1.candy(ratings);
+
+  cout << "the total candies :" << res << endl;
 
   return 0;
 }

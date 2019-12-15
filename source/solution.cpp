@@ -902,3 +902,45 @@ void canCompleteCircuit_134_Solution::actual_posi(int &posi, vector<int> &gas){
     }
 
 }
+
+////贪心算法， leetcode_135
+int candy_135_Solution::candy(vector<int>& ratings){
+    int res = 0;
+    vector<int> candies(ratings.size(), 1);
+    DFS(ratings, candies);
+    for(int i = 0; i < candies.size(); i++){
+        cout << candies[i] << " ";
+    }
+    cout << endl;
+    res = accumulate(candies.begin(), candies.end(), 0);
+    return res;
+
+}
+void candy_135_Solution::DFS(vector<int> ratings, vector<int> &candies){
+    ///下面有+1,所以得-1
+    for(int i = 0; i < ratings.size() - 1; i++){
+        if(ratings[i] > ratings[i + 1]){
+            if(candies[i] <= candies[i + 1]){
+            candies[i] = candies[i+1] + 1;
+            }
+        }
+        if(ratings[i] < ratings[i + 1]){
+            if(candies[i] >= candies[i + 1]){
+                candies[i + 1] = candies[i] + 1;
+            }
+
+        }
+    }
+    for(int j = ratings.size() - 1; j > 0; j--){
+        if(ratings[j] > ratings[j - 1]){
+            if(candies[j] <= candies[j - 1]){
+            candies[j] = candies[j-1] + 1;
+            }
+        }
+        if(ratings[j] < ratings[j - 1]){
+            if(candies[j] >= candies[j - 1]){
+            candies[j - 1] = candies[j] + 1;
+            }
+        }
+    }
+}

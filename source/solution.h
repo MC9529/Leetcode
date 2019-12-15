@@ -150,3 +150,10 @@ public:
     void DFS(int start, vector<int> gas, vector<int> cost, int &res, int &res_gas);
     void actual_posi(int &posi, vector<int> &gas);
 };
+
+////贪心算法， leetcode_135
+class candy_135_Solution {
+public:
+    int candy(vector<int>& ratings);
+    void DFS(vector<int> ratings, vector<int> &candies);
+};
