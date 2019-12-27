@@ -157,3 +157,11 @@ public:
     int candy(vector<int>& ratings);
     void DFS(vector<int> ratings, vector<int> &candies);
 };
+
+///分而治之 leetcode_23
+class mergeLise_23_solution{
+public:
+    vector<vector<int>> merge_list(vector<vector<int>> &list);
+    vector<int> merge2(vector<int> list1, vector<int> list2);
+
+};

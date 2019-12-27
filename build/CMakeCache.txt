@@ -14,9 +14,6 @@
 # EXTERNAL cache entries
 ########################
 
-//Dependencies for target
-46_permute_LIB_DEPENDS:STATIC=
-
 //Path to a program.
 CMAKE_AR:FILEPATH=/usr/bin/ar
 

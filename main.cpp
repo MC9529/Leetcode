@@ -342,6 +342,8 @@ int main(){
 }
 
 */
+
+/*
 ////贪心算法， leetcode_135
 int main(){
   //vector<int> ratings = {1, 2, 2};
@@ -351,6 +353,27 @@ int main(){
   int res = s1.candy(ratings);
 
   cout << "the total candies :" << res << endl;
+
+  return 0;
+}
+*/
+
+///分而治之 leetcode_23
+
+int main(){
+  vector<vector<int>> res;
+  vector<vector<int>> list = {{1, 3, 5},
+                              {3, 5, 8},
+                              {5, 7, 9}};
+                              
+  mergeLise_23_solution s1;
+  res = s1.merge_list(list);
+  for (int i = 0; i < res.size(); ++i) {
+    for (auto iter : res[i]) {
+      cout << iter;
+    }
+    cout << endl;
+  }
 
   return 0;
 }

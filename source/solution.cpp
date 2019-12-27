@@ -944,3 +944,59 @@ void candy_135_Solution::DFS(vector<int> ratings, vector<int> &candies){
         }
     }
 }
+
+///分而治之 leetcode_23
+vector<vector<int>> mergeLise_23_solution::merge_list(vector<vector<int>> &list){
+    vector<vector<int>> res;
+    int len = list.size();
+    if (len == 0) {
+        return list;
+    }
+    if (len == 1 ){
+        return list;
+    }
+    int interval = 1;
+    while (interval < len) {
+        for (int i = 0; i < len - interval; i = i + interval * 2) {
+            vector<int> vector_i_temp = list[i];
+            vector<int> vector_i_interval_temp = list[i + interval];
+            list[i].clear();
+            list[i + interval].clear();
+            list[i] = merge2(vector_i_temp, vector_i_interval_temp);
+        }
+        //cout << "pass in loop:" << interval;
+        interval = interval * 2;
+    }
+    res.push_back(list[0]);
+    
+    return res;
+}
+vector<int> mergeLise_23_solution::merge2(vector<int> list1, vector<int> list2){
+    vector<int> res;
+    int len1 = list1.size();
+    int len2 = list2.size();
+    int i = 0, j = 0;
+    while(i < len1 && j < len2){
+        if (list1 [i] < list2 [j]){
+            res.push_back(list1[i]);
+            i ++;
+        }
+        else {
+            res.push_back(list2[j]);
+            j ++;
+        }
+
+    }
+    if (i < len1){
+        for (int k = i; k < len1; ++k){
+            res.push_back(list1[k]);
+        }
+    }
+
+    if (j < len2){
+        for (int l = j; l < len2; ++l){
+            res.push_back(list2[l]);
+        }
+    }
+    return res;
+}
