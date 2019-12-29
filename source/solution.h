@@ -165,3 +165,18 @@ public:
     vector<int> merge2(vector<int> list1, vector<int> list2);
 
 };
+
+///堆 head
+//设置一个大小为K的堆，堆顶就是你所找的第K大的元素
+class findKthLargest_215_solution {
+public:
+int findKthLargest(vector<int> &nums, int k);
+int findKthLargest2(vector<int> &nums, int k);
+};
+
+///滑动窗口,Leetcode_239
+class maxSlideWindow_239_solution {
+public:
+    void maxSlideWindow(vector<int> &nums, int k);
+    void maxSlideWindow_in_heap(vector<int> &nums, int k);
+};

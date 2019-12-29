@@ -359,12 +359,12 @@ int main(){
 */
 
 ///分而治之 leetcode_23
-
+/*
 int main(){
   vector<vector<int>> res;
-  vector<vector<int>> list = {{1, 3, 5},
+  vector<vector<int>> list = {{1, 3, 5, 12},
                               {3, 5, 8},
-                              {5, 7, 9}};
+                              {5, 7, 9, 11}};
                               
   mergeLise_23_solution s1;
   res = s1.merge_list(list);
@@ -374,6 +374,30 @@ int main(){
     }
     cout << endl;
   }
+
+  return 0;
+}
+*/
+
+//////堆 head
+//设置一个大小为K的堆，堆顶就是你所找的第K大的元素
+/*
+int main() {
+  vector<int> list = {1, 9, 5, 4, 15, 20, 17, 13, 12};
+  findKthLargest_215_solution s1;
+  int res = s1.findKthLargest(list, 5);
+  int res2 = s1.findKthLargest2(list, 5);
+  cout << "the Kth largest(res):" << res << endl;
+  cout << "the Kth largest(res2):" << res2 << endl;
+  return 0;
+}*/
+
+//滑动窗口,Leetcode_239
+int main() {
+  vector<int> list = {1, 9, 5, 4, 15, 20, 17, 13, 12};
+  maxSlideWindow_239_solution s1;
+  s1.maxSlideWindow(list, 3);
+  s1.maxSlideWindow_in_heap(list, 3);
 
   return 0;
 }

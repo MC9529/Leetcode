@@ -43,6 +43,12 @@ algorithm
 -
 numeric
 -
+stdio.h
+-
+functional
+-
+queue
+-
 
 /home/ccg/File/cpp/leetcode/source/solution.h
 iostream

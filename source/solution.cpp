@@ -3,6 +3,9 @@
 #include <stack>
 #include <algorithm>
 #include <numeric>
+#include <stdio.h>
+#include <functional>
+#include <queue>
 using namespace std;
 
 ///回溯算法
@@ -987,12 +990,13 @@ vector<int> mergeLise_23_solution::merge2(vector<int> list1, vector<int> list2){
         }
 
     }
+    //如果还剩下部分
     if (i < len1){
         for (int k = i; k < len1; ++k){
             res.push_back(list1[k]);
         }
     }
-
+    //如果还剩下部分
     if (j < len2){
         for (int l = j; l < len2; ++l){
             res.push_back(list2[l]);
@@ -1000,3 +1004,113 @@ vector<int> mergeLise_23_solution::merge2(vector<int> list1, vector<int> list2){
     }
     return res;
 }
+
+int findKthLargest_215_solution::findKthLargest(vector<int> &nums, int k) {
+    int result = 0;
+        int numsSize = int(nums.size());
+        if (numsSize == 0 || k > numsSize)
+        {
+            return 0;
+        }
+
+        priority_queue<int, vector<int>, greater<int>> store;
+        //堆中维持k个最大数
+        for (int i = 0; i < numsSize; i++)
+        {
+            store.push(nums[i]);
+            if (int(store.size()) > k)
+            {
+                store.pop();
+            }
+        }
+
+        result = store.top();
+        return result;
+}
+
+int findKthLargest_215_solution::findKthLargest2(vector<int> &nums, int k){
+    vector<int> store;
+    store.assign(nums.begin(), nums.end());
+    make_heap(begin(store), end(store), greater<int>());
+    while (store.size() > k) {
+        ////删除前先要pop_heap,然后在删除
+        pop_heap(begin(store), end(store), greater<int>());
+        store.pop_back();
+    }
+    auto flag = is_heap(begin(store), end(store), greater<int>());
+    if (flag) {
+        cout << "this is a heap" << endl;
+    } else {
+        cout << "this is not a heap" << endl;
+    }
+
+    for (int i = 0 ; i < store.size(); ++i) {
+        cout << store[i] << " ";
+    }
+    cout << endl;
+    ///对个小顶堆（greater<>）进行排序会达到大顶堆
+    sort_heap(begin(store), end(store), greater<int>());
+    for (int i = 0 ; i < store.size(); ++i) {
+        cout << store[i] << " ";
+    }
+    cout << endl;
+    int res = store[store.size() - 1];
+    return res;
+}
+//滑动窗口,Leetcode_239
+void maxSlideWindow_239_solution::maxSlideWindow(vector<int> &nums, int k) {
+    vector<int> res;
+    vector<int> window;
+    int max;
+    if (nums.size() == 0 && k > nums.size()) {
+        cout << "there is no enough number int nums" << endl;
+        return;
+    }
+    window.assign(nums.begin(), nums.begin() + k);
+    cout << "the first window:" << endl;
+    for (int i = 0; i < window.size(); ++i) {
+        cout << window[i] << " ";
+    }
+    cout << endl;
+    for (int i = k - 1; i < nums.size(); ++i) {
+        auto max_posi = max_element(window.begin(), window.end());
+        res.push_back(*max_posi);
+
+        window.erase(window.begin());
+        window.push_back(nums[i + 1]);
+    }
+    cout << "the res :" << endl;
+    for (int i = 0; i < res.size(); ++i) {
+        cout << res[i] << " ";
+    }
+    cout << endl;
+    return;
+}
+
+void maxSlideWindow_239_solution::maxSlideWindow_in_heap
+                               (vector<int> &nums, int k){
+    if (nums.size() == 0 && k > nums.size()) {
+        cout << "there is no enough number int nums" << endl;
+        return;
+    }
+    vector<int> res;
+    priority_queue<int, vector<int>, less<int>> store;
+        //堆中维持k个最大数
+    for (int i = 0; i < k; i++)
+    {
+        store.push(nums[i]);
+    }
+    res.push_back(store.top());
+    for (int i = k; i < nums.size(); ++i) {
+        store.pop();
+        store.push(nums[i]);
+        res.push_back(store.top());
+    }
+    for (int i = 0; i < res.size() ; ++i) {
+        cout << res[i] << " ";
+    }
+    cout << endl;
+    return;
+
+}
+
