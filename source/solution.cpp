@@ -787,7 +787,7 @@ int maxProfit_122_Solution::maxProfit(vector<int>& prices){
     vector<vector<int>> way;//买卖股票的方法， 什么时候买入， 什么时候卖出
     int res = 0;
     int buy = 0; // 买入价格
-    int sell = 1; //卖出价格
+    int sell = 1; //卖出价格     
     int temp; //某次买卖的利润
     vector<int> temp_way; //用于存储某次买卖的买入和卖出
     if(prices.size() == 0){
@@ -1114,3 +1114,104 @@ void maxSlideWindow_239_solution::maxSlideWindow_in_heap
 
 }
 
+bool searchMatrix_240_solution::searchMatrix(vector<vector<int>> &matrix, 
+                                            int target) {
+    if (matrix.size() == 0 || target < matrix[0][0]) {
+        cout << "the matrix size is 0 or the target < the matrix[0][0]" << endl;
+        return false;
+    }
+    bool res = false;
+    int row = matrix.size();
+    int col = matrix[0].size();
+    int binary_row = 0;
+    DFS_rows(matrix, target, row, binary_row);
+    cout << "the binary_row in 1128: " << binary_row << endl;
+    DFS_cols(matrix, target, col, binary_row, res);
+    if (!res) {
+        cout << "there is no targer:" << target << "in this matirx" << endl;
+    }
+    return res;
+
+}
+///二分法找可以在那些找
+void searchMatrix_240_solution::DFS_rows(vector<vector<int>> &matrix, 
+                                   int target, int row, int &binary_row){
+    if (matrix[row -1][0] <= target) {
+        binary_row = row - 1;
+        return;
+    }
+    int min = 0;
+    int max = row - 1;
+    int binary = (min + max + 1)/2; 
+    while (!(matrix[binary + 1][0] > target && matrix[binary][0] <= target )) {
+        if (matrix[binary][0] > target) {
+            min = min;
+            max = binary;
+            binary = (min + max + 1)/2;
+        }
+        else if (matrix[binary][0] < target) {
+            min = min;
+            max = (binary + max)/2;
+            binary = (min + max + 1)/2;
+        }
+        else {
+            //cout << "the binary_row in 1154: " << binary << endl;
+            binary_row = binary;
+            break;
+        }
+    }
+    binary_row = binary;
+    //cout << "the binary_row in 1160:" << binary << endl;
+    return;
+}
+///二分法在行找
+void searchMatrix_240_solution::DFS_cols(vector<vector<int>> &matrix, int target, 
+                                         int col, int binary_row, bool &res){
+    for (int i = 0; i <= binary_row; ++i) {
+        if (matrix[i][col - 1] < target) {
+            continue;
+        }
+        int min = 0;
+        int max = col - 1;
+        int binary_col = (min + max)/2;
+        while ( binary_col != min) {
+            if (matrix[i][min] == target) {
+                cout << "find the target :" << target << "in:" << i << " "
+                     << "row" <<  " " << min << " "<<"col";
+                res = true;
+                return;
+            }
+            if (matrix[i][max] == target) {
+                cout << "find the target :" << target << "in:" << i <<" "
+                     << "row" << " " << max <<" "<< "col";
+                res = true;
+                return;
+            }
+            if (matrix[i][binary_col] == target) {
+                cout << "find the target :" << target << "in:" << i <<" "
+                     << "row" << " " << binary_col <<" "<< "col";
+                res = true;
+                return;
+            }
+            if (matrix[i][binary_col] > target) {
+                min = min;
+                max = binary_col;
+                binary_col = (min + max)/2;
+                cout << "pass in 1195" << endl;
+            }
+            else if (matrix[i][binary_col] < target) {
+                min = binary_col;
+                max = max;
+                binary_col = (min + max)/2;
+                /*
+                cout << "i: " << i <<endl;
+                cout << "min: " << min << endl;
+                cout << "max: " << max << endl;
+                cout << "binary: " <<binary_col << endl;
+                cout << "pass in 1201" << endl;
+                */
+            }
+        }
+    }
+    return;
+}

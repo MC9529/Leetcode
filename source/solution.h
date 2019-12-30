@@ -180,3 +180,11 @@ public:
     void maxSlideWindow(vector<int> &nums, int k);
     void maxSlideWindow_in_heap(vector<int> &nums, int k);
 };
+
+////二分查找 leetcode_240 
+class searchMatrix_240_solution {
+public:
+    bool searchMatrix(vector<vector<int>> &matrix, int target);
+    void DFS_rows(vector<vector<int>> &matrix, int target, int row, int &binary_row);
+    void DFS_cols(vector<vector<int>> &matrix, int target, int col, int binary_row, bool &res);
+};

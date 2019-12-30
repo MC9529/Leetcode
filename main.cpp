@@ -393,11 +393,26 @@ int main() {
 }*/
 
 //滑动窗口,Leetcode_239
+/*
 int main() {
   vector<int> list = {1, 9, 5, 4, 15, 20, 17, 13, 12};
   maxSlideWindow_239_solution s1;
   s1.maxSlideWindow(list, 3);
   s1.maxSlideWindow_in_heap(list, 3);
+
+  return 0;
+}
+*/
+/// ////二分查找 leetcode_240 
+int main () {
+  bool res;
+  vector<vector<int>> list = {{2, 3, 5, 12},
+                              {3, 4, 8, 15},
+                              {5, 9, 10, 11},
+                              {7, 8, 11, 13}};
+  int target = 6;
+  searchMatrix_240_solution s1;
+  res = s1.searchMatrix(list, target);
 
   return 0;
 }
