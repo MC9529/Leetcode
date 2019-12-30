@@ -1215,3 +1215,55 @@ void searchMatrix_240_solution::DFS_cols(vector<vector<int>> &matrix, int target
     }
     return;
 }
+
+///从尾部开始操作，将数插入nums_sorted,并排序，同时找到该数在那个位置，后减去nums_sorted.begin()
+vector<int> countSmaller_315_solution::countSmaller1(vector<int> &nums){
+    vector<int> nums_sorted;
+    vector<int> res;
+    //cout << "passed in 1223" << endl;
+    for (int i = nums.size() - 1; i >= 0; i--) {
+        nums_sorted.push_back(nums[i]);
+        sort(nums_sorted.begin(), nums_sorted.end());
+        //cout << "passed in 1226" << endl;
+        auto iter = lower_bound(nums_sorted.begin(), nums_sorted.end(), nums[i]);
+         //cout << "passed in 1228" << endl;
+        int pos = iter - nums_sorted.begin();
+         //cout << "passed in 1230" << endl;
+        //nums_sorted.insert(iter, nums[i]);
+        res.push_back(pos);
+    }
+    reverse(res.begin(), res.end());
+    for (int i = 0; i < res.size(); ++i) {
+        cout << res[i] << " ";
+    }
+    cout << endl;
+    return res;
+}
+vector<int> countSmaller_315_solution::countSmaller2(vector<int> &nums){
+    ///pair<nums[i],i>
+    vector<pair<int, int>> v;
+    v.reserve(nums.size());
+    for (int i = 0; i < nums.size(); ++i) {
+        v.emplace_back(nums[i], i);
+    }
+    vector<int> res(v.size());
+    merge_sort(v, 0, v.size(), res);
+    for (int i = 0; i < res.size(); ++i) {
+        cout << res[i] << " ";
+    }
+    cout << endl;
+    return res;
+}
+void countSmaller_315_solution::merge_sort(vector<pair<int, int>> &v, 
+                                           int n, int m, vector<int> &res) {
+    if (m - n <= 1) return;
+    int mid = n + (m - n)/2;
+    merge_sort(v, n, mid, res);
+    merge_sort(v, mid, m, res);
+    int right = mid;
+    for (int left = n; left < mid; ++left) {
+        while (right != m && v[left] > v[right]) ++right;
+        res[v[left].second] += right - mid;
+    }
+    inplace_merge(v.begin() + n, v.begin() + mid, v.begin() + m);
+}

@@ -404,6 +404,7 @@ int main() {
 }
 */
 /// ////二分查找 leetcode_240 
+/*
 int main () {
   bool res;
   vector<vector<int>> list = {{2, 3, 5, 12},
@@ -413,6 +414,18 @@ int main () {
   int target = 6;
   searchMatrix_240_solution s1;
   res = s1.searchMatrix(list, target);
+
+  return 0;
+}
+*/
+////////二分查找 leetcode_315
+int main () {
+  vector<int> res;
+  vector<int> list = {5, 3, 6, 1, 4, 2};
+
+  countSmaller_315_solution s1;
+  res = s1.countSmaller1(list);
+  vector<int> res2 = s1.countSmaller2(list);
 
   return 0;
 }

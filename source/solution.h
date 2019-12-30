@@ -188,3 +188,10 @@ public:
     void DFS_rows(vector<vector<int>> &matrix, int target, int row, int &binary_row);
     void DFS_cols(vector<vector<int>> &matrix, int target, int col, int binary_row, bool &res);
 };
+////二分查找 leetcode_315
+class countSmaller_315_solution {
+public:
+    vector<int> countSmaller1(vector<int> &nums);
+    vector<int> countSmaller2(vector<int> &nums);
+    void merge_sort(vector<pair<int, int>> &v, int n, int m, vector<int> &res);
+};
