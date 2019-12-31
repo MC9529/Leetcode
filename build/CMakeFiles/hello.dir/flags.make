@@ -6,5 +6,5 @@ CXX_FLAGS = -std=c++11 -O2 -g -Wall  -lm
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/ccg/File/cpp/leetcode/source 
+CXX_INCLUDES = -I/home/ccg/File/leetcode/Leetcode/source -isystem /usr/include/eigen3 
 

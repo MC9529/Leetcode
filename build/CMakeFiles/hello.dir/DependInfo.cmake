@@ -4,14 +4,15 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/ccg/File/cpp/leetcode/main.cpp" "/home/ccg/File/cpp/leetcode/build/CMakeFiles/hello.dir/main.cpp.o"
-  "/home/ccg/File/cpp/leetcode/source/solution.cpp" "/home/ccg/File/cpp/leetcode/build/CMakeFiles/hello.dir/source/solution.cpp.o"
+  "/home/ccg/File/leetcode/Leetcode/main.cpp" "/home/ccg/File/leetcode/Leetcode/build/CMakeFiles/hello.dir/main.cpp.o"
+  "/home/ccg/File/leetcode/Leetcode/source/solution.cpp" "/home/ccg/File/leetcode/Leetcode/build/CMakeFiles/hello.dir/source/solution.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../source"
+  "/usr/include/eigen3"
   )
 
 # Targets to which this target links.

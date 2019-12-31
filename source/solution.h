@@ -195,3 +195,15 @@ public:
     vector<int> countSmaller2(vector<int> &nums);
     void merge_sort(vector<pair<int, int>> &v, int n, int m, vector<int> &res);
 };
+///排序  归并排序
+class merge_sorted {
+public:
+    void mergesort(vector<int> &list, int n, int m);
+    void merge(vector<int> &list, int l, int mid, int r);
+};
+///排序 快速排序（从小到大）
+class quick_sort {
+public:
+    void small2big(int left, int right, vector<int> &list);
+    void big2small(int left, int right, vector<int> &list);
+};

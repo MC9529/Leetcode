@@ -418,7 +418,8 @@ int main () {
   return 0;
 }
 */
-////////二分查找 leetcode_315
+////////二分查找 leetcode_315， 查找右边小于本位置的数
+
 int main () {
   vector<int> res;
   vector<int> list = {5, 3, 6, 1, 4, 2};
@@ -429,3 +430,49 @@ int main () {
 
   return 0;
 }
+
+///排序  归并排序
+/*
+int main () {
+  vector<int> list = {5, 3, 6, 1, 4, 2};
+
+  merge_sorted s1;
+  cout << "passed in 439" << endl;
+  if (list.size() < 2) {
+    cout << "the num int list is less 2!" << endl;
+    return 0;
+  }
+  s1.mergesort(list, 0, list.size()-1);
+  for (int i = 0; i < list.size(); ++i) {
+        cout << list[i] << " ";
+  }
+  cout << endl;
+  return 0;
+}
+*/
+
+///排序  快速排序
+/*
+int main () {
+  vector<int> list = {5, 3, 6, 6, 1, 4, 4, 2};
+
+  quick_sort s1;
+  cout << "from small to big :" << endl;
+  s1.small2big(0, list.size() - 1, list);
+  //打印
+  for (int i = 0; i < list.size(); ++i) {
+        cout << list[i] << " ";
+  }
+  cout << endl;
+
+  cout << "big small to small :" << endl;
+  s1.big2small(0, list.size() - 1, list);
+  ///打印
+  for (int i = 0; i < list.size(); ++i) {
+        cout << list[i] << " ";
+  }
+  cout << endl;
+  return 0; 
+}
+*/
+

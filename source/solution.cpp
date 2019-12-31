@@ -1248,6 +1248,11 @@ vector<int> countSmaller_315_solution::countSmaller2(vector<int> &nums){
     }
     vector<int> res(v.size());
     merge_sort(v, 0, v.size(), res);
+    cout << "the sorted v.first:" << endl;
+    for (int i = 0; i < v.size(); ++i) {
+        cout << v[i].first << " ";
+    }
+    cout << endl;
     for (int i = 0; i < res.size(); ++i) {
         cout << res[i] << " ";
     }
@@ -1260,10 +1265,128 @@ void countSmaller_315_solution::merge_sort(vector<pair<int, int>> &v,
     int mid = n + (m - n)/2;
     merge_sort(v, n, mid, res);
     merge_sort(v, mid, m, res);
+    cout << "n: " << n << "mid: " << mid << "m: " << m << endl;
     int right = mid;
     for (int left = n; left < mid; ++left) {
         while (right != m && v[left] > v[right]) ++right;
         res[v[left].second] += right - mid;
     }
     inplace_merge(v.begin() + n, v.begin() + mid, v.begin() + m);
+}
+
+///排序  归并排序
+void merge_sorted::mergesort(vector<int> &list, int n, int m) {
+    if (n == m) {
+        return;
+    }
+    int mid = (m + n)/2;
+    mergesort(list, n, mid);
+    mergesort(list, mid + 1, m);
+    //inplace_merge(list.begin() + n, list.begin() + mid, list.begin() + m);
+    merge(list, n, mid, m);
+    /*
+    for (int i = 0; i < list.size(); ++i) {
+        cout << list[i] << " ";
+    }
+    cout << endl;
+    */
+    return;
+}
+/// 合并
+void merge_sorted::merge(vector<int> &list, int l, int mid, int r) {
+    vector<int> sorted_list;
+    int lindex = l;
+    int rindex = mid + 1;
+    while (lindex <= mid && rindex <= r) {
+
+        if  (list[lindex] <= list[rindex]) {
+            sorted_list.push_back(list[lindex]);
+            lindex ++;
+        } else {
+            sorted_list.push_back(list[rindex]);
+            rindex ++;
+        }
+    }
+    while (lindex <= mid) {
+        int temp = list[lindex++];
+        sorted_list.push_back(temp);
+    }
+    while (rindex <= r) {
+        int temp = list[rindex++];
+        sorted_list.push_back(temp);
+    }
+    for (int i = 0; i < sorted_list.size(); ++i) {
+        cout << sorted_list[i] << " ";
+    }
+    cout << endl;
+    for (int i = 0; i < sorted_list.size(); ++i) {
+        list[l+i] = sorted_list[i];
+    }
+    ///打印
+    for (int i = 0; i < list.size(); ++i) {
+        cout << list[i] << " ";
+    }
+    cout << endl;
+    return;
+}
+///排序 快速排序（从小到大）
+//小于base的放在base左边，所以从最右边开始找小于base的， 同时在最左边开始找大于base的，两者交换位置
+void quick_sort::small2big(int left, int right, vector<int> &list) {
+    if (left >= right) return;
+    int i, j, base, temp;
+    i = left, j = right;
+    base = list[left];
+    while (i < j) {
+        //从右边找小于base的数
+        while (list[j] >= base && i < j) {
+            j--;
+        }
+        //从左边找大于base的数
+        while (list[i] <= base && i < j) {
+            i++;
+        }
+        //交换
+        if  (i < j) {
+            temp = list[i];
+            list[i] = list[j];
+            list[j] = temp;
+        }
+    }
+    //将base和 list交换位置
+    list[left] = list[i];
+    list[i] = base;
+    small2big(left, i - 1, list);//递归左边
+    small2big(i + 1, right, list); //递归右边
+    return;
+}
+///排序 快速排序（从大到小）
+//大于base的放在base左边，所以从最右边开始找大于base的， 同时在最左边开始找小于base的，两者交换位置
+void quick_sort::big2small(int left, int right, vector<int> &list) {
+    if (left >= right) return;
+    int i, j, base, temp;
+    i = left, j = right;
+    base = list[left];
+    while (i < j) {
+        //从右边找大于base的数
+        while (list[j] <= base && i < j) {
+            j--;
+        }
+        //从左边找小于base的数
+        while (list[i] >= base && i < j) {
+            i++;
+        }
+        //小于和大于base的数交换位置
+        if (i < j) {
+            temp = list[i];
+            list[i] = list[j];
+            list[j] = temp;
+        }
+    }
+
+    list[left] = list[i];
+    list[i] = base;
+    big2small(left, i - 1, list); //递归左边
+    big2small(i + 1, right, list); //递归右边
+    //打印
+    return;
 }
