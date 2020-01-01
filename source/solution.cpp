@@ -1400,7 +1400,7 @@ vector<int> topKFrequence_347_solution::topKFrequence(vector<int> &nums, int k) 
         count[nums[i]] ++;
     } 
     vector<pair<int, int>> container(count.begin(), count.end());
-    auto comp = [](const pair<int, int> val1, const pair<int, int>) {return val1.second < val2.second;};
+    auto comp = [](const pair<int, int> val1, const pair<int, int> val2) {return val1.second < val2.second;};
     make_heap(container.begin(), container.end(), comp);
     for (int i = 0; i < k; ++i) {
         res.push_back(container.begin()->first);
