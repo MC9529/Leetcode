@@ -207,3 +207,8 @@ public:
     void small2big(int left, int right, vector<int> &list);
     void big2small(int left, int right, vector<int> &list);
 };
+///前K个高频词 Leetcode_347
+class topKFrequence_347_solution {
+public:
+    vector<int> topKFrequence(vector<int> &nums, int k);
+};

@@ -419,7 +419,7 @@ int main () {
 }
 */
 ////////二分查找 leetcode_315， 查找右边小于本位置的数
-
+/*
 int main () {
   vector<int> res;
   vector<int> list = {5, 3, 6, 1, 4, 2};
@@ -430,7 +430,7 @@ int main () {
 
   return 0;
 }
-
+*/
 ///排序  归并排序
 /*
 int main () {
@@ -476,3 +476,16 @@ int main () {
 }
 */
 
+//////前K个高频词 Leetcode_347
+int main() {
+  vector<int> list = {5, 3, 6, 6, 6, 4, 4, 2, 1};
+  int k = 3;
+  topKFrequence_347_solution s1;
+  vector<int> res = s1.topKFrequence(list, k);
+  for (int i = 0; i < res.size(); ++i) {
+    cout << res[i] << " ";
+  }
+  cout << endl;
+  
+  return 0;
+}

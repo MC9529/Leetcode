@@ -6,6 +6,8 @@
 #include <stdio.h>
 #include <functional>
 #include <queue>
+#include <unordered_map>
+#include <map>
 using namespace std;
 
 ///回溯算法
@@ -1389,4 +1391,21 @@ void quick_sort::big2small(int left, int right, vector<int> &list) {
     big2small(i + 1, right, list); //递归右边
     //打印
     return;
+}
+
+vector<int> topKFrequence_347_solution::topKFrequence(vector<int> &nums, int k) {
+    vector<int> res;
+    unordered_map<int, int> count;
+    for (int i = 0; i < nums.size(); ++i) {
+        count[nums[i]] ++;
+    } 
+    vector<pair<int, int>> container(count.begin(), count.end());
+    auto comp = [](const pair<int, int> val1, const pair<int, int>) {return val1.second < val2.second;};
+    make_heap(container.begin(), container.end(), comp);
+    for (int i = 0; i < k; ++i) {
+        res.push_back(container.begin()->first);
+        pop_heap(container.begin(), container.end() - i, comp);
+    }
+
+    return res;
 }
