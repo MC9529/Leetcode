@@ -1392,7 +1392,7 @@ void quick_sort::big2small(int left, int right, vector<int> &list) {
     //打印
     return;
 }
-
+///前K个高频词 Leetcode_347
 vector<int> topKFrequence_347_solution::topKFrequence(vector<int> &nums, int k) {
     vector<int> res;
     unordered_map<int, int> count;
@@ -1409,3 +1409,29 @@ vector<int> topKFrequence_347_solution::topKFrequence(vector<int> &nums, int k) 
 
     return res;
 }
+///////用哈希表统计，然后sort，然后自定规则排序
+vector<int> topKFrequence_347_solution::topKFrequence2(vector<int> &nums, int k) {
+    vector<int> res;
+    unordered_map<int, int> count;
+    for (int i = 0; i < nums.size(); ++i) {
+        count[nums[i]] ++;
+    } 
+    //排序规则
+    ///如果频率一样，则值大的放前面
+    auto comp = [](const pair<int, int> val1, const pair<int, int> val2) {
+        bool res;
+        if (val1.second == val2.second) {
+            return val1.first > val2.first;
+        }
+        return val1.second > val2.second;
+    };
+    //将map转化为vector
+    vector<pair<int, int>> count_vector(count.begin(), count.end());
+    //排序
+    sort(count_vector.begin(), count_vector.end(), comp);
+    for (int i = 0; i < count_vector.size(); ++i) {
+        res.push_back(count_vector[i].first);
+    }
+    return res;
+}
+

@@ -210,5 +210,8 @@ public:
 ///前K个高频词 Leetcode_347
 class topKFrequence_347_solution {
 public:
+    ///用哈希表统计，然后小顶堆
     vector<int> topKFrequence(vector<int> &nums, int k);
+    ///用哈希表统计，然后sort
+    vector<int> topKFrequence2(vector<int> &nums, int k);
 };
