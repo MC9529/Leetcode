@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ccg/File/leetcode/Leetcode
+CMAKE_SOURCE_DIR = /home/ccg/File/cpp/leetcode
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ccg/File/leetcode/Leetcode/build
+CMAKE_BINARY_DIR = /home/ccg/File/cpp/leetcode/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/hello.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/hello.dir/flags.make
 
 CMakeFiles/hello.dir/main.cpp.o: CMakeFiles/hello.dir/flags.make
 CMakeFiles/hello.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/leetcode/Leetcode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/hello.dir/main.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hello.dir/main.cpp.o -c /home/ccg/File/leetcode/Leetcode/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/cpp/leetcode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/hello.dir/main.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hello.dir/main.cpp.o -c /home/ccg/File/cpp/leetcode/main.cpp
 
 CMakeFiles/hello.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hello.dir/main.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ccg/File/leetcode/Leetcode/main.cpp > CMakeFiles/hello.dir/main.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ccg/File/cpp/leetcode/main.cpp > CMakeFiles/hello.dir/main.cpp.i
 
 CMakeFiles/hello.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hello.dir/main.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ccg/File/leetcode/Leetcode/main.cpp -o CMakeFiles/hello.dir/main.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ccg/File/cpp/leetcode/main.cpp -o CMakeFiles/hello.dir/main.cpp.s
 
 CMakeFiles/hello.dir/main.cpp.o.requires:
 
@@ -83,16 +83,16 @@ CMakeFiles/hello.dir/main.cpp.o.provides.build: CMakeFiles/hello.dir/main.cpp.o
 
 CMakeFiles/hello.dir/source/solution.cpp.o: CMakeFiles/hello.dir/flags.make
 CMakeFiles/hello.dir/source/solution.cpp.o: ../source/solution.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/leetcode/Leetcode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/hello.dir/source/solution.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hello.dir/source/solution.cpp.o -c /home/ccg/File/leetcode/Leetcode/source/solution.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ccg/File/cpp/leetcode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/hello.dir/source/solution.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/hello.dir/source/solution.cpp.o -c /home/ccg/File/cpp/leetcode/source/solution.cpp
 
 CMakeFiles/hello.dir/source/solution.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hello.dir/source/solution.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ccg/File/leetcode/Leetcode/source/solution.cpp > CMakeFiles/hello.dir/source/solution.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ccg/File/cpp/leetcode/source/solution.cpp > CMakeFiles/hello.dir/source/solution.cpp.i
 
 CMakeFiles/hello.dir/source/solution.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hello.dir/source/solution.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ccg/File/leetcode/Leetcode/source/solution.cpp -o CMakeFiles/hello.dir/source/solution.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ccg/File/cpp/leetcode/source/solution.cpp -o CMakeFiles/hello.dir/source/solution.cpp.s
 
 CMakeFiles/hello.dir/source/solution.cpp.o.requires:
 
@@ -117,7 +117,7 @@ hello: CMakeFiles/hello.dir/main.cpp.o
 hello: CMakeFiles/hello.dir/source/solution.cpp.o
 hello: CMakeFiles/hello.dir/build.make
 hello: CMakeFiles/hello.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ccg/File/leetcode/Leetcode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable hello"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ccg/File/cpp/leetcode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable hello"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/hello.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -135,6 +135,6 @@ CMakeFiles/hello.dir/clean:
 .PHONY : CMakeFiles/hello.dir/clean
 
 CMakeFiles/hello.dir/depend:
-	cd /home/ccg/File/leetcode/Leetcode/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ccg/File/leetcode/Leetcode /home/ccg/File/leetcode/Leetcode /home/ccg/File/leetcode/Leetcode/build /home/ccg/File/leetcode/Leetcode/build /home/ccg/File/leetcode/Leetcode/build/CMakeFiles/hello.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ccg/File/cpp/leetcode/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ccg/File/cpp/leetcode /home/ccg/File/cpp/leetcode /home/ccg/File/cpp/leetcode/build /home/ccg/File/cpp/leetcode/build /home/ccg/File/cpp/leetcode/build/CMakeFiles/hello.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/hello.dir/depend
 
