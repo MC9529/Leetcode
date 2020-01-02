@@ -210,5 +210,14 @@ public:
 ///前K个高频词 Leetcode_347
 class topKFrequence_347_solution {
 public:
+    ///用哈希表统计，然后小顶堆
     vector<int> topKFrequence(vector<int> &nums, int k);
+    ///用哈希表统计，然后sort
+    vector<int> topKFrequence2(vector<int> &nums, int k);
+};
+////查找和最小的k对数字
+class kSmallestPairs_373_solution {
+public:
+    vector<vector<int>> kSmallestPairs(vector<int> &list1, vector<int> &list2, int k);
+    vector<vector<int>> kSmallestPairs2(vector<int> &list1, vector<int> &list2, int k);
 };

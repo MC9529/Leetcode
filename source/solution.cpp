@@ -1014,7 +1014,6 @@ int findKthLargest_215_solution::findKthLargest(vector<int> &nums, int k) {
         {
             return 0;
         }
-
         priority_queue<int, vector<int>, greater<int>> store;
         //堆中维持k个最大数
         for (int i = 0; i < numsSize; i++)
@@ -1025,7 +1024,6 @@ int findKthLargest_215_solution::findKthLargest(vector<int> &nums, int k) {
                 store.pop();
             }
         }
-
         result = store.top();
         return result;
 }
@@ -1392,15 +1390,18 @@ void quick_sort::big2small(int left, int right, vector<int> &list) {
     //打印
     return;
 }
-
-vector<int> topKFrequence_347_solution::topKFrequence(vector<int> &nums, int k) {
+///前K个高频词 Leetcode_347
+vector<int> topKFrequence_347_solution::topKFrequence(vector<int> &nums, 
+    int k) {
     vector<int> res;
     unordered_map<int, int> count;
     for (int i = 0; i < nums.size(); ++i) {
         count[nums[i]] ++;
     } 
     vector<pair<int, int>> container(count.begin(), count.end());
-    auto comp = [](const pair<int, int> val1, const pair<int, int> val2) {return val1.second < val2.second;};
+    auto comp = [](const pair<int, int> val1, const pair<int, int> val2) { 
+        return val1.second < val2.second;
+    };
     make_heap(container.begin(), container.end(), comp);
     for (int i = 0; i < k; ++i) {
         res.push_back(container.begin()->first);
@@ -1409,3 +1410,108 @@ vector<int> topKFrequence_347_solution::topKFrequence(vector<int> &nums, int k) 
 
     return res;
 }
+///////用哈希表统计，然后sort，然后自定规则排序
+vector<int> topKFrequence_347_solution::topKFrequence2(vector<int> &nums, int k) {
+    vector<int> res;
+    unordered_map<int, int> count;
+    for (int i = 0; i < nums.size(); ++i) {
+        count[nums[i]] ++;
+    } 
+    //排序规则
+    ///如果频率一样，则值大的放前面
+    auto comp = [](const pair<int, int> val1, const pair<int, int> val2) {
+        bool res;
+        if (val1.second == val2.second) {
+            return val1.first > val2.first;
+        }
+        return val1.second > val2.second;
+    };
+    //将map转化为vector
+    vector<pair<int, int>> count_vector(count.begin(), count.end());
+    //排序
+    sort(count_vector.begin(), count_vector.end(), comp);
+    for (int i = 0; i < count_vector.size(); ++i) {
+        res.push_back(count_vector[i].first);
+    }
+    return res;
+}
+////查找和最小的k对数字
+vector<vector<int>> kSmallestPairs_373_solution::kSmallestPairs(
+                        vector<int> &list1, vector<int> &list2, int k) {
+    vector<vector<int>> res;
+    vector<int> temp;
+    struct pair_list {
+        int list1_num;
+        int list2_num;
+    };
+    auto comp = [](const pair<int, pair_list> val1, const pair<int, pair_list> val2) {
+        if (val1.first == val2.first) {
+            return val1.second.list1_num > val2.second.list1_num;
+        }
+        return val1.first < val2.first;
+    };
+
+    pair_list pair_1_2;
+    pair<int, pair_list> pair_sum_1_2;
+    ////[ {list[i], list[j]}, list[i]+list[j] ]
+    vector<pair<int, pair_list>> count;
+    for (int i = 0; i < list1.size(); ++i) {
+        for (int j = 0; j < list2.size(); ++j) {
+            //second
+            pair_1_2.list1_num = list1[i];
+            pair_1_2.list2_num = list2[j];
+            pair_sum_1_2.second = pair_1_2;
+            //first
+            pair_sum_1_2.first = list1[i] + list2[j];
+            count.push_back(pair_sum_1_2);
+        }
+    }
+    sort(count.begin(), count.end(), comp);
+    for (int i = 0; i < k; ++i) {
+        temp.push_back(count[i].second.list1_num);
+        temp.push_back(count[i].second.list2_num);
+        res.push_back(temp);
+    }
+
+    return res;
+}
+/*
+ vector<vector<int>> kSmallestPairs_373_solution::kSmallestPairs2(
+                        vector<int> &list1, vector<int> &list2, int k) {
+    vector<vector<int>> res;
+    vector<int> temp;
+    struct pair_list {
+        int list1_num;
+        int list2_num;
+    };
+    auto comp = [](const pair<int, pair_list>& val1, const pair<int, pair_list>& val2) {
+        if (val1.first == val2.first) {
+            return val1.second.list1_num > val2.second.list1_num;
+        }
+        return val1.first < val2.first;
+    };
+    vector<pair<int, pair_list>> count;
+    pair<int, pair_list> pair_sum_1_2;
+    for (int i = 0; i < list1.size(); ++i) {
+        for (int j = 0; j < list2.size(); ++j) {
+            if (count.size() <= k) {
+            pair_sum_1_2.first = list1[i] + list2[j];
+            pair_sum_1_2.second.list1_num = list1[i];
+            pair_sum_1_2.second.list2_num = list2[j];
+            count.push_back(pair_sum_1_2);
+            make_heap(count.begin(), count.end(), comp);
+            //priority_queue<int, pair_list>
+            } else if (list1[i] + list2[j] < count[k - 1].first) {
+                pop_heap(count.begin(), count.end() - 1,comp);
+                pair_sum_1_2.first = list1[i] + list2[j];
+                pair_sum_1_2.second.list1_num = list1[i];
+                pair_sum_1_2.second.list2_num = list2[j];
+                count.push_back(pair_sum_1_2);
+                make_heap(count.begin(), count.end(), comp);
+            }
+
+        }
+    }
+    return res;
+ }
+ */

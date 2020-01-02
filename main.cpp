@@ -477,8 +477,9 @@ int main () {
 */
 
 //////前K个高频词 Leetcode_347
+/*
 int main() {
-  vector<int> list = {5, 3, 6, 6, 6, 4, 4, 2, 1};
+  vector<int> list = {5, 3, 6, 6, 6, 4, 4, 4, 2, 1, 1};
   int k = 3;
   topKFrequence_347_solution s1;
   vector<int> res = s1.topKFrequence(list, k);
@@ -486,6 +487,33 @@ int main() {
     cout << res[i] << " ";
   }
   cout << endl;
+  vector<int> res2 = s1.topKFrequence2(list, k);
+  for (int i = 0; i < res2.size(); ++i) {
+    cout << res2[i] << " ";
+  }
+  cout << endl;
   
+  return 0;
+}
+*/
+////查找和最小的k对数字
+
+int main() {
+  //vector<int> list1 = {1, 7, 11};
+  //vector<int> list2 = {2, 4, 6};
+  vector<int> list1 = {1, 1, 2};
+  vector<int> list2 = {1, 2, 3};
+  int k = 3;
+  kSmallestPairs_373_solution s1;
+  //vector<vector<int>> res = s1.kSmallestPairs(list1, list2, k);
+  vector<vector<int>> res = s1.kSmallestPairs2(list1, list2, k);
+  for (int i = 0; i < res.size(); ++i) {
+    for(auto iter: res[i]) {
+      cout << iter << " ";
+    }
+    cout << endl;
+  }
+  cout << endl;
+
   return 0;
 }
