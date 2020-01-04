@@ -1515,3 +1515,30 @@ vector<vector<int>> kSmallestPairs_373_solution::kSmallestPairs(
     return res;
  }
  */
+
+ vector<vector<int>> kSmallestPairs_373_solution::kSmallestPairs3(
+                              vector<int> &list1, vector<int> &list2, int k) {
+    struct cmp {
+        bool operator()(pair<int, int> &a, pair<int, int> &b) {
+            return a.first + a.second < b.first + b.second;
+        } 
+    };
+    vector<vector<int>> res;
+    priority_queue<pair<int, int>, vector<pair<int, int>>, cmp> q;
+    for (int i = 0; i < list1.size(); ++i) {
+        for (int j = 0; j < list2.size(); ++j) {
+            if (q.size() < k) {
+                q.push({list1[i], list2[j]});
+            } else if (list1[i] + list2[j] < q.top().first + q.top().second) {
+                q.pop();
+                q.push({list1[i], list2[j]});
+            }
+        }
+    }
+    while (!q.empty()) {
+        pair<int, int> top = q.top();
+        res.push_back({top.first, top.second});
+        q.pop();
+    }
+    return res;
+ }

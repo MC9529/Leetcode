@@ -220,4 +220,5 @@ class kSmallestPairs_373_solution {
 public:
     vector<vector<int>> kSmallestPairs(vector<int> &list1, vector<int> &list2, int k);
     vector<vector<int>> kSmallestPairs2(vector<int> &list1, vector<int> &list2, int k);
+    vector<vector<int>> kSmallestPairs3(vector<int> &list1, vector<int> &list2, int k);
 };

@@ -501,12 +501,14 @@ int main() {
 int main() {
   //vector<int> list1 = {1, 7, 11};
   //vector<int> list2 = {2, 4, 6};
-  vector<int> list1 = {1, 1, 2};
-  vector<int> list2 = {1, 2, 3};
+  //vector<int> list1 = {1, 1, 2};
+  //vector<int> list2 = {1, 2, 3};
+  vector<int> list1 = {1, 2};
+  vector<int> list2 = {3};
   int k = 3;
   kSmallestPairs_373_solution s1;
   //vector<vector<int>> res = s1.kSmallestPairs(list1, list2, k);
-  vector<vector<int>> res = s1.kSmallestPairs2(list1, list2, k);
+  vector<vector<int>> res = s1.kSmallestPairs3(list1, list2, k);
   for (int i = 0; i < res.size(); ++i) {
     for(auto iter: res[i]) {
       cout << iter << " ";
