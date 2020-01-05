@@ -1632,3 +1632,52 @@ string frequencySort_451_solution::frequencySort(string s) {
 
     return res;
  }
+
+int IPO_502_solution::findMaxCapital(int k, int w, vector<int> &prifit, vector<int> &Capital) {
+    int res = 0;
+    vector<int> avail; ///存项目编号 0, 1, 2, 3,4 ;
+    vector<int> not_start;///存项目编号0, 1, 2, 3, 4;
+    for (int i = 0; i < prifit.size(); ++i) {
+        not_start.push_back(i);
+    }
+
+    for (int i = 1; i <= k; ++i) {
+        available_proj(k, w, Capital, avail, not_start);
+        int project = best_proj(prifit, Capital, avail, not_start);
+        res = res + prifit[project];
+        w = w + prifit[project] - Capital[project];
+        vector<int>::iterator iter = find(not_start.begin(), not_start.end(), project);
+        not_start.erase(iter);
+    }
+
+    return res;
+}
+ 
+void IPO_502_solution::available_proj(int k, int w, vector<int> &Capital, vector<int> &avail,
+                                    vector<int> &not_start) {
+    for (int i = 0; i < Capital.size(); ++i) {
+        if (w >= Capital[i]) {
+            vector<int>::iterator iter;
+            iter = find(not_start.begin(), not_start.end(), i);
+            if (iter != not_start.end()){
+                avail.push_back(i);
+            }
+        }
+    }
+    return;
+
+}
+
+int IPO_502_solution::best_proj(vector<int> &profit, vector<int> &Capital, vector<int> &avail, 
+                                    vector<int> &not_start) {
+    ///项目编号， 项目盈利
+    pair<int, int> best;
+    best = {0, 0};
+    for (int i = 0; i < avail.size(); ++i) {
+        if (profit[i] - Capital[i] > best.second) {
+            best = {i, profit[i]};
+        }
+    }
+
+    return best.first;
+}

@@ -231,7 +231,18 @@ public:
 ///根据字符出现频率排序
 class frequencySort_451_solution {
 public: 
+    ///排序
     string frequencySort(string s);
+    ///优先队列
     string frequencySort2(string s);
+};
+////IPO leetcode_502
+class IPO_502_solution {
+public: 
+    int findMaxCapital(int k, int w, vector<int> &prifit, vector<int> &Capital);
+    void available_proj(int k, int w, vector<int> &Capital, vector<int> &avail,
+                                    vector<int> &not_start);
+    int best_proj(vector<int> &profit, vector<int> &Capital, vector<int> &avail, 
+                                    vector<int> &not_start);
 };
 
