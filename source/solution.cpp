@@ -1542,3 +1542,93 @@ vector<vector<int>> kSmallestPairs_373_solution::kSmallestPairs(
     }
     return res;
  }
+
+ int kthSmallest_378_solution::kthSmallest(vector<vector<int>> &matrix, int k) {
+     int len = 0;
+    for (int i = 0; i < matrix.size(); ++i) {
+        len = len + matrix[i].size();
+    }
+    if (k < 0 || matrix.size() <= 0 || k > len) {
+        cout << "the k or matrix have mistake " << endl;
+        return 0;
+    }
+    int res;
+    struct cmp {
+        bool operator()(int &a, int &b) {
+            return a < b;
+        } 
+    };
+    priority_queue<int, vector<int>, cmp> q;
+    for (int i = 0; i < matrix.size(); ++i) {
+        for (int j = 0; j < matrix[i].size(); ++j) {
+            if (q.size() < k) {
+                q.push(matrix[i][j]);
+            } else if (matrix[i][j] < q.top()) {
+                q.pop();
+                q.push(matrix[i][j]);
+            }
+        }
+    }
+    res = q.top();
+    while (!q.empty()) {
+        cout << q.top() << " ";
+        q.pop();
+    }
+    return res;
+ }
+
+///根据字符出现频率排序
+string frequencySort_451_solution::frequencySort(string s) {
+    string res;
+    unordered_map<char, int> frequency_record;
+    ///排序规则
+    auto comp = [](const pair<char, int> &val1, const pair<char, int> &val2) {
+        return val1.second > val2.second;
+    };
+    ///记录频率
+    for (int i = 0; i < s.size(); ++i) {
+        frequency_record[s[i]] ++;
+    } 
+    ///将map转化为vector, map不能排序
+    vector<pair<char, int>> vec;
+    for (const auto iter: frequency_record) {
+        vec.push_back(iter);
+    }
+    sort(vec.begin(), vec.end(), comp);
+    for (const auto iter: vec) {
+        res = res + string(iter.second, iter.first);
+    }
+
+    return res;
+ }
+
+ string frequencySort_451_solution::frequencySort2(string s) {
+    string res;
+    unordered_map<char, int> frequency_record;
+    ///排序规则
+    struct comp {
+        bool operator()(const pair<char, int> &a, const pair<char, int> &b) {
+            if (a.second == b.second) {
+                return a.first < b.first;
+            }
+            return a.second < b.second;
+        } 
+    };
+    ///记录频率
+    for (int i = 0; i < s.size(); ++i) {
+        frequency_record[s[i]] ++;
+    } 
+    ///优先队列
+    priority_queue< pair<char, int>, vector<pair<char, int>>, comp> q;
+    for (const auto iter: frequency_record) {
+        q.push({iter.first, iter.second});
+    }
+    ///生成string
+    while (!q.empty()) {
+        auto top = q.top();
+        res = res + string(top.second, top.first);
+        q.pop();
+    }
+
+    return res;
+ }

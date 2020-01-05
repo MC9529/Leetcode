@@ -497,7 +497,7 @@ int main() {
 }
 */
 ////查找和最小的k对数字
-
+/*
 int main() {
   //vector<int> list1 = {1, 7, 11};
   //vector<int> list2 = {2, 4, 6};
@@ -517,5 +517,32 @@ int main() {
   }
   cout << endl;
 
+  return 0;
+}
+*/
+////有序矩阵中第K小的元素
+/*
+int main() {
+  vector<vector<int>> list1 = {{2, 3, 5},
+                              {3, 4, 8, 15},
+                              {5, 9, 10, 11},
+                              {7, 8, 11, 13}};
+  int k = 5;
+  kthSmallest_378_solution s1;
+  //vector<vector<int>> res = s1.kSmallestPairs(list1, list2, k);
+  int res = s1.kthSmallest(list1, k);
+  cout << "the kthSmallest:" << res << endl;
+  return 0;
+}
+*/
+///根据字符出现频率排序
+int main() {
+  string s = "bAab";
+
+  frequencySort_451_solution s1;
+  //vector<vector<int>> res = s1.kSmallestPairs(list1, list2, k);
+  string res = s1.frequencySort(s);
+  //string res = s1.frequencySort2(s);
+  cout << "the Sorted_string:" << res << endl;
   return 0;
 }
