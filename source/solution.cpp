@@ -1643,6 +1643,7 @@ int IPO_502_solution::findMaxCapital(int k, int w, vector<int> &prifit, vector<i
 
     for (int i = 1; i <= k; ++i) {
         available_proj(k, w, Capital, avail, not_start);
+        cout << "passed in line 1646" << endl;
         int project = best_proj(prifit, Capital, avail, not_start);
         res = res + prifit[project];
         w = w + prifit[project] - Capital[project];
@@ -1665,7 +1666,6 @@ void IPO_502_solution::available_proj(int k, int w, vector<int> &Capital, vector
         }
     }
     return;
-
 }
 
 int IPO_502_solution::best_proj(vector<int> &profit, vector<int> &Capital, vector<int> &avail, 
@@ -1678,6 +1678,5 @@ int IPO_502_solution::best_proj(vector<int> &profit, vector<int> &Capital, vecto
             best = {i, profit[i]};
         }
     }
-
     return best.first;
 }

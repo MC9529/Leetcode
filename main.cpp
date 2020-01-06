@@ -548,7 +548,15 @@ int main() {
   return 0;
 }
 */
+////////IPO leetcode_502
+int main() {
+  int k = 2, w = 1;
+  vector<int> profits = {1, 2, 3};
+  vector<int> capital = {0, 1, 1};
+  IPO_502_solution s1;
+  int res = s1.findMaxCapital(k, w, profits, capital);
+  cout << "the max capital:" << res << endl;
 
-///
-
+  return 0;
+}
 
