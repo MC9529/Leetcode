@@ -549,6 +549,7 @@ int main() {
 }
 */
 ////////IPO leetcode_502
+/*
 int main() {
   int k = 11, w = 11;
   vector<int> profits = {1, 2, 3};
@@ -559,4 +560,21 @@ int main() {
 
   return 0;
 }
+*/
+///分割数组有连续子序列 leetcode_659
+int main() {
+  vector<int> lists = {1, 2, 2, 3, 3, 4, 5};
+  vector<vector<int>> res;
+  CutWord_659_solution s1;
+  s1.CutWord(lists, res);
+  for (int i = 0; i < res.size(); ++i) {
+    for (auto iter: res[i]) {
+      cout << iter << " ";
+    }
+    cout << endl;
+  }
+
+  return 0;
+}
+
 

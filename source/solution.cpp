@@ -1692,3 +1692,62 @@ int IPO_502_solution::best_proj(vector<int> &profit, vector<int> &Capital, vecto
     }
     return best.first;
 }
+
+void CutWord_659_solution::CutWord(vector<int> &nums, vector<vector<int>> &res) {
+    //vector<vector<int>> res;
+    vector<int> temp;
+    unordered_map<int, int> frequence, tail;
+    for (auto num: nums) {
+        frequence[num]++;
+    }
+    for (auto num: nums) {
+        if (frequence[num] == 0) {
+            //res.push_back(temp);
+            //temp.clear();
+            continue;
+        }
+        else if (frequence[num] > 0 && tail[num-1] > 0) {
+            frequence[num]--;
+            tail[num-1]--;
+            tail[num] ++;
+            //temp.push_back(num);
+        } else if (frequence[num] > 0 && frequence[num+1] > 0 && frequence[num+2] > 0) {
+            //temp.clear();
+            frequence[num]--, frequence[num+1]--, frequence[num+2]--;
+            //temp.push_back(num);
+            //temp.push_back(num+1);
+            //temp.push_back(num+2);
+            tail[num+2]++;
+        } else {
+            cout << "there is no suitable res" << endl;
+            return;
+        }
+    }
+    for (int i = 0; i < tail.size(); ++i) {
+        if (tail[i] != 0) {
+            int list_tail = i;
+            cout << "the list_tail:" << list_tail << endl;
+       
+            for (int k = 0; k < nums.size(); ++k) {
+                cout << nums[k] << " ";
+            }
+
+            for (int j = 0; j < nums.size(); ++j) {
+                if (nums[j] <= list_tail) {
+                    temp.push_back(nums[j]);
+                    //nums.erase(nums.begin() + j);
+                    cout << "in 1739" << endl;
+                    for (int k = 0; k < nums.size(); ++k) {
+                        cout << nums[k] << " ";
+                    }
+                    cout << endl;
+                }
+            }
+            cout << endl;
+            res.push_back(temp);
+            temp.clear();
+        }
+    }
+
+    return;
+}

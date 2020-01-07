@@ -245,4 +245,9 @@ public:
     int best_proj(vector<int> &profit, vector<int> &Capital, vector<int> &avail, 
                                     vector<int> &not_start);
 };
+///分割数组有连续子序列 leetcode_659
+class CutWord_659_solution {
+public:
+    void CutWord(vector<int> &nums, vector<vector<int>> &res);
 
+};
