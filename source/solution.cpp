@@ -1634,7 +1634,7 @@ string frequencySort_451_solution::frequencySort(string s) {
  }
 
 int IPO_502_solution::findMaxCapital(int k, int w, vector<int> &prifit, vector<int> &Capital) {
-    int res = 0;
+    int res = w;
     vector<int> avail; ///存项目编号 0, 1, 2, 3,4 ;
     vector<int> not_start;///存项目编号0, 1, 2, 3, 4;
     for (int i = 0; i < prifit.size(); ++i) {
@@ -1643,12 +1643,20 @@ int IPO_502_solution::findMaxCapital(int k, int w, vector<int> &prifit, vector<i
 
     for (int i = 1; i <= k; ++i) {
         available_proj(k, w, Capital, avail, not_start);
+        for (int i = 0; i < avail.size(); ++i) {
+            cout << avail[i] << " ";
+        }
+        cout << endl;
+        int project;
         cout << "passed in line 1646" << endl;
-        int project = best_proj(prifit, Capital, avail, not_start);
-        res = res + prifit[project];
-        w = w + prifit[project] - Capital[project];
-        vector<int>::iterator iter = find(not_start.begin(), not_start.end(), project);
-        not_start.erase(iter);
+        if (avail.size() != 0) {
+            project = best_proj(prifit, Capital, avail, not_start);
+            cout << "the best project:" << project << endl;
+            res = res + prifit[project];
+            w = w + prifit[project] - Capital[project];
+            vector<int>::iterator iter = find(not_start.begin(), not_start.end(), project);
+            not_start.erase(iter);
+        }
     }
 
     return res;
@@ -1656,6 +1664,7 @@ int IPO_502_solution::findMaxCapital(int k, int w, vector<int> &prifit, vector<i
  
 void IPO_502_solution::available_proj(int k, int w, vector<int> &Capital, vector<int> &avail,
                                     vector<int> &not_start) {
+    avail.clear();
     for (int i = 0; i < Capital.size(); ++i) {
         if (w >= Capital[i]) {
             vector<int>::iterator iter;
@@ -1663,6 +1672,7 @@ void IPO_502_solution::available_proj(int k, int w, vector<int> &Capital, vector
             if (iter != not_start.end()){
                 avail.push_back(i);
             }
+            cout << "passed in line 1666" << endl;
         }
     }
     return;
@@ -1672,11 +1682,13 @@ int IPO_502_solution::best_proj(vector<int> &profit, vector<int> &Capital, vecto
                                     vector<int> &not_start) {
     ///项目编号， 项目盈利
     pair<int, int> best;
-    best = {0, 0};
+    best = {NULL, NULL};
     for (int i = 0; i < avail.size(); ++i) {
-        if (profit[i] - Capital[i] > best.second) {
-            best = {i, profit[i]};
+        //if (profit[i] - Capital[i] > best.second) {
+        if (profit[i] > best.second) {
+            best = {avail[i], profit[i]};
         }
+        cout << "passed in line 1681" << endl;
     }
     return best.first;
 }
