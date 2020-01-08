@@ -249,5 +249,6 @@ public:
 class CutWord_659_solution {
 public:
     void CutWord(vector<int> &nums, vector<vector<int>> &res);
+    void DeleteWord(vector<int> &target, vector<int> temp);
 
 };

@@ -1706,12 +1706,15 @@ void CutWord_659_solution::CutWord(vector<int> &nums, vector<vector<int>> &res) 
             //temp.clear();
             continue;
         }
+        //tail[i]大于0,前面有一个以i为结果的数列，此时，frequence[i+1]大于0,则可以加到前面去
         else if (frequence[num] > 0 && tail[num-1] > 0) {
             frequence[num]--;
             tail[num-1]--;
             tail[num] ++;
             //temp.push_back(num);
-        } else if (frequence[num] > 0 && frequence[num+1] > 0 && frequence[num+2] > 0) {
+        } 
+        ///可以产生一个num, num +1, num +2的数组。
+        else if (frequence[num] > 0 && frequence[num+1] > 0 && frequence[num+2] > 0) {
             //temp.clear();
             frequence[num]--, frequence[num+1]--, frequence[num+2]--;
             //temp.push_back(num);
@@ -1723,31 +1726,45 @@ void CutWord_659_solution::CutWord(vector<int> &nums, vector<vector<int>> &res) 
             return;
         }
     }
+    ///以tail[i]为结尾，删除从nums[0]递增到tail[i]
     for (int i = 0; i < tail.size(); ++i) {
-        if (tail[i] != 0) {
-            int list_tail = i;
-            cout << "the list_tail:" << list_tail << endl;
+        if (tail[i] >= 1) {
+            //如果tail大于1,则表示有多个相同的尾巴
+            for (int j = tail[i]; j > 0; j--) {
+                int list_tail = i;
+                cout << "the list_tail:" << list_tail << endl;
        
-            for (int k = 0; k < nums.size(); ++k) {
-                cout << nums[k] << " ";
-            }
+                for (int k = 0; k < nums.size(); ++k) {
+                    cout << nums[k] << " ";
+                }
 
-            for (int j = 0; j < nums.size(); ++j) {
-                if (nums[j] <= list_tail) {
-                    temp.push_back(nums[j]);
-                    //nums.erase(nums.begin() + j);
+                for (int j = nums[0]; j <= list_tail; ++j) {
+                    temp.push_back(j);
+                //nums.erase(nums.begin() + j);
                     cout << "in 1739" << endl;
                     for (int k = 0; k < nums.size(); ++k) {
                         cout << nums[k] << " ";
                     }
                     cout << endl;
                 }
+                DeleteWord(nums, temp);
+                cout << endl;
+                res.push_back(temp);
+                temp.clear();
             }
-            cout << endl;
-            res.push_back(temp);
-            temp.clear();
         }
     }
 
     return;
+}
+///从target中删除temp
+void CutWord_659_solution::DeleteWord(vector<int> &target, vector<int> temp) {
+    for (int i = 0; i < temp.size(); ++i) {
+        for (int j = 0; j < target.size(); ++j) {
+            if (target[j] == temp[i]) {
+                target.erase(target.begin() + j);
+                continue;
+            }
+        }
+    }
 }
