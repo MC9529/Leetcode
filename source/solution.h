@@ -244,6 +244,8 @@ public:
                                     vector<int> &not_start);
     int best_proj(vector<int> &profit, vector<int> &Capital, vector<int> &avail, 
                                     vector<int> &not_start);
+    ///用堆
+    int findMaxCapital2(int k, int w, vector<int> &prifit, vector<int> &Capital);
 };
 ///分割数组有连续子序列 leetcode_659
 class CutWord_659_solution {
@@ -251,4 +253,13 @@ public:
     void CutWord(vector<int> &nums, vector<vector<int>> &res);
     void DeleteWord(vector<int> &target, vector<int> temp);
 
+};
+
+///前K个高频词，leetcode_692
+class topKFrequent_692_solution {
+public:
+    //小顶堆
+    vector<string> topKFrequent(vector<string> &words, int k);
+    ///排序
+    vector<string> topKFrequent2(vector<string> &words, int k);
 };

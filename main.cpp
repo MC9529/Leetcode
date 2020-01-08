@@ -549,19 +549,21 @@ int main() {
 }
 */
 ////////IPO leetcode_502
-/*
+
 int main() {
   int k = 11, w = 11;
   vector<int> profits = {1, 2, 3};
   vector<int> capital = {11, 12, 13};
   IPO_502_solution s1;
   int res = s1.findMaxCapital(k, w, profits, capital);
+  //int res = s1.findMaxCapital2(k, w, profits, capital);
   cout << "the max capital:" << res << endl;
 
   return 0;
 }
-*/
+
 ///分割数组有连续子序列 leetcode_659
+/*
 int main() {
   //vector<int> lists = {1, 2, 2, 3, 3, 4, 5};
   vector<int> lists = {1, 2, 3, 3, 4, 4, 5, 5};
@@ -577,5 +579,22 @@ int main() {
 
   return 0;
 }
+*/
+//////前K个高频词，leetcode_692
+/*
+int main() {
+  vector<string> lists = {"a", "b", "c", "a", "a", "b", "d", "c"};
+  int k = 3;
+  topKFrequent_692_solution s1;
+  //vector<string> res = s1.topKFrequent(lists, k);
+  vector<string> res = s1.topKFrequent2(lists, k);
+  cout << "the list(the frequence for high to low) :" << endl;
+  for (int i = 0; i < res.size(); ++i) {
+    cout << res[i] << " ";
+  }
+  cout << endl;
 
+  return 0;
+}
+*/
 

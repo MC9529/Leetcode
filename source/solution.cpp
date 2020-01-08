@@ -1653,7 +1653,8 @@ int IPO_502_solution::findMaxCapital(int k, int w, vector<int> &prifit, vector<i
             project = best_proj(prifit, Capital, avail, not_start);
             cout << "the best project:" << project << endl;
             res = res + prifit[project];
-            w = w + prifit[project] - Capital[project];
+            //w = w + prifit[project] - Capital[project];
+            w = w + prifit[project];
             vector<int>::iterator iter = find(not_start.begin(), not_start.end(), project);
             not_start.erase(iter);
         }
@@ -1685,12 +1686,57 @@ int IPO_502_solution::best_proj(vector<int> &profit, vector<int> &Capital, vecto
     best = {NULL, NULL};
     for (int i = 0; i < avail.size(); ++i) {
         //if (profit[i] - Capital[i] > best.second) {
-        if (profit[i] > best.second) {
+        ///可以取等号
+        if (profit[i] >= best.second) {
             best = {avail[i], profit[i]};
         }
         cout << "passed in line 1681" << endl;
     }
     return best.first;
+}
+
+int IPO_502_solution::findMaxCapital2(int k, int w, vector<int> &prifit, vector<int> &Capital) {
+    struct comp1 {
+        ///小顶堆
+        bool operator()(const pair<int, int> &a, const pair<int, int> &b) {
+            return a.first < b.first;
+        } 
+    };
+    struct comp2 {
+        ///小顶堆
+        bool operator()(const pair<int, int> &a, const pair<int, int> &b) {
+            return a.second > b.second;
+        } 
+    };
+    ///{prifit[i], Capital[i]}
+    priority_queue<pair<int, int>, vector<pair<int, int>>, comp1> avail;
+    priority_queue<pair<int, int>, vector<pair<int, int>>, comp2> not_start;
+    for (int i = 0; i < Capital.size(); ++i) {
+        if (Capital[i] <= w) {
+            avail.push({prifit[i], Capital[i]});
+        } else {
+            not_start.push({prifit[i], Capital[i]});
+        }
+    }
+    int index = 0;
+    while(!avail.empty() && index++ != k) {
+        pair<int, int> tmp = avail.top();
+        w = w + tmp.first;
+        //index ++;
+        avail.pop();
+        while(!not_start.empty()) {
+            tmp = not_start.top();
+            ///可以取等号
+            if (tmp.second <= w) {
+                avail.push(tmp);
+                not_start.pop();
+            }
+            else {
+                break;
+            }
+        }
+    }
+    return w;
 }
 
 void CutWord_659_solution::CutWord(vector<int> &nums, vector<vector<int>> &res) {
@@ -1767,4 +1813,65 @@ void CutWord_659_solution::DeleteWord(vector<int> &target, vector<int> temp) {
             }
         }
     }
+}
+
+///前K个高频词，leetcode_692
+vector<string> topKFrequent_692_solution::topKFrequent(vector<string> &words, int k) {
+    vector<string> res;
+    unordered_map<string, int> count;
+    for (auto k: words) {
+        count[k]++;
+    }
+    struct comp {
+        ///小顶堆
+        bool operator()(const pair<string, int> &a, const pair<string, int> &b) {
+            return a.second > b.second;
+        } 
+    };
+    priority_queue<pair<string, int>, vector<pair<string, int>>, comp> queue;
+
+    for (const auto iter: count) {
+        if (queue.size() < k) {
+            queue.push({iter.first, iter.second});
+        }
+        ///比最小的大， 换掉
+        else if (queue.top().second < iter.second) {
+            queue.pop();
+            queue.push({iter.first, iter.second});
+        }
+        //queue.push({iter.first, iter.second});
+    }
+    cout << "the top" << queue.top().first << endl;
+    while (!queue.empty()) {
+        auto top = queue.top();
+        //top为最小值，为了从大到小排列， 采用在begin()前面插入
+        res.insert(res.begin(), top.first);
+        queue.pop();
+    }
+    return res;
+}
+///排序
+vector<string> topKFrequent_692_solution::topKFrequent2(vector<string> &words, int k) {
+    vector<string> res;
+    unordered_map<string, int> count;
+    for (auto k: words) {
+        count[k]++;
+    }
+    ///排序规则
+    auto comp = [](const pair<string, int> &val1, const pair<string, int> &val2) {
+        return val1.second > val2.second;
+    };
+    //将map转化为vector
+    vector<pair<string, int>> string_vector;
+    for (auto iter: count) {
+        string_vector.push_back({iter.first, iter.second});
+    }
+    ///进行排序
+    sort(string_vector.begin(), string_vector.end(), comp);
+    //
+    for (int i = 0; i < k; ++i) {
+        res.push_back(string_vector[i].first);
+    }
+    return res;
+
 }
