@@ -263,3 +263,31 @@ public:
     ///排序
     vector<string> topKFrequent2(vector<string> &words, int k);
 };
+///
+class KthLargest_703_solution {
+public:
+    KthLargest_703_solution(int k, vector<int> &nums);
+    int add(int val);
+private:
+    int kth = 0;
+    vector<int> inter_nums;
+};
+///找出第K小的距离堆对
+class smallestDistancePair_719_solution {
+public:
+    int smallestDistancePair(vector<int> &nums, int k);
+    int smallestDistancePair2(vector<int> &nums, int k);
+};
+
+///网络延迟时间, 从某一点发出信号到所有节点都收到信号，要多长时间， leetcode_743 
+class networkDelayTime_743_solution {
+public:
+    ///N个网络节点1->N, 当前节点为k, 
+    int networkDelayTime(vector<vector<int>> &nums, int N, int k);
+};
+///重构字符串，使得两相邻的字符不同 leetcode_767
+class reorganizeString_767_solution {
+public:
+  string reorganizeString(string S);
+
+};

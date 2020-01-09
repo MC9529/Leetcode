@@ -549,7 +549,7 @@ int main() {
 }
 */
 ////////IPO leetcode_502
-
+/*
 int main() {
   int k = 11, w = 11;
   vector<int> profits = {1, 2, 3};
@@ -561,7 +561,7 @@ int main() {
 
   return 0;
 }
-
+*/
 ///分割数组有连续子序列 leetcode_659
 /*
 int main() {
@@ -598,3 +598,45 @@ int main() {
 }
 */
 
+//////数据流中的第K大元素
+/*
+int main() {
+  vector<int> lists = {4, 5, 8 ,2};
+  int k = 3;
+  KthLargest_703_solution KthLargest(k, lists);
+  KthLargest.add(3);
+  KthLargest.add(5);
+  KthLargest.add(10);
+  KthLargest.add(9);
+
+  return 0;
+}
+*/
+///找出第K小的距离堆对
+/*
+int main() {
+  vector<int> lists = {1, 3, 1, 5};
+  int k = 3;
+  smallestDistancePair_719_solution s1;
+  //s1.smallestDistancePair(lists, k);
+  s1.smallestDistancePair2(lists, k);
+
+  return 0;
+}
+*/
+/////网络延迟时间, 从某一点发出信号到所有节点都收到信号，要多长时间， leetcode_743 
+int main() {
+  vector<vector<int>> list1 = {
+                              {1, 2, 5}, {1, 3, 7}, {1, 4, 8},
+                              {2, 1, 3}, {2, 3, 6}, {2, 4, 8},
+                              {3, 1, 0}, {3, 2, 8}, {3, 4, 10},
+                              {4, 1, 8}, {4, 2, 5}, {4, 3, 10} 
+                              };
+  int N = 4; ///total point
+  int k = 2;  ///start point
+  networkDelayTime_743_solution s1;
+  cout << "the start point: " << k << endl;
+  int res = s1.networkDelayTime(list1, N,  k);
+
+  return 0;
+}

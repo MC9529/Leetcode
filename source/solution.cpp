@@ -1875,3 +1875,113 @@ vector<string> topKFrequent_692_solution::topKFrequent2(vector<string> &words, i
     return res;
 
 }
+//////数据流中的第K大元素
+KthLargest_703_solution::KthLargest_703_solution(int k, vector<int> &nums) {
+    kth = k;
+    inter_nums.assign(nums.begin(), nums.end());
+}
+//////数据流中的第K大元素
+int KthLargest_703_solution::add(int val) {
+    inter_nums.push_back(val);
+    sort(inter_nums.begin(), inter_nums.end(), greater<int>());
+    if (inter_nums.size() < kth) {
+        cout << "the len of nums is less than k" << endl;
+        return 0;
+    }
+    cout << "the kth of nums:" << inter_nums[kth - 1];
+    return inter_nums[kth - 1];
+}
+///找出第K小的距离堆对
+int smallestDistancePair_719_solution::smallestDistancePair(vector<int> &nums, 
+                                                           int k) {
+    vector< pair<pair<int, int>, int> > queue;
+    for (int i = 0; i < nums.size(); ++i) {
+        for (int j = i + 1; j < nums.size(); ++j) {
+            queue.push_back( {{nums[i], nums[j]}, abs(nums[i]- nums[j])} );
+        }
+    }
+
+    auto comp = [](const pair<pair<int, int>, int> &val1, 
+                            const pair<pair<int, int>, int> &val2) {
+        return val1.second < val2.second;
+    };
+
+    sort(queue.begin(), queue.end(), comp);
+    for (int i = 0; i < queue.size(); ++i) {
+        cout <<queue[i].first.first << " " << queue[i].first.second << "->" << 
+             queue[i].second << " " << endl;
+    }
+    cout << endl;
+    int res = queue[k - 1].second;
+    cout << "the kth :" << res << endl;
+    return res;
+                                                            
+}
+
+int smallestDistancePair_719_solution::smallestDistancePair2(vector<int> &nums, 
+                                                           int k) {
+    int res;
+    struct comp {
+        ///小顶堆
+        bool operator()(const pair<pair<int, int>, int> &a, const pair<pair<int, int>, int> &b) {
+            return a.second < b.second;
+        } 
+    };
+    priority_queue< pair<pair<int, int>, int>, vector<pair<pair<int, int>, int>>, comp> queue;
+    for (int i = 0; i < nums.size(); ++i) {
+        for (int j = i + 1; j < nums.size(); ++j) {
+            if (queue.size() < k) {
+                queue.push({{nums[i], nums[j]}, abs(nums[i]- nums[j])});
+            } else if (queue.top().second > abs(nums[i]- nums[j]) ) {
+                queue.pop();
+                queue.push({{nums[i], nums[j]}, abs(nums[i]- nums[j])});
+            }
+        }
+    }
+    res = queue.top().second;
+    cout << "the kth:" << queue.top().second << endl; 
+    while (!queue.empty()) {
+        cout <<queue.top().first.first << " " << queue.top().first.second << "->" << 
+             queue.top().second << " " << endl;
+        queue.pop();
+    }
+    return res;
+}
+
+//网络延迟时间, 从某一点发出信号到所有节点都收到信号，要多长时间， leetcode_743 
+int networkDelayTime_743_solution::networkDelayTime(vector<vector<int>> &nums,
+                                                                 int N, int k) {
+    vector<pair<int, int>> temp;
+    int res;
+    auto comp = [](const pair<int, int>  &val1, const pair<int, int> &val2) {
+        return val1.second > val2.second;
+    };
+
+    for (int i = 0; i < nums.size(); ++i) {
+        if (nums[i][0] == k) {
+            if (nums[i][2] == 0)  {
+                cout << "the time is 0, can not reach!" << "the target point: " << nums[i][1] << endl;
+                return 0;
+            }
+            /// {target, time}
+            temp.push_back({nums[i][1], nums[i][2]});
+        }
+    }
+    sort(temp.begin(),temp.end(), comp); ///默认是less<int>(),从大到小
+    for (int i = 0; i < temp.size(); ++i) {
+        cout << temp[i].second << " ";
+    }
+    cout << endl;
+    res = temp[0].second;
+    cout << "the maxest time:" << res << endl;
+    return res;
+}
+///重构字符串，使得两相邻的字符不同 leetcode_767
+string reorganizeString_767_solution::reorganizeString(string S) {
+    string res;
+    string temp = S;
+    
+
+
+    return res;
+}
