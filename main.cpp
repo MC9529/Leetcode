@@ -625,6 +625,7 @@ int main() {
 }
 */
 /////网络延迟时间, 从某一点发出信号到所有节点都收到信号，要多长时间， leetcode_743 
+/*
 int main() {
   vector<vector<int>> list1 = {
                               {1, 2, 5}, {1, 3, 7}, {1, 4, 8},
@@ -637,6 +638,22 @@ int main() {
   networkDelayTime_743_solution s1;
   cout << "the start point: " << k << endl;
   int res = s1.networkDelayTime(list1, N,  k);
+
+  return 0;
+}
+*/
+
+///格雷编码 leetcode_89
+int main() {
+  grayCode_89_Solution s1;
+  vector<int> res;
+  int n = 3;
+  res = s1.grayCode(n);
+  for (int i = 0; i < res.size(); ++i) {
+    cout << res[i] << " ";
+  }
+  
+  cout << endl;
 
   return 0;
 }

@@ -285,9 +285,11 @@ public:
     ///N个网络节点1->N, 当前节点为k, 
     int networkDelayTime(vector<vector<int>> &nums, int N, int k);
 };
-///重构字符串，使得两相邻的字符不同 leetcode_767
-class reorganizeString_767_solution {
+///格雷编码 leetcode_89
+class grayCode_89_Solution {
 public:
-  string reorganizeString(string S);
-
+    vector<int> grayCode(int n);
+    void DFS(vector<int> &res, vector<int> &temp, int n);
+    void mirror(vector<int> &temp, int n);
+    void Two2Ten(vector<int> &temp, vector<int> &res);
 };

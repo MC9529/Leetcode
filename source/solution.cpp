@@ -1976,12 +1976,53 @@ int networkDelayTime_743_solution::networkDelayTime(vector<vector<int>> &nums,
     cout << "the maxest time:" << res << endl;
     return res;
 }
-///重构字符串，使得两相邻的字符不同 leetcode_767
-string reorganizeString_767_solution::reorganizeString(string S) {
-    string res;
-    string temp = S;
-    
 
+///格雷编码 leetcode_89
+vector<int> grayCode_89_Solution::grayCode(int n) {
+    vector<int> res;
+    vector<int> temp;
+    temp.push_back(0);
+    if (n < 0) {
+        return res;
+    }
+    DFS(res, temp, n);
 
     return res;
+}
+void grayCode_89_Solution::DFS(vector<int> &res, vector<int> &temp, int n) {
+    for (int i = 0; i < n; ++i) {
+        mirror(temp, i);
+    }
+
+    Two2Ten(temp, res);
+    return;
+}
+
+void grayCode_89_Solution::mirror(vector<int> &temp, int n) {
+    for (int i = temp.size() - 1; i >= 0; i--) {
+        ///倒序插入， 需要先在前面加1, 意思是加上一个10^n
+        int res_nums = temp[i] + pow(10, n);
+        temp.push_back(res_nums);
+    }
+    for (int i = 0; i < temp.size(); ++i) {
+        cout << temp[i] << " ";
+    }
+    cout << endl;
+    return;
+}
+
+void grayCode_89_Solution::Two2Ten(vector<int> &temp, vector<int> &res) {
+    for(int i = 0; i < temp.size(); ++i) {
+        int res_temp = temp[i];
+        int res_ten = 0;
+        int count = 0;
+        while(res_temp != 0) {
+            res_ten = (res_temp % 10) * pow(2, count) + res_ten;
+            res_temp = res_temp / 10;
+            count ++;
+        }
+        res.push_back(res_ten);
+    }
+    return;
+
 }
