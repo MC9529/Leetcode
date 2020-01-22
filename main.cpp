@@ -728,6 +728,7 @@ int main () {
   return 0;
 }*/
 ///添加和搜索单词 leetcode_211 回溯算法
+/*
 int main() {
   wordDictionary_211_solution s1;
   s1.addWord("bad");
@@ -735,7 +736,7 @@ int main() {
   s1.addWord("mad");
   s1.search("pad"); 
   cout << "the bool res:" << s1.bool_res << endl;
-  
+
   s1.search("bad");
   cout << "the bool res:" << s1.bool_res << endl;
 
@@ -744,5 +745,22 @@ int main() {
 
   s1.search("b..");
   cout << "the bool res:" << s1.bool_res << endl;
+  return 0;
+}
+*/
+///组合总和 leetcode_216 回溯算法
+int main() {
+  int k = 3; 
+  int n = 9;
+  combinationSum3_216_solution s1;
+  s1.combinationSum3(k, n);
+  for (int i = 0; i < s1.res.size(); ++i) {
+    for (auto iter: s1.res[i]) {
+      cout << iter << " ";
+    }
+    cout << endl;
+  }
+  cout << endl;
+
   return 0;
 }

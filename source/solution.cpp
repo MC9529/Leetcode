@@ -2232,3 +2232,37 @@ bool wordDictionary_211_solution::equi(string s1, string s2) {
     }
     return res_s1_s2;
 }
+
+///组合总和 leetcode_216 回溯算法
+void combinationSum3_216_solution::combinationSum3(int k, int n) {
+    vector<int> temp_res;
+    vector<bool> condibate = {true, true, true, true, true, true, true, true, true};
+    //k: the num   n:the sum
+    int posi = 1;
+    DFS(k, n, temp_res, posi, condibate);
+    return;
+}
+void combinationSum3_216_solution::DFS(int &k, int &n, vector<int> &temp_res, 
+                                                        int &posi, vector<bool> &condibate) {
+    if(temp_res.size() == k) {
+        if (n == 0) res.push_back(temp_res);
+        return;
+    }
+    for (int i = posi; i < 9 && i <= n; ++i) {
+        //可以用于非升序的，除去内容重复
+       // if (condibate[i]) {
+            temp_res.push_back(i);
+            int m = n - i;
+            //n = n - i;
+            //可以确保是升序
+            int next_posi = i + 1;
+            //可以出现很多重复的，但顺序不一样
+            //int next_posi = posi + 1;
+            condibate[i] = false;
+            //posi = posi + 1;
+            DFS(k, m, temp_res, next_posi, condibate);
+            temp_res.pop_back();
+            condibate[i] = true;
+        //}
+    }
+}

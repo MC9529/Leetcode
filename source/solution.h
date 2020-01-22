@@ -331,3 +331,10 @@ public:
     vector<string> res;
     bool bool_res = true;
 };
+///组合总和 leetcode_216 回溯算法
+class combinationSum3_216_solution {
+public:
+    void combinationSum3(int k, int n);
+    void DFS(int &k, int &n, vector<int> &temp_res, int &posi, vector<bool> &condibate);
+    vector<vector<int>> res;
+};
