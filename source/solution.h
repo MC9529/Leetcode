@@ -293,3 +293,25 @@ public:
     void mirror(vector<int> &temp, int n);
     void Two2Ten(vector<int> &temp, vector<int> &res);
 };
+//复原ip地址 leetcode_93
+class restoreIpAddresses_93_Solution {
+public:
+    vector<string> restoreIpAddresses(string s);
+    void DFS(vector<string> &res, int n, string s, string temp);
+};
+///单词接龙 leetcode_126
+class findLadders_126_Solution {
+public:
+    vector<vector<string>> findLadders(string beginWord, string endWord, vector<string>& wordList);
+    void DFS(int &i, string endWord, vector<string>& wordList, vector<vector<string>> &res, 
+                                                                        vector<string> &temp);
+    bool next_string(vector<string> &temp, string condibate);
+};
+
+///分割回文串 leetcode_131
+class partition_131_solution {
+public:
+    vector<vector<string>> partition(string s);
+    void DFS(string s, vector<string> &temp, vector<vector<string>> &res, int &posi);
+    bool IsPartition(string part);
+};

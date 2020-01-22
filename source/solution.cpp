@@ -8,6 +8,8 @@
 #include <queue>
 #include <unordered_map>
 #include <map>
+#include <cstring>
+#include <stdlib.h>
 using namespace std;
 
 ///回溯算法
@@ -2025,4 +2027,149 @@ void grayCode_89_Solution::Two2Ten(vector<int> &temp, vector<int> &res) {
     }
     return;
 
+}
+//复原ip地址， leetcode_93
+vector<string> restoreIpAddresses_93_Solution ::restoreIpAddresses(string s) {
+    vector<string> res;
+    string temp;
+    DFS(res, 0, s, temp);
+
+    return res;
+ }
+void restoreIpAddresses_93_Solution::DFS(vector<string> &res, int n, 
+            string s, string temp) {
+    //已经有了四次
+    if (n == 4) {
+        if (s.empty()) res.push_back(temp);
+    } else {
+        //可以向后移动3个位置
+        for (int k = 0; k < 4; ++k) {
+            if (s.size() < k) break;
+            //int val = stoi(s.substr(0, k));
+            //cout << "the type :" << typeid(s.substr(0, k));
+            string str_k = s.substr(0, k);
+            ///atoi（）的变量需要为const,  所以调用c_str, 
+            int val = atoi(str_k.c_str());
+            if (val > 255 || k != to_string(val).size()) continue;
+            ///(n == 3 ? "" : ".") 最后一位不用“.”
+            DFS(res, n + 1, s.substr(k), temp + s.substr(0, k) + (n == 3 ? "" : "."));
+        }
+    }
+    return;
+}
+///单词接龙 leetcode_126
+vector<vector<string>> findLadders_126_Solution::findLadders(string beginWord, string endWord, 
+             vector<string>& wordList) {
+    vector<vector<string>> res;
+    vector<string> temp;
+    vector<string>::iterator iter, iter1;
+    iter = find(wordList.begin(), wordList.end(), beginWord);
+    iter1 = find(wordList.begin(), wordList.end(), endWord);
+    //if (iter != wordList.end() && iter1 != wordList.end()) {
+    temp.push_back(beginWord);
+    int n = 0;
+    DFS(n, endWord, wordList, res, temp);
+
+    for (int i = 0; i < temp.size(); ++i) {
+            cout << temp[i] << " ";
+    }
+    cout << endl;
+    return res;
+}
+
+void findLadders_126_Solution::DFS(int &i, string endWord, 
+                    vector<string>& wordList, vector<vector<string>> &res, vector<string> &temp) {
+    if (temp[temp.size() - 1] == endWord) {
+        res.push_back(temp);
+        temp.clear();
+        return;
+    }
+    if (i > wordList.size() - 1) {
+        return;
+    }
+    bool next = next_string(temp, wordList[i]);
+    if (next == true) {
+        int j = i + 1;
+         ///不压入当前的元素， 继续搜索
+        //DFS(j, endWord, wordList, res, temp);
+        temp.push_back(wordList[i]);
+        ///压入当前元素， 继续搜索
+        DFS(j, endWord, wordList, res, temp);
+        cout << " pass in 2103" << endl;
+    } else {
+        int k = i + 1;
+        DFS(k, endWord, wordList, res, temp);
+    }
+
+    for (int i = 0; i < temp.size(); ++i) {
+        cout << temp[i] << " ";
+    }
+    cout << endl;
+        //temp.pop_back();
+    cout << "pass in 2115" << endl;
+    return;
+}
+
+bool findLadders_126_Solution::next_string(vector<string> &temp, string condibate) {
+    string top = temp[temp.size() - 1];
+    int cout = 0;
+    for (int i = 0; i < condibate.size(); ++i) {
+        if (top[i] != condibate[i]) {
+            cout++;
+        }
+    }
+    //cout << " pass in 2108" << endl;
+    if (cout == 1) {
+        return true;
+    }
+    return false;
+}
+///分割回文串 leetcode_131
+vector<vector<string>> partition_131_solution::partition(string s) {
+    vector<vector<string>> res;
+    vector<string> temp;
+    int posi = 0;
+    DFS(s, temp, res, posi);
+
+    return res;
+
+}
+
+void partition_131_solution::DFS(string s, vector<string> &temp, vector<vector<string>> &res, 
+                                                                                 int &posi) {
+    if (posi > s.size() - 1) {
+        cout << posi << endl;
+        res.push_back(temp);
+        /*
+        for (int i = 0; i < temp.size(); ++i) {
+            cout << temp[i] << " ";
+        }
+        cout << endl;
+        */
+        temp.clear();
+        return;
+    }
+    ///可以切分的位置
+    for (int i = posi + 1; i <= s.size(); ++i) {
+        //切割取下字符
+        string str_k = s.substr(posi, i - posi);
+        cout << str_k << endl;
+        bool bool_res = IsPartition(str_k);
+        if (bool_res) {
+            //cout << str_k << endl;
+            temp.push_back(str_k);
+            int next_posi = i;
+            DFS(s, temp, res, next_posi);
+        }
+    }
+}
+///判断是否为回文字符
+bool partition_131_solution::IsPartition(string part) {
+    int len = part.size();
+    for (int i = 0; i <= len/2 - 1; ++i) {
+        if (part[i] != part[len - 1 - i]) {
+            return false;
+        }
+    }
+    return true;
 }

@@ -644,6 +644,7 @@ int main() {
 */
 
 ///格雷编码 leetcode_89
+/*
 int main() {
   grayCode_89_Solution s1;
   vector<int> res;
@@ -657,3 +658,55 @@ int main() {
 
   return 0;
 }
+*/
+//复原ip地址 leetcode_93
+/*
+int main() {
+  restoreIpAddresses_93_Solution s1;
+  vector<string> res;
+  string ip_str = "25525511135";
+  res = s1.restoreIpAddresses(ip_str);
+  for (int i = 0; i < res.size(); ++i) {
+    cout << res[i] << " ";
+  }
+  cout << endl;
+
+  return 0;
+}
+*/
+//单词接龙 leetcode_126
+/*
+int main() {
+  vector<vector<string>> res;
+  string beginWord = "hit";
+  string endWord = "cog";
+  vector<string> wordList = {"hot","dot","dog","lot","log","cog"};
+  findLadders_126_Solution s1;
+  res = s1.findLadders(beginWord, endWord, wordList);
+  for (int i = 0; i < res.size(); ++i) {
+    for (auto iter: res[i]) {
+      cout << iter << " ";
+    }
+  }
+  cout << endl;
+
+  return 0;
+}*/
+///分割回文串 leetcode_131 
+int main() { 
+  string s = "aab";
+  partition_131_solution s1;
+  vector<vector<string>> res = s1.partition(s);
+  cout << "the res:" << endl;
+  for (int i = 0; i < res.size(); ++i) {
+    for (auto iter: res[i]) {
+      cout << iter << " ";
+    }
+    cout << endl;
+  }
+  cout << endl;
+
+  return 0;
+}
+
+
