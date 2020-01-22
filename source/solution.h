@@ -285,7 +285,7 @@ public:
     ///N个网络节点1->N, 当前节点为k, 
     int networkDelayTime(vector<vector<int>> &nums, int N, int k);
 };
-///格雷编码 leetcode_89
+///格雷编码 leetcode_89 回溯算法
 class grayCode_89_Solution {
 public:
     vector<int> grayCode(int n);
@@ -293,13 +293,13 @@ public:
     void mirror(vector<int> &temp, int n);
     void Two2Ten(vector<int> &temp, vector<int> &res);
 };
-//复原ip地址 leetcode_93
+//复原ip地址 leetcode_93 回溯算法
 class restoreIpAddresses_93_Solution {
 public:
     vector<string> restoreIpAddresses(string s);
     void DFS(vector<string> &res, int n, string s, string temp);
 };
-///单词接龙 leetcode_126
+///单词接龙 leetcode_126 回溯算法
 class findLadders_126_Solution {
 public:
     vector<vector<string>> findLadders(string beginWord, string endWord, vector<string>& wordList);
@@ -308,17 +308,26 @@ public:
     bool next_string(vector<string> &temp, string condibate);
 };
 
-///分割回文串 leetcode_131
+///分割回文串 leetcode_131 回溯算法
 class partition_131_solution {
 public:
     vector<vector<string>> partition(string s);
     void DFS(string s, vector<string> &temp, vector<vector<string>> &res, int &posi);
     bool IsPartition(string part);
 };
-//单词拆分 leetcode_140 
+//单词拆分 leetcode_140  回溯算法
 class wordBreak_140_solution {
 public:
     void wordBreak(string s, vector<string> &wordDict);
     void DFS(string s, vector<string> &wordDict, int &posi, vector<string> &temp_res);
     vector<vector<string>> res;
+};
+///添加和搜索单词 leetcode_211 回溯算法
+class wordDictionary_211_solution {
+public:
+    void addWord(string s);
+    void search(string s);
+    bool equi(string s1, string s2);
+    vector<string> res;
+    bool bool_res = true;
 };

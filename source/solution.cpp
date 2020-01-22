@@ -2198,3 +2198,37 @@ void wordBreak_140_solution::DFS(string s, vector<string> &wordDict, int &posi,
         }
     }
 }
+///添加和搜索单词 leetcode_211 回溯算法
+void wordDictionary_211_solution::addWord(string s) {
+    res.push_back(s);
+    return;
+}
+void wordDictionary_211_solution::search(string s) {
+    //int len = s.size();
+    bool_res = true;
+    bool res_temp;
+    for (int i = 0; i < res.size(); ++i) {
+        string temp = res[i];
+        res_temp = true;
+        res_temp = equi(s, res[i]);
+        //cout << "the res_temp: " << res_temp << endl;
+        if (res_temp) {
+            break;
+        }
+    }
+    bool_res = res_temp;
+    return;
+}
+///s1:the string to be search  s2: the string from res;
+bool wordDictionary_211_solution::equi(string s1, string s2) {
+    bool res_s1_s2 = true;
+    for (int i = 0; i < s1.size(); ++i) {
+        if ('a' <= s1[i] && s1[i] <= 'z') {
+            //cout << "the s1[i]: " << s1[i] << " " << "the s2[[i]: " << s2[i] << endl;
+            if (s1[i] != s2[i]) {
+                res_s1_s2 = false;
+            }
+        }
+    }
+    return res_s1_s2;
+}

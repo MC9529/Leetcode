@@ -711,6 +711,7 @@ int main() {
 }
 */
 //单词拆分 leetcode_140
+/*
 int main () {
   string s = "catsanddog";
   vector<string> wordDict = {"cat", "cats", "and", "sand", "dog"};
@@ -724,5 +725,24 @@ int main () {
   }
   cout << endl;
 
+  return 0;
+}*/
+///添加和搜索单词 leetcode_211 回溯算法
+int main() {
+  wordDictionary_211_solution s1;
+  s1.addWord("bad");
+  s1.addWord("dad");
+  s1.addWord("mad");
+  s1.search("pad"); 
+  cout << "the bool res:" << s1.bool_res << endl;
+  
+  s1.search("bad");
+  cout << "the bool res:" << s1.bool_res << endl;
+
+  s1.search(".ad"); 
+  cout << "the bool res:" << s1.bool_res << endl;
+
+  s1.search("b..");
+  cout << "the bool res:" << s1.bool_res << endl;
   return 0;
 }
