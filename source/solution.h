@@ -315,3 +315,10 @@ public:
     void DFS(string s, vector<string> &temp, vector<vector<string>> &res, int &posi);
     bool IsPartition(string part);
 };
+//单词拆分 leetcode_140 
+class wordBreak_140_solution {
+public:
+    void wordBreak(string s, vector<string> &wordDict);
+    void DFS(string s, vector<string> &wordDict, int &posi, vector<string> &temp_res);
+    vector<vector<string>> res;
+};

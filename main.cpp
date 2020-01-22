@@ -693,8 +693,9 @@ int main() {
   return 0;
 }*/
 ///分割回文串 leetcode_131 
+/*
 int main() { 
-  string s = "aab";
+  string s = "aba";
   partition_131_solution s1;
   vector<vector<string>> res = s1.partition(s);
   cout << "the res:" << endl;
@@ -708,5 +709,20 @@ int main() {
 
   return 0;
 }
+*/
+//单词拆分 leetcode_140
+int main () {
+  string s = "catsanddog";
+  vector<string> wordDict = {"cat", "cats", "and", "sand", "dog"};
+  wordBreak_140_solution s1;
+  s1.wordBreak(s, wordDict);
+  for (int i = 0; i < s1.res.size(); ++i) {
+    for (auto iter: s1.res[i]) {
+      cout << iter << " ";
+    }
+    cout << endl;
+  }
+  cout << endl;
 
-
+  return 0;
+}

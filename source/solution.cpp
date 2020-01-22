@@ -2173,3 +2173,28 @@ bool partition_131_solution::IsPartition(string part) {
     }
     return true;
 }
+//单词拆分 leetcode_140 
+void wordBreak_140_solution::wordBreak(string s, vector<string> &wordDict) {
+    vector<string> temp_res;
+    int posi = 0;
+    DFS(s, wordDict, posi, temp_res);
+
+    return;
+}
+void wordBreak_140_solution::DFS(string s, vector<string> &wordDict, int &posi, 
+                                                      vector<string> &temp_res) {
+    if (posi > s.size() - 1) {
+        res.push_back(temp_res);
+        temp_res.clear();
+        return;
+    }
+    for (int i = 0; i < wordDict.size(); ++i) {
+        int len = wordDict[i].size();
+        string str_k = s.substr(posi, len);
+        if (str_k == wordDict[i]) {
+            temp_res.push_back(str_k);
+            int next_posi = posi + len;
+            DFS(s, wordDict, next_posi, temp_res);
+        }
+    }
+}
