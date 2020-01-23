@@ -338,3 +338,10 @@ public:
     void DFS(int &k, int &n, vector<int> &temp_res, int &posi, vector<bool> &condibate);
     vector<vector<int>> res;
 };
+/// 累加数 leetcode_306 
+class isAdditiveNumber_306_solution {
+public:
+    bool isAdditiveNumber(string num);
+    void DFS(string s, bool &res, int &posi, vector<int> &temp_num, 
+                                   vector<vector<int>> &temp_total);
+};

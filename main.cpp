@@ -749,6 +749,7 @@ int main() {
 }
 */
 ///组合总和 leetcode_216 回溯算法
+/*
 int main() {
   int k = 3; 
   int n = 9;
@@ -761,6 +762,15 @@ int main() {
     cout << endl;
   }
   cout << endl;
+
+  return 0;
+}*/
+/// 累加数 leetcode_306 
+int main() {
+  string s = "1235813";
+  string s1 = "199100199";
+  isAdditiveNumber_306_solution solu;
+  solu.isAdditiveNumber(s);
 
   return 0;
 }

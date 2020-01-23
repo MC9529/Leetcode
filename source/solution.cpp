@@ -2266,3 +2266,46 @@ void combinationSum3_216_solution::DFS(int &k, int &n, vector<int> &temp_res,
         //}
     }
 }
+/// 累加数 leetcode_306 
+bool isAdditiveNumber_306_solution::isAdditiveNumber(string num) {
+    bool res = false;
+    vector<int> temp_num;
+    vector<vector<int>> temp_total;
+    int posi = 0;
+    DFS(num, res, posi, temp_num, temp_total);
+    for (int i = 0; i < temp_total.size(); ++i) {
+        for (auto iter: temp_total[i]) {
+            cout << iter << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+
+    return res;
+}
+void isAdditiveNumber_306_solution::DFS(string s, bool &res, int &posi, vector<int> &temp_num, 
+                                                            vector<vector<int>> &temp_total) {
+    if (posi > s.size() - 1 && temp_num.size() >= 3) {
+        temp_total.push_back(temp_num);
+        res = true;
+        return;
+    }
+    for (int i = posi + 1; i <= s.size(); ++i) {
+        string str_k = s.substr(posi, i - posi);
+        int val = atoi(str_k.c_str());
+        //cout << "the val in 2296: " << val << endl;
+        //判断最新两位数是否相等
+        if ((temp_num.size() >= 2 && temp_num[temp_num.size() - 1] + temp_num[temp_num.size() - 2] 
+                      == val) || temp_num.size() <= 1) {
+            temp_num.push_back(val);
+            int next_posi = i;
+
+            DFS(s, res, next_posi, temp_num, temp_total);
+            temp_num.pop_back();
+        }
+        if (temp_num.size() >=2 && (temp_num[temp_num.size() - 1] + temp_num[temp_num.size() - 2]  
+                                                 != val)) {
+            continue;
+        }
+    }
+}
