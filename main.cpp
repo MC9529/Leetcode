@@ -776,7 +776,8 @@ int main() {
   return 0;
 }
 */
-
+//优美的排列 leetcode_526
+/*
 int main() {
   int n = 3;
   countArrangement_526_solution s1;
@@ -789,5 +790,20 @@ int main() {
   }
   cout << endl;
 
+  return 0;
+}
+*/
+//字母大小写全排列 leetcode_784
+
+int main() {
+  string s = "c1b2";
+  string s1 = "12345";
+  string s2 = "9A2g9Bb";
+  letterCasePermutation_784_solution solu;
+  solu.letterCasePermutation(s2);
+  for (auto iter: solu.res) {
+    cout << iter << " ";
+  }
+  cout << endl;
   return 0;
 }

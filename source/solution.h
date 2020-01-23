@@ -345,11 +345,17 @@ public:
     void DFS(string s, bool &res, int &posi, vector<int> &temp_num, 
                                    vector<vector<int>> &temp_total);
 };
-//优美的排列
+//优美的排列 leetcode_526
 class countArrangement_526_solution {
 public:
     int count(int n);
     void DFS(vector<int> &temp, int n, vector<bool> &used);
     vector<vector<int>> res;
 };
-
+//字母大小写全排列 leetcode_784
+class letterCasePermutation_784_solution {
+public:
+    void letterCasePermutation(string s);
+    void DFS(string s, int &posi);
+    vector<string> res;
+};

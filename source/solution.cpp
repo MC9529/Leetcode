@@ -2309,7 +2309,7 @@ void isAdditiveNumber_306_solution::DFS(string s, bool &res, int &posi, vector<i
         }
     }
 }
-
+//优美的排列 leetcode_526
 int countArrangement_526_solution::count(int n) {
     vector<int> temp;
     vector<bool> used(n, false);
@@ -2335,6 +2335,59 @@ void countArrangement_526_solution::DFS(vector<int> &temp, int n, vector<bool> &
         } else if (used[i] == true || (i % (len + 1) != 0 && (len + 1) % i != 0)) {
             continue;
         }
+    }
+}
+///字母大小写全排列 leetcode_784
+void letterCasePermutation_784_solution::letterCasePermutation(string s) {
+    string temp;
+    res.push_back(s);
+    int posi = 0;
+    DFS(s, posi);
+    return;
+}
+void letterCasePermutation_784_solution::DFS(string s, int &posi) {
+    if (posi > s.size() - 1) {
+        return;
+    }
+    if (s[posi] <= 'z' && s[posi] >= 'a') {
+        if (res.size() == 1) {
+        //res.push_back(s);
+        string temp = s;
+        char temp_posi = s[posi] - 32;
+        temp[posi] = temp_posi;
+        res.push_back(temp);
+        } else {
+            int len = res.size();
+            for (int i = 0; i < len; ++i) {
+                char temp_posi = s[posi] - 32;
+                string temp = res[i];
+                temp[posi] = temp_posi;
+                res.push_back(temp);
+            }
+        }
+        int next_posi = posi + 1;
+        DFS(s, next_posi);
+    } else if (s[posi] <= 'Z' && s[posi] >= 'A') {
+        if (res.size() == 1) {
+        //res.push_back(s);
+        char temp_posi = s[posi] + 32;
+        string temp = s;
+        temp[posi] = temp_posi;
+        res.push_back(temp);
+        } else {
+            int len = res.size();
+            for (int i = 0; i < len; ++i) {
+                string temp = res[i];
+                char temp_posi = s[posi] + 32;
+                temp[posi] = temp_posi;
+                res.push_back(temp);
+            }
+        }
+        int next_posi = posi + 1;
+        DFS(s, next_posi);
+    } else {
+        int next_posi = posi + 1;
+        DFS(s, next_posi);
     }
 
 }
