@@ -2309,3 +2309,32 @@ void isAdditiveNumber_306_solution::DFS(string s, bool &res, int &posi, vector<i
         }
     }
 }
+
+int countArrangement_526_solution::count(int n) {
+    vector<int> temp;
+    vector<bool> used(n, false);
+    int posi = 0;
+    DFS(temp, n, used);
+
+    return res.size();
+}
+void countArrangement_526_solution::DFS(vector<int> &temp, int n, vector<bool> &used) {
+    if (temp.size() == n) {
+        res.push_back(temp);
+        return;
+    }
+    for (int i = 1; i <= n; ++i) {
+        int len = temp.size();
+        if ((i % (len + 1) == 0|| (len + 1) % i == 0) && used[i] == false) {
+            temp.push_back(i);
+            used[i] = true;
+            //int next_posi = posi + 1;
+            DFS(temp, n, used);
+            temp.pop_back();
+            used[i] = false;
+        } else if (used[i] == true || (i % (len + 1) != 0 && (len + 1) % i != 0)) {
+            continue;
+        }
+    }
+
+}

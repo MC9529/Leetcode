@@ -345,3 +345,11 @@ public:
     void DFS(string s, bool &res, int &posi, vector<int> &temp_num, 
                                    vector<vector<int>> &temp_total);
 };
+//优美的排列
+class countArrangement_526_solution {
+public:
+    int count(int n);
+    void DFS(vector<int> &temp, int n, vector<bool> &used);
+    vector<vector<int>> res;
+};
+

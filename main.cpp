@@ -766,11 +766,28 @@ int main() {
   return 0;
 }*/
 /// 累加数 leetcode_306 
+/*
 int main() {
   string s = "1235813";
   string s1 = "199100199";
   isAdditiveNumber_306_solution solu;
   solu.isAdditiveNumber(s);
+
+  return 0;
+}
+*/
+
+int main() {
+  int n = 3;
+  countArrangement_526_solution s1;
+  s1.count(n);
+  for (int i = 0; i < s1.res.size(); ++i) {
+    for (auto iter: s1.res[i]) {
+      cout << iter << " ";
+    }
+    cout << endl;
+  }
+  cout << endl;
 
   return 0;
 }
