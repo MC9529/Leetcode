@@ -794,7 +794,7 @@ int main() {
 }
 */
 //字母大小写全排列 leetcode_784
-
+/*
 int main() {
   string s = "c1b2";
   string s1 = "12345";
@@ -803,6 +803,20 @@ int main() {
   solu.letterCasePermutation(s2);
   for (auto iter: solu.res) {
     cout << iter << " ";
+  }
+  cout << endl;
+  return 0;
+}*/
+///将数组拆分成斐波那契序列 leetcode_842
+int main() {
+  string s = "123456579";
+  splitIntoFibonacci_842_solution solu;
+  solu.splitIntoFibonacci(s);
+  for (int i = 0; i < solu.res.size(); ++i) {
+    for(auto iter: solu.res[i]) {
+      cout << iter << " ";
+    }
+    cout << endl;
   }
   cout << endl;
   return 0;

@@ -359,3 +359,10 @@ public:
     void DFS(string s, int &posi);
     vector<string> res;
 };
+///将数组拆分成斐波那契序列 leetcode_842
+class splitIntoFibonacci_842_solution {
+public:
+   void splitIntoFibonacci(string s);
+   void DFS(string s, vector<int> &temp, int &posi);
+   vector<vector<int>> res;
+};

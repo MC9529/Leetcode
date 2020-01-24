@@ -2350,6 +2350,7 @@ void letterCasePermutation_784_solution::DFS(string s, int &posi) {
         return;
     }
     if (s[posi] <= 'z' && s[posi] >= 'a') {
+        ///第一次进入需要改变大小写，大改小， 小改大
         if (res.size() == 1) {
         //res.push_back(s);
         string temp = s;
@@ -2357,6 +2358,7 @@ void letterCasePermutation_784_solution::DFS(string s, int &posi) {
         temp[posi] = temp_posi;
         res.push_back(temp);
         } else {
+            //第二次 只需要在原来的res的基础上， 将该位置大改小， 小改大
             int len = res.size();
             for (int i = 0; i < len; ++i) {
                 char temp_posi = s[posi] - 32;
@@ -2390,4 +2392,32 @@ void letterCasePermutation_784_solution::DFS(string s, int &posi) {
         DFS(s, next_posi);
     }
 
+}
+///将数组拆分成斐波那契序列 leetcode_842
+void splitIntoFibonacci_842_solution::splitIntoFibonacci(string s) {
+    vector<int> temp;
+    int posi = 0;
+    DFS(s, temp, posi);
+    
+    return;
+}
+void splitIntoFibonacci_842_solution::DFS(string s,vector<int> &temp, int &posi) {
+    if (posi > s.size() - 1 && temp.size() >= 3 ) {
+        res.push_back(temp);
+        return;
+    }
+    for (int i = posi + 1; i <= s.size(); ++i) {
+        string str_k = s.substr(posi, i - posi);
+        int val = atoi(str_k.c_str());
+        if ((temp.size() >=2 && (temp[temp.size() - 1] + temp[temp.size() -2] == val)) 
+                                                                    || temp.size() <=1) {
+            temp.push_back(val);
+            int next_posi = i;
+            DFS(s, temp, next_posi);
+            temp.pop_back();
+        } else if (temp.size() >=2 && (temp[temp.size() - 1] + temp[temp.size() - 2] 
+                                                                            != val)) {
+            continue;
+        }
+    }
 }
