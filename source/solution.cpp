@@ -2421,3 +2421,83 @@ void splitIntoFibonacci_842_solution::DFS(string s,vector<int> &temp, int &posi)
         }
     }
 }
+//不同路径3 leetcode_980 
+void uniquePaths3_980_solution::uniquePaths3(vector<vector<int>> &grid) {
+    pair<int, int> start_point;
+    vector<vector<bool>> used;
+
+    vector<bool> temp_used;
+    for (int i = 0; i < grid.size(); ++i) {
+        for (int j = 0; j < grid[0].size(); ++j) {
+            if (grid[i][j] == 1) {
+                //寻找起始点
+                start_point = {i, j};
+            } else if (grid[i][j] == -1) {
+                //计算障碍点的个数
+                obstacle_nums ++;
+            }
+            temp_used.push_back(false);
+        }
+        //设置一个flag,标明该点有没有被使用
+        used.push_back(temp_used);
+    }
+    //起始点被使用
+    used[start_point.first][start_point.second] = true;
+    res.push_back(start_point);
+    DFS(grid, start_point, used);
+    return;
+
+}
+void uniquePaths3_980_solution::DFS(vector<vector<int>> &grid, pair<int, int> &current_point, 
+                              vector<vector<bool>> &used) {
+    //如果res的个数达到可以行动的个数，且最后一个点为终点2,终止
+    if (res.size() == grid.size() * grid[0].size() - obstacle_nums && 
+        grid[res[res.size() - 1].first][res[res.size() - 1].second] == 2) {
+        total_res.push_back(res);
+        return;
+    }
+    vector<pair<int, int>> validPaths;
+    cout << "the current posi:" << current_point.first << "-" << current_point.second << endl;
+    //寻找可以行进的点
+    validPath(current_point, grid, used, validPaths);
+
+    for (auto iter: validPaths) {
+        cout << iter.first << "-" << iter.second << " ";
+    }
+
+    cout << endl;
+    for (int i = 0; i < validPaths.size(); ++i) {
+        int x = validPaths[i].first;
+        int y = validPaths[i].second;
+        //判断该点可以行进，且还没被使用
+        if (used[x][y] == false && grid[x][y] != -1) {
+            res.push_back({x, y});
+            used[x][y] = true;
+            pair<int, int> next_point = {x, y};
+            vector< pair<int, int>> temp_validPaths;
+            DFS(grid, next_point, used);
+            //弹出，且used = false, 使用下一个validPaths 点进行
+            res.pop_back();
+            used[x][y] = false;
+        }
+    }
+}
+void uniquePaths3_980_solution::validPath(pair<int, int> point, vector<vector<int>> &grid, 
+                          vector<vector<bool>> &used, vector<pair<int, int>> &validPaths) {
+    int x = point.first;
+    int y = point.second;
+    cout << "the x in 2481:" << x << endl;
+    cout << "the y in 2482:" << y << endl;
+    ///
+    for (int j = -1; j < 2; j = j + 2) {
+        if (y + j < grid[0].size() && y + j >= 0 && used[x][y + j] == false) {
+            validPaths.push_back({x, y + j});
+        }
+    }
+    for (int i = -1; i < 2; i = i + 2) {
+        if (x + i < grid.size() && x + i >= 0 && used[x + i][y] == false) {
+            validPaths.push_back({x + i, y});
+        }
+    }
+    return;
+}

@@ -808,6 +808,7 @@ int main() {
   return 0;
 }*/
 ///将数组拆分成斐波那契序列 leetcode_842
+/*
 int main() {
   string s = "123456579";
   splitIntoFibonacci_842_solution solu;
@@ -815,6 +816,25 @@ int main() {
   for (int i = 0; i < solu.res.size(); ++i) {
     for(auto iter: solu.res[i]) {
       cout << iter << " ";
+    }
+    cout << endl;
+  }
+  cout << endl;
+  return 0;
+}
+*/
+//不同路径3 leetcode_980
+int main() {
+  vector<vector<int>> grid = { {1, 0, 0, 0}, 
+                               {0, 0, 0, 0}, 
+                               {0, 0, 0, 2},
+                             };
+  uniquePaths3_980_solution solu;
+  solu.uniquePaths3(grid);
+  cout << "the res :" << endl;
+  for (int i = 0; i < solu.total_res.size(); ++i) {
+    for (auto iter: solu.total_res[i]) {
+      cout << iter.first << "-" << iter.second << " ";
     }
     cout << endl;
   }

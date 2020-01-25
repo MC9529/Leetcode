@@ -366,3 +366,16 @@ public:
    void DFS(string s, vector<int> &temp, int &posi);
    vector<vector<int>> res;
 };
+//不同路径3 leetcode_980 
+class uniquePaths3_980_solution {
+public:
+    void uniquePaths3(vector<vector<int>> &grid);
+    void DFS(vector<vector<int>> &grid, pair<int, int> &current_point, 
+            vector<vector<bool>> &used);
+
+    void validPath(pair<int, int> point, vector<vector<int>> &grid, 
+                   vector<vector<bool>> &used, vector<pair<int, int>> &validPaths);
+    vector< vector<pair<int, int>> > total_res;
+    vector<pair<int, int>> res;
+    int obstacle_nums = 0;
+};
