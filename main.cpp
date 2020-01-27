@@ -824,6 +824,7 @@ int main() {
 }
 */
 //不同路径3 leetcode_980
+/*
 int main() {
   vector<vector<int>> grid = { {1, 0, 0, 0}, 
                                {0, 0, 0, 0}, 
@@ -841,3 +842,57 @@ int main() {
   cout << endl;
   return 0;
 }
+*/
+//正方形数组的数目 leetcode_996
+/*
+int main() {
+  vector<int> grid = {1, 8, 17};
+  numSquareFulPerms_996_solution solu;
+  solu.numSquareFulPerms(grid);
+  cout << "the res :" << endl;
+  for (int i = 0; i < solu.total_res.size(); ++i) {
+    for (auto iter: solu.total_res[i]) {
+      cout << iter << " ";
+    }
+    cout << endl;
+  }
+  cout << endl;
+  return 0;
+}
+*/
+//不同的二叉搜索树2
+/*
+int main() {
+  int n = 3;
+  generateTrees_96_solution solu;
+  vector<TreeNode*> res = solu.generateTrees(n);
+  cout <<"the size :" << res.size() << endl;
+  for (auto iter: res) {
+    solu.print(iter);
+    cout << endl;
+  }
+  cout << endl;
+
+  return 0;
+}
+*/
+int main() {
+  vector<vector<char>> board = { {'x', 'x', 'x', 'x'}, 
+                               {'x', 'o', 'o', 'x'}, 
+                               {'x', 'x', 'o', 'x'},
+                               {'x', 'o', 'x', 'x'}};
+  solve_130_solution solu;
+  //flag: 1-> DFS 递归     2-> DFS 非递归    3-> BFS 递归  4-> BFS  非递归
+  int flag = 3;
+  //solu.solve(board, flag);
+  solu.solve_union(board);
+  for (int i = 0; i < board.size(); ++i) {
+    for (int j = 0; j < board[i].size(); ++j) {
+      cout << board[i][j] << " ";
+    }
+    cout << endl;
+  }
+  cout << endl;
+  return 0;
+}
+

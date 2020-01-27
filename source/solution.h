@@ -379,3 +379,45 @@ public:
     vector<pair<int, int>> res;
     int obstacle_nums = 0;
 };
+///正方形数组的数目 leetcode_996
+class numSquareFulPerms_996_solution {
+public:
+    void numSquareFulPerms(vector<int> &list);
+    void DFS(vector<int> &res, int &posi, vector<bool> &used,
+                                         vector<int> &list);
+    bool IsSquareFulPerms(int val1, int val2);
+    vector<vector<int>> total_res;
+};
+//不同的二叉搜索树2  递归
+struct TreeNode {
+        int val;
+        TreeNode *left;
+        TreeNode *right;
+        TreeNode(int x): val(x), left(NULL), right(NULL){}
+};
+class generateTrees_96_solution {
+public:
+    
+    vector<TreeNode*> getTree(int begin, int end);
+    vector<TreeNode*> generateTrees(int n);
+    void print(TreeNode* root);
+};
+
+///被围绕的区域，leetcode_130
+class solve_130_solution {
+public:
+    void solve(vector<vector<char>> &board, int flag);
+    //深度优先，递归
+    void DFS(vector<vector<char>> &board, int i, int j);
+    //深度优先， 非递归
+    void DFS2(vector<vector<char>> &board, int i, int j);
+    //广度优先 非递归
+    void BFS3(vector<vector<char>> &board, int i, int j);
+    //广度优先，递归
+    void BFS4(vector<vector<char>> &board, int i, int j);
+    //并差集合
+    void solve_union(vector<vector<char>> &board);
+    int node(int i, int j);
+    int row;
+    int col;
+};

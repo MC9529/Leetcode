@@ -2501,3 +2501,300 @@ void uniquePaths3_980_solution::validPath(pair<int, int> point, vector<vector<in
     }
     return;
 }
+//正方形数组的数目 leetcode_996
+void numSquareFulPerms_996_solution::numSquareFulPerms(vector<int> &list) {
+    vector<int> res;
+    vector<bool> used(list.size(), false);
+    int posi = 0;
+
+    DFS(res, posi, used, list);
+    return;
+
+}
+///TODO: the DFS is not ok
+
+void numSquareFulPerms_996_solution::DFS(vector<int> &res, int &posi, vector<bool> &used,
+                                         vector<int> &list) {
+    /*
+    if (res.size() == list.size()) {
+        total_res.push_back(res);
+        cout << "pass in 2518" << endl;
+        return;
+    }
+    cout << "pass in 2520" << endl;
+    for (int i = 0; i < list.size(); ++i) {
+        if (res.size() < 1 && used[i] == false) {
+            res.push_back(list[i]);
+            used[i] = true;
+            DFS(res, posi, used, list);
+
+            cout << "pass in 2524" << endl;
+        } else if (res.size() >= 1 && IsSquareFulPerms(list[i], res[res.size() - 1]) && 
+                                                                       used[i] == false) {
+            res.push_back(list[i]);
+            used[i] = true;
+            int next_posi = posi + 1;
+            cout << "pass in 2534" << endl;
+            DFS(res, next_posi, used, list);
+            cout << "pass in 2529" << endl;
+            res.pop_back();
+            used[i] = false;
+        } else if (res.size() >= 1 && !IsSquareFulPerms(list[i], res[res.size() - 1]) && 
+                                                                      used[i] == false) {
+            //res.clear();
+            cout << "pass in 2541" << endl;
+            continue;
+        }
+    }*/
+
+}
+bool numSquareFulPerms_996_solution::IsSquareFulPerms(int val1, int val2) {
+    int temp = pow(val1, 2) + pow(val2, 2);
+    if (sqrt(temp) == (int)sqrt(temp)) {
+        return true;
+    }
+    return false;
+}
+
+//不同的二叉搜索树2
+
+vector<TreeNode*> generateTrees_96_solution::getTree(int begin, int end) {
+    vector<TreeNode*> res;
+    if (begin > end) {
+        res.push_back(NULL);
+        return res;
+    }
+    for (int i = begin; i <= end; ++i) {
+        vector<TreeNode*> leftNode = getTree(begin, i - 1);
+        vector<TreeNode*> rightNode = getTree(i + 1, end);
+        cout << "pass in 2570" << endl;
+        for(auto left: leftNode) {
+            for (auto right: rightNode) {
+                cout << "pass in 2573" << endl;
+                TreeNode* root = new TreeNode(i);
+                //cout << root->val << " ";
+                root->left = left;
+                root->right = right;
+                res.push_back(root);
+            }
+        }
+    }
+    return res;
+}
+
+vector<TreeNode*> generateTrees_96_solution::generateTrees(int n) {
+    if (n == 0) {
+        return vector<TreeNode*>();
+    }
+    cout << "pass in 2587" << endl;
+    return getTree(1, n);
+}
+
+void generateTrees_96_solution::print(TreeNode* root) {
+    if (root != NULL) {
+        cout << root->val << " ";
+        if (root->left != NULL) {
+           print(root->left);
+        }
+        if (root->right != NULL) {
+            print(root->right);
+        }
+    }
+    return;
+}
+//被围绕的区域，leetcode_130
+void solve_130_solution::solve(vector<vector<char>> &board, int flag) {
+    if (board.size() <= 0) return;
+    int row = board.size();
+    int col = board[0].size();
+    for (int i = 0; i < row; ++i) {
+        for (int j = 0; j < col; ++j) {
+            if ((i == 0 || j == 0 || i == row - 1 || j == col - 1) && board[i][j] == 'o') {
+                if (flag == 1) {
+                    cout << "running in DFS " << endl;
+                    DFS(board, i, j);
+                    
+                } else if (flag == 2) {
+                    cout << "running in DFS2 " << endl;
+                    DFS2(board, i, j);
+                } else if (flag == 3) {
+                    cout << "running in BFS3 " << endl;
+                    BFS3(board, i, j);
+                
+                } else if (flag == 4) {
+                    cout << "running in BFS4 " << endl;
+                    //BFS4(board, i, j);
+                }
+            }
+        }
+    }
+    for (int i = 0; i < row; ++i) {
+        for (int j = 0; j < col; ++j) {
+            if (board[i][j] == 'o') {
+                board[i][j] ='x';
+            }
+            if (board[i][j] == '#') {
+                board[i][j] = 'o';
+            }
+        }
+    }
+    return;
+}
+///递归
+void solve_130_solution::DFS(vector<vector<char>> &board, int i, int j) {
+    if (i < 0 || j < 0 || i >= board.size() || j >= board[0].size() 
+                       || board[i][j] == 'x' || board[i][j] == '#') {
+        //board[i][j] == '#' 已经搜索过
+        return;
+    }
+    board[i][j] = '#';
+    DFS(board, i + 1, j);
+    DFS(board, i - 1, j);
+    DFS(board, i, j + 1);
+    DFS(board, i, j - 1);
+}
+//非递归
+void solve_130_solution::DFS2(vector<vector<char>> &board, int i, int j) {
+    //先进后出
+    stack<pair<int, int>> stack_pair;
+    stack_pair.push({i, j});
+    board[i][j] = '#';
+    while(!stack_pair.empty()) {
+        pair<int, int> current = stack_pair.top();
+        //上
+        if (current.first - 1 >= 0 && board[current.first - 1][current.second] == 'o') {
+            stack_pair.push({current.first - 1, current.second});
+            board[current.first - 1][current.second] = '#';
+            continue;
+        }
+        if (current.first + 1 <= board.size() - 1 && board[current.first + 1][current.second] == 'o') {
+            stack_pair.push({current.first + 1, current.second});
+            board[current.first + 1][current.second] = '#';
+            continue;
+        }
+        if (current.second - 1 >= 0 && board[current.first][current.second - 1] == 'o') {
+            stack_pair.push({current.first, current.second - 1});
+            board[current.first][current.second - 1] = '#';
+            continue;
+        }
+        if (current.second + 1 <= board[0].size() - 1 && board[current.first][current.second + 1] == 'o') {
+            stack_pair.push({current.first, current.second + 1});
+            board[current.first][current.second + 1] = '#';
+            continue;
+        }
+        stack_pair.pop();
+    }
+    return;
+}
+ //广度优先 非递归
+///没有continue,不跳过，在一点的周围搜索完，再继续
+void solve_130_solution::BFS3(vector<vector<char>> &board, int i, int j) {
+    //由stack 改为 queue, 使得先进先出
+    queue<pair<int, int>> queue_pair;
+    queue_pair.push({i, j});
+    board[i][j] = '#';
+    while(!queue_pair.empty()) {
+        pair<int, int> current = queue_pair.front();
+        //上
+        if (current.first - 1 >= 0 && board[current.first - 1][current.second] == 'o') {
+            queue_pair.push({current.first - 1, current.second});
+            board[current.first - 1][current.second] = '#';
+            //continue;
+        }
+        //下
+        if (current.first + 1 <= board.size() - 1 && board[current.first + 1][current.second] == 'o') {
+            queue_pair.push({current.first + 1, current.second});
+            board[current.first + 1][current.second] = '#';
+            //continue;
+        }
+        //左
+        if (current.second - 1 >= 0 && board[current.first][current.second - 1] == 'o') {
+            queue_pair.push({current.first, current.second - 1});
+            board[current.first][current.second - 1] = '#';
+            //continue;
+        }
+        //右
+        if (current.second + 1 <= board[0].size() - 1 && board[current.first][current.second + 1] == 'o') {
+            queue_pair.push({current.first, current.second + 1});
+            board[current.first][current.second + 1] = '#';
+            //continue;
+        }
+        queue_pair.pop();
+    }
+    return;
+
+}
+///并差集
+class UnionFind {
+public:
+    vector<int> parents;
+    UnionFind(int totalNodes) {
+        for (int i = 0; i < totalNodes; ++i) {
+            parents.push_back(i);
+        }
+    }
+    void Union(int node1, int node2) {
+        int root1 = find(node1);
+        int root2 = find(node2);
+        if (root1 != root2) {
+            parents[root2] = root1;
+        }
+    }
+    int find(int node) {
+        while(parents[node] != node) {
+            parents[node] = parents[parents[node]];
+            node = parents[node];
+        }
+        return node;
+    }
+
+    bool IsConnect(int node1, int node2) {
+        return find(node1) == find(node2);
+    }
+
+};
+void solve_130_solution::solve_union(vector<vector<char>> &board) {
+    cout << "running in solve_union(并查集)" << endl;
+    if (board.size() <= 0) return;
+    row = board.size();
+    col = board[0].size();
+
+    UnionFind unfind(row * col + 1);
+    int dummyNode = row * col;
+    for (int i = 0; i < row; ++i) {
+        for (int j = 0; j < col; ++j) {
+            if (board[i][j] == 'o') {
+                if (i == 0 || j == 0 || i == row -1 || j == col - 1) {
+                    unfind.Union(node(i, j), dummyNode);
+                } else {
+                    if (i > 0 && board[i - 1][j] == 'o') {
+                        unfind.Union(node(i, j), node(i - 1, j));
+                    } 
+                    if (i < row - 1 && board[i + 1][j] == 'o') {
+                        unfind.Union(node(i, j), node(i + 1, j));
+                    }
+                    if (j > 0 && board[i][j - 1] == 'o') {
+                        unfind.Union(node(i, j), node(i, j - 1));
+                    }
+                    if (j < col - 1 && board[i][j + 1] == 'o') {
+                        unfind.Union(node(i, j), node(i, j + 1));
+                    }
+                }
+            }
+        }
+    }
+    for (int i = 0; i < row; ++i) {
+        for (int j = 0; j < col; ++j) {
+            if (unfind.IsConnect(node(i, j), dummyNode)) {
+                board[i][j] = 'o';
+            } else {
+                board[i][j] = 'x';
+            }
+        }
+    }
+    
+}
+
+int solve_130_solution::node(int i, int j) {
+    return i * col + j;
+}
