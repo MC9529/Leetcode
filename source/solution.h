@@ -421,3 +421,23 @@ public:
     int row;
     int col;
 };
+//岛屿的数量leetcode_200
+class numIslands_200_solution {
+public:
+    int numIslands(vector<vector<char>> &grid, int flag);
+    void DFS(vector<vector<char>> &grid, int i, int j);
+    void BFS(vector<vector<char>> &gird, int i, int j);
+    void Union(vector<vector<char>> &board);
+    //int node(int i, int j);
+    int numsIslands = 0;
+    int row;
+    int col;
+};
+//最小高度树 leetcode_310
+class findMinHeightTrees_310_solution {
+public:
+    void findMinHeightTrees(int n, vector<vector<int>> &edges);
+    void DFS(int n, vector< pair<vector<int>, bool> > &edges_bool, vector<int> &temp_res, int &hight);
+    bool find_num(int n, pair<vector<int>, bool> &edges_bool, int &posi);
+    vector<pair<vector<int>, int>> res;
+};

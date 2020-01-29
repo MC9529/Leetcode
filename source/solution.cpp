@@ -2798,3 +2798,230 @@ void solve_130_solution::solve_union(vector<vector<char>> &board) {
 int solve_130_solution::node(int i, int j) {
     return i * col + j;
 }
+//岛屿的数量  leetcode_200
+int numIslands_200_solution::numIslands(vector<vector<char>> &grid, int flag) {
+    row = grid.size();
+    if(!row) return 0;
+    col = grid[0].size();
+    //int numIslands = 0;
+    for (int i = 0; i < row; ++i) {
+        for (int j = 0; j < col; ++j) {
+            if (grid[i][j] == '1') {
+                ++numsIslands;
+                if (flag == 1) DFS(grid, i, j);
+                if (flag == 2) BFS(grid, i, j);
+            }
+        }
+    }
+    return numsIslands;
+
+}
+void numIslands_200_solution::DFS(vector<vector<char>> &grid, int i, int j) {
+    cout << "running in DFS " << endl;
+    int row1 = grid.size();
+    int col1 = grid[0].size();
+    grid[i][j] = '0';
+    if (i - 1 >= 0 && grid[i - 1][j] == '1') DFS(grid, i - 1, j);
+    if (i + 1 <= row1 && grid[i + 1][j] == '1') DFS(grid, i + 1, j);
+    if (j - 1 >= 0 && grid[i][j - 1] == '1') DFS(grid, i, j - 1);
+    if (j + 1 <= col1 && grid[i][j + 1] == '1') DFS(grid, i, j + 1);
+    return;
+}
+
+void numIslands_200_solution::BFS(vector<vector<char>> &grid, int i, int j) {
+    cout << "running in BFS " << endl;
+    queue<pair<int, int>> queue_pair;
+    queue_pair.push({i, j});
+    grid[i][j] = '0';
+    while(!queue_pair.empty()) {
+        pair<int, int> current = queue_pair.front();
+        //上
+        if (current.first - 1 >= 0 && grid[current.first - 1][current.second] == '1') {
+            queue_pair.push({current.first - 1, current.second});
+            grid[current.first - 1][current.second] = '0';
+            //continue;
+        }
+        //下
+        if (current.first + 1 <= grid.size() - 1 && grid[current.first + 1][current.second] == '1') {
+            queue_pair.push({current.first + 1, current.second});
+            grid[current.first + 1][current.second] = '0';
+            //continue;
+        }
+        //左
+        if (current.second - 1 >= 0 && grid[current.first][current.second - 1] == '1') {
+            queue_pair.push({current.first, current.second - 1});
+            grid[current.first][current.second - 1] = '0';
+            //continue;
+        }
+        //右
+        if (current.second + 1 <= grid[0].size() - 1 && grid[current.first][current.second + 1] == '1') {
+            queue_pair.push({current.first, current.second + 1});
+            grid[current.first][current.second + 1] = '0';
+            //continue;
+        }
+        queue_pair.pop();
+    }
+    return;
+}
+class UnionFind2 {
+public:
+    UnionFind2(vector<vector<char>> &grid) {
+        //count = 0;
+        int row = grid.size();
+        int col = grid[0].size();
+        for (int i = 0; i < row; ++i) {
+            for (int j = 0; j < col; ++j) {
+                if (grid[i][j] == '1') {
+                    parent.push_back(i * col + j);
+                    ++count;
+                    cout << "the count :" << count << endl;
+                } else {
+                    parent.push_back(-1);
+                }
+                rank.push_back(0);
+            }
+
+        }
+    }
+
+    /*int find (int i) {
+        if (parent[i] != i) parent[i] = find(parent[i]);
+        return parent[i];
+    }*/
+
+    int find(int node) {
+        while(parent[node] != node) {
+            parent[node] = parent[parent[node]];
+            node = parent[node];
+        }
+        return node;
+    }
+
+    void Union(int i, int j) {
+        int rooti = find(i);
+        int rootj = find(j);
+        if (rooti != rootj) {
+            if (rank[rooti] > rank[rootj]) parent[rootj] = rooti;
+            else if (rank[rooti] < rank[rootj]) parent[rooti] = rootj;
+            else parent[rootj] == rooti; rank[rooti] += 1;
+            cout << "the count in 2907" << count << endl;
+            --count;
+        }
+    }
+
+    int getCount() {
+        return count;
+    }
+private:
+    vector<int> parent;
+    int count = 0; // num of component
+    vector<int> rank;
+};
+
+void numIslands_200_solution::Union(vector<vector<char>> &board) {
+    row = board.size();
+    if (!row) return;
+    col = board[0].size();
+    UnionFind2 uf(board);
+    for (int i = 0; i< row; ++i) {
+        for (int j = 0; j < col; ++j) {
+            if (board[i][j] == '1') {
+                board[i][j] == '0';
+                if (i - 1 >= 0 && board[i - 1][j] == '1') {
+                    uf.Union(col * i + j, col * (i - 1) + j);
+                }
+                if (i + 1 <= row && board[i + 1][j] == '1') {
+                    uf.Union(col * i + j, col * (i + 1) + j);
+                }
+                if (j - 1 >= 0 && board[i][j - 1] == '1') {
+                    uf.Union(col * i + j, col * i + (j - 1));
+                }
+                if (j + 1 <= col && board[i][j + 1] == '1') {
+                    uf.Union(col * i + j, col * i + j + 1);
+                }
+            }
+        }
+    }
+    numsIslands = uf.getCount();
+}
+//最小高度树 leetcode 
+void findMinHeightTrees_310_solution::findMinHeightTrees(int n, vector<vector<int>> &edges) {
+    //int hight = 0;
+    vector<pair<vector<int>, bool>> edges_bool;
+    for (auto iter: edges) {
+        vector<int> temp;
+        temp.push_back(iter[0]);
+        temp.push_back(iter[1]);
+        edges_bool.push_back({temp, false});
+    }
+    for (auto iter: edges_bool) {
+        cout << iter.first[0] << "-" << iter.first[1] << "-"<< iter.second << endl;
+    }
+    vector<int> temp_res;
+    for (int i = 0; i < n; ++i) {
+        int hight = 0;
+        DFS(i, edges_bool, temp_res, hight);
+        res.push_back({temp_res, i});
+        temp_res.clear();
+    }
+    //cout << "pass in 2961" << endl;
+    for (int i = 0; i < res.size(); ++i) {
+        cout << "the i:" << res[i].second << endl;
+        for (auto iter: res[i].first) {
+            cout << iter << " ";
+        }
+        cout << endl;
+    }
+
+    return;
+}
+void findMinHeightTrees_310_solution::DFS(int n, vector<pair<vector<int>, bool>> &edges_bool, 
+                                                          vector<int> &temp_res, int &hight) {
+    bool flag = false;
+    for (auto iter: edges_bool) {
+        int posi = 0;
+        if (find_num(n, iter, posi)) {
+            flag = true;
+            //cout << "pass in 2985" << endl;
+        }
+    }
+    //cout << "pass in 2981" << endl;                                  
+    if (flag == false) {
+        temp_res.push_back(hight);
+        return;
+    }
+    for (int i = 0; i < edges_bool.size(); ++i) {
+        int posi = 0;
+        if (find_num(n, edges_bool[i], posi)) {
+            hight ++;
+            cout << "the iter :" << edges_bool[i].first[0] << "-" << edges_bool[i].first[1] << "-" 
+                                                         << edges_bool[i].second << endl;
+            edges_bool[i].second = true;
+            cout << "the link :" << edges_bool[i].first[posi] << endl;
+            DFS(edges_bool[i].first[posi], edges_bool, temp_res, hight); 
+            hight --;
+            edges_bool[i].second = false;
+        }
+    }
+}
+
+bool findMinHeightTrees_310_solution::find_num(int n, pair<vector<int>, bool> &edges_bool_num, 
+                                                                                  int &posi) {
+    //cout << "the bool: " << edges_bool_num.second << endl;
+    if (edges_bool_num.second == false) {
+        auto iter = find(edges_bool_num.first.begin(), edges_bool_num.first.end(), n);
+        if (iter != edges_bool_num.first.end()) {
+            //cout << "the edge:" << iter[0] << "-" << iter[1] << endl;
+            //posi = iter - edges_bool_num.first.begin();
+            
+            if (iter - edges_bool_num.first.begin() == 1) {
+                posi = 0;
+            } else {
+                posi = 1;
+            }
+            return true;
+        }
+    }
+    return false;
+}
+

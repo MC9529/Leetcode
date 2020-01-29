@@ -876,6 +876,7 @@ int main() {
   return 0;
 }
 */
+/*
 int main() {
   vector<vector<char>> board = { {'x', 'x', 'x', 'x'}, 
                                {'x', 'o', 'o', 'x'}, 
@@ -895,4 +896,50 @@ int main() {
   cout << endl;
   return 0;
 }
+*/
+////岛屿的数量 leetcode_200
+/*
+int main() {
+  vector<vector<char>> board = { {'1', '1', '1', '1', '0'}, 
+                                 {'1', '1', '0', '1', '0'}, 
+                                 {'1', '1', '0', '0', '0'},
+                                 {'0', '0', '0', '0', '0'}};
+  
+  numIslands_200_solution solu;
+  //flag 1->深度优先搜索（DFS）  2->广度优先搜索（BFS）  3-> 并查集
+  int flag = 3;
+  if (flag == 3) {
+    solu.Union(board);
+  }
+  solu.numIslands(board, flag);
+  cout << "the res: " << solu.numsIslands<< endl;
+  return 0;
+}
+*/
+// test 
+/*
+int main() {
+  vector<int> list = {1, 4, 3, 4, 2, 9, 8};
+  int n = 7;
+  auto iter = find(list.begin(), list.end(), n);
+  if (iter != list.end()) {
+    cout << "find it" << endl;
+    int posi = (iter - list.begin());
+    cout << "the n: " << n << "in posi: " << posi << endl; 
+  } else {
+    cout << "there is no " << n << endl;
+  }
 
+  return 0;
+}
+*/
+///最小高度树 leetcode_310
+
+int main() {
+  int n = 6;
+  vector<vector<int>> board = {{0, 3}, {1, 3}, {2, 3}, {4, 3}, {5, 4}};
+  findMinHeightTrees_310_solution solu;
+  solu.findMinHeightTrees(n, board);
+
+  return 0;
+}
