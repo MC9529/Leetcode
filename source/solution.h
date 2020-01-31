@@ -441,3 +441,26 @@ public:
     bool find_num(int n, pair<vector<int>, bool> &edges_bool, int &posi);
     vector<pair<vector<int>, int>> res;
 };
+//删除无效的括号 leetcode
+class removeInvalidParentheses_301_solution {
+public:
+    void removeInvaliaParentheses(string s);
+    void DFS(string s, int st, int left, int right);
+    bool check(string s);
+    vector<string> res;
+    int count = 0;
+
+};
+//矩阵中的最长增长路径 leetcode_329
+class longestIncreasingPath_329_solution {
+public:
+    void longestIncresingPath(vector<vector<int>> &matrix);
+    void DFS(vector<int> &temp_res, int &row_posi, int &col_posi, vector<vector<int>> &matrix);
+    void LonestPath(vector<vector<int>> res);
+    bool NoWay(int row_posi, int col_posi, vector<int> &temp_res, vector<vector<int>> &matrix);
+    vector<vector<int>> res;
+    vector<int> lonestPath;
+    vector<vector<int>> total_res;
+    vector<pair<int, int>> direct = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+
+};

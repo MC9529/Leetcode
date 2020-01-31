@@ -2948,23 +2948,27 @@ void numIslands_200_solution::Union(vector<vector<char>> &board) {
 void findMinHeightTrees_310_solution::findMinHeightTrees(int n, vector<vector<int>> &edges) {
     //int hight = 0;
     vector<pair<vector<int>, bool>> edges_bool;
+    /// 0 - 1 - false 再加上是否被使用过的信息
     for (auto iter: edges) {
         vector<int> temp;
         temp.push_back(iter[0]);
         temp.push_back(iter[1]);
         edges_bool.push_back({temp, false});
     }
+    //输出
     for (auto iter: edges_bool) {
         cout << iter.first[0] << "-" << iter.first[1] << "-"<< iter.second << endl;
     }
     vector<int> temp_res;
+    //进行每个节点遍历
     for (int i = 0; i < n; ++i) {
         int hight = 0;
         DFS(i, edges_bool, temp_res, hight);
+        //格式 {节点到末节点的距离， 节点}
         res.push_back({temp_res, i});
         temp_res.clear();
     }
-    //cout << "pass in 2961" << endl;
+    ///打印结果：格式： 
     for (int i = 0; i < res.size(); ++i) {
         cout << "the i:" << res[i].second << endl;
         for (auto iter: res[i].first) {
@@ -2978,6 +2982,7 @@ void findMinHeightTrees_310_solution::findMinHeightTrees(int n, vector<vector<in
 void findMinHeightTrees_310_solution::DFS(int n, vector<pair<vector<int>, bool>> &edges_bool, 
                                                           vector<int> &temp_res, int &hight) {
     bool flag = false;
+    //查询是否已经搜索完成
     for (auto iter: edges_bool) {
         int posi = 0;
         if (find_num(n, iter, posi)) {
@@ -2985,14 +2990,17 @@ void findMinHeightTrees_310_solution::DFS(int n, vector<pair<vector<int>, bool>>
             //cout << "pass in 2985" << endl;
         }
     }
-    //cout << "pass in 2981" << endl;                                  
+    //cout << "pass in 2981" << endl;   
+    //全部搜索完成，则返回                               
     if (flag == false) {
         temp_res.push_back(hight);
         return;
     }
+    //对所有边进行查询，看该节点是否能去
     for (int i = 0; i < edges_bool.size(); ++i) {
         int posi = 0;
         if (find_num(n, edges_bool[i], posi)) {
+            //能去， height+1
             hight ++;
             cout << "the iter :" << edges_bool[i].first[0] << "-" << edges_bool[i].first[1] << "-" 
                                                          << edges_bool[i].second << endl;
@@ -3007,13 +3015,13 @@ void findMinHeightTrees_310_solution::DFS(int n, vector<pair<vector<int>, bool>>
 
 bool findMinHeightTrees_310_solution::find_num(int n, pair<vector<int>, bool> &edges_bool_num, 
                                                                                   int &posi) {
-    //cout << "the bool: " << edges_bool_num.second << endl;
+    //该边还没被使用过
     if (edges_bool_num.second == false) {
+        //查询该节点是否在这条边
         auto iter = find(edges_bool_num.first.begin(), edges_bool_num.first.end(), n);
         if (iter != edges_bool_num.first.end()) {
             //cout << "the edge:" << iter[0] << "-" << iter[1] << endl;
             //posi = iter - edges_bool_num.first.begin();
-            
             if (iter - edges_bool_num.first.begin() == 1) {
                 posi = 0;
             } else {
@@ -3024,4 +3032,152 @@ bool findMinHeightTrees_310_solution::find_num(int n, pair<vector<int>, bool> &e
     }
     return false;
 }
+//删除无效的括号 leetcode
+void removeInvalidParentheses_301_solution::removeInvaliaParentheses(string s) {
+    int left = 0, right = 0;
+    for (char i: s) {
+        if (i == '(') {
+            left++;
+        } else if (i == ')') {
+            if (left > 0) {
+                left --;
+            } else {
+                right++;
+            }
+        }
+    }
+    int st = 0;
+    DFS(s, st, left, right);
 
+}
+void removeInvalidParentheses_301_solution::DFS(string s, int st, int left, int right) {
+    if (left == 0 && right == 0) {
+        if (check(s)) {
+            res.push_back(s);
+        }
+        return;
+    }
+    for (int i = st; i < s.size(); ++i) {
+        if (i - 1 >= st && s[i] == s[i - 1]) continue;
+        if (left > 0 && s[i] == '(') {
+            string temp = s.substr(0, i) + s.substr(i + 1, s.size() - i - 1);
+            //cout << "the temp" << temp << endl;
+            DFS(temp, i, left - 1, right);
+        } else if (right > 0 && s[i] == ')') {
+            string temp = s.substr(0, i) + s.substr(i + 1, s.size() - i - 1);
+            //cout << "the temp" << temp << endl;
+            DFS(temp, i, left, right - 1);
+        }
+    }
+}
+bool removeInvalidParentheses_301_solution::check(string s) {
+    int cnt = 0;
+    for (char i: s) {
+        if (i == '(') {
+            cnt ++;
+        }
+        if (i == ')') {
+            cnt --;
+            if (cnt < 0) return false;
+        }
+    }
+    return cnt == 0;
+}
+//矩阵中的最长增长路径 leetcode_329
+void longestIncreasingPath_329_solution::longestIncresingPath(vector<vector<int>> &matrix) {
+    vector<vector<bool>> used;
+    vector<bool> temp_used(matrix[0].size(), false);
+    for (int i = 0; i < matrix.size(); ++i) {
+        used.push_back(temp_used);
+    }
+    for (int row_posi = 0; row_posi < matrix.size(); ++row_posi) {
+        for (int col_posi = 0; col_posi < matrix[0].size(); ++col_posi) {
+
+            vector<int> temp_res;
+            cout << "the matrix:" << row_posi << "-" << col_posi << "-" 
+                                  << matrix[row_posi][col_posi] << endl;
+            temp_res.push_back(matrix[row_posi][col_posi]);
+            DFS(temp_res, row_posi, col_posi, matrix);
+            cout << "the len of res: " << res.size() << endl;
+            LonestPath(res);
+            total_res.push_back(lonestPath);
+            res.clear();
+            lonestPath.clear();
+        }
+    }
+    return;
+
+}
+void longestIncreasingPath_329_solution::DFS(vector<int> &temp_res, int &row_posi, int &col_posi,
+                                             vector<vector<int>> &matrix) {
+    if (NoWay(row_posi, col_posi, temp_res, matrix) == true) {
+        cout << "pass in 3113 " << endl;
+        res.push_back(temp_res);
+        //temp_res.pop_back();
+        return;
+    }
+    for (int i = 0; i < direct.size(); ++i) {
+        cout << "the i: " << direct[i].first << "-" << direct[i].second << endl;
+        int row = row_posi + direct[i].first;
+        int col = col_posi + direct[i].second;
+        if (row >= 0 && row < matrix.size() && col >= 0 && col < matrix[0].size() &&
+                                 matrix[row][col] > temp_res[temp_res.size() - 1]) {
+            cout << "pass in 3122" << endl;
+            cout << "the matrix[i][j]: " << matrix[row][col] << endl;
+            temp_res.push_back(matrix[row][col]);
+            DFS(temp_res, row, col, matrix);
+            temp_res.pop_back();
+            
+        }
+    }
+    /*
+    if (row_posi + 1 < matrix.size() && matrix[row_posi + 1][col_posi] 
+                                                        > temp_res[temp_res.size() - 1]) {
+        cout << "pass in 3119" << endl;
+        row_posi = row_posi + 1;
+        cout << row_posi << "-" << col_posi << endl;
+        temp_res.push_back(matrix[row_posi][col_posi]);
+        DFS(temp_res, row_posi, col_posi, matrix);
+    }
+    if (row_posi - 1 >= 0 && matrix[row_posi - 1][col_posi] 
+                                                        > temp_res[temp_res.size() - 1]) {
+        cout << "pass in 3126" << endl;
+        row_posi = row_posi - 1;
+        cout << row_posi << "-" << col_posi << endl;
+        temp_res.push_back(matrix[row_posi][col_posi]);
+        DFS(temp_res, row_posi, col_posi, matrix);
+    }*/
+    
+}
+
+void longestIncreasingPath_329_solution::LonestPath(vector<vector<int>> res) {
+    int index = 0;
+    int len = res[0].size();
+    for (int i = 0; i < res.size(); ++i) {
+        if (res[i].size() > len) {
+            index = i;
+            len = res[i].size();
+        }
+
+    }
+    for (int i = 0; i < res[index].size(); ++i) {
+        lonestPath.push_back(res[index][i]);
+    }
+    return;
+}
+
+bool longestIncreasingPath_329_solution::NoWay(int row_posi, int col_posi, 
+                                               vector<int> &temp_res, vector<vector<int>> &matrix) {
+    //各个方向的都小于temp_res[temp_res.size() - 1])
+    if ( ((row_posi - 1 < 0) ||(row_posi - 1 >= 0 && 
+                               matrix[row_posi - 1][col_posi] <= temp_res[temp_res.size() - 1])) &&
+        ((row_posi + 1 >= matrix.size()) || (row_posi + 1 < matrix.size() && 
+                                matrix[row_posi + 1][col_posi] <= temp_res[temp_res.size() - 1])) &&
+        ((col_posi - 1 < 0) || (col_posi - 1 >= 0 
+                              && matrix[row_posi][col_posi - 1] <= temp_res[temp_res.size() - 1])) &&
+        ((col_posi + 1 >= matrix[0].size()) || (col_posi + 1 < matrix[0].size() 
+                              && matrix[row_posi][col_posi + 1] <= temp_res[temp_res.size() - 1])) ) {
+            return true;
+        }
+    return false;
+}

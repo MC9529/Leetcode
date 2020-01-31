@@ -934,12 +934,42 @@ int main() {
 }
 */
 ///最小高度树 leetcode_310
-
+/*
 int main() {
   int n = 6;
   vector<vector<int>> board = {{0, 3}, {1, 3}, {2, 3}, {4, 3}, {5, 4}};
   findMinHeightTrees_310_solution solu;
   solu.findMinHeightTrees(n, board);
 
+  return 0;
+}
+*/
+//删除无效的括号 leetcode_301
+/*
+int main() {
+  string s = "(a)())()";
+  removeInvalidParentheses_301_solution solu;
+  solu.removeInvaliaParentheses(s);
+  for (int i = 0; i < solu.res.size(); ++i) {
+    cout << solu.res[i] << endl;
+  }
+  cout << endl;
+
+  return 0;
+}
+*/
+int main() {
+  vector<vector<int>> matrix = { {9, 9, 4}, 
+                                 {6, 6, 8}, 
+                                 {2, 1, 1}};
+  longestIncreasingPath_329_solution solu;
+  solu.longestIncresingPath(matrix);
+  for (int i = 0; i < solu.total_res.size(); ++i) {
+    for (int j = 0; j < solu.total_res[i].size(); ++j) {
+      cout << solu.total_res[i][j] << " ";
+    }
+    cout << endl;
+  }
+  cout << endl;
   return 0;
 }
