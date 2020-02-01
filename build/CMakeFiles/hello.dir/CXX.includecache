@@ -53,6 +53,10 @@ unordered_map
 -
 map
 -
+cstring
+-
+stdlib.h
+-
 
 /home/ccg/File/cpp/leetcode/source/solution.h
 iostream

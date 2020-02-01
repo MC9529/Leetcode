@@ -3239,3 +3239,84 @@ bool longestIncreasingPath_329_solution2::Noway(vector<pair<pair<int, int>, int>
     }
     return flag;
 }
+//矩阵中的最长增长路径 leetcode_329 动态规划
+void longestIncreasingPath_329_solution3::longestIncresingPath2(vector<vector<int>> &matrix) {
+    if (matrix.size() == 0) {
+        return;
+    }
+    rows = matrix.size();
+    cols = matrix[0].size();
+    vector<vector<vector<int>>> dp;
+    vector<int> dp_temp_1;
+    vector<vector<int>> dp_temp_2;
+    vector<pair<pair<int, int>, int>> vp;
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            //vp.push_back(point(i, j, matrix[i][j]));
+            dp_temp_1.push_back(matrix[i][j]);
+            dp_temp_2.push_back(dp_temp_1);
+            dp_temp_1.clear();
+            vp.push_back({{i, j}, matrix[i][j]});
+        }
+        dp.push_back(dp_temp_2);
+        dp_temp_2.clear();
+    }
+    //排序 按值的大小
+    //val的值从小到大
+    sort(vp.begin(), vp.end(), [](const pair<pair<int, int>, int> &a, 
+                                const pair<pair<int, int>, int> &b) {
+        return a.second < b.second;
+    });
+    int ret = 1;
+    cout << "pass in 3198" << endl;
+    //对每一个点进行向前搜索
+    //先从最大的开始，因为大值的路径肯定是所有小值路径的部分
+    for (int i = vp.size() - 1; i >= 0; --i) {
+        //vector<int> temp_res;
+        int posi = i;
+        DFS(dp, posi, vp, matrix);
+    }
+    print(dp);
+    return;
+}
+void longestIncreasingPath_329_solution3::DFS(vector<vector<vector<int>>> &dp, int &posi, 
+            vector<pair<pair<int, int>, int>> &vp, vector<vector<int>> &matrix) {
+    int x = vp[posi].first.first;
+    int y = vp[posi].first.second;
+    int val = vp[posi].second;
+    int longest = 0, best_row = 0, best_col = 0;
+    //4个方向都要进行搜索
+    for (int i = 0; i < direct.size(); ++i) {
+        int row = direct[i].first + x;
+        int col = direct[i].second + y;
+        if (row >= 0 && row < matrix.size() && col >= 0 && col < matrix[0].size() &&
+                                 matrix[row][col] > val) {
+            //找出路径最长的方向
+            if (dp[row][col].size() > longest) {
+                longest = dp[row][col].size();
+                best_row = row;
+                best_col = col;
+            }                      
+        }
+    }
+    //将路径最长的插入到前一个点
+    if (longest != 0) {
+        dp[x][y].insert(dp[x][y].end(), dp[best_row][best_col].begin(), 
+                                        dp[best_row][best_col].end());
+    }
+    return;
+}
+///打印
+void longestIncreasingPath_329_solution3::print(vector<vector<vector<int>>> &dp) {
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            for (auto iter: dp[i][j]) {
+                cout << iter << " ";
+            }
+            cout << endl;
+        }
+        cout << endl;
+    }
+    cout << endl;
+    return;
+}

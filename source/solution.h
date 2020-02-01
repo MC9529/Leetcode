@@ -473,3 +473,19 @@ public:
     vector<vector<int>> res;
     bool Noway(vector<pair<pair<int, int>, int>> &vp, int posi);
 };
+////矩阵中的最长增长路径 leetcode_329 动态规划
+//动态规划思想
+/* 将matrix的排序初始值为 6, 5, 4, 3, 2, 2 1
+  path[5]= path[5] + path[6]
+
+*/
+class longestIncreasingPath_329_solution3 {
+public:
+    void longestIncresingPath2(vector<vector<int>> &matrix);
+    void DFS(vector<vector<vector<int>>> &dp, int &posi, 
+            vector<pair<pair<int, int>, int>> &vp, vector<vector<int>> &matrix);
+    int rows = 0;
+    int cols = 0;
+    vector<pair<int, int>> direct = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+    void print(vector<vector<vector<int>>> &dp);
+};
