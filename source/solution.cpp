@@ -3035,6 +3035,7 @@ bool findMinHeightTrees_310_solution::find_num(int n, pair<vector<int>, bool> &e
 //删除无效的括号 leetcode
 void removeInvalidParentheses_301_solution::removeInvaliaParentheses(string s) {
     int left = 0, right = 0;
+    //计算那个括号多
     for (char i: s) {
         if (i == '(') {
             left++;
@@ -3051,12 +3052,14 @@ void removeInvalidParentheses_301_solution::removeInvaliaParentheses(string s) {
 
 }
 void removeInvalidParentheses_301_solution::DFS(string s, int st, int left, int right) {
+    //左右括号一样多，且满足要求
     if (left == 0 && right == 0) {
         if (check(s)) {
             res.push_back(s);
         }
         return;
     }
+    //从st点开始，一个一个点的检查
     for (int i = st; i < s.size(); ++i) {
         if (i - 1 >= st && s[i] == s[i - 1]) continue;
         if (left > 0 && s[i] == '(') {
@@ -3070,6 +3073,7 @@ void removeInvalidParentheses_301_solution::DFS(string s, int st, int left, int 
         }
     }
 }
+///检查string 是否满足要求
 bool removeInvalidParentheses_301_solution::check(string s) {
     int cnt = 0;
     for (char i: s) {
@@ -3110,12 +3114,14 @@ void longestIncreasingPath_329_solution::longestIncresingPath(vector<vector<int>
 }
 void longestIncreasingPath_329_solution::DFS(vector<int> &temp_res, int &row_posi, int &col_posi,
                                              vector<vector<int>> &matrix) {
+    ///没有路了，返回该点
     if (NoWay(row_posi, col_posi, temp_res, matrix) == true) {
         cout << "pass in 3113 " << endl;
         res.push_back(temp_res);
         //temp_res.pop_back();
         return;
     }
+    //每个方向 搜索一边
     for (int i = 0; i < direct.size(); ++i) {
         cout << "the i: " << direct[i].first << "-" << direct[i].second << endl;
         int row = row_posi + direct[i].first;
@@ -3126,30 +3132,14 @@ void longestIncreasingPath_329_solution::DFS(vector<int> &temp_res, int &row_pos
             cout << "the matrix[i][j]: " << matrix[row][col] << endl;
             temp_res.push_back(matrix[row][col]);
             DFS(temp_res, row, col, matrix);
+            //弹出
             temp_res.pop_back();
             
         }
     }
-    /*
-    if (row_posi + 1 < matrix.size() && matrix[row_posi + 1][col_posi] 
-                                                        > temp_res[temp_res.size() - 1]) {
-        cout << "pass in 3119" << endl;
-        row_posi = row_posi + 1;
-        cout << row_posi << "-" << col_posi << endl;
-        temp_res.push_back(matrix[row_posi][col_posi]);
-        DFS(temp_res, row_posi, col_posi, matrix);
-    }
-    if (row_posi - 1 >= 0 && matrix[row_posi - 1][col_posi] 
-                                                        > temp_res[temp_res.size() - 1]) {
-        cout << "pass in 3126" << endl;
-        row_posi = row_posi - 1;
-        cout << row_posi << "-" << col_posi << endl;
-        temp_res.push_back(matrix[row_posi][col_posi]);
-        DFS(temp_res, row_posi, col_posi, matrix);
-    }*/
     
 }
-
+///寻找最长的路径
 void longestIncreasingPath_329_solution::LonestPath(vector<vector<int>> res) {
     int index = 0;
     int len = res[0].size();
@@ -3165,7 +3155,7 @@ void longestIncreasingPath_329_solution::LonestPath(vector<vector<int>> res) {
     }
     return;
 }
-
+///检查该点各个方向，是否没有路了
 bool longestIncreasingPath_329_solution::NoWay(int row_posi, int col_posi, 
                                                vector<int> &temp_res, vector<vector<int>> &matrix) {
     //各个方向的都小于temp_res[temp_res.size() - 1])
@@ -3180,4 +3170,72 @@ bool longestIncreasingPath_329_solution::NoWay(int row_posi, int col_posi,
             return true;
         }
     return false;
+}
+//矩阵中的最长增长路径 leetcode_329
+void longestIncreasingPath_329_solution2::longestIncresingPath2(vector<vector<int>> &matrix) {
+    if (matrix.size() == 0) {
+        return;
+    }
+    const int rows = matrix.size();
+    const int cols = matrix[0].size();
+    vector<vector<int>> dp(rows, vector<int>(cols, 1));
+    vector<pair<pair<int, int>, int>> vp;
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            //vp.push_back(point(i, j, matrix[i][j]));
+            vp.push_back({{i, j}, matrix[i][j]});
+        }
+    }
+    //排序 按值的大小
+    sort(vp.begin(), vp.end(), [](const pair<pair<int, int>, int> &a, 
+                                const pair<pair<int, int>, int> &b) {
+        return a.second < b.second;
+    });
+    int ret = 1;
+    cout << "pass in 3198" << endl;
+    //对每一个点进行向前搜索
+    for (int i = 0; i < vp.size(); ++i) {
+        vector<int> temp_res;
+        int posi = i;
+        cout << "i in 3202:" << i << endl;
+        temp_res.push_back(vp[i].first.first);
+        temp_res.push_back(vp[i].first.second);
+        temp_res.push_back(vp[i].second);
+        DFS(temp_res, posi, vp, matrix);
+    }
+    return;
+
+}
+void longestIncreasingPath_329_solution2::DFS(vector<int> &temp_res, 
+                    int &posi, vector<pair<pair<int, int>, int>> &vp, vector<vector<int>> &matrix) {
+    if (Noway(vp, posi) == true) {
+        cout << "pass in 3212" << endl;
+        res.push_back(temp_res);
+        return;
+    }
+    cout << "pass in 3215" << endl;
+    for (int i = posi + 1; i < vp.size(); ++i) {
+        if ( ((abs(vp[i].first.first - vp[posi].first.first) == 1 && 
+              vp[i].first.second == vp[posi].first.second) && vp[i].second > vp[posi].second) ||
+             ((abs(vp[i].first.second - vp[posi].first.second) == 1 && 
+              vp[i].first.first == vp[posi].first.first) && vp[i].second > vp[posi].second) ) {
+            temp_res.push_back(vp[i].second);
+            posi = i;
+            DFS(temp_res, posi, vp, matrix);
+            ///不弹出
+        }
+    }
+}
+
+bool longestIncreasingPath_329_solution2::Noway(vector<pair<pair<int, int>, int>> &vp, int posi) {
+    bool flag = true;
+    for (int i = posi + 1; i < vp.size(); ++i) {
+        if ( ((abs(vp[i].first.first - vp[posi].first.first) == 1 && 
+              vp[i].first.second == vp[posi].first.second) && vp[i].second > vp[posi].second) ||
+             ((abs(vp[i].first.second - vp[posi].first.second) == 1 && 
+              vp[i].first.first == vp[posi].first.first) && vp[i].second > vp[posi].second) ) {
+            flag = false;
+        }
+    }
+    return flag;
 }

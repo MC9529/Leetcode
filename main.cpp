@@ -958,10 +958,12 @@ int main() {
   return 0;
 }
 */
+//矩阵中的最长增长路径 leetcode_329
+/*
 int main() {
-  vector<vector<int>> matrix = { {9, 9, 4}, 
-                                 {6, 6, 8}, 
-                                 {2, 1, 1}};
+  vector<vector<int>> matrix = { {3, 4, 5}, 
+                                 {3, 2, 6}, 
+                                 {2, 2, 1}};
   longestIncreasingPath_329_solution solu;
   solu.longestIncresingPath(matrix);
   for (int i = 0; i < solu.total_res.size(); ++i) {
@@ -971,5 +973,23 @@ int main() {
     cout << endl;
   }
   cout << endl;
+  return 0;
+}
+*/
+//矩阵中的最长增长路径 leetcode_329
+int main() {
+  vector<vector<int>> matrix = { {3, 4, 5}, 
+                                 {3, 2, 6}, 
+                                 {2, 2, 1}};
+  longestIncreasingPath_329_solution2 solu;
+  solu.longestIncresingPath2(matrix);
+  for (auto iter_i: solu.res) {
+    for (auto iter_j: iter_i) {
+      cout << iter_j << " ";
+    }
+    cout << endl;
+  }
+  cout << endl;
+  
   return 0;
 }

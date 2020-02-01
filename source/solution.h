@@ -464,3 +464,12 @@ public:
     vector<pair<int, int>> direct = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
 
 };
+//矩阵中的最长增长路径 leetcode_329
+class longestIncreasingPath_329_solution2 {
+public:
+    void longestIncresingPath2(vector<vector<int>> &matrix);
+    void DFS(vector<int> &temp_res, int &posi, 
+            vector<pair<pair<int, int>, int>> &vp, vector<vector<int>> &matrix);
+    vector<vector<int>> res;
+    bool Noway(vector<pair<pair<int, int>, int>> &vp, int posi);
+};
