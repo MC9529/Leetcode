@@ -475,8 +475,8 @@ public:
 };
 ////矩阵中的最长增长路径 leetcode_329 动态规划
 //动态规划思想
-/* 将matrix的排序初始值为 6, 5, 4, 3, 2, 2 1
-  path[5]= path[5] + path[6]
+/* 将matrix的排序初始值为 6, 5, 4, 3, 2, 2 1， 先从值大的开始
+  path[5]= path[5] + path[6](路径最长的方向)
 
 */
 class longestIncreasingPath_329_solution3 {
@@ -488,4 +488,14 @@ public:
     int cols = 0;
     vector<pair<int, int>> direct = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
     void print(vector<vector<vector<int>>> &dp);
+};
+//重新安排行程 leetcode_332
+class findItinerary_332_solution {
+public:
+    void findItinerary(vector<vector<string>> &tickets);
+    void DFS(vector<vector<int>> &g, int i, int N, vector<int> &path);
+    bool NoWay(vector<vector<int>> &g, int i, int N);
+    //vector<string> res;
+    vector<vector<int>> total_path;
+    vector<vector<string>> total_res;
 };

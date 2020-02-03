@@ -3320,3 +3320,84 @@ void longestIncreasingPath_329_solution3::print(vector<vector<vector<int>>> &dp)
     cout << endl;
     return;
 }
+//重新安排行程 leetcode_332
+void findItinerary_332_solution::findItinerary(vector<vector<string>> &tickets) {
+    vector<string> cities;
+    for (auto &iter: tickets) {
+        cities.push_back(iter[0]);
+        cities.push_back(iter[1]);
+    }
+    cout << "the size of cities: " << cities.size() << endl;
+    cout << endl;
+    //排序
+    sort(cities.begin(), cities.end());
+    //删除重复项
+    cities.erase(unique(cities.begin(), cities.end()), cities.end());
+    for (int i = 0; i < cities.size(); ++i) {
+        cout << cities[i] << " ";
+    }
+    cout << endl;
+    int N = cities.size();
+    map<string, int> m;
+    //将sting 转化为ID
+    for (int i = 0; i < N; ++i) {
+        m[cities[i]] = i;
+    }
+    //构建有向图
+    vector<vector<int>> g(N, vector<int>(N, 0));
+    for (auto &t: tickets) {
+        ++g[m[t[0]]][m[t[1]]];
+    }
+    //深度优先搜索最终路径
+    vector<int> path;
+    path.push_back(m["JFK"]);
+    DFS(g, m["JFK"], N, path);
+    //total_path.push_back(path);
+    //将path转化为res
+    for (int j = 0; j < total_path.size(); ++j) {
+        vector<string> res;
+        for (auto i: total_path[j]) {
+            res.push_back(cities[i]);
+        }
+        //reverse(res.begin(), res.end());
+        total_res.push_back(res);
+    }
+    //reverse(res.begin(), res.end());
+    for (int i = 0; i < total_res.size(); ++i) {
+        for (auto iter: total_res[i]) {
+            cout << iter << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+    return;
+}
+void findItinerary_332_solution::DFS(vector<vector<int>> &g, int i, int N, vector<int> &path) {
+    if (NoWay(g, i, N) == true) {
+        //path.push_back(i);
+        total_path.push_back(path);
+        cout << "add one" << endl;
+        return;
+    }
+    for (int j = 0; j < N; ++j) {
+        if (g[i][j] > 0) {
+            --g[i][j];
+            path.push_back(j);
+            //cout << "the i in 3386: " << i << endl;
+            cout << "the j in 3383:" << j << endl;
+            DFS(g, j, N, path);
+            ++g[i][j];
+            path.pop_back();
+        }
+    }
+}
+
+bool findItinerary_332_solution::NoWay(vector<vector<int>> &g, int i, int N) {
+    bool flag = true;
+    for (int j = 0; j < N; ++j) {
+        if (g[i][j] > 0) {
+            flag = false;
+        }
+    }
+    return flag;
+}

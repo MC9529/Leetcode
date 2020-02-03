@@ -995,6 +995,7 @@ int main() {
   return 0;
 }*/
 ////矩阵中的最长增长路径 leetcode_329 动态规划
+/*
 int main() {
   vector<vector<int>> matrix = { {3, 4, 5}, 
                                  {3, 2, 6}, 
@@ -1003,4 +1004,21 @@ int main() {
   solu.longestIncresingPath2(matrix);
 
   return 0;
+}
+*/
+int main() {
+  
+  vector<vector<string>> tickets = { {"MUC", "LHR"}, 
+                                     {"JFK", "MUC"}, 
+                                     {"SFO", "SJC"},
+                                     {"LHR", "SFO"} };
+  /*
+  vector<vector<string>> tickets = { {"JFK", "SFO"}, {"JFK", "ATL"}, 
+                                     {"SFO", "ATL"}, {"ATL", "JFK"}, 
+                                     {"ATL", "SFO"}};*/
+  
+  findItinerary_332_solution solu;
+  solu.findItinerary(tickets);
+  return 0;
+
 }
