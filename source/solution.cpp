@@ -3401,3 +3401,126 @@ bool findItinerary_332_solution::NoWay(vector<vector<int>> &g, int i, int N) {
     }
     return flag;
 }
+///太平洋大西洋水流问题 leetcode_417
+void pacificAtlantic_417_solution::pacificAtlantic(vector<vector<int>> &matrix) {
+    rows = matrix.size();
+    cols = matrix[0].size();
+    ///val : 0 -> cannot  1 -> can
+    //大西洋
+    vector<vector<int>> Atlantic_matrix(rows, vector<int>(cols, 0));
+    //val: 0 -> cannot 1 -> can
+    //太平洋
+    vector<vector<int>> pacific_matrix(rows, vector<int>(cols, 0));
+    //边上的先设置为1
+    for (int i = 0; i < cols; ++i) {
+        pacific_matrix[0][i] = 1;
+        Atlantic_matrix[rows - 1][i] = 1; 
+    }
+    //边上的先设置为1
+    for (int j = 0; j < rows; ++j) {
+        pacific_matrix[j][0] = 1;
+        Atlantic_matrix[j][cols - 1] = 1;
+    }
+    for (int i = 1; i < rows; ++i) {
+        for (int j = 1; j < cols; ++j) {
+            ///每次都要重新刷新used
+            vector<vector<bool>> pace_used(rows, vector<bool>(cols, false));
+            vector<vector<bool>> Atlan_used(rows, vector<bool>(cols, false));
+            cout << "the row and col in 3426:" << i << " " << j << endl;
+            pace_used[i][j] = true;
+            pacific(i, j, pacific_matrix, matrix, pace_used);
+            int At_row = rows - i - 1;
+            int At_col = cols - j - 1;
+            Atlan_used[At_row][At_col] = true;
+            Atlantic(At_row, At_col, Atlantic_matrix, matrix, Atlan_used);
+        }
+    }
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            ///都为1,表示可以同时刘向大西洋和太平洋
+            if (pacific_matrix[i][j] == 1 && Atlantic_matrix[i][j] == 1) {
+                vector<int> temp;
+                temp.push_back(i);
+                temp.push_back(j);
+                res.push_back(temp);
+            }
+
+        }
+    }
+
+    return;
+}
+void pacificAtlantic_417_solution::pacific(int &row, int &col, vector<vector<int>> &pacific_matrix, 
+                                    vector<vector<int>> &matrix, vector<vector<bool>> &pace_used) {
+    ///搜索到了边界，可以到达
+    if (row == 0 || col == 0) {
+        pacific_matrix[row][col] = 1;
+        return;
+    }
+    //没有再往前的路了
+    if (Noway(row, col, matrix, pace_used) == false) {
+        return;
+    }
+    ///每个方向进行搜素
+    for (int i = 0; i < direct.size(); ++i) {
+        int row_next = row + direct[i].first;
+        int col_next = col + direct[i].second;
+        //满足要求
+        if (posi_right(row_next, col_next) && matrix[row_next][col_next] <= matrix[row][col]) {
+            ///使用过了
+            pace_used[row_next][col_next] = true;
+            if (pacific_matrix[row_next][col_next] == 1) {
+                pacific_matrix[row][col] = 1;
+                break;
+            } else {
+                pacific(row_next, col_next, pacific_matrix, matrix, pace_used);
+                pacific_matrix[row][col] = pacific_matrix[row_next][col_next];
+            }
+        }
+    }
+}
+void pacificAtlantic_417_solution::Atlantic(int &row, int &col, vector<vector<int>> &Atlantic_matrix, 
+                                           vector<vector<int>> &matrix, vector<vector<bool>> &Atlan_used) {
+    if (row == rows - 1 || col == cols - 1) {
+        Atlantic_matrix[row][col] = 1;
+        return;
+    } 
+    if (Noway(row, col, matrix, Atlan_used) == false) {
+        return;
+    }
+    for (int i = 0; i < direct.size(); ++i) {
+        int row_next = row + direct[i].first;
+        int col_next = col + direct[i].second;
+        if (posi_right(row_next, col_next) && matrix[row_next][col_next] <= matrix[row][col]) {
+            Atlan_used[row_next][col_next] = true;
+            if (Atlantic_matrix[row_next][col_next] == 1) {
+                Atlantic_matrix[row][col] = 1;
+                break;
+            } else {
+                Atlantic(row_next, col_next, Atlantic_matrix, matrix, Atlan_used);
+                Atlantic_matrix[row][col] = Atlantic_matrix[row_next][col_next];
+            }
+        }
+    }
+
+}
+bool pacificAtlantic_417_solution::Noway(int row, int col, vector<vector<int>> &matrix, 
+                                                           vector<vector<bool>> &used) {
+    bool flag = false;
+    for (int i = 0; i < direct.size(); ++i) {
+        int row_next = row + direct[i].first;
+        int col_next = col + direct[i].second;
+        if (posi_right(row_next, col_next) && matrix[row_next][col_next] <= matrix[row][col] 
+                                                    && used[row_next][col_next] == false) {
+            flag = true;
+        }
+    }
+    return flag;
+}
+bool pacificAtlantic_417_solution::posi_right(int row, int col) {
+    int flag = false;
+    if (row >= 0 && row < rows && col >= 0 && col < cols) {
+        flag = true;
+    }
+    return flag;
+}

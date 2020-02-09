@@ -1006,6 +1006,8 @@ int main() {
   return 0;
 }
 */
+//重新安排行程 leetcode_332
+/*
 int main() {
   
   vector<vector<string>> tickets = { {"MUC", "LHR"}, 
@@ -1016,9 +1018,29 @@ int main() {
   vector<vector<string>> tickets = { {"JFK", "SFO"}, {"JFK", "ATL"}, 
                                      {"SFO", "ATL"}, {"ATL", "JFK"}, 
                                      {"ATL", "SFO"}};*/
+/*
   
   findItinerary_332_solution solu;
   solu.findItinerary(tickets);
   return 0;
 
+}
+*/
+///太平洋大西洋水流问题 leetcode_417
+int main() {
+  vector<vector<int>> matrix = { {'1', '2', '2', '3', '5'}, 
+                                 {'3', '2', '3', '4', '4'}, 
+                                 {'2', '4', '5', '3', '1'},
+                                 {'6', '7', '1', '4', '5'},
+                                 {'5', '1', '1', '2', '4'}};
+  pacificAtlantic_417_solution solu;
+  solu.pacificAtlantic(matrix);
+  for (int i = 0; i < solu.res.size(); ++i) {
+    for (int j = 0; j < 2; ++j) {
+      cout << solu.res[i][j] << " ";
+    }
+    cout << endl;
+  }
+  cout << endl;
+  return 0;
 }

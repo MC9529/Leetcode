@@ -499,3 +499,23 @@ public:
     vector<vector<int>> total_path;
     vector<vector<string>> total_res;
 };
+///打家劫舍 leetcode_337
+
+///太平洋大西洋水流问题 leetcode_417
+class pacificAtlantic_417_solution {
+public:
+    void pacificAtlantic(vector<vector<int>> &matrix);
+    void pacific(int &row, int &col, vector<vector<int>> &pacific_matrix, vector<vector<int>> &matrix, 
+    vector<vector<bool>> &pace_used);
+    void Atlantic(int &row, int &col, vector<vector<int>> &Atlantic_matrix, vector<vector<int>> &matrix,
+    vector<vector<bool>> &Atlan_used);
+    bool Noway(int row, int col, vector<vector<int>> &matrix, vector<vector<bool>> &used);
+    bool posi_right(int row, int col);
+    //vector<vector<int>> pacific_matrix;
+    //vector<vector<int>> Atlantic_matrix;
+    vector<vector<int>> res;
+    vector<pair<int, int>> direct = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+    int rows;
+    int cols;
+
+};
