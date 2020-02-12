@@ -3553,3 +3553,27 @@ bool isValidBST_98_solution::isValidBST(Bitnode<char>* root) {
         isValidBST(root->right);
     }
 }
+//二叉树的层次c遍历
+void levelOrder_102_solution::levelOrder(Bitnode<char> * root) {
+    vector<Bitnode<char>*> vec;
+    vec.push_back(root);
+    int cur = 0;
+    int last = 1;
+    while (cur < vec.size()) {
+        last = vec.size(); //重新置上一层节点数
+        vector<char> res_temp;
+        while (cur < last) {  // 计数还么到
+            res_temp.push_back(vec[cur]->val);
+            if (vec[cur]->left) { //不为空则压入
+                vec.push_back(vec[cur]->left);
+            }
+            if (vec[cur]->right) { // 不为空则压入
+                vec.push_back(vec[cur]->right);
+            }
+            cur ++; //层数加1
+        }
+        res.push_back(res_temp);
+        cout << endl; // cur = last 都已经被遍历完事了
+    }
+
+}

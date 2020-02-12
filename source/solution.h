@@ -532,3 +532,9 @@ public:
     bool isValidBST(Bitnode<char>* root);
     bool flag = true;
 };
+//二叉树的层次c遍历
+class levelOrder_102_solution {
+public:
+    void levelOrder(Bitnode<char> * root);
+    vector<vector<char>> res;
+};

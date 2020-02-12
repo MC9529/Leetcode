@@ -1074,6 +1074,7 @@ int main() {
 ///验证二叉树 leetcode
 //A{B{C, }, D} ->ABC###D##
   //A{B{, D}, C}  ->AB#D##C##
+/*
 int main() {
   Tree<char> my_tree;
   // 21##3## -> 2{1, 3}
@@ -1090,4 +1091,27 @@ int main() {
 
   return 0;
 }
+*/
+//二叉树的层次c遍历
+//A{B{C, }, D} ->ABC###D##
+  //A{B{, D}, C}  ->AB#D##C##
 
+int main() {
+  Tree<char> my_tree;
+  // 21##3## -> 2{1, 3}
+  //51##43##6##
+  Bitnode<char>* root = my_tree.GetRoot();
+  //print in style
+  my_tree.PrintNode_style(root);
+  cout << endl;
+  levelOrder_102_solution solu;
+  solu.levelOrder(root);
+  for (int i = 0; i < solu.res.size(); ++i) {
+    for (auto iter: solu.res[i]) {
+      cout << iter << " ";
+    }
+    cout << endl;
+  }
+  cout << endl;
+  return 0;
+}
