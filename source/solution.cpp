@@ -3524,3 +3524,32 @@ bool pacificAtlantic_417_solution::posi_right(int row, int col) {
     }
     return flag;
 }
+/////验证二叉树 leetcode
+bool isValidBST_98_solution::isValidBST(Bitnode<char>* root) {
+    if (root == NULL) {
+        cout << "form this root, this is a empty tree" << endl;
+        return flag;
+    }
+    int root_val = (int)root->val - 48;
+    if ( (root->left == NULL && root->right != NULL) ||
+                       (root->left != NULL && root->right == NULL)) {
+        cout << "int the root:" << root_val << " the is not BST with no left or right" << endl;
+        flag = false;
+        return flag;
+    }
+    if (root->left != NULL && root->right != NULL) {
+        int left_val = (int)root->left->val - 48;
+        //int root_val = (int)root->val - 48;
+        int right_val = (int)root->right->val - 48;
+        cout << "the left, root, right val:" << left_val << " " << root_val 
+                                              << " " << right_val << endl;
+        if ( left_val >= root_val || right_val <= root_val ) {
+            
+            cout << "int the root:" << root_val << " the is not BST" << endl;
+            flag = false;
+            return flag;
+        }
+        isValidBST(root->left);
+        isValidBST(root->right);
+    }
+}

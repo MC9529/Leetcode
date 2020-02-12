@@ -9,6 +9,7 @@
 
 #include "solution.h"
 #include <vector>
+#include "BiTree.h"
 
 using namespace std;
 using namespace Eigen;
@@ -1027,6 +1028,7 @@ int main() {
 }
 */
 ///太平洋大西洋水流问题 leetcode_417
+/*
 int main() {
   vector<vector<int>> matrix = { {'1', '2', '2', '3', '5'}, 
                                  {'3', '2', '3', '4', '4'}, 
@@ -1044,3 +1046,48 @@ int main() {
   cout << endl;
   return 0;
 }
+*/
+///二叉树
+/*
+int main() {
+  Tree<char> my_tree;
+  //A{B{C, }, D} ->ABC###D##
+  //A{B{, D}, C}  ->AB#D##C##
+  Bitnode<char>* root = my_tree.GetRoot();
+  cout << "the res in inorder:" << endl;
+  my_tree.InOrder(root);
+  cout << "the res in preorder:" << endl;
+  my_tree.PreOrder(root);
+  cout << "the res in postorder:" << endl;
+  my_tree.PostOrder(root);
+  //层次
+  my_tree.PrintNode_style(root);
+  cout << endl;
+  my_tree.~Tree();
+
+
+  return 0;
+}
+*/
+
+
+///验证二叉树 leetcode
+//A{B{C, }, D} ->ABC###D##
+  //A{B{, D}, C}  ->AB#D##C##
+int main() {
+  Tree<char> my_tree;
+  // 21##3## -> 2{1, 3}
+  //51##43##6##
+  Bitnode<char>* root = my_tree.GetRoot();
+  //print in style
+  my_tree.PrintNode_style(root);
+  cout << endl;
+  isValidBST_98_solution solu;
+  solu.isValidBST(root);
+  if (solu.flag) {
+    cout << "this is BST tree" << endl;
+  }
+
+  return 0;
+}
+

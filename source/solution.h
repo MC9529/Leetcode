@@ -1,6 +1,7 @@
 
 #include <iostream>
 #include <vector>
+#include "BiTree.h"
 /////回溯算法
 
 using namespace std;
@@ -517,5 +518,17 @@ public:
     vector<pair<int, int>> direct = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
     int rows;
     int cols;
-
+};
+///the double tree
+struct TreeNode_char {
+        char val;
+        TreeNode_char *left;
+        TreeNode_char *right;
+        TreeNode_char(char x): val(x), left(NULL), right(NULL){}
+};
+///验证二叉树 leetcode
+class isValidBST_98_solution {
+public:
+    bool isValidBST(Bitnode<char>* root);
+    bool flag = true;
 };
