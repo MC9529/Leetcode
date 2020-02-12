@@ -1105,7 +1105,9 @@ int main() {
   my_tree.PrintNode_style(root);
   cout << endl;
   levelOrder_102_solution solu;
-  solu.levelOrder(root);
+  //solu.levelOrder(root);
+  //solu.levelOrder2(root);
+  solu.levelOrder3(root);
   for (int i = 0; i < solu.res.size(); ++i) {
     for (auto iter: solu.res[i]) {
       cout << iter << " ";

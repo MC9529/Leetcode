@@ -1,1 +1,1 @@
-/usr/bin/c++   -std=c++11 -O2 -g -Wall  -lm   CMakeFiles/hello.dir/main.cpp.o CMakeFiles/hello.dir/source/solution.cpp.o  -o hello -rdynamic 
+/usr/bin/c++   -std=c++11 -O2 -g -Wall  -lm   CMakeFiles/hello.dir/main.cpp.o CMakeFiles/hello.dir/source/solution.cpp.o CMakeFiles/hello.dir/source/BiTree.cpp.o  -o hello -rdynamic 

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libSOURCR.a  CMakeFiles/SOURCR.dir/source/BiTree.cpp.o CMakeFiles/SOURCR.dir/source/solution.cpp.o
+/usr/bin/ranlib libSOURCR.a

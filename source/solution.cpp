@@ -3577,3 +3577,46 @@ void levelOrder_102_solution::levelOrder(Bitnode<char> * root) {
     }
 
 }
+///队列
+void levelOrder_102_solution::levelOrder2(Bitnode<char>* root) {
+    queue<Bitnode<char>*> vec;
+    vec.push(root);
+    while(!vec.empty()) {
+        int len = vec.size();
+        vector<char> res_temp;
+        for (int i = 0; i < len; ++i) {
+            Bitnode<char>* top = vec.front();
+            res_temp.push_back(top->val);
+            if (top->left != NULL) {
+                vec.push(top->left);
+            }
+            if (top->right != NULL) {
+                vec.push(top->right);
+            }
+            vec.pop();
+        }
+        res.push_back(res_temp);
+    }
+
+}
+//动态规划
+void levelOrder_102_solution::levelOrder3(Bitnode<char>* root) {
+    if (!root) return;
+    int n = howlen(root);
+    res.resize(n);
+    DFS(root, 0);
+    return;
+
+}
+void levelOrder_102_solution::DFS(Bitnode<char>* root, int n) {
+    res[n].push_back(root->val);
+    if (root->left) DFS(root->left, n + 1);
+    if (root->right) DFS(root->right, n + 1); 
+
+}
+//用递归求总层数
+int levelOrder_102_solution::howlen(Bitnode<char>* root) {
+    if (root == NULL) return 0;
+    return max(howlen(root->left), howlen(root->right)) + 1;
+
+}

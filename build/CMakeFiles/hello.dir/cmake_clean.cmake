@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/hello.dir/main.cpp.o"
   "CMakeFiles/hello.dir/source/solution.cpp.o"
+  "CMakeFiles/hello.dir/source/BiTree.cpp.o"
   "hello.pdb"
   "hello"
 )

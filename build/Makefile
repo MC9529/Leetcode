@@ -150,6 +150,33 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+source/BiTree.o: source/BiTree.cpp.o
+
+.PHONY : source/BiTree.o
+
+# target to build an object file
+source/BiTree.cpp.o:
+	$(MAKE) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/source/BiTree.cpp.o
+.PHONY : source/BiTree.cpp.o
+
+source/BiTree.i: source/BiTree.cpp.i
+
+.PHONY : source/BiTree.i
+
+# target to preprocess a source file
+source/BiTree.cpp.i:
+	$(MAKE) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/source/BiTree.cpp.i
+.PHONY : source/BiTree.cpp.i
+
+source/BiTree.s: source/BiTree.cpp.s
+
+.PHONY : source/BiTree.s
+
+# target to generate assembly for a file
+source/BiTree.cpp.s:
+	$(MAKE) -f CMakeFiles/hello.dir/build.make CMakeFiles/hello.dir/source/BiTree.cpp.s
+.PHONY : source/BiTree.cpp.s
+
 source/solution.o: source/solution.cpp.o
 
 .PHONY : source/solution.o
@@ -189,6 +216,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... source/BiTree.o"
+	@echo "... source/BiTree.i"
+	@echo "... source/BiTree.s"
 	@echo "... source/solution.o"
 	@echo "... source/solution.i"
 	@echo "... source/solution.s"

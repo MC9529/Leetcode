@@ -6,11 +6,21 @@
 
 #IncludeRegexTransform: 
 
+../source/BiTree.h
+iostream
+-
+stack
+-
+queue
+-
+
 ../source/solution.h
 iostream
 -
 vector
 -
+BiTree.h
+../source/BiTree.h
 
 /home/ccg/File/cpp/leetcode/main.cpp
 algorithm
@@ -30,6 +40,20 @@ iostream
 solution.h
 /home/ccg/File/cpp/leetcode/solution.h
 vector
+-
+BiTree.h
+/home/ccg/File/cpp/leetcode/BiTree.h
+
+/home/ccg/File/cpp/leetcode/source/BiTree.cpp
+BiTree.h
+/home/ccg/File/cpp/leetcode/source/BiTree.h
+
+/home/ccg/File/cpp/leetcode/source/BiTree.h
+iostream
+-
+stack
+-
+queue
 -
 
 /home/ccg/File/cpp/leetcode/source/solution.cpp
@@ -63,6 +87,8 @@ iostream
 -
 vector
 -
+BiTree.h
+/home/ccg/File/cpp/leetcode/source/BiTree.h
 
 /usr/include/eigen3/Eigen/Core
 src/Core/util/DisableStupidWarnings.h

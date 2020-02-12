@@ -535,6 +535,13 @@ public:
 //二叉树的层次c遍历
 class levelOrder_102_solution {
 public:
-    void levelOrder(Bitnode<char> * root);
+    //vector
+    void levelOrder(Bitnode<char> *root);
+    //队列
+    void levelOrder2(Bitnode<char>* root);
+    //递归
+    void levelOrder3(Bitnode<char>* root);
+    void DFS(Bitnode<char>* root, int n);
+    int howlen(Bitnode<char>* root);
     vector<vector<char>> res;
 };
