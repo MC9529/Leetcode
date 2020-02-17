@@ -3599,7 +3599,7 @@ void levelOrder_102_solution::levelOrder2(Bitnode<char>* root) {
     }
 
 }
-//动态规划
+//递归
 void levelOrder_102_solution::levelOrder3(Bitnode<char>* root) {
     if (!root) return;
     int n = howlen(root);
@@ -3619,4 +3619,93 @@ int levelOrder_102_solution::howlen(Bitnode<char>* root) {
     if (root == NULL) return 0;
     return max(howlen(root->left), howlen(root->right)) + 1;
 
+}
+///二叉树的锯齿型层次遍历
+void zigzaglevelOrder_103_solution::zigzaglevelOrder(Bitnode<char>* root) {
+    queue<Bitnode<char>*> vec;
+    vec.push(root);
+    while(!vec.empty()) {
+        int len = vec.size();
+        vector<char> res_temp;
+        for (int i = 0; i < len; ++i) {
+            Bitnode<char>* top = vec.front();
+            res_temp.push_back(top->val);
+            if (flag == 0) {
+                if (top->right != NULL) {
+                    vec.push(top->right);
+                }
+                if (top->left != NULL) {
+                    vec.push(top->left);
+                }
+            }
+            if (flag == 1) {
+                if (top->left != NULL) {
+                    vec.push(top->left);
+                }
+                if (top->right != NULL) {
+                    vec.push(top->right);
+                }
+            }
+            vec.pop();
+        }
+        inverse(flag);
+        res.push_back(res_temp);
+    }
+
+}
+///二叉树的锯齿型层次遍历
+void zigzaglevelOrder_103_solution::inverse(int &flag) {
+    if (flag == 0) {
+        flag = 1;
+        return;
+    }
+    if (flag == 1) {
+        flag = 0;
+        return;
+    }
+}
+////路径总和2 leetcode_113
+void pathSum_113_solution::pathSum(Bitnode<char>* root, int sum) {
+    vector<int> temp_res;
+    if (root == NULL) {
+        cout << "the root is NULL" << endl;
+        return;
+    }
+    DFS(root, sum, temp_res);
+    return;
+}
+
+void pathSum_113_solution::DFS(Bitnode<char>* root, int sum, vector<int> &temp_res) {
+
+    cout << "the res: " << root->val << endl;
+    int temp = root->val - 48;
+    temp_res.push_back(temp);
+    print(temp_res);
+    if (accumulate(temp_res.begin(),temp_res.end(),0) == sum) {
+        res.push_back(temp_res);
+        //temp_res.clear();
+        cout << "pass in 3681" << endl;
+        return;
+    }
+    //访问左边的叉树
+    if (root->left != NULL) {
+        cout << "pass in 3690" << endl;
+        DFS(root->left, sum, temp_res);
+        temp_res.pop_back();
+    }
+    //访问右边的叉树
+    if (root->right != NULL) {
+        cout << "pass in 3694" << endl;
+        DFS(root->right, sum, temp_res);
+        temp_res.pop_back();
+    }
+
+}
+
+void pathSum_113_solution::print(vector<int> &temp_res) {
+    cout << "the temp_res: " << endl;
+    for (int i = 0; i < temp_res.size(); ++i) {
+        cout << temp_res[i] << " ";
+    }
+    cout << endl;
 }

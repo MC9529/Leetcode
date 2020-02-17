@@ -1095,7 +1095,7 @@ int main() {
 //二叉树的层次c遍历
 //A{B{C, }, D} ->ABC###D##
   //A{B{, D}, C}  ->AB#D##C##
-
+/*
 int main() {
   Tree<char> my_tree;
   // 21##3## -> 2{1, 3}
@@ -1108,6 +1108,53 @@ int main() {
   //solu.levelOrder(root);
   //solu.levelOrder2(root);
   solu.levelOrder3(root);
+  for (int i = 0; i < solu.res.size(); ++i) {
+    for (auto iter: solu.res[i]) {
+      cout << iter << " ";
+    }
+    cout << endl;
+  }
+  cout << endl;
+  return 0;
+}
+*/
+///
+///二叉树的锯齿型层次遍历
+/*
+int main() {
+  Tree<char> my_tree;
+  // 21##3## -> 2{1, 3}
+  //51##43##6##
+  Bitnode<char>* root = my_tree.GetRoot();
+  //print in style
+  my_tree.PrintNode_style(root);
+  cout << endl;
+  zigzaglevelOrder_103_solution solu;
+  
+  solu.zigzaglevelOrder(root);
+  for (int i = 0; i < solu.res.size(); ++i) {
+    for (auto iter: solu.res[i]) {
+      cout << iter << " ";
+    }
+    cout << endl;
+  }
+  cout << endl;
+  return 0;
+}
+*/
+///路径总和2 leetcode_113
+int main() {
+  Tree<char> my_tree;
+  // 21##3## -> 2{1, 3}
+  //51##43##6##
+  Bitnode<char>* root = my_tree.GetRoot();
+  //print in style
+  my_tree.PrintNode_style(root);
+  cout << endl;
+  pathSum_113_solution solu;
+  int sum = 15;
+  solu.pathSum(root, sum);
+  cout << "the res:" << endl;
   for (int i = 0; i < solu.res.size(); ++i) {
     for (auto iter: solu.res[i]) {
       cout << iter << " ";

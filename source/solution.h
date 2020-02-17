@@ -545,3 +545,21 @@ public:
     int howlen(Bitnode<char>* root);
     vector<vector<char>> res;
 };
+///二叉树的锯齿型层次遍历
+class zigzaglevelOrder_103_solution {
+public:
+    void zigzaglevelOrder(Bitnode<char>* root);
+    vector<vector<char>> res;
+    //flag: 0: left->right 1: right->left
+    int flag = 0;
+    void inverse(int &flag);
+    
+};
+///路径总和2 leetcode_113
+class pathSum_113_solution {
+public:
+   void pathSum(Bitnode<char>* root, int sum);
+   void DFS(Bitnode<char> * root, int sum, vector<int> &temp_res);
+   vector<vector<int>> res;
+   void print(vector<int> &temp_res);
+};
