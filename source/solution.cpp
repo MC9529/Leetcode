@@ -3774,15 +3774,17 @@ void rightSideView_199_solution::rightSideView(Bitnode<char>* root) {
 void rightSideView_199_solution::right_DFS(Bitnode<char>* root) {
     char temp = root->val;
     res.push_back(temp);
+    //先往右搜索
     if (root->right != NULL) {
         right_DFS(root->right);
-    } else if (root->left != NULL) {
+    } else if (root->left != NULL) { // 没有右叉树，只能搜索左叉树
         right_DFS(root->left);
     }
     return;
 
 }
 ////二叉树中的第K小的元素
+//使用优先队列
 void KthSmallest_230_solution::KthSmallest(Bitnode<char>* root, int k) {
     if (root ==NULL) {
         cout << "the root is NULL" << endl;
@@ -3796,17 +3798,86 @@ void KthSmallest_230_solution::DFS(Bitnode<char>* root, int k) {
     cout << "the temp:" << temp << endl;
     if (queue.size() < k) {
         queue.push(temp);
-    } else if (queue.top() > temp) {
+    } else if (queue.top() > temp) { ///判断该节点的值是否可以插入，如果小于最大值，则可以插入
+    //小于该大顶堆中的最大值，也是top
         queue.pop();
         queue.push(temp);
     }
-
+    ///向左叉树
     if (root->left != NULL) {
         DFS(root->left, k);
     }
+    ///向右叉树
     if (root->right != NULL) {
         DFS(root->right, k);
     }
     cout << "the top:" << queue.top() << endl;
     return;
+}
+////二叉树的最近公共祖先 leetcode_236
+void lowestCommonAncestor_236_solution::lowestCommonAncestor(Bitnode<char>* root, 
+                                            Bitnode<char>* p, Bitnode<char>* q) {
+    if (root == NULL) {
+        cout << "the root is NULL" << endl;
+        return;
+    }
+    DFS(root, p, q);
+    return;
+}
+void lowestCommonAncestor_236_solution::DFS(Bitnode<char>* root, Bitnode<char>* p, 
+                                                              Bitnode<char>* q) {
+    /*if (root->val == p->val || root->val == q->val) {
+        return;
+    }*/
+    bool flag_p = false, flag_q = false;
+    bool search_res = false;
+    bool temp = search_ancestor(root, p, q, flag_p, flag_q, search_res);
+    if (temp == true) {
+        res.push_back(root->val);
+        if (root->left != NULL) {
+            DFS(root->left, p, q);
+        }
+        if (root->right != NULL) {
+            DFS(root->right, p, q);
+        }
+    }
+
+}
+bool lowestCommonAncestor_236_solution::search_ancestor(Bitnode<char>* root, 
+          Bitnode<char>* p, Bitnode<char>* q, bool &flag_p, bool &flag_q, bool &search_res) {
+    //两个都找到了
+    if (flag_p == true && flag_q == true) {
+        search_res = true;
+        return search_res;
+    }
+    int temp_root = root->val;
+    //判断root是否要找的点
+    if (root == q) {
+        flag_q = true;
+    }
+    if (root == p) {
+        flag_p = true;
+    }
+    ///向左叉树搜索
+    if (root->left != NULL) {
+        ///比较两个指针是否为同一个指针，可以通过比较两个指针所指向的值相等来判断吗？ 不可以
+        if (root->left == q) {
+            flag_q = true;
+        }
+        if (root->left == p) {
+            flag_p = true;
+        }
+        ///继续搜索
+        search_ancestor(root->left, p, q, flag_p, flag_q, search_res);
+    }
+    if (root->right != NULL) {
+        if (root->right == q) {
+            flag_q = true;
+        }
+        if (root->right == p) {
+            flag_p = true;
+        }
+        search_ancestor(root->left, p, q, flag_p, flag_q, search_res);
+    }
+
 }

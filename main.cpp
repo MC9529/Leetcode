@@ -1232,6 +1232,7 @@ int main() {
   return 0;
 }*/
 /////二叉树中的第K小的元素
+/*
 int main() {
   Tree<char> my_tree;
   // 21##3## -> 2{1, 3}
@@ -1249,5 +1250,25 @@ int main() {
       solu.queue.pop();
   }
   cout << endl;
+  return 0;
+}*/
+
+int main() {
+  Tree<char> my_tree;
+  // 21##3## -> 2{1, 3}
+  //51##43##6##
+  Bitnode<char>* root = my_tree.GetRoot();
+  //print in style
+  Bitnode<char>* p = root->left->left;
+  Bitnode<char>* q = root->left;
+  my_tree.PrintNode_style(root);
+  cout << endl;
+  lowestCommonAncestor_236_solution solu;
+  solu.lowestCommonAncestor(root, p, q);
+  for (auto iter: solu.res) {
+    cout << iter << " ";
+  }
+  cout << endl;
+
   return 0;
 }

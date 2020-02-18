@@ -588,7 +588,7 @@ public:
 class KthSmallest_230_solution {
 public:
     struct comp {
-        ///小顶堆
+        ///大顶堆
         bool operator()(const int &a, const int &b) {
             return a < b;
         } 
@@ -597,4 +597,13 @@ public:
     void KthSmallest(Bitnode<char>* root, int k);
     void DFS(Bitnode<char>* root, int k);
 
+};
+//二叉树的最近公共祖先 leetcode_236
+class lowestCommonAncestor_236_solution {
+public:
+    void lowestCommonAncestor(Bitnode<char>* root, Bitnode<char>* p, Bitnode<char>* q);
+    void DFS(Bitnode<char>* root, Bitnode<char>* p, Bitnode<char>* q);
+    bool search_ancestor(Bitnode<char>* root, Bitnode<char>* p, Bitnode<char>* q, 
+                                   bool &flag_p, bool &flag_q, bool &search_res);
+    vector<char> res;
 };
