@@ -1167,6 +1167,7 @@ int main() {
 }
 */
 ///二叉树转化为链表 leetcode_114
+/*
 int main() {
   Tree<char> my_tree;
   // 21##3## -> 2{1, 3}
@@ -1181,6 +1182,71 @@ int main() {
   cout << "the res:" << endl;
   for (int i = 0; i < solu.res.size(); ++i) {
     cout << solu.res[i] << " ";
+  }
+  cout << endl;
+  return 0;
+}
+*/
+//求根到叶子节点的数字之和
+/*
+int main() {
+  Tree<char> my_tree;
+  // 21##3## -> 2{1, 3}
+  //51##43##6##
+  Bitnode<char>* root = my_tree.GetRoot();
+  //print in style
+  my_tree.PrintNode_style(root);
+  cout << endl;
+  sumNumbers_129_solution solu;
+  solu.sumNumbers(root);
+
+  cout << "the res:" << endl;
+  for (int i = 0; i < solu.res.size(); ++i) {
+    for (int j = 0; j < solu.res[i].size(); ++j) {
+      cout << solu.res[i][j] << " ";
+    }
+    cout << endl;
+  }
+  cout << endl;
+  return 0;
+}
+*/
+/////二叉树的右视图
+/*
+int main() {
+  Tree<char> my_tree;
+  // 21##3## -> 2{1, 3}
+  //51##43##6##
+  Bitnode<char>* root = my_tree.GetRoot();
+  //print in style
+  my_tree.PrintNode_style(root);
+  cout << endl;
+  rightSideView_199_solution solu;
+  solu.rightSideView(root);
+
+  cout << "the res:" << endl;
+  for (int i = 0; i < solu.res.size(); ++i) {
+    cout << solu.res[i] << " ";
+  }
+  cout << endl;
+  return 0;
+}*/
+/////二叉树中的第K小的元素
+int main() {
+  Tree<char> my_tree;
+  // 21##3## -> 2{1, 3}
+  //51##43##6##
+  Bitnode<char>* root = my_tree.GetRoot();
+  //print in style
+  my_tree.PrintNode_style(root);
+  cout << endl;
+  KthSmallest_230_solution solu;
+  int k = 3;
+  solu.KthSmallest(root, k);
+  while (!solu.queue.empty()) {
+      auto top = solu.queue.top();
+      cout << top << " ";
+      solu.queue.pop();
   }
   cout << endl;
   return 0;

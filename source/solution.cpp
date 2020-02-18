@@ -3727,5 +3727,86 @@ void flatten_114_solution::DFS(Bitnode<char> *root) {
     if (root->right != NULL) {
         DFS(root->right);
     }
+}
+//////求根到叶子节点的数字之和
+void sumNumbers_129_solution::sumNumbers(Bitnode<char>* root) {
+    vector<int> temp_res;
+    if (root == NULL) {
+        cout << "the root is NULL" << endl;
+        return;
+    }
+    DFS(root, temp_res);
+    return;
 
+}
+void sumNumbers_129_solution::DFS(Bitnode<char>* root, vector<int> &temp_res) {
+    cout << "the res: " << root->val << endl;
+    int temp = root->val - 48;
+    temp_res.push_back(temp);
+    if (root->left == NULL && root->right == NULL) {
+        res.push_back(temp_res);
+        //temp_res.clear();
+        cout << "pass in 3681" << endl;
+        return;
+    }
+    //访问左边的叉树
+    if (root->left != NULL) {
+        cout << "pass in 3690" << endl;
+        DFS(root->left, temp_res);
+        temp_res.pop_back();
+    }
+    //访问右边的叉树
+    if (root->right != NULL) {
+        cout << "pass in 3694" << endl;
+        DFS(root->right, temp_res);
+        temp_res.pop_back();
+    }
+}
+//二叉树的右视图
+void rightSideView_199_solution::rightSideView(Bitnode<char>* root) {
+    if (root == NULL) {
+        cout << "the root is NULL" << endl;
+        return;
+    }
+    right_DFS(root);
+    return;
+}
+void rightSideView_199_solution::right_DFS(Bitnode<char>* root) {
+    char temp = root->val;
+    res.push_back(temp);
+    if (root->right != NULL) {
+        right_DFS(root->right);
+    } else if (root->left != NULL) {
+        right_DFS(root->left);
+    }
+    return;
+
+}
+////二叉树中的第K小的元素
+void KthSmallest_230_solution::KthSmallest(Bitnode<char>* root, int k) {
+    if (root ==NULL) {
+        cout << "the root is NULL" << endl;
+        return;
+    }
+    DFS(root, k);
+    return;
+}
+void KthSmallest_230_solution::DFS(Bitnode<char>* root, int k) {
+    int temp = root->val - 48;
+    cout << "the temp:" << temp << endl;
+    if (queue.size() < k) {
+        queue.push(temp);
+    } else if (queue.top() > temp) {
+        queue.pop();
+        queue.push(temp);
+    }
+
+    if (root->left != NULL) {
+        DFS(root->left, k);
+    }
+    if (root->right != NULL) {
+        DFS(root->right, k);
+    }
+    cout << "the top:" << queue.top() << endl;
+    return;
 }

@@ -570,3 +570,31 @@ public:
     void DFS(Bitnode<char> *root);
     vector<char> res;
 };
+///求根到叶子节点的数字之和
+class sumNumbers_129_solution {
+public:
+    void sumNumbers(Bitnode<char>* root);
+    void DFS(Bitnode<char>* root, vector<int> &temp_res);
+    vector<vector<int>> res;
+};
+//二叉树的右视图
+class rightSideView_199_solution {
+public:
+    void rightSideView(Bitnode<char>* root);
+    void right_DFS(Bitnode<char>* root);
+    vector<char> res;
+};
+//二叉树中的第K小的元素
+class KthSmallest_230_solution {
+public:
+    struct comp {
+        ///小顶堆
+        bool operator()(const int &a, const int &b) {
+            return a < b;
+        } 
+    };
+    priority_queue<int, vector<int>, comp> queue;
+    void KthSmallest(Bitnode<char>* root, int k);
+    void DFS(Bitnode<char>* root, int k);
+
+};
