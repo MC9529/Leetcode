@@ -3709,3 +3709,23 @@ void pathSum_113_solution::print(vector<int> &temp_res) {
     }
     cout << endl;
 }
+/////二叉树转化为链表 leetcode_114
+void flatten_114_solution::flatten(Bitnode<char> *root) {
+    if (root == NULL) {
+        cout << "the root is NULL" << endl;
+    }
+    DFS(root);
+    return;
+
+}
+void flatten_114_solution::DFS(Bitnode<char> *root) {
+    char temp = root->val;
+    res.push_back(temp);
+    if (root->left != NULL) {
+        DFS(root->left);
+    }
+    if (root->right != NULL) {
+        DFS(root->right);
+    }
+
+}

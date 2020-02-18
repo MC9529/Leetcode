@@ -563,3 +563,10 @@ public:
    vector<vector<int>> res;
    void print(vector<int> &temp_res);
 };
+//二叉树转化为链表 leetcode_114
+class flatten_114_solution {
+public:
+    void flatten(Bitnode<char> *root);
+    void DFS(Bitnode<char> *root);
+    vector<char> res;
+};
