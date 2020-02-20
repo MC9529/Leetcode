@@ -607,3 +607,29 @@ public:
                                    bool &flag_p, bool &flag_q, bool &search_res);
     vector<char> res;
 };
+//找树左下角的值 leetcode_513
+class findBottomLeftValue_513_solution {
+public:
+    void findBottomLeftValue(Bitnode<char>* root);
+    vector<vector<char>> res;
+};
+//在每一个树行中找最大值
+class largestValue_515_solution {
+public:
+    void largestValue(Bitnode<char>* root);
+    vector<int> res;
+};
+//火柴拼正方形 leetcode_473 
+class makesquare_473_solution {
+public:
+    void makesquare(vector<int> &nums);
+    void DFS(int index, vector<vector<int>> &res);
+    //vector<vector<int>> res;
+    //vector<vector<int>> pacific_matrix(rows, vector<int>(cols, 0));
+    vector<int> nums_;
+    int target;
+    //vector<vector<int>> res(4, vector<int>());
+    bool flag = false;
+    void print_vector(vector<vector<int>> &res);
+    vector<vector<vector<int>>> total;
+};

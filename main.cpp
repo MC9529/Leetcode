@@ -1252,7 +1252,8 @@ int main() {
   cout << endl;
   return 0;
 }*/
-
+//二叉树的最近公共祖先 leetcode_236
+/*
 int main() {
   Tree<char> my_tree;
   // 21##3## -> 2{1, 3}
@@ -1272,3 +1273,58 @@ int main() {
 
   return 0;
 }
+*/
+//找树左下角的值 leetcode_513
+/*
+int main() {
+  Tree<char> my_tree;
+  // 21##3## -> 2{1, 3}
+  //51##43##6##
+  Bitnode<char>* root = my_tree.GetRoot();
+  //print in style
+  my_tree.PrintNode_style(root);
+  cout << endl;
+  findBottomLeftValue_513_solution solu;
+  solu.findBottomLeftValue(root);
+  for (int i = 0; i < solu.res.size(); ++i) {
+    for (auto iter: solu.res[i]) {
+      cout << iter << " ";
+    }
+    cout << endl;
+  }
+  cout << "the Bottom left value:" << solu.res[solu.res.size() - 1][0] << endl;
+  cout << endl;
+
+  return 0;
+}
+*/
+//在每一个树行中找最大值
+/*
+int main() {
+  Tree<char> my_tree;
+  // 21##3## -> 2{1, 3}
+  //51##43##6##
+  Bitnode<char>* root = my_tree.GetRoot();
+  //print in style
+  my_tree.PrintNode_style(root);
+  cout << endl;
+  largestValue_515_solution solu;
+  solu.largestValue(root);
+
+  for (int i = 0; i < solu.res.size(); ++i) {
+    cout << solu.res[i] << " ";
+  }
+  cout << endl;
+  
+  return 0;
+}
+*/
+//火柴拼正方形 leetcode_473 
+int main() {
+  vector<int> nums = {1, 3, 2, 2, 4, 4};
+  makesquare_473_solution solu;
+  solu.makesquare(nums);
+
+  return 0;
+}
+

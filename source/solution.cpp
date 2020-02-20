@@ -10,6 +10,7 @@
 #include <map>
 #include <cstring>
 #include <stdlib.h>
+#include <limits.h>
 using namespace std;
 
 ///回溯算法
@@ -3880,4 +3881,119 @@ bool lowestCommonAncestor_236_solution::search_ancestor(Bitnode<char>* root,
         search_ancestor(root->left, p, q, flag_p, flag_q, search_res);
     }
 
+}
+///找树左下角的值 leetcode_513
+void findBottomLeftValue_513_solution::findBottomLeftValue(Bitnode<char>* root) {
+    queue<Bitnode<char>*> vec;
+    vec.push(root);
+    while(!vec.empty()) {
+        int len = vec.size();
+        vector<char> res_temp;
+        for (int i = 0; i < len; ++i) {
+            Bitnode<char>* top = vec.front();
+            res_temp.push_back(top->val);
+            if (top->left != NULL) {
+                vec.push(top->left);
+            }
+            if (top->right != NULL) {
+                vec.push(top->right);
+            }
+            vec.pop();
+        }
+        res.push_back(res_temp);
+    }
+
+}
+////在每一个树行中找最大值
+void largestValue_515_solution::largestValue(Bitnode<char>* root) {
+    queue<Bitnode<char>* > vec;
+    vec.push(root);
+    while(!vec.empty()) {
+        int len = vec.size();
+        int temp_max = INT32_MIN;
+        for (int i = 0; i < len; ++i) {
+            Bitnode<char>* top = vec.front();
+            int val = top->val - 48;
+            temp_max = max(temp_max, val);
+            if (top->left != NULL) {
+                vec.push(top->left);
+            }
+            if (top->right != NULL) {
+                vec.push(top->right);
+            }
+            vec.pop();
+        }
+        res.push_back(temp_max);
+    }
+}
+//火柴拼正方形 leetcode_473 
+void makesquare_473_solution::makesquare(vector<int> &nums) {
+    nums_ = nums;
+    if (nums.size() < 4) {
+        flag = false;
+        return;
+    }    
+    int sum = accumulate(nums.begin(), nums.end(), 0);
+    if (sum % 4 !=0) {
+        flag = false;
+        return;
+    }
+    target = sum / 4;
+    sort(nums_.begin(), nums_.end(), greater<int>());
+    vector<vector<int>> res(4, vector<int>());
+    cout << "pass in 3944" << endl;
+    DFS(0, res);
+    cout << "pass in 3946" << endl;
+    for (int i = 0; i < total.size(); ++i) {
+        for (int j = 0; j < total[i].size(); ++j) {
+            for (auto iter: total[i][j]) {
+                cout << iter << " ";
+            }
+            cout << endl;
+        }
+        cout << endl;
+    }
+    cout << endl;
+    return;
+}
+
+void makesquare_473_solution::DFS(int index, vector<vector<int>> &res) {
+    if (index == nums_.size()) {
+        int sum1 = accumulate(res[0].begin(), res[0].end(), 0);
+        int sum2 = accumulate(res[1].begin(), res[1].end(), 0);
+        int sum3 = accumulate(res[2].begin(), res[2].end(), 0);
+        int sum4 = accumulate(res[3].begin(), res[3].end(), 0);
+        if (sum1 == sum2 && sum2 == sum3 && sum3 == sum4) {
+            flag = true;
+            total.push_back(res);
+            cout << "pass in 3958" << endl;
+            return;
+        }
+    }
+    for (int i = 0; i < 4; ++i) {
+        //不满足要求， 跳过
+        if (accumulate(res[i].begin(), res[i].end(), 0) + nums_[index] > target) {
+           continue;
+        }
+        res[i].push_back(nums_[index]);
+        cout << "pass in 3965" << endl;
+        print_vector(res);
+        DFS(index + 1, res);
+        //print_vector(res);
+        res[i].pop_back();
+        cout << "pass in 3971" << endl;
+        //print_vector(res);
+    }
+    
+}
+///输出vector
+void makesquare_473_solution::print_vector(vector<vector<int>> &res) {
+    for (int i = 0; i < res.size(); ++i) {
+        for (int j = 0; j < res[i].size(); ++j) {
+            cout << res[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+    return;
 }
