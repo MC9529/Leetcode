@@ -4,7 +4,7 @@
 #include <limits>
 #include <utility>
 #include <vector>
-#include "Eigen/LU"
+//#include "Eigen/LU"
 #include<iostream>
 
 #include "solution.h"
@@ -12,7 +12,7 @@
 #include "BiTree.h"
 
 using namespace std;
-using namespace Eigen;
+//using namespace Eigen;
 
 
 ////Permute_46   全排列 
@@ -1320,11 +1320,20 @@ int main() {
 }
 */
 //火柴拼正方形 leetcode_473 
+/*
 int main() {
   vector<int> nums = {1, 3, 2, 2, 4, 4};
   makesquare_473_solution solu;
   solu.makesquare(nums);
 
   return 0;
-}
+}*/
+//最长连续序列 leetcode_128
+int main() {
+  vector<int> nums = {100, 4, 200, 1, 2, 3, 201, 202};
+  longestConsecutive_128_solution solu;
+  //solu.longestConsecutive(nums);
+  solu.longestConsecutive2(nums);
 
+  return 0;
+}

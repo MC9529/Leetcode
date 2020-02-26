@@ -8,6 +8,7 @@
 #include <queue>
 #include <unordered_map>
 #include <map>
+#include <unordered_set>
 #include <cstring>
 #include <stdlib.h>
 #include <limits.h>
@@ -3996,4 +3997,74 @@ void makesquare_473_solution::print_vector(vector<vector<int>> &res) {
     }
     cout << endl;
     return;
+}
+///最长连续序列 leetcode_128
+void longestConsecutive_128_solution::longestConsecutive(vector<int> &nums) {
+    //从大到小排序
+    //sort(nums.begin(), nums.end(), greater<int>());
+    //从小到大排序
+    sort(nums.begin(), nums.end(), less<int>());
+    //元素个数从大到小排序
+    auto comp = [](const vector<int> &res1, const vector<int> &res2) {
+        return res1.size() > res2.size();
+    };
+    for (int i = 0; i < nums.size(); ++i) {
+        cout << nums[i] << " ";
+    }
+    cout << endl;
+    res.push_back(nums[0]);
+    for (int i = 1; i < nums.size(); ++i) {
+        //nums[i] 与 res的最后元素相连续
+        if (nums[i] == res[res.size() - 1] + 1) {
+            res.push_back(nums[i]);
+        } else {
+            total_res.push_back(res);
+            res.clear();
+            res.push_back(nums[i]);
+        }
+    }
+    total_res.push_back(res);
+    //按vector<vector<int>> total_res中的元素vector<int> res的个数从大到小排序
+    sort(total_res.begin(), total_res.end(), comp);
+    for (int i = 0; i < total_res.size(); ++i) {
+        for (int j = 0; j < total_res[i].size(); ++j) {
+            cout << total_res[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+    return;
+}
+void longestConsecutive_128_solution::longestConsecutive2(vector<int> &nums) {
+    if (nums.empty()) {
+        cout << "the nums is empty" << endl;
+        return;
+    }
+    unordered_set<int> nums_set(nums.begin(), nums.end());
+    for (auto num: nums) {
+        cout << "the num in 4045:" << num << endl;
+        if (nums_set.count(num - 1) == 0) {
+            res.push_back(num);
+            while(nums_set.count(num + 1)) {
+                res.push_back(num + 1);
+                num = num + 1;
+            }
+
+        }
+        cout << "the num in 4054:" << num << endl;
+        if (!res.empty()) {
+            total_res.push_back(res);
+        }
+        res.clear();
+    }
+    cout << "the size of total_res: " << total_res.size() << endl;
+    for (int i = 0; i < total_res.size(); ++i) {
+        for (int j = 0; j < total_res[i].size(); ++j) {
+            cout << total_res[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+    return;
+
 }

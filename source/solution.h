@@ -633,3 +633,14 @@ public:
     void print_vector(vector<vector<int>> &res);
     vector<vector<vector<int>>> total;
 };
+//最长连续序列 leetcode_128
+class longestConsecutive_128_solution {
+public:
+    //排序
+    void longestConsecutive(vector<int> &nums);
+    //unordered_set
+    void longestConsecutive2(vector<int> &nums);
+    vector<int> res;
+    vector<vector<int>> total_res;
+
+};
