@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include "BiTree.h"
+#include <unordered_map>
 /////回溯算法
 
 using namespace std;
@@ -640,7 +641,16 @@ public:
     void longestConsecutive(vector<int> &nums);
     //unordered_set
     void longestConsecutive2(vector<int> &nums);
+    //并查集
+    //void longestConsecutive3(vector<int> &nums);
+    //int father(int x);
     vector<int> res;
     vector<vector<int>> total_res;
+    unordered_map<int, int> uf, cnt;
 
+};
+//并查集 leetcode_547 朋友圈
+class findCircleNum_547_solution {
+public:
+    void findCircleNum(vector<vector<int>> &nums);
 };

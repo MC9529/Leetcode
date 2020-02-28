@@ -4068,3 +4068,144 @@ void longestConsecutive_128_solution::longestConsecutive2(vector<int> &nums) {
     return;
 
 }
+/*
+//并查集#TODO
+int longestConsecutive_128_solution::father(int x) {
+    if (uf.count(x) == 0) {
+        return x;
+    }
+    if (uf[x] != x) {
+        uf[x] = father(uf[x]);
+    }
+    return uf[x];
+
+}
+void longestConsecutive_128_solution::longestConsecutive3(vector<int> &nums) {
+    
+    if (nums.size() == 0) {
+        cout << "the nums is empty" << endl;
+        return;
+    }
+    for (auto iter: nums) {
+        cout << iter << " ";
+        uf[iter] = iter;
+    }
+    cout << endl;
+    for (auto x: nums) {
+        if (uf.count(x - 1) > 0) {
+            uf[x] = x - 1;
+        }
+    }
+    for (int i: nums) {
+        cout << uf[i] << " ";
+    }
+    cout << endl;
+    return;
+
+}
+*/
+///并查集 API
+class UF {
+public:
+    int count;
+    //存储整个朋友圈
+    vector<vector<int>> circle;
+    vector<vector<int>> last_circle;
+    //存储一个圈子
+    vector<int> parent;
+    //记录朋友圈人数
+    vector<int> size;
+    UF(int n) {
+        count = n;
+        vector<vector<int>> temp_circle(n, vector<int>());
+        circle = temp_circle;
+        vector<int> temp(n, -1);
+        parent = temp;
+        size = temp;
+        for (int i = 0; i < n; ++i) {
+            vector<int> vector_temp;
+            parent[i] = i;
+            size[i] = 1;
+            vector_temp.push_back(i);
+            circle[i] = vector_temp;
+        }
+    }
+    void Union(int p, int q) {
+        int rootP =find(p);
+        int rootQ = find(q);
+        if (rootQ == rootP) {
+            cout << "they have connected before" << endl;
+            return;
+        }
+        if (size[rootP] > size[rootQ]) {
+            parent[rootQ] = rootP;
+            size[rootP] = size[rootP] + size[rootQ];
+            //将circle Q 添加到  circle P
+            circle[rootP].insert(circle[rootP].end(), circle[rootQ].begin(), circle[rootQ].end());
+            circle[rootQ].clear();
+        } else {
+            parent[rootP] = rootQ;
+            size[rootQ] = size[rootP] + size[rootQ];
+             //将circle P 添加到  circle Q
+            circle[rootQ].insert(circle[rootQ].end(), circle[rootP].begin(), circle[rootP].end());
+            circle[rootP].clear();
+        }
+        count --;
+
+    }
+    bool connected(int p, int q) {
+        int rootP = find(p);
+        int rootQ = find(q);
+        return rootP = rootQ;
+    }
+    ///找根节点
+    int find(int x) {
+        while (parent[x] != x) {
+            //路径压缩
+            parent[x] = parent[parent[x]];
+            x = parent[x];
+        }
+        return x;
+    }
+    int Count () {
+        return count;
+    }
+    void Circle() {
+        for (int i = 0; i < circle.size(); ++i) {
+            if (circle[i].size() != 0) {
+                last_circle.push_back(circle[i]);
+            } 
+        }
+        return;
+    }
+    void printCircle(vector<vector<int>> &circle) {
+        for (int i = 0; i < circle.size(); ++i) {
+            for (int j = 0; j < circle[i].size(); ++j) {
+                cout << circle[i][j] << " ";
+            }
+            cout << endl;
+        }
+        cout << endl;
+    }
+
+};
+
+void findCircleNum_547_solution::findCircleNum(vector<vector<int>> &nums) {
+    int n = nums.size();
+    UF uf(n);
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < i; ++j) {
+            if (nums[i][j] == 1) {
+                uf.Union(i, j);
+            }
+        }
+    }
+    uf.Circle();
+    cout << "the last circle: " << endl;
+    uf.printCircle(uf.last_circle);
+    cout << "the circle: " << endl;
+    uf.printCircle(uf.circle);
+    
+    cout << "the num of circle: " << uf.count << endl;
+    return;
+}
