@@ -642,8 +642,8 @@ public:
     //unordered_set
     void longestConsecutive2(vector<int> &nums);
     //并查集
-    //void longestConsecutive3(vector<int> &nums);
-    //int father(int x);
+    void longestConsecutive3(vector<int> &nums);
+    int father(int x);
     vector<int> res;
     vector<vector<int>> total_res;
     unordered_map<int, int> uf, cnt;

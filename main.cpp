@@ -1329,15 +1329,19 @@ int main() {
   return 0;
 }*/
 //最长连续序列 leetcode_128
-/*
+
 int main() {
   vector<int> nums = {100, 4, 200, 1, 2, 3, 201, 202};
   longestConsecutive_128_solution solu;
   //solu.longestConsecutive(nums);
-  solu.longestConsecutive2(nums);
+  //solu.longestConsecutive2(nums);
+  solu.longestConsecutive3(nums);
   return 0;
+
 }
-*/
+
+////并查集 leetcode_547 朋友圈
+/*
 int main() {
   vector<vector<int>> nums = { {1, 1, 0, 0, 0}, 
                                {1, 1, 1, 0, 0}, 
@@ -1348,4 +1352,4 @@ int main() {
   findCircleNum_547_solution solu;
   solu.findCircleNum(nums);
   return 0;
-}
+}*/

@@ -4068,42 +4068,143 @@ void longestConsecutive_128_solution::longestConsecutive2(vector<int> &nums) {
     return;
 
 }
-/*
+
 //并查集#TODO
-int longestConsecutive_128_solution::father(int x) {
-    if (uf.count(x) == 0) {
+class UF1 {
+public:
+    int count;
+    //存储整个朋友圈
+    vector<vector<int>> circle;
+    vector<vector<int>> last_circle;
+    //存储一个圈子
+    unordered_map<int, int> parent;
+    //记录朋友圈人数
+    vector<int> size;
+    vector<int> nums_;
+    UF1(vector<int> &nums) {
+        nums_ = nums;
+        count = nums.size();
+        vector<vector<int>> temp_circle(count, vector<int>());
+        circle = temp_circle;
+        vector<int> temp(count, -1);
+        size = temp;
+        for (int i = 0; i < count; ++i) {
+            vector<int> vector_temp;
+            parent[nums[i]] = nums[i];
+            size[nums[i]] = 1;
+            vector_temp.push_back(nums[i]);
+            circle[i] = vector_temp;
+        }
+        cout << "circle in 4096" << endl;
+        printCircle(circle);
+    }
+    void Union(int p, int q) {
+        int rootP =find(p);
+        int rootQ = find(q);
+        cout << "the p and rootP:" << p << " " << rootP << endl;
+        cout << "the q and rootQ:" << q << " " << rootQ << endl;
+        if (rootQ == rootP) {
+            cout << "the p and rootP:" << p << " " << rootP << endl;
+            cout << "the q and rootQ:" << q << " " << rootQ << endl;
+            cout << "they have connected before" << endl;
+            return;
+        }
+        int rootP_idx = get_index(rootP);
+        int rootQ_idx = get_index(rootQ);
+        if (size[rootP] > size[rootQ]) {
+            parent[rootQ] = rootP;
+            size[rootP] = size[rootP] + size[rootQ];
+            //将circle Q 添加到  circle P
+            //circle[rootP].insert(circle[rootP].end(), circle[rootQ].begin(), circle[rootQ].end());
+            circle[rootP_idx].insert(circle[rootP_idx].end(), circle[rootQ_idx].begin(), circle[rootQ_idx].end());
+            circle[rootQ_idx].clear();
+        } else {
+            parent[rootP] = rootQ;
+            size[rootQ] = size[rootP] + size[rootQ];
+             //将circle P 添加到  circle Q
+            circle[rootQ_idx].insert(circle[rootQ_idx].end(), circle[rootP_idx].begin(), circle[rootP_idx].end());
+            circle[rootP_idx].clear();
+        }
+        printCircle(circle);
+        count --;
+        return;
+
+    }
+    bool connected(int p, int q) {
+        int rootP = find(p);
+        int rootQ = find(q);
+        return rootP = rootQ;
+    }
+    ///找根节点
+    int find(int x) {
+        while (parent[x] != x) {
+            //路径压缩
+            parent[x] = parent[parent[x]];
+            x = parent[x];
+        }
         return x;
     }
-    if (uf[x] != x) {
-        uf[x] = father(uf[x]);
+    int Count () {
+        return count;
     }
-    return uf[x];
+    void Circle() {
+        for (int i = 0; i < circle.size(); ++i) {
+            if (circle[i].size() != 0) {
+                last_circle.push_back(circle[i]);
+            } 
+        }
+        return;
+    }
+    void printCircle(vector<vector<int>> &circle) {
+        for (int i = 0; i < circle.size(); ++i) {
+            if (circle[i].size() == 0) {
+                continue;
+            }
+            for (int j = 0; j < circle[i].size(); ++j) {
+                cout << circle[i][j] << " ";
+            }
+            cout << endl;
+        }
+        cout << endl;
+    }
+    int get_index(int root) {
+        int res = 0;
+        for (int i = 0; i < nums_.size(); ++i) {
+            if (nums_[i] == root) {
+                res = i;
 
-}
+            }
+        }
+        return res;
+    }
+
+};
 void longestConsecutive_128_solution::longestConsecutive3(vector<int> &nums) {
     
     if (nums.size() == 0) {
         cout << "the nums is empty" << endl;
         return;
     }
-    for (auto iter: nums) {
-        cout << iter << " ";
-        uf[iter] = iter;
-    }
+    UF1 uf(nums);
+
     cout << endl;
     for (auto x: nums) {
-        if (uf.count(x - 1) > 0) {
-            uf[x] = x - 1;
+        if (uf.parent.count(x - 1) > 0) {
+            uf.Union(x, x - 1);
         }
     }
-    for (int i: nums) {
-        cout << uf[i] << " ";
-    }
-    cout << endl;
+
+    uf.Circle();
+    cout << "the last circle: " << endl;
+    uf.printCircle(uf.last_circle);
+    cout << "the circle: " << endl;
+    uf.printCircle(uf.circle);
+    
+    cout << "the num of circle: " << uf.count << endl;
     return;
 
 }
-*/
+
 ///并查集 API
 class UF {
 public:
