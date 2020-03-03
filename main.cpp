@@ -1329,7 +1329,7 @@ int main() {
   return 0;
 }*/
 //最长连续序列 leetcode_128
-
+/*
 int main() {
   vector<int> nums = {100, 4, 200, 1, 2, 3, 201, 202};
   longestConsecutive_128_solution solu;
@@ -1339,7 +1339,7 @@ int main() {
   return 0;
 
 }
-
+*/
 ////并查集 leetcode_547 朋友圈
 /*
 int main() {
@@ -1353,3 +1353,47 @@ int main() {
   solu.findCircleNum(nums);
   return 0;
 }*/
+/*
+int main() {
+  calcEquation_399_solution solu;
+  vector<vector<string>> equations = { {"a", "b"}, 
+                                       {"b", "c"} };
+  vector<double> val = {2.0, 3.0};
+  vector<vector<string>> query = { {"a", "c"}, 
+                                   {"b", "a"},
+                                   {"a", "e"},
+                                   {"a", "a"},
+                                   {"x", "x"} };
+  solu.calcEquation(equations, val, query);
+  return 0;
+}*/
+/////median is the middle value in an ordered list if the 
+//[2, 3, 4] the median is 3
+//[2, 3] the median is 2 + 3/2 =  2.5
+/*
+int main() {
+  medianFinder solu;
+  solu.addNum(2);
+  solu.addNum(3);
+  solu.findMedian();
+  solu.addNum(4);
+  solu.findMedian();
+  solu.addNum(5);
+  solu.findMedian();
+  solu.addNum(6);
+  solu.findMedian();
+  return 0;
+}*/
+int main() {
+  vector<int> A = {1, 2, 6, 0, 0, 0};
+  //int len_A = A.size();
+  vector<int> B = {3, 5, 7};
+  int len_B = B.size();
+  int len_A = A.size() - len_B;
+  merge_1680_solution solu;
+  //solu.merge(A, len_A, B, len_B);
+  //solu.merge2(A, len_A, B, len_B);
+  solu.merge3(A, len_A, B, len_B);
+  
+  return 0;
+}

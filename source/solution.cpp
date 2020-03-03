@@ -4109,6 +4109,7 @@ public:
             cout << "they have connected before" << endl;
             return;
         }
+        //得到index in circle
         int rootP_idx = get_index(rootP);
         int rootQ_idx = get_index(rootQ);
         if (size[rootP] > size[rootQ]) {
@@ -4308,5 +4309,171 @@ void findCircleNum_547_solution::findCircleNum(vector<vector<int>> &nums) {
     uf.printCircle(uf.circle);
     
     cout << "the num of circle: " << uf.count << endl;
+    return;
+}
+////除法求值
+class UF399 {
+public:
+    unordered_map<string, string> fa;
+    //string / root = val  a/b = 2; f[a] = b, val[a] = 2 * val[b]
+    unordered_map<string, double> val;
+    bool exit(const string &x) {
+        return fa.find(x) != fa.end();
+    }
+    void init(const string &x) {
+        if(exit(x)) {
+            cout << "in this init, the x is exit " << endl;
+            return;
+        }
+        val[x] = 1.0;
+        fa[x] = x;
+    }
+    string getFather(string x) {
+        while(x != fa[x]) {
+            //string f = getFather(fa[x]);
+            //fa[x] = fa[fa[x]];
+            //val[x] = val[x] * val[fa[x]];
+            x = fa[x];
+        }
+        return x;
+        
+    }
+    void merge(string &a, string &b, double v) {
+        init(a);
+        init(b);
+        string root_a = getFather(a);
+        string root_b = getFather(b);
+        fa[root_a] = root_b;
+        val[root_a] = val[b] * 1.0 /val[a] * v; 
+        cout << "a and b:" << a << " " << b << endl;
+        cout << "the val[a] and val[b] in 4348: " << val[a] << " " << val[b] << endl;
+        
+    }
+    double ask(string &a, string &b) {
+        if (!exit(a) || !exit(b)) {
+            cout << "the a or b do not exit" << endl;
+            return -1;
+        }
+        string root_a = getFather(a);
+        string root_b = getFather(b);
+        cout << "the root_a and root_b: " << root_a << " " << root_b << endl;
+        if (root_a != root_b) {
+            cout << "the a and b has not connection" << endl;
+            return -1;
+        }
+        cout << "the val[a] and val[b]: " << val[a] << " " << val[b] << endl;
+        return val[a] * 1.0 / val [b];
+    }
+
+};
+///并查集
+
+void calcEquation_399_solution::calcEquation(vector<vector<string>> &equations, 
+                            vector<double> &val, vector<vector<string>> &query){
+    if (equations.size() == 0 && val.size() == 0) {
+        cout << "the nums is empty" << endl;
+        return;
+    }
+    UF399 uf;
+    for (int i = 0; i < equations.size(); ++i) {
+        uf.merge(equations[i][0], equations[i][1], val[i]);
+    }
+    vector<int> res;
+    for (int i = 0; i < query.size(); ++i) {
+        res.push_back(uf.ask(query[i][0], query[i][1]));
+    }
+    for (int i = 0; i < res.size(); ++i) {
+        cout << res[i] << " " << endl;
+    }
+
+    return;
+}
+
+medianFinder::medianFinder() {
+}
+void medianFinder::addNum(int num) {
+    collector.push_back(num);
+    return;
+
+}
+double medianFinder::findMedian() {
+    double res;
+    sort(collector.begin(), collector.end());
+    int len = collector.size();
+    if (len % 2 == 0) {
+        res = ((collector[len / 2 -1] + collector[len / 2]) * 1.0) * 0.5;
+
+    } else {
+        res = collector[len / 2] * 1.0;
+    }
+    cout << "the median: " << res << endl;
+    return res;
+
+}
+/////合并排序数组 
+void merge_1680_solution::merge(vector<int> &A, int m, vector<int> &B, int n) {
+    for (int i = 0; i < n; ++i) {
+        A[m + i] = B[i];
+    }
+    sort(A.begin(), A.end(), less<int>());
+    for (int i = 0; i < A.size(); ++i) {
+        cout << A[i] << " ";
+    }
+    cout << endl;
+
+    return;
+}
+//双指针
+void merge_1680_solution::merge2(vector<int> &A, int m, vector<int> &B, int n) {
+    vector<int> res;
+    int idx_A = 0, idx_B = 0;
+    while (idx_A < m || idx_B < n) {
+        if (idx_A == m) {
+            res.push_back(B[idx_B]);
+            idx_B ++;
+        } else if (idx_B == n) {
+            res.push_back(A[idx_A]);
+            idx_A ++;
+        }
+        else if (A[idx_A] < B[idx_B]) {
+            res.push_back(A[idx_A]);
+            idx_A ++;
+        } else {
+            res.push_back(B[idx_B]);
+            idx_B ++;
+        }
+    }
+    for (int i = 0; i < res.size(); ++i) {
+        cout << res[i] << " ";
+    }
+    cout << endl;
+    return;
+
+}
+////逆向指针 从后面开始，因为后面是空的，占位子，但是没有数
+void merge_1680_solution::merge3(vector<int> &A, int m, vector<int> &B, int n) {
+    int idx_A = m - 1, idx_B = n - 1;
+    int posi = A.size() - 1;
+    while (idx_A >= 0 || idx_B >= 0) {
+        if (idx_A == m) {
+            A[posi] = B[idx_B];
+            idx_B --;
+        } else if (idx_B == n) {
+            A[posi] = A[idx_A];
+            idx_A --;
+        }
+        else if (A[idx_A] > B[idx_B]) {
+            A[posi] = A[idx_A];
+            idx_A --;
+        } else {
+            A[posi] = B[idx_B];
+            idx_B --;
+        }
+        posi--;
+    }
+    for (int i = 0; i < A.size(); ++i) {
+        cout << A[i] << " ";
+    }
+    cout << endl;
     return;
 }

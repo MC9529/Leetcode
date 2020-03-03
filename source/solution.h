@@ -654,3 +654,30 @@ class findCircleNum_547_solution {
 public:
     void findCircleNum(vector<vector<int>> &nums);
 };
+//除法求值
+class calcEquation_399_solution {
+public:
+    void calcEquation(vector<vector<string>> &equations, vector<double> &val, vector<vector<string>> &query);
+};
+///median is the middle value in an ordered list if the 
+//[2, 3, 4] the median is 3
+//[2, 3] the median is 2 + 3/2 =  2.5
+class medianFinder {
+public:
+    vector<int> collector;
+    medianFinder();
+    void addNum(int num);
+    double findMedian();
+};
+//合并排序数组 
+class merge_1680_solution {
+public:
+    //直接合并后排序
+    void merge(vector<int> &A, int m, vector<int> &B, int n);
+    //双指针
+    void merge2(vector<int> &A, int m, vector<int> &B, int n);
+    //逆向指针
+    void merge3(vector<int> &A, int m, vector<int> &B, int n);
+
+};
+//
