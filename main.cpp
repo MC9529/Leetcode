@@ -1384,6 +1384,8 @@ int main() {
   solu.findMedian();
   return 0;
 }*/
+//合并排序数组
+/*
 int main() {
   vector<int> A = {1, 2, 6, 0, 0, 0};
   //int len_A = A.size();
@@ -1396,4 +1398,13 @@ int main() {
   solu.merge3(A, len_A, B, len_B);
   
   return 0;
+}
+*/
+////一手好牌 leetcode_846
+int main() {
+  vector<int> nums = {1, 2, 3, 6, 2, 3, 4, 7, 8};
+  int k = 3;
+  Onehand_solution_846 solu;
+  return 0;
+
 }
