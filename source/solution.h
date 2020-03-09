@@ -680,4 +680,16 @@ public:
     void merge3(vector<int> &A, int m, vector<int> &B, int n);
 
 };
-//
+//存在重复元素 leetcode_220
+class containNearbyAlmost_220_solution {
+public:
+    //暴力求解
+    void containNearbyAlmost(vector<int> &nums, int k, int t);
+    //二叉搜索树 
+    void containNearbyAlmost2(vector<int> &nums, int k, int t);
+    //通排序
+    void containNearbyAlmost2(vector<int> &nums, int k, int t);
+
+    vector<pair<int, int>> res;
+
+};

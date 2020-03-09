@@ -8,6 +8,7 @@
 #include <queue>
 #include <unordered_map>
 #include <map>
+#include <set>
 #include <unordered_set>
 #include <cstring>
 #include <stdlib.h>
@@ -4477,3 +4478,63 @@ void merge_1680_solution::merge3(vector<int> &A, int m, vector<int> &B, int n) {
     cout << endl;
     return;
 }
+////存在重复元素 leetcode_220
+//寻找两个数 abs(nums[i] - num [j]) < t   abs(i - j) < k
+void containNearbyAlmost_220_solution::containNearbyAlmost(vector<int> &nums, int k, int t) {
+    for (int i = 0; i < nums.size(); ++i) {
+        for (int j = max(i - k, 0); j < i; ++j) {
+            if (abs(nums[i] - nums[j]) <= t) {
+                res.push_back({nums[i], nums[j]});
+            }
+        }
+    }
+}
+
+ void containNearbyAlmost_220_solution::containNearbyAlmost2(vector<int> &nums, int k, int t) {
+     set<long> ss;
+     long it = t;
+     for (int i = 0; i < nums.size(); ++i) {
+         set<long>::iterator iter_s = ss.lower_bound(nums[i]); //第一个大于nums[i]
+         if(iter_s != ss.end() && ((*iter_s) <= nums[i] + t)) {
+             res.push_back({*iter_s, nums[i]});
+         }
+         set<long>::iterator iter_g = ss.upper_bound(nums[i]);
+         if (iter_g != ss.end() && nums[i] <= (*iter_g + t)) {
+             res.push_back({*iter_g, nums[i]});
+         }
+         ss.insert(nums[i]);
+         if (ss.size() > k) {
+             ss.erase(nums[i - k]);
+         }
+
+     }
+     return;
+
+ }
+//桶排序
+ void containNearbyAlmost_220_solution::containNearbyAlmost2(vector<int> &nums, int k, int t) {
+     if (t < 0) {
+         cout << "there is no res" << endl;
+         return;
+     }
+     long long mod = t + 1LL;
+     unordered_map<long long, long long > buck;
+     for (int i = 0; i < nums.size(); ++i) {
+         long long nth = nums[i] / mod;
+         // -4 / 5 = 0 所以负数应该减去1， -6 / 5 = -1, 也因该减去1
+         if (nums[i] < 0) nth --;
+         if (buck.find(nth) != buck.end()) {
+             res.push_back({0, 0});
+         } else if (buck.find(nth - 1) != buck.end() && abs(nums[i] - nums[nth - 1]) <= t) {
+             res.push_back({nums[i], nums[nth - 1]});
+         } else if (buck.find(nth + 1) != buck.end() && abs(nums[i] - nums[nth + 1]) <= t) {
+             res.push_back({nums[i], nums[nth + 1]});
+         }
+         buck[nth] = nums[i];
+         if (i >= k) {
+             buck.erase(nums[i - k] / mod);
+         }
+     }
+     return;
+
+ }
