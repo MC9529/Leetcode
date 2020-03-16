@@ -1384,6 +1384,8 @@ int main() {
   solu.findMedian();
   return 0;
 }*/
+//存在重复元素 leetcode_220
+/*
 int main() {
   vector<int> A = {1, 2, 6, 0, 0, 0};
   //int len_A = A.size();
@@ -1392,8 +1394,112 @@ int main() {
   int len_A = A.size() - len_B;
   merge_1680_solution solu;
   //solu.merge(A, len_A, B, len_B);
-  //solu.merge2(A, len_A, B, len_B);
-  solu.merge3(A, len_A, B, len_B);
+  solu.merge2(A, len_A, B, len_B);
+  //solu.merge3(A, len_A, B, len_B);
   
+  return 0;
+}
+*/
+///删除排序数组中的重复项 leetcode_80
+/*
+int main() {
+  vector<int> nums = {0, 0, 1, 1, 1, 1, 2, 3, 4, 5, 5, 5, 6};
+  removeDuplicate_80_solution solu;
+  solu.removeDuplicate(nums);
+  //solu.removeDuplicate2(nums);
+  return 0;
+}*/
+///颜色分类 leetcode_75
+/*
+int main() {
+  //vector<int> nums = {0, 0, 1, 2, 1, 0, 2, 3, 4};
+  vector<int> nums = {0, 0, 1, 2, 1, 0, 2};
+  sortColors_75_solution solu;
+  //solu.sortColor(nums);
+  solu.sortColor2(nums);
+  
+  return 0;
+}*/
+
+
+/////最小覆盖子串  leetcode_76 
+/*
+int main() {
+  minWindow_76_solution solu;
+  string s = "ADOBECODEBANC";
+  string t = "ABC";
+  cout << "the string s: " << s << endl;
+  solu.minWindow(s, t);
+  for (int i = 0; i < solu.res.size(); ++i) {
+    for (auto iter: solu.res[i]) {
+      cout << iter << " ";
+    }
+    cout << endl;
+  }
+  cout << endl;
+
+
+  return 0;
+}
+*/
+
+///长度最小的子数组 leetcode_209
+/*
+int main() {
+  vector<int> nums = {2, 3, 1, 2, 4, 3};
+  int s = 7;
+  minSubArraylen_209_solution  solu;
+  //solu.minSubArraylen(s, nums);
+  //solu.minSubArraylen2(s, nums);
+  solu.minSubArraylen3(s, nums);
+  for (int i = 0; i < solu.res.size(); ++i) {
+    for (int j = 0; j < solu.res[i].size(); ++j) {
+      cout << solu.res[i][j] << " ";
+    }
+    cout << endl;
+  }
+  cout << endl;
+
+  return 0;
+}
+*/
+//滑动窗口最大值 leetcode_239 
+/*
+int main() {
+  maxSlidingWindow_239_solution solu;
+  vector<int> res;
+  vector<int> nums = {1, 3, -1, -3, 5, 3, 6, 7};
+  cout << "the nums: ";
+  for (int i = 0; i < nums.size(); ++i) {
+    cout << nums[i] << " ";
+  }
+  cout << endl;
+  int k = 3;
+  res = solu.maxSlidingWindow(nums, k);
+
+  for (int i = 0; i < res.size(); ++i) {
+    cout << res[i] << " ";
+  }
+  cout << endl;
+
+  return 0;
+}
+*/
+
+/////替换后的最长重复字符
+
+int main() {
+  string s = "ABAB";
+  int k = 2;
+  characterReplacement_424_solution solu;
+  solu.characterReplacement(s, k);
+  for (int i = 0; i < solu.res.size(); ++i) {
+    for (int j = 0; j < solu.res[i].size(); ++j) {
+      cout << solu.res[i][j] << " ";
+    }
+    cout << endl;
+  }
+  cout << endl;
+
   return 0;
 }

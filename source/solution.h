@@ -3,6 +3,7 @@
 #include <vector>
 #include "BiTree.h"
 #include <unordered_map>
+#include <set>
 /////回溯算法
 
 using namespace std;
@@ -688,8 +689,56 @@ public:
     //二叉搜索树 
     void containNearbyAlmost2(vector<int> &nums, int k, int t);
     //通排序
-    void containNearbyAlmost2(vector<int> &nums, int k, int t);
+    void containNearbyAlmost3(vector<int> &nums, int k, int t);
 
     vector<pair<int, int>> res;
 
+};
+//删除排序数组中的重复项 leetcode_80
+class removeDuplicate_80_solution {
+public:
+    void removeDuplicate(vector<int> &nums);
+    void removeDuplicate2(vector<int> &nums);
+};
+//颜色分类 leetcode_75 
+class sortColors_75_solution {
+public:
+     //适合多个颜色
+    void sortColor(vector<int> &nums);
+    ///适合3个颜色
+    void sortColor2(vector<int> &nums);
+};
+///TODO 还没完成
+//最小覆盖子串  leetcode_76
+class minWindow_76_solution {
+public:
+    void minWindow(string s, string t);
+    vector<string> res;
+
+};
+///长度最小的子数组 leetcode_209
+class minSubArraylen_209_solution {
+public:
+     //暴力法
+    int minSubArraylen(int s, vector<int> &nums);
+    //建立一个nums 用来存储 前n个和，sums[2] = nums[0] + nums [1] + nums[2];
+    int minSubArraylen2(int s, vector<int> &nums);
+    //使用二分法
+    int minSubArraylen3(int s, vector<int> &nums);
+    //使用双指针
+    int minSubArraylen4(int s, vector<int> &nums);
+
+    vector<vector<int>> res; 
+
+};
+///滑动窗口最大值 leetcode_239 
+class maxSlidingWindow_239_solution {
+public:
+    vector<int> maxSlidingWindow(vector<int>& nums, int k);
+};
+///替换后的最长重复字符
+class characterReplacement_424_solution {
+public:
+    void characterReplacement(string s, int k);
+    vector<vector<char>> res;
 };

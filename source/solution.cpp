@@ -4512,7 +4512,7 @@ void containNearbyAlmost_220_solution::containNearbyAlmost(vector<int> &nums, in
 
  }
 //桶排序
- void containNearbyAlmost_220_solution::containNearbyAlmost2(vector<int> &nums, int k, int t) {
+ void containNearbyAlmost_220_solution::containNearbyAlmost3(vector<int> &nums, int k, int t) {
      if (t < 0) {
          cout << "there is no res" << endl;
          return;
@@ -4538,3 +4538,328 @@ void containNearbyAlmost_220_solution::containNearbyAlmost(vector<int> &nums, in
      return;
 
  }
+
+ void removeDuplicate_80_solution::removeDuplicate(vector<int> &nums) {
+    int preview_num = *nums.begin();
+    int count = 1;
+    vector<int>::iterator iter = nums.begin() + 1;
+    while(iter != nums.end()) {
+        cout << "the count and nums[i] in 4547: " << count << " " << *iter << endl;
+        if (*iter == preview_num && count == 2) {
+            preview_num = *iter;
+            nums.erase(iter);
+
+        } else if (*iter != count) {
+            preview_num = *iter;
+            count = 1;
+
+        } else {
+            preview_num = *iter;
+            count++;
+        }
+        cout << "the count and nums[i] in 4560: " << count << " " << *iter << endl;
+        iter ++;
+    }
+    for (int i = 0; i < nums.size(); ++i) {
+        cout << nums[i] << " ";
+    }
+    cout << endl;
+
+ }
+ void removeDuplicate_80_solution::removeDuplicate2(vector<int> &nums) {
+     int j = 1, count = 1;
+     for (int i = 1; i < nums.size(); ++i) {
+         if (nums[i] == nums[i - 1]) {
+             count ++;
+         } else {
+             count = 1;
+         }
+         cout << "the count and nums[i]" << count << " " << nums[i] << endl;
+         if (count <= 2) {
+             //res.push_back(nums[i]);
+             nums[j] = nums[i];
+             j++;
+
+         }
+     }
+     cout << endl;
+     
+     for (int i = 0; i < j; ++i) {
+         cout << nums[i] << " ";
+     }
+     
+     cout << endl;
+
+ }
+/////颜色分类 leetcode_75 
+void sortColors_75_solution::sortColor(vector<int> &nums) {
+    map<int, int> count;
+    for (int i = 0; i < nums.size(); ++i) {
+        if (count.find(nums[i]) != count.end()) {
+            count[nums[i]] ++;
+        } else {
+            count.insert({nums[i], 1});
+        }
+    }
+    for (int i = 0; i < count.size(); ++i) {
+        for (int j = 0; j < count[i]; ++j) {
+            cout << i << " " ;
+        }
+    }
+    cout << endl;
+}
+//
+void sortColors_75_solution::sortColor2(vector<int> &nums) {
+    int p0 = 0, curr = 0;
+    int p2 = nums.size() - 1;
+    while (curr <= p2) {
+        if (nums[curr] == 0) {
+            swap(nums[curr], nums[p0]);
+            curr ++;
+            p0 ++;
+        } else if (nums[curr] == 2) {
+            swap(nums[curr], nums[p2]);
+            p2--;
+        } else {
+            curr++;
+        }
+    }
+    for (int i = 0; i < nums.size(); ++i) {
+        cout << nums[i] << " ";
+    }
+    cout << endl;
+
+}
+//最小覆盖子串  leetcode_76
+void minWindow_76_solution::minWindow(string s, string t) {
+    // right 用于扩大范围，直到包含   left 用于减小范围
+    string temp;
+    int start = 0, minlen = INT_MAX;
+    int left = 0, right = 0;
+    unordered_map<char, int> window;
+    unordered_map<char, int> needs;
+    //记录次数
+    for (char c: t) {
+        needs[c] ++;
+    }
+    int match = 0;
+    //从左开始搜索，直到最右边
+    while(right < s.size()) {
+        char c1 = s[right];
+        //如果这个元素在needs中
+        if (needs.count(c1)) {
+            //更新window中的元素数量
+            window[c1] ++;
+            //如果与need[c1] = window[c1],匹配成功一个
+            if (window[c1] == needs[c1]) {
+                match ++;
+            }
+        }
+        right ++;
+        cout << "the right:" << right << endl;
+        ///有了全部的元素， 开始缩减大小直到不符合要求
+        while(match == needs.size()) {
+            if (right - left  < minlen) {
+                start = left;
+                minlen = right - left;
+                cout << "pass in 4665" << endl;
+            }
+            char c2 = s[left];
+            if (needs.count(c2)) {
+                window[c2]--;
+                if (window[c2] < needs[c2]) {
+                    match --;
+                }
+            }
+            left ++ ;
+            temp = s.substr(start, right - start);
+            cout << "the start and minlen: " << start << " " << minlen << endl;
+            res.push_back(temp);
+        }
+
+    }
+    
+    return;
+}
+
+
+//长度最小的子数组 leetcode_209
+//暴力法
+int minSubArraylen_209_solution::minSubArraylen(int s, vector<int> &nums) {
+    if (nums.size() == 0) {
+        cout << "the len of nums is 0" << endl;
+        return 0;
+    }
+    int ans = INT_MAX;
+    for (int i = 0; i < nums.size(); ++i) {
+        for (int j = i; j < nums.size(); ++j) {
+            int sum = 0;
+            //求和
+            for (int k = i; k <= j; ++k) {
+                sum = sum + nums[k];
+            }
+            //满足条件
+            if (sum >= s) {
+                ans = min(ans, (j - i + 1));
+                //将i 到 j 赋值给 temp
+                cout << "i: " << i << " " << "j: " << j << endl;
+                vector<int> temp(nums.begin() + i, nums.begin() + j + 1);
+                res.push_back(temp);
+                break;
+            }
+
+        }
+    }
+    ans != INT_MAX ? ans : 0;
+    cout << "the min_len: " << ans << endl;
+    return ans;
+}
+//时间复杂度 O(n * n)
+int minSubArraylen_209_solution::minSubArraylen2(int s, vector<int> &nums) {
+    int n = nums.size();
+    if (n == 0) {
+        cout << "the len of nums is 0" << endl;
+        return 0;
+    }
+    int ans = INT_MAX;
+    //用来存储 前 n的元素的和  sums[2] = nums[0] + nums [1] + nums[2];
+    vector<int> sums(n);
+    sums[0] = nums[0];
+    for (int i = 1; i < nums.size(); ++i) {
+        sums[i] = sums[i - 1] + nums[i];
+    }
+    for (int i = 0; i < nums.size(); ++i) {
+        for (int j = i; j < nums.size(); ++j) {
+            int sum = sums[j] - sums[i] + nums[i];
+            if (sum >= s) {
+                ans = min(ans, (j - i + 1));
+                cout << "i: " << i << " " << "j: " << j << endl;
+                vector<int> temp(nums.begin() + i, nums.begin() + j + 1);
+                res.push_back(temp);
+                break;
+
+            }
+        }
+    }
+    ans != INT_MAX ? ans : 0;
+    cout << "the min_len: " << ans << endl;
+    return ans;
+}
+//使用二分法，时间复杂度 O(nlog(n))
+int minSubArraylen_209_solution::minSubArraylen3(int s, vector<int> &nums) {
+    int n = nums.size();
+    if (n == 0) {
+        cout << "the len of nums is 0" << endl;
+        return 0;
+    }
+    int ans = INT_MAX;
+    vector<int> sums(n + 1, 0);
+    for (int i = 1; i <= nums.size(); ++i) {
+        sums[i] = sums[i - 1] + nums[i - 1];
+        cout << "the sums[i]" << sums[i] << endl;
+    }
+    for (int i = 1; i <= nums.size(); ++i) {
+        //计算到哪个位置
+        int to_find = s + sums[i - 1];
+        //找到该位置 第一个大于等于to_find
+        cout << "to_find: " << to_find << endl;
+        auto bound = lower_bound(sums.begin(), sums.end(), to_find);
+        if (bound != sums.end()) {
+            ans = min(ans, static_cast<int>(bound - (sums.begin() + i - 1)));
+            //确定需要哪些数
+            vector<int> temp(nums.begin() + i - 1, nums.begin() + i + static_cast<int>(bound - (sums.begin() + i)) );
+            res.push_back(temp);
+        }
+    }
+    
+    ans != INT_MAX ? ans : 0;
+    cout << "the min_len: " << ans << endl;
+    return ans;
+}
+
+//使用双指针 时间复杂度：o(n)
+int minSubArraylen_209_solution::minSubArraylen4(int s, vector<int> &nums) {
+    int n = nums.size();
+    int ans = INT_MAX;
+    int left = 0;
+    int sum = 0;
+    for (int i = 0; i < n; ++i) {
+        sum = sum + nums[i];
+        while(sum >= s) {
+            ans = min(ans, i + 1 - left);
+            cout << "i: " << i << " " << "j: " << left << endl;
+            vector<int> temp(nums.begin() + left, nums.begin() + i + 1);
+            res.push_back(temp);
+            ///试着left往前移动
+            sum = sum - nums[left];
+            left++;
+        }
+    }
+    
+    ans != INT_MAX ? ans : 0;
+    cout << "the min_len: " << ans << endl;
+    return ans;
+}
+///滑动窗口最大值 leetcode_239 
+
+vector<int> maxSlidingWindow_239_solution::maxSlidingWindow(vector<int>& nums, int k) {
+    vector<int> res;
+    if (nums.size() == 0 || k == 0) {
+        return res;
+    }
+    //双向队列 滑动窗口,用于存储序号 先进先出,先进的元素在队头
+    deque<int> window;
+    for (int i = 0; i < k; ++i) {
+        //当前的元素比堆后的要大，则弹出,则可以保证在front位置的元素最大
+        while(!window.empty() && nums[i] > nums[window.back()]) {
+            window.pop_back();
+        }
+        window.push_back(i);
+    }
+    res.push_back(nums[window.front()]);
+    for (int i = k; i < nums.size(); ++i) {
+        //去除不在范围内的元素
+        if (!window.empty() && window.front() <= i - k) {
+            window.pop_front();
+        }
+        while(!window.empty() && nums[i] > nums[window.back()]) {
+            window.pop_back();
+        }
+        window.push_back(i);
+        res.push_back(nums[window.front()]);
+    }
+    return res;
+}
+
+
+//替换后的最长重复字符
+void characterReplacement_424_solution::characterReplacement(string s, int k) {
+    if (s.size() == 0) {
+        cout << "the len of s is 0" << endl;
+        return;
+    }
+    int ans = 0; 
+    int left = 0, right = 0, max_count = 0;
+    int alpha[26] = {0};
+    while (right < s.size()) {
+        char c = s[right];
+        alpha[c - 'A']++;
+        //找取目前最长的序列
+        max_count = max(max_count, alpha[c - 'A']);
+        //如果窗口中需要替换的字数大于k
+        if (right - left + 1 - max_count > k) {
+            //将左边进行缩小
+            alpha[s[left] - 'A'] --;
+            left++;
+        }
+        vector<char> temp_res(s.begin() + left, s.begin() + right + 1);
+        res.push_back(temp_res);
+        ans = max(ans, right - left + 1);
+        right ++;
+
+    }
+    ////替换后的最长重复字符
+    cout << "the max len of replace:" << ans << endl;
+    return;
+
+}
