@@ -4863,3 +4863,136 @@ void characterReplacement_424_solution::characterReplacement(string s, int k) {
     return;
 
 }
+///
+bool checkInclusion_567_solution::checkInclusion(string s1, string s2) {
+    bool res = false;
+    int left = 0, right = 0;
+    //目标元素容器
+    unordered_map<char, int> need;
+    //统计窗口目前含有多少目标元素
+    unordered_map<char, int> window;
+    //用来记录滑动窗口所有元素
+    queue<char> slip_window;
+    for(char c: s1) {
+        need[c]++;
+    }
+    //目标满足计数器
+    int match = 0;
+    while(right < s2.size()) {
+        //窗口满了，需要删除
+        if (slip_window.size() == s1.size()) {
+            char front = slip_window.front();
+            if (window.count(front)) {
+                window[front]--;
+                cout << "the window[front] in 4887:" << window[front]  <<" "<< front << endl;
+                //如果不满足条件 match --
+                if (window[front] < need[front]) {
+                    match--;
+                }
+            }
+
+            slip_window.pop();
+            left++;
+        }
+        cout << "the right and s2[right]:" << right << " " << s2[right] << endl;
+        char c1 = s2[right];
+        slip_window.push(c1);
+        //如果c1是目标元素
+        if (need.count(c1)) {
+            //window更新
+            window[c1] ++;
+            cout << "the window[c1]:" << window[c1] << " " << c1 << endl;
+            //满足一个要求
+            if (window[c1] == need[c1]) {
+                match++;
+            }
+            cout << "the match: " << match << endl;
+        }
+        //满足所有要求
+        if (match == need.size()) {
+            res = true;
+            cout << "the left and right: " << left << " " << right << endl;
+            vector<int> temp;
+            temp.push_back(left);
+            temp.push_back(right);
+            container.push_back(temp);
+        }
+        right++;
+
+
+    }
+    return res;
+}
+
+//
+bool checkInclusion_567_solution::checkInclusion2(string s1, string s2) {
+    int left=0;
+    int right=0;
+    int match=0;
+    unordered_map<char,int>window;
+    unordered_map<char,int>need;
+    for(char i:s1){
+        need[i]++;
+    }
+    while(right<s2.size()){
+        char tmp=s2[right];
+        if(need.count(tmp)){
+            window[tmp]++;
+            if(window[tmp]==need[tmp]){
+                match++;
+            }
+        }
+        right++;
+        //已经找到匹配的了
+        while(match==need.size()){
+            //如果大小一致，满足要求
+            if(right-left==s1.size()){
+                return true;
+            }
+            //缩小窗口，
+            char num=s2[left];
+            //nums是window里的
+            if(window.count(num)){
+                //减去1
+                window[num]--;
+                if(window[num]<need[num]){
+                    match--;
+                }
+            }
+            left++;
+        }
+    }
+    return false;
+}
+//无重复字符的最长子串 leetcode_3 滑动窗口
+int lengthOfLongestSubstring_3_solution::lengthOfLongestSubstring(string s) {
+    int left = 0, right = 0;
+    unordered_map<char, int> count;
+    int max_len = 0;
+    int max_left = 0;
+    int max_right = 0;
+    while(right < s.size()) {
+        char c1 = s[right];
+        count[c1] ++;
+        right++;
+        //元素c1的个数大于1，开始重复，则要计算最大长度
+        while(count[c1] > 1) {
+            char c2 = s[left];
+            count[c2]--;
+            left++;
+        }
+        if (right - left == max(max_len, right - left)) {
+            max_right = right;
+            max_left = left;
+        }
+        max_len = max(max_len, right - left);
+        
+    }
+    vector<char>res(s.begin() + left, s.begin() + right);
+    for (int i = 0; i < res.size(); ++i) {
+        cout << res[i] << " ";
+    }
+    cout << endl;
+    cout << "the max_len: " << max_len << endl;
+    return max_len;
+}

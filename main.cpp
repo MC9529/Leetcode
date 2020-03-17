@@ -1487,7 +1487,7 @@ int main() {
 */
 
 /////替换后的最长重复字符
-
+/*
 int main() {
   string s = "ABAB";
   int k = 2;
@@ -1500,6 +1500,34 @@ int main() {
     cout << endl;
   }
   cout << endl;
+
+  return 0;
+}
+*/
+/////字符串的排列 leetcode_567 最大字符串是否包含最小字符串
+/*
+int main() {
+  string long_str = "dcda";
+  string short_str = "adc";
+  checkInclusion_567_solution solu;
+  solu.checkInclusion(short_str, long_str);
+  cout << "all the posi :" << endl;
+  for (int i = 0; i < solu.container.size(); ++i) {
+    for (int j = 0; j < solu.container[i].size(); ++j) {
+      cout <<solu.container[i][j] << " "; 
+    }
+    cout << endl;
+  }
+  cout << endl;
+
+  return 0;
+}
+*/
+///无重复字符的最长子串 leetcode_3 滑动窗口
+int main() {
+  string s = "pwwkew";
+  lengthOfLongestSubstring_3_solution solu;
+  solu.lengthOfLongestSubstring(s);
 
   return 0;
 }

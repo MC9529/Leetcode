@@ -742,3 +742,17 @@ public:
     void characterReplacement(string s, int k);
     vector<vector<char>> res;
 };
+//字符串的排列 leetcode_567 最大字符串是否包含最小字符串
+class checkInclusion_567_solution {
+public:
+    bool checkInclusion(string s1, string s2);
+    bool checkInclusion2(string s1, string s2);
+    vector<vector<int>> container;
+};
+///无重复字符的最长子串 leetcode_3 滑动窗口
+class lengthOfLongestSubstring_3_solution {
+public:
+    int lengthOfLongestSubstring(string s);
+    vector<char> res;
+
+};
