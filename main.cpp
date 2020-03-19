@@ -1524,10 +1524,25 @@ int main() {
 }
 */
 ///无重复字符的最长子串 leetcode_3 滑动窗口
+/*
 int main() {
   string s = "pwwkew";
   lengthOfLongestSubstring_3_solution solu;
   solu.lengthOfLongestSubstring(s);
+
+  return 0;
+}
+*/
+int main() {
+  vector<int> A = {1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1};
+  int k = 2;
+  longestOnes_1004_solution solu;
+  //solu.longestOnes(A, k);
+  solu.longestOnes2(A, k);
+  for (int i = 0; i < solu.res.size(); ++i) {
+
+    cout << solu.res[i].first << " " << solu.res[i].second << endl;
+  }
 
   return 0;
 }

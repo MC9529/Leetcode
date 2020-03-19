@@ -753,6 +753,12 @@ public:
 class lengthOfLongestSubstring_3_solution {
 public:
     int lengthOfLongestSubstring(string s);
-    vector<char> res;
 
+};
+///最大连续1个的个数
+class longestOnes_1004_solution {
+public:
+    int longestOnes(vector<int> &A, int k);
+    int longestOnes2(vector<int> &A, int k);
+    vector<pair<int, int>> res;
 };

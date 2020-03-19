@@ -4996,3 +4996,43 @@ int lengthOfLongestSubstring_3_solution::lengthOfLongestSubstring(string s) {
     cout << "the max_len: " << max_len << endl;
     return max_len;
 }
+////最大连续1个的个数
+int longestOnes_1004_solution::longestOnes(vector<int> &A, int k) {
+    int left = 0, right = 0;
+    int max_len = 0;
+    unordered_map<char, int> window;
+    while (right < A.size()) {
+        int c1 = A[right];
+        window[c1]++;
+        right++;
+        while(window[0] > k) {
+            window[A[left]] --;
+            left++;
+        }
+        res.push_back({left, right});
+        max_len = max(right - left + 1, max_len);
+    }
+    return max_len;
+
+}
+//方法二
+int longestOnes_1004_solution::longestOnes2(vector<int> &A, int k) {
+    int left = 0, right = 0;
+    int max_len = 0;
+    int count = 0;
+    while (right < A.size()) {
+        int c1 = A[right];
+        if (c1 == 0) count++;
+        right++;
+        //0的个数超过K，必须减少，left向前移动
+        while(count > k) {
+            if (A[left] == 0) count --;
+            left++;
+        }
+        res.push_back({left, right});
+        max_len = max(right - left + 1, max_len);
+    }
+    cout << "int way 2" << endl;
+    return max_len;
+
+}
