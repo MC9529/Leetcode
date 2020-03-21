@@ -762,3 +762,12 @@ public:
     int longestOnes2(vector<int> &A, int k);
     vector<pair<int, int>> res;
 };
+//爱生气的书店老板 leetcode_1052
+class maxSatisfied_1052_solution {
+public:
+    int maxSatisfied(vector<int> &customers, vector<int> &grump, int x);
+    int maxSatisfied2(vector<int> &customers, vector<int> &grump, int x);
+    int maxSatisfied3(vector<int> &customers, vector<int> &grump, int x);
+    vector< pair<pair<int, int>, int> > res;
+
+};

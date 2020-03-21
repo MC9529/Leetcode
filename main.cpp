@@ -1533,6 +1533,8 @@ int main() {
   return 0;
 }
 */
+///最大连续1个的个数
+/*
 int main() {
   vector<int> A = {1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1};
   int k = 2;
@@ -1543,6 +1545,21 @@ int main() {
 
     cout << solu.res[i].first << " " << solu.res[i].second << endl;
   }
+
+  return 0;
+}*/
+///爱生气的书店老板 leetcode_1052
+int main() {
+  vector<int> customers = {1, 0, 1, 2, 1, 1, 7, 5};
+  vector<int> grumpy    = {0, 1, 0, 1, 0, 1, 0, 1};
+  int x = 3;
+  maxSatisfied_1052_solution solu;
+  solu.maxSatisfied3(customers, grumpy, x);
+  for (int i = 0; i < solu.res.size(); ++i) {
+    cout << "the left, right and max_satisify: " << solu.res[i].first.first 
+    << " " << solu.res[i].first.second  <<" "<< solu.res[i].second << endl;
+  }
+
 
   return 0;
 }

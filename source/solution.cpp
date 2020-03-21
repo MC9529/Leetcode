@@ -5036,3 +5036,90 @@ int longestOnes_1004_solution::longestOnes2(vector<int> &A, int k) {
     return max_len;
 
 }
+////爱生气的书店老板 leetcode_1052
+int maxSatisfied_1052_solution::maxSatisfied(vector<int> &customers, vector<int> &grump, int x) {
+    int left = 0, right = x - 1;
+    int maxSatisfy = 0;
+    int max_res = 0;
+    for (int i = 0; i < customers.size(); ++i) {
+        if (grump[i] == 0) {
+            maxSatisfy = maxSatisfy + customers[i];
+        }
+    }
+    while(right < customers.size()) {
+        int new_satisfy = 0;
+        for (int i = left; i <= right; ++i) {
+            if (grump[i] == 1) {
+                new_satisfy = new_satisfy + customers[i];
+
+            }
+        }
+        cout << "the new satisify: " << new_satisfy << endl;
+        //max_res = maxSatisfy + new_satisfy;
+        max_res = max(max_res, maxSatisfy + new_satisfy);
+        res.push_back({{left, right}, maxSatisfy + new_satisfy});
+        right ++;
+        left ++;
+    }
+    cout << "the max_res: " << max_res << endl;
+    return max_res;
+}
+///方法2
+int maxSatisfied_1052_solution::maxSatisfied2(vector<int> &customers, vector<int> &grump, int x) {
+    int left = 0, right = 0;
+    int maxSatisfy = 0;
+    int max_res = 0;
+    //先计算老板不生气的情况下满意度（不忍受）
+    for (int i = 0; i < customers.size(); ++i) {
+        if (grump[i] == 0) {
+            maxSatisfy = maxSatisfy + customers[i];
+        }
+    }
+    int new_satisfy = 0;
+    while(right < customers.size()) {
+        //计算需要忍受下的满意度
+        if (grump[right] == 1) {
+            new_satisfy = new_satisfy + customers[right];
+        }
+        cout << "the right and new satisify: " << right << " "<< new_satisfy << endl;
+        if (right >= x - 1) {
+            max_res = max(max_res, maxSatisfy + new_satisfy);
+            res.push_back({{left, right}, maxSatisfy + new_satisfy});
+            //去掉不在X时间的满意度
+            new_satisfy = new_satisfy - customers[left] * grump[left];
+            left ++;
+        }
+        //cout << "the new satisify: " << new_satisfy << endl;
+        //max_res = maxSatisfy + new_satisfy;
+        //max_res = max(max_res, maxSatisfy + new_satisfy);
+        //res.push_back({{left, right}, maxSatisfy + new_satisfy});
+        right ++;
+    }
+    cout << "the max_res: " << max_res << endl;
+    return max_res;
+}
+///方法2
+int maxSatisfied_1052_solution::maxSatisfied3(vector<int> &customers, vector<int> &grump, int x) {
+    int left  = 0;
+    int max_save = 0;
+    int curr_save = 0;
+    int satisfy = 0;
+    // i -> right
+    for (int i = 0; i < customers.size(); ++i) {
+        if (grump[i] == 1) {
+            curr_save = curr_save + customers[i];
+        }
+        if (grump[i] == 0) {
+            satisfy = satisfy + customers[i];
+        }
+        if( i >= x - 1) {
+            max_save = max(max_save, curr_save);
+            res.push_back({{i - x + 1, i}, curr_save});
+            curr_save = curr_save - customers[i - x + 1] * grump[i - x + 1];
+            //res.push_back({{i - x + 1, i}, max_save});
+        }
+    }
+    cout << "the max_satisfy: " << satisfy + max_save << endl;
+    return satisfy + max_save;
+
+}
