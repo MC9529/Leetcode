@@ -5121,5 +5121,80 @@ int maxSatisfied_1052_solution::maxSatisfied3(vector<int> &customers, vector<int
     }
     cout << "the max_satisfy: " << satisfy + max_save << endl;
     return satisfy + max_save;
+}
+/////如何高效实现寻找素数
+void countPrimes_solu::countPrimes(int n) {
+    vector<bool> isPrime(n, true);
+    for (int i = 2; i * i < n; ++i) {
+        if (isPrime[i]) {
+            for (int j = i * i; j < n; j = j + i) {
+                isPrime[j] = false;
+            }
+        }
+    }
+    int count = 0;
+    for (int i = 2; i < n; ++i) {
+        if(isPrime[i]) {
+            count ++;
+            res.push_back(i);
+        }
+    }
+    return;
+}
 
+/// Dijkstra
+void Dijkstra_solu::dijkstra(Graph G, int vs) {
+    cout << "pass in 5147" << endl;
+    int i, j, k;
+    int min;
+    int tmp;
+    cout << "pass in 5150" << endl;
+    int flag[10000];  //flag[i]=1表示"顶点vs"到"顶点i"的最短路径已成功获取
+    cout << "pass in 5151" << endl;
+    vector<int> prev;
+    vector<int> dist;
+    for (i = 0; i < G.matrix.size(); ++i) {
+        flag[i] = 0; //顶点i的最短路径还没获取到
+        prev.push_back(0); //顶点i的前驱顶点为0
+        dist.push_back(G.matrix[vs][i]); //顶点i的最短路径为"顶点vs"到"顶点i"的权。
+
+    }
+    flag[vs] = 1;
+    dist[vs] = 0;
+    cout << "pass in 5161" << endl;
+    for (i = 0; i < G.vexnum; ++i) {
+        //寻找当前的最小距离
+        //即，在未获得最短路径的点中，找到距离vs最近的顶点
+        min = INT_MAX;
+        for (j = 0; j < G.vexnum; ++j) {
+            if (flag[j] == 0 && dist[j] < min) {
+                min = dist[j];
+                cout << "the j and distance to vs in 5172:" << G.vexs[j] << " " << dist[j] << endl;
+                k = j;
+            }
+        }
+        cout << "pass in 5172" << endl;
+        //标记已经获得最短路径
+        flag[k] = 1;
+        // 修正当前最短路径和前驱顶点
+        // 即，当已经"顶点k的最短路径"之后，更新"未获取最短路径的顶点的最短路径和前驱顶点"
+        for (j = 0; j < G.vexnum; ++j) {
+            //判断 k 是否与 j 相连
+            tmp = (G.matrix[k][j] == INT_MAX ? INT_MAX: (min + G.matrix[k][j]) );
+            //还没找最近距离
+            if (flag[j] == 0 && (tmp < dist[j])) {
+                dist[j] = tmp;
+                cout << "the j and distance to vs in 5186:" << G.vexs[j] << " " << dist[j] << endl;
+                prev[j] = k;
+
+            }
+        }
+
+    }
+
+    cout << "the dijkstra:" << G.vexs[vs] << endl;
+    for (i = 0; i < G.vexnum; ++i) {
+        cout << "the shortest: from: " << G.vexs[vs] << " " <<
+         G.vexs[i] << " " << dist[i] << endl;
+    }
 }
