@@ -770,6 +770,7 @@ public:
     int maxSatisfied2(vector<int> &customers, vector<int> &grump, int x);
     int maxSatisfied3(vector<int> &customers, vector<int> &grump, int x);
     vector< pair<pair<int, int>, int> > res;
+<<<<<<< HEAD
 
 };
 ///如何高效实现寻找素数
@@ -804,4 +805,11 @@ typedef struct _EdgeData {
 class Dijkstra_solu {
 public:
     void dijkstra(Graph G, int vs);
+=======
+};
+///在排序数组中查找连续数组的第一个和最后一个为位置 要求时间复杂度 o(logn)
+class searchRange_34_solution {
+public:
+    vector<int> searchRange(vector<int> &nums, int target);
+>>>>>>> d2c471e8abc6251d54cbb5116f417351a002e0dd
 };

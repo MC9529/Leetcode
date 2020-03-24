@@ -1599,4 +1599,18 @@ int main() {
   cout << "pass in 1597" << endl;
   
   return 0;
+}*/
+int main() {
+  searchRange_34_solution solu;
+  vector<int> res;
+  vector<int> nums = {1, 2, 3, 4, 4, 4, 5, 5, 6};
+  int target = 4;
+  res = solu.searchRange(nums, target);
+  for (int i = 0; i < res.size(); ++i) {
+    cout << res[i] << " ";
+  }
+  cout << endl;
+
+
+  return 0;
 }
