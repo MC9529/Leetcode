@@ -1549,6 +1549,7 @@ int main() {
   return 0;
 }*/
 ///爱生气的书店老板 leetcode_1052
+/*
 int main() {
   vector<int> customers = {1, 0, 1, 2, 1, 1, 7, 5};
   vector<int> grumpy    = {0, 1, 0, 1, 0, 1, 0, 1};
@@ -1559,6 +1560,20 @@ int main() {
     cout << "the left, right and max_satisify: " << solu.res[i].first.first 
     << " " << solu.res[i].first.second  <<" "<< solu.res[i].second << endl;
   }
+
+
+  return 0;
+}*/
+int main() {
+  searchRange_34_solution solu;
+  vector<int> res;
+  vector<int> nums = {1, 2, 3, 4, 4, 4, 5, 5, 6};
+  int target = 4;
+  res = solu.searchRange(nums, target);
+  for (int i = 0; i < res.size(); ++i) {
+    cout << res[i] << " ";
+  }
+  cout << endl;
 
 
   return 0;

@@ -769,5 +769,9 @@ public:
     int maxSatisfied2(vector<int> &customers, vector<int> &grump, int x);
     int maxSatisfied3(vector<int> &customers, vector<int> &grump, int x);
     vector< pair<pair<int, int>, int> > res;
-
+};
+///在排序数组中查找连续数组的第一个和最后一个为位置 要求时间复杂度 o(logn)
+class searchRange_34_solution {
+public:
+    vector<int> searchRange(vector<int> &nums, int target);
 };

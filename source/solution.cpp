@@ -5123,3 +5123,43 @@ int maxSatisfied_1052_solution::maxSatisfied3(vector<int> &customers, vector<int
     return satisfy + max_save;
 
 }
+/////在排序数组中查找连续数组的第一个和最后一个为位置 要求时间复杂度 o(logn)
+///先用二分法 从[0, nums.size())找到左边界点，再从[left, nums.size())找到右边界点
+vector<int> searchRange_34_solution::searchRange(vector<int> &nums, int target) {
+    vector<int> res(2, -1);
+    if (nums.size() == 0) {
+        cout << "the nums is empty" << endl;
+        return res;
+    }
+    int left = 0, right = nums.size(); //用来找左侧边界注意 the  range [0, nums.size())
+    int left1 = 0, right1 = nums.size(); //用来找右侧边界
+    while (left < right) {
+        int mid = (left + right) / 2;
+        if (nums[mid] == target) {
+            right = mid;
+        } else if (nums[mid] < target) {
+            left = mid + 1;
+        } else if (nums[mid] > target) {
+            right = mid;
+        }
+    }
+    if (nums[left] == target) {
+        res[0] = left;
+    }
+    ///查找右边界 从 left-> nums.size()
+    left1 = left;
+    while (left1 < right1) {
+        int mid = (left1 + right1) / 2;
+        if (nums[mid] == target) {
+            left1 = mid + 1;
+        } else if (nums[mid] < target) {
+            left1 = mid + 1;
+        } else if (nums[mid] > target) {
+            right1 = mid;
+        }
+    }
+    if (nums[left1 - 1] == target) {
+        res[1] = left1 - 1;
+    }
+    return res;
+}
