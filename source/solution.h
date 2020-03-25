@@ -4,6 +4,7 @@
 #include "BiTree.h"
 #include <unordered_map>
 #include <set>
+#include <limits.h>
 /////回溯算法
 
 using namespace std;
@@ -769,9 +770,46 @@ public:
     int maxSatisfied2(vector<int> &customers, vector<int> &grump, int x);
     int maxSatisfied3(vector<int> &customers, vector<int> &grump, int x);
     vector< pair<pair<int, int>, int> > res;
+<<<<<<< HEAD
+
+};
+///如何高效实现寻找素数
+class countPrimes_solu {
+public:
+    void countPrimes(int n);
+    vector<int> res;
+
+};
+////Dijkstra算法，求起点到终点的最短距离
+typedef struct _graph
+{
+    vector<string> vexs; //定点集合
+    int vexnum; //顶点数
+    int edgenum; //边数
+    vector<vector<int>> matrix; //邻接矩阵
+} Graph, *Pgraph;
+typedef struct _EdgeData {
+    char start; //边的起点
+    char end; //边的终点
+    int weight;
+
+}Edate;
+/*************************************************************
+ * G为图
+ * vs：起点
+ * prev前驱顶点数组。即，prev[i]的值是"顶点vs"到"顶点i"的最短路径所经历
+ *  的全部顶点中，位于"顶点i"之前的那个顶点。
+ * dist:长度数组。即，dist[i]是"顶点vs"到"顶点i"的最短路径的长度。
+ * 
+ * ************************************************************/
+class Dijkstra_solu {
+public:
+    void dijkstra(Graph G, int vs);
+=======
 };
 ///在排序数组中查找连续数组的第一个和最后一个为位置 要求时间复杂度 o(logn)
 class searchRange_34_solution {
 public:
     vector<int> searchRange(vector<int> &nums, int target);
+>>>>>>> d2c471e8abc6251d54cbb5116f417351a002e0dd
 };

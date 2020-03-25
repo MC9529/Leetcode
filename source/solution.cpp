@@ -5121,45 +5121,80 @@ int maxSatisfied_1052_solution::maxSatisfied3(vector<int> &customers, vector<int
     }
     cout << "the max_satisfy: " << satisfy + max_save << endl;
     return satisfy + max_save;
-
 }
-/////在排序数组中查找连续数组的第一个和最后一个为位置 要求时间复杂度 o(logn)
-///先用二分法 从[0, nums.size())找到左边界点，再从[left, nums.size())找到右边界点
-vector<int> searchRange_34_solution::searchRange(vector<int> &nums, int target) {
-    vector<int> res(2, -1);
-    if (nums.size() == 0) {
-        cout << "the nums is empty" << endl;
-        return res;
-    }
-    int left = 0, right = nums.size(); //用来找左侧边界注意 the  range [0, nums.size())
-    int left1 = 0, right1 = nums.size(); //用来找右侧边界
-    while (left < right) {
-        int mid = (left + right) / 2;
-        if (nums[mid] == target) {
-            right = mid;
-        } else if (nums[mid] < target) {
-            left = mid + 1;
-        } else if (nums[mid] > target) {
-            right = mid;
+/////如何高效实现寻找素数
+void countPrimes_solu::countPrimes(int n) {
+    vector<bool> isPrime(n, true);
+    for (int i = 2; i * i < n; ++i) {
+        if (isPrime[i]) {
+            for (int j = i * i; j < n; j = j + i) {
+                isPrime[j] = false;
+            }
         }
     }
-    if (nums[left] == target) {
-        res[0] = left;
-    }
-    ///查找右边界 从 left-> nums.size()
-    left1 = left;
-    while (left1 < right1) {
-        int mid = (left1 + right1) / 2;
-        if (nums[mid] == target) {
-            left1 = mid + 1;
-        } else if (nums[mid] < target) {
-            left1 = mid + 1;
-        } else if (nums[mid] > target) {
-            right1 = mid;
+    int count = 0;
+    for (int i = 2; i < n; ++i) {
+        if(isPrime[i]) {
+            count ++;
+            res.push_back(i);
         }
     }
-    if (nums[left1 - 1] == target) {
-        res[1] = left1 - 1;
+    return;
+}
+
+/// Dijkstra
+void Dijkstra_solu::dijkstra(Graph G, int vs) {
+    cout << "pass in 5147" << endl;
+    int i, j, k;
+    int min;
+    int tmp;
+    cout << "pass in 5150" << endl;
+    int flag[10000];  //flag[i]=1表示"顶点vs"到"顶点i"的最短路径已成功获取
+    cout << "pass in 5151" << endl;
+    vector<int> prev;
+    vector<int> dist;
+    for (i = 0; i < G.matrix.size(); ++i) {
+        flag[i] = 0; //顶点i的最短路径还没获取到
+        prev.push_back(0); //顶点i的前驱顶点为0
+        dist.push_back(G.matrix[vs][i]); //顶点i的最短路径为"顶点vs"到"顶点i"的权。
+
     }
-    return res;
+    flag[vs] = 1;
+    dist[vs] = 0;
+    cout << "pass in 5161" << endl;
+    for (i = 0; i < G.vexnum; ++i) {
+        //寻找当前的最小距离
+        //即，在未获得最短路径的点中，找到距离vs最近的顶点
+        min = INT_MAX;
+        for (j = 0; j < G.vexnum; ++j) {
+            if (flag[j] == 0 && dist[j] < min) {
+                min = dist[j];
+                cout << "the j and distance to vs in 5172:" << G.vexs[j] << " " << dist[j] << endl;
+                k = j;
+            }
+        }
+        cout << "pass in 5172" << endl;
+        //标记已经获得最短路径
+        flag[k] = 1;
+        // 修正当前最短路径和前驱顶点
+        // 即，当已经"顶点k的最短路径"之后，更新"未获取最短路径的顶点的最短路径和前驱顶点"
+        for (j = 0; j < G.vexnum; ++j) {
+            //判断 k 是否与 j 相连
+            tmp = (G.matrix[k][j] == INT_MAX ? INT_MAX: (min + G.matrix[k][j]) );
+            //还没找最近距离
+            if (flag[j] == 0 && (tmp < dist[j])) {
+                dist[j] = tmp;
+                cout << "the j and distance to vs in 5186:" << G.vexs[j] << " " << dist[j] << endl;
+                prev[j] = k;
+
+            }
+        }
+
+    }
+
+    cout << "the dijkstra:" << G.vexs[vs] << endl;
+    for (i = 0; i < G.vexnum; ++i) {
+        cout << "the shortest: from: " << G.vexs[vs] << " " <<
+         G.vexs[i] << " " << dist[i] << endl;
+    }
 }

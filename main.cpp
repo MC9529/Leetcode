@@ -1561,7 +1561,43 @@ int main() {
     << " " << solu.res[i].first.second  <<" "<< solu.res[i].second << endl;
   }
 
-
+  return 0;
+}
+*/
+///高效实现寻找素数
+/*
+int main() {
+  int n = 10;
+  countPrimes_solu solu;
+  solu.countPrimes(n);
+  for (int i = 0; i < solu.res.size(); ++i) {
+    cout << solu.res[i] << " ";
+  }
+  cout << endl;
+  return 0;
+}*/
+int main() {
+  
+  Dijkstra_solu solu;
+  Graph G;
+  G.vexnum = 7;
+  G.vexs  = {"A", "B", "C", "D", "E", "F", "G"};
+  cout << "pass in 1585" << endl;
+  //G.edgenum = 12;
+  //INT_MAX 表示不直接连接
+  G.matrix = { {0,   12,   INT_MAX,  INT_MAX,  INT_MAX,  16,   14}, 
+               {12,   0,    10,   INT_MAX,  INT_MAX,   7,  INT_MAX}, 
+              {INT_MAX,  10,    0,    3,     5,     6,   INT_MAX} , 
+              {INT_MAX, INT_MAX,   3,    0,     4,    INT_MAX, INT_MAX} , 
+              {INT_MAX, INT_MAX,   5,    4,     0,     2,     8}, 
+               {16,    7,    6,   INT_MAX,   2,     0,     9}, 
+               {14,   INT_MAX, INT_MAX, INT_MAX,   8,     9,     0}};
+  cout << "pass in 1594" << endl;
+  int vs = 3;
+  solu.dijkstra(G, vs);
+  //solu.dijkstra(G, vs);
+  cout << "pass in 1597" << endl;
+  
   return 0;
 }*/
 int main() {
