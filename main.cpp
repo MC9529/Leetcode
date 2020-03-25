@@ -1567,8 +1567,9 @@ int main() {
 int main() {
   searchRange_34_solution solu;
   vector<int> res;
-  vector<int> nums = {1, 2, 3, 4, 4, 4, 5, 5, 6};
-  int target = 4;
+  //vector<int> nums = {1, 2, 3, 4, 4, 4, 5, 5, 6};
+  vector<int> nums = {1};
+  int target = 0;
   res = solu.searchRange(nums, target);
   for (int i = 0; i < res.size(); ++i) {
     cout << res[i] << " ";
