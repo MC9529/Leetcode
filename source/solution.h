@@ -770,7 +770,6 @@ public:
     int maxSatisfied2(vector<int> &customers, vector<int> &grump, int x);
     int maxSatisfied3(vector<int> &customers, vector<int> &grump, int x);
     vector< pair<pair<int, int>, int> > res;
-<<<<<<< HEAD
 
 };
 ///如何高效实现寻找素数
@@ -805,11 +804,31 @@ typedef struct _EdgeData {
 class Dijkstra_solu {
 public:
     void dijkstra(Graph G, int vs);
-=======
 };
-///在排序数组中查找连续数组的第一个和最后一个为位置 要求时间复杂度 o(logn)
-class searchRange_34_solution {
+///Floyd算法找最短路径
+class Floyd_solution {
 public:
-    vector<int> searchRange(vector<int> &nums, int target);
->>>>>>> d2c471e8abc6251d54cbb5116f417351a002e0dd
+    void Floyd(vector<vector<int>> &nums, int k);
+};
+///最长上升子序列  
+class lengthofLis_300_solution {
+public:
+     //动态规划
+    int lengthofLis(vector<int> &nums);
+    //动态规划
+    int lengthofLis2(vector<int> &nums);
+     // 贪心+二分查找
+    int lengthofLis3(vector<int> &nums);
+    //贪心+二分查找方法2
+    int lengthofLis4(vector<int> &nums);
+    void print(vector<int> &d);
+};
+//搜索二维矩阵 leetcode_74
+class searchMatrix_74_solution {
+public:
+    //二分查找
+    void searchMatrix(vector<vector<int>> &matrix, int target);
+    //先定范围，再定位置
+    void searchMatrix2(vector<vector<int>> &matrix, int target);
+    vector<pair<int, int>> res;
 };

@@ -5198,3 +5198,257 @@ void Dijkstra_solu::dijkstra(Graph G, int vs) {
          G.vexs[i] << " " << dist[i] << endl;
     }
 }
+///Floyd
+void Floyd_solution::Floyd(vector<vector<int>> &nums, int k) {
+    for (int k = 1; k < nums.size(); ++k) {
+        for (int i = 1; i < nums.size(); ++i) {
+            for (int j = 1; j < nums.size(); ++j) {
+                if (nums[i][j] > nums[i][k] + nums[k][j]) {
+                    nums[i][j] = nums[i][k] + nums[k][j];
+                    
+                }
+            }
+            
+        }
+    }
+    for (int i = 1; i < nums.size(); ++i) {
+        for (int j = 1; j < nums.size(); ++j) {
+            cout << nums[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+
+}
+//////最长上升子序列  
+//动态规划 , dp[i], 表示前i个元素的最长上升子序列
+int lengthofLis_300_solution::lengthofLis(vector<int> &nums) {
+    int n = (int)nums.size();
+    if (n == 0) {
+        cout << "the nums if empty." << endl;
+        return 0;
+    }
+    vector<int> dp(n, 0);
+    for (int i = 0; i < n; ++i) {
+        //将第i个元素加入
+        dp[i] = 1;
+        for (int j = 0; j < i; ++j) {
+            // nums[j] < nums[i] 上升的，可以加入
+            if (nums[j] < nums[i]) {
+                dp[i] = max(dp[i], dp[j] + 1);
+            }
+        }
+    }
+    return *max_element(dp.begin(), dp.end());
+
+}
+//
+int lengthofLis_300_solution::lengthofLis2(vector<int> &nums) {
+    int n = (int)nums.size();
+    if (n == 0) {
+        cout << "the nums if empty." << endl;
+        return 0;
+    }
+    vector<vector<int>> dp_vector(n, vector<int>());
+    for (int i = 0; i < n; ++i) {
+        //将第i个元素加入
+        dp_vector[i].push_back(nums[i]);
+        if (i > 0) {
+            //从i - 1开始判断dp_vector[j],是否可以插入dp_vector[i],如果可以只插入一次，后跳出
+            for (int j = i - 1; j >= 0; j--) {
+                //nums[j] < nums[i] 上升趋势，可以插入
+                if (nums[j] < nums[i]) {
+                    dp_vector[i].insert(dp_vector[i].begin(), dp_vector[j].begin(), dp_vector[j].end());
+                    break;
+                }
+            }
+        }
+    }
+    //打印
+    int len = 0;
+    for (int i = 0; i < dp_vector.size(); ++i) {
+        if (dp_vector[i].size() > len) {
+            len = dp_vector[i].size();
+        }
+        for (int j = 0; j < dp_vector[i].size(); ++j) {
+            cout << dp_vector[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+
+    return len;
+}
+//贪心 + 二分查找  O(nlogn)
+//要使得上升序列最长，则最后那个元素应该经可能小
+int lengthofLis_300_solution::lengthofLis3(vector<int> &nums) {
+    int len = 1, n = nums.size();
+    if (n == 0) {
+        cout << "the size of nums is 0" << endl;
+        return 0;
+    }
+    vector<int> d(n + 1, 0);
+    d[len] = nums[0];
+    for (int i = 1; i < nums.size(); ++i) {
+        if (nums[i] > d[len]) {
+            len ++;
+            d[len] = nums[i];
+            print(d);
+        } else {
+            //upper_bound(begin(), end(), nums),找第一大于num的数
+            //lower_bound(begin(), end(), nums),找第一个大于等于num的数
+            //lower_bound(begin(), end(), nums, greater<type>()),第一个小于等于nums的数
+            //upper_bound(begin(), end(), nums, greater<type>()),第一个小于num的数
+            //找第一比nums[i]小的数d[k], d[k+1]=nums[i]
+            int l = 1, r = len, posi = 0;
+            //从后面往前找
+            posi = upper_bound(d.begin() +len, d.begin(), nums[i], greater<int>()) - d.begin();
+            cout << "the dp[posi]: " << d[posi] << endl;
+            cout << "the posi: " << posi << endl;
+            /*while (nums[posi - 1] > nums[i]) {
+                posi = posi - 1;
+            }*/
+            cout << "the nums[i]: " << nums[i] << endl;
+            cout << "the dp[posi]: " << d[posi] << endl;
+            cout << "the posi: " << posi << endl;
+            d[posi] = nums[i];
+            print(d);
+        }
+    }
+
+    return len;
+}
+int lengthofLis_300_solution::lengthofLis4(vector<int> &nums) {
+    int len = 1, n = nums.size();
+    if (n == 0) {
+        cout << "the size of nums is 0" << endl;
+        return 0;
+    }
+    vector<int> d(n + 1, 0);
+    d[len] = nums[0];
+    for (int i = 1; i < nums.size(); ++i) {
+        if (nums[i] > d[len]) {
+            len ++;
+            d[len] = nums[i];
+            print(d);
+        } else {
+            //upper_bound(begin(), end(), nums),找第一大于num的数
+            //lower_bound(begin(), end(), nums),找第一个大于等于num的数
+            //lower_bound(begin(), end(), nums, greater<type>()),第一个小于等于nums的数
+            //upper_bound(begin(), end(), nums, greater<type>()),第一个小于num的数
+            //////找第一比nums[i]小的数d[k], d[k+1]=nums[i]
+            int l = 1, r = len, posi = 0;
+            while(l <= r) {
+                int mid = ( l + r) / 2;
+                if (d[mid] < nums[i]) {
+                    posi = mid;
+                    l = mid + 1;
+                } else {
+                    r = mid - 1;
+                }
+                //d[posi + 1] = nums[i];
+            }
+            cout << "the posi: " << posi << endl; 
+            d[posi + 1] = nums[i];
+            print(d);
+        }
+    }
+    return len;
+}
+//print
+void lengthofLis_300_solution::print(vector<int> &d) {
+    cout << "d[i]" << endl;
+    for (int i = 0; i < d.size(); ++i) {
+        cout << d[i] << " ";
+    }
+    cout << endl;
+}
+/////搜索二维矩阵 leetcode_74
+void searchMatrix_74_solution::searchMatrix(vector<vector<int>> &matrix, int target) {
+    //没有这个元素
+    res.push_back({-1, -1});
+    if (matrix.size() == 0) {
+        cout << "the matrix is empty" << endl;
+        return;
+    }
+    //元素所在位置 row col
+    int row = 0, col = 0;
+    int len = matrix[0].size();
+    //将matrix看成一个数组，
+    int left = 0;
+    int right = matrix.size() * matrix[0].size() - 1;
+    while (left <= right) {
+        int mid = (left + right) / 2;
+        // 所在位置 row col
+        row = mid / len;
+        col = mid % len;
+        cout << "the row and col: " << row << " " << col;
+        if (matrix[row][col] == target) {
+            res[0] = {row, col};
+            return;
+        } else if (matrix[row][col] < target) {
+            left = mid + 1;
+        } else if (matrix[row][col] > target) {
+            right = mid - 1;
+        }
+        
+    }
+    return;
+}
+///方法2，先定在哪一行，再定在那一列
+void searchMatrix_74_solution::searchMatrix2(vector<vector<int>> &matrix, int target) {
+    res.push_back({-1, -1});
+     cout << "pass in 5401" << endl;
+     // matrix = {{}}, 需要同时判断matrix.empty() and matrix[0].empty()
+    if (matrix.empty() || matrix[0].empty()) {
+        cout << "the matrix is empty" << endl;
+        return;
+    }
+    cout << "the size of matrix: " << matrix.size() << " " << matrix[0].size() << endl;
+    cout << "pass in 5405" << endl; 
+    bool flag_row = false, flag_col = false;
+    //一行的长度
+    int len = matrix[0].size();
+    //行
+    int row_left = 0, row_right = matrix.size() - 1;
+    //列
+    int col_left = 0, col_right = matrix[0].size() - 1;
+    int mid = 0, mid1 = 0; // mid : for row  , mid1 : for col
+    //行搜度
+    while (row_left <= row_right) {
+        mid = (row_left + row_right) / 2;
+        if (matrix[mid][0] <= target && matrix[mid][len - 1] >= target) {
+            res[0].first =  mid;
+            flag_row = true;
+            break;
+        } else if (matrix[mid][len - 1] < target) {
+            row_left = mid + 1;
+        } else if (matrix[mid][0] > target) {
+            row_right = mid - 1;
+        }
+    }
+    if (flag_row == false) {
+        cout << "the is no target in matrix from row" << endl;
+        return ;
+    }
+    //列搜索
+    while (col_left <= col_right) {
+        int mid1 = (col_right + col_left) / 2;
+        if (matrix[mid][mid1] == target) {
+            res[0].second = mid1;
+            flag_col = true;
+            break;
+        } else if (matrix[mid][mid1] < target) {
+            col_left = mid1 + 1;
+        } else if (matrix[mid][mid1] > target) {
+            col_right = mid1 - 1;
+
+        }
+    }
+    if (flag_col == false) {
+        res[0].first = -1;
+        cout << "there is no target in matrix from col" << endl;
+        return;
+    }
+    return;
+}

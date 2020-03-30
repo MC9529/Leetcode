@@ -1576,8 +1576,8 @@ int main() {
   cout << endl;
   return 0;
 }*/
+/*
 int main() {
-  
   Dijkstra_solu solu;
   Graph G;
   G.vexnum = 7;
@@ -1599,18 +1599,36 @@ int main() {
   cout << "pass in 1597" << endl;
   
   return 0;
-}*/
+}
+*/
+/////最长上升子序列 
+/*
 int main() {
-  searchRange_34_solution solu;
-  vector<int> res;
-  vector<int> nums = {1, 2, 3, 4, 4, 4, 5, 5, 6};
-  int target = 4;
-  res = solu.searchRange(nums, target);
-  for (int i = 0; i < res.size(); ++i) {
-    cout << res[i] << " ";
-  }
-  cout << endl;
+  lengthofLis_300_solution  solu;
+  //vector<int> nums = {10, 9, 2, 5, 3, 7, 101, 18};
+  vector<int> nums = {4, 10, 4, 3, 8, 9};
+  //int len = solu.lengthofLis(nums);
+  //int len = solu.lengthofLis2(nums);
+  int len = solu.lengthofLis3(nums);
+  //int len = solu.lengthofLis4(nums);
+  cout << "the len: " << len << endl;
 
+  return 0;
+}
+*/
+//搜索二维矩阵 leetcode_74
+int main() {
+  searchMatrix_74_solution solu;
+  /*
+  vector<vector<int>> matrix = { {1,  3,  5,  7}, 
+                                 {10, 11, 16, 20}, 
+                                 {23, 30, 34, 50} };*/
+  vector<vector<int>> matrix = {{1} };
+  int target = 1;
+  //solu.searchMatrix(matrix, target);
+  solu.searchMatrix2(matrix, target);
+  cout << "the row and col: " << solu.res[0].first 
+       << " " << solu.res[0].second << endl;
 
   return 0;
 }
