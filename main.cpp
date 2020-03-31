@@ -1617,12 +1617,13 @@ int main() {
 }
 */
 //搜索二维矩阵 leetcode_74
+/*
 int main() {
   searchMatrix_74_solution solu;
-  /*
-  vector<vector<int>> matrix = { {1,  3,  5,  7}, 
-                                 {10, 11, 16, 20}, 
-                                 {23, 30, 34, 50} };*/
+  
+  //vector<vector<int>> matrix = { {1,  3,  5,  7}, 
+  //                               {10, 11, 16, 20}, 
+  //                               {23, 30, 34, 50} };
   vector<vector<int>> matrix = {{1} };
   int target = 1;
   //solu.searchMatrix(matrix, target);
@@ -1630,5 +1631,15 @@ int main() {
   cout << "the row and col: " << solu.res[0].first 
        << " " << solu.res[0].second << endl;
 
+  return 0;
+}
+*/
+int main() {
+  vector<int> nums = {1, 2, 1, 3, 5, 6, 4};
+  findPeakElement_162_solution solu;
+  //solu.findPeakElement(nums);
+  int res = solu.findPeakElement2(nums);
+  cout << "the peak posi: " << res << endl;
+  cout << "the peak element: " << nums[res] << endl;
   return 0;
 }

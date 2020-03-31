@@ -832,3 +832,12 @@ public:
     void searchMatrix2(vector<vector<int>> &matrix, int target);
     vector<pair<int, int>> res;
 };
+//寻找山脉峰值 峰值：nums[i] > nums[i + 1] and nums[i] < nums[i - 1]
+class findPeakElement_162_solution {
+public:
+    //迭代
+    int findPeakElement(vector<int> &nums);
+    //递归
+    int findPeakElement2(vector<int> &nums);
+    int findPeakElementHelper(vector<int> &nums, int start, int end);
+};
