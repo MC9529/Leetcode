@@ -1582,6 +1582,37 @@ vector<vector<int>> kSmallestPairs_373_solution::kSmallestPairs(
     return res;
  }
 
+int kthSmallest_378_solution::kthSmallest2(vector<vector<int>> &matrix, int k) {
+    int len = matrix[0].size();
+    int total_len = matrix.size() * len;
+    if (k < 0 || matrix.size() <= 0 || k > total_len) {
+        cout << "the k or matrix have mistake " << endl;
+        return 0;
+    }
+    int left = matrix[0][0];
+    int right = matrix[matrix.size()-1][matrix[0].size()-1];
+    while(left <= right) {
+        int count = 0;
+        int mid = left + (right - left)/2;
+        for (int i = 0; i < matrix.size(); ++i) {
+            for (int j = 0; j < matrix[0].size() - 1 
+                        && (matrix[i][j] <= mid); ++j) {
+                count ++;
+            }
+        }
+        //说明在右边
+        if (count < k) {
+            left = mid + 1;
+        } else {
+            //在左边
+            right = mid + 1;
+        }
+    }
+    return left;
+    
+
+}
+
 ///根据字符出现频率排序
 string frequencySort_451_solution::frequencySort(string s) {
     string res;
@@ -5482,5 +5513,27 @@ int findPeakElement_162_solution::findPeakElementHelper(vector<int> &nums, int s
     } else if (nums[mid] < nums[mid + 1]) {
         return findPeakElementHelper(nums, mid + 1, end);
     }
+
+}
+///
+int countRangeSum_327_solution::countRangeSum(vector<int> &nums, int lower, int upper) {
+    int res = 0;
+    multiset<int> helper;
+    helper.insert(0);
+    int sum = 0;
+    for (int j = 0; j < nums.size(); ++j) {
+        sum = sum + nums[j];
+        helper.insert(sum);
+        multiset<int>::iterator iter0 = helper.lower_bound(sum - upper);
+        multiset<int>::iterator iter1 = helper.upper_bound(sum - lower);
+        if (distance(iter0, iter1)) {
+            res ++;
+            ans.push_back({*iter0, *iter1});
+        }
+    }
+    for (int i = 0; i < ans.size(); ++i) {
+        cout << ans[i].first << " " << ans[i].second << endl;
+    }
+    cout << endl;
 
 }

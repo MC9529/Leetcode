@@ -1634,6 +1634,8 @@ int main() {
   return 0;
 }
 */
+//寻找山脉峰值 峰值：nums[i] > nums[i + 1] and nums[i] < nums[i - 1]
+/*
 int main() {
   vector<int> nums = {1, 2, 1, 3, 5, 6, 4};
   findPeakElement_162_solution solu;
@@ -1641,5 +1643,15 @@ int main() {
   int res = solu.findPeakElement2(nums);
   cout << "the peak posi: " << res << endl;
   cout << "the peak element: " << nums[res] << endl;
+  return 0;
+}
+*/
+int main() {
+  vector<int> nums = {-2, 5, -1};
+  int lower = -2, upper = 2;
+  countRangeSum_327_solution solu;
+  solu.countRangeSum(nums, lower, upper);
+
+
   return 0;
 }

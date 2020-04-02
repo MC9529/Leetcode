@@ -230,7 +230,10 @@ public:
 ////有序矩阵中第K小的元素
 class kthSmallest_378_solution {
 public:
+    //优先队列
     int kthSmallest(vector<vector<int>> &matrix, int k);
+    //二分查找
+    int kthSmallest2(vector<vector<int>> &matrix, int k);
 };
 ///根据字符出现频率排序
 class frequencySort_451_solution {
@@ -840,4 +843,12 @@ public:
     //递归
     int findPeakElement2(vector<int> &nums);
     int findPeakElementHelper(vector<int> &nums, int start, int end);
+};
+//区间和的个数 给定一个整数数组 nums，
+//返回区间和在 [lower, upper] 之间的个数，
+//包含 lower 和 upper。
+class countRangeSum_327_solution {
+public:
+    int countRangeSum(vector<int> &sum, int lower, int upper);
+    vector<pair<int, int>> ans;
 };
