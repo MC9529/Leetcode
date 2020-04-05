@@ -1649,7 +1649,6 @@ int main() {
 //区间和的个数 给定一个整数数组 nums，
 //返回区间和在 [lower, upper] 之间的个数，
 //包含 lower 和 upper。
-/*
 int main() {
   vector<int> nums = {-2, 5, -1};
   for (int i = 0; i < nums.size(); ++i) {
@@ -1663,9 +1662,10 @@ int main() {
 
   return 0;
 }
-*/
+
 /////统计优美子数组 leetcode_1248
 //连续数组中有k个奇数
+/*
 int main() {
   vector<int> nums = {1, 1, 2, 1, 1, 1};
   int k = 2;
@@ -1678,3 +1678,4 @@ int main() {
   cout << endl;
   return 0;
 }
+*/

@@ -5540,7 +5540,6 @@ int countRangeSum_327_solution::countRangeSum(vector<int> &nums, int lower, int 
             cout << "iter0: " << *iter0 << endl;
             advance(iter0, 1);
         }
-        
         helper.insert(sum);
     }
     for (int i = 0; i < ans.size(); ++i) {
@@ -5563,6 +5562,34 @@ int countRangeSum_327_solution::search(vector<int> nums, int low, int high) {
         }
     }
     return -1;
+
+}
+//
+int countRangeSum_327_solution::countRangeSum2(vector<int> &nums, int lower, int upper) {
+    int res = 0;
+    multiset<int> helper;
+    helper.insert(0);
+    int sum = 0;
+    for (int j = 0; j < nums.size(); ++j) {
+        sum = sum + nums[j];
+        helper.insert(sum);
+        cout << "the sum: " << sum <<endl;
+        ///使用二分法找一个  大于等于sum - upper,小于等于sum - lower
+        //第一个大于等于sum - upper的数
+        int left = sum - upper;
+        int right = sum - lower;
+        //zhao 
+        for (int i = left; i <= right; ++i) {
+            if (helper.find(i) != helper.end()) {
+                auto iter = helper.find(i);
+                ans.push_back({*iter, sum});
+            }
+        }
+    }
+    for (int i = 0; i < ans.size(); ++i) {
+        cout << ans[i].first << " " << ans[i].second << endl;
+    }
+    cout << endl;
 
 }
 ///统计优美子数组 leetcode_1248

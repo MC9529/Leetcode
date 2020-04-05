@@ -852,6 +852,8 @@ public:
     int countRangeSum(vector<int> &nums, int lower, int upper);
     int search(vector<int> nums, int low, int high);
     vector<pair<int, int>> ans;
+    //hash
+    int countRangeSum2(vector<int> &nums, int lower, int upper);
 };
 ///统计优美子数组 leetcode_1248
 //连续数组中有k个奇数
