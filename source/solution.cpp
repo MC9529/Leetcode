@@ -5565,3 +5565,86 @@ int countRangeSum_327_solution::search(vector<int> nums, int low, int high) {
     return -1;
 
 }
+///统计优美子数组 leetcode_1248
+//连续数组中有k个奇数
+void numberofSubarrays_1248_solution::numberofSubarrays(vector<int> &nums, int k) {
+    vector<int> helper;
+    //插入0,作为辅助
+    helper.push_back(0);
+    int sum = 0;
+    int lower = 0;
+    for (int i = 0; i < nums.size(); ++i) {
+        //x可能为负数nums[i] % 2 == 1不对
+        //奇数
+        if (nums[i] % 2 != 0) {
+            sum = sum + 1;
+        }
+        helper.push_back(sum);
+        cout << "the sum: " << sum << endl;
+        //使用lower记录已经搜索过的地方，可以避免重复
+        if(helper[helper.size() - 1] - helper[lower]>= k) {
+            //需要搜素位置所对应的奇数个数
+            int n = helper[helper.size() - 1] - k;
+            //从lower开始搜
+            int res = search(helper, lower, n);
+            //找到了
+            if (res != -1) {
+                //因为从多了一前缀0,所以再减去1
+                ans.push_back({res, helper.size() - 1 - 1});
+                //更新开始搜索位置
+                lower ++;
+                cout << "the res: " << res << endl;
+            }
+        }
+    }
+    return;
+}
+///二分查找
+int numberofSubarrays_1248_solution::search(vector<int> &helper, int lower, int k) {
+    int left = lower, right = helper.size() - 1;
+    while(left <= right) {
+        int mid = left + (right - left) / 2;
+        if (helper[mid] == k) {
+            cout << "find the mid, which val equal k" << endl;
+            return mid;
+        } else if (helper[mid] < k) {
+            left = mid + 1;
+        } else if (helper[mid] > k) {
+            right = mid - 1;
+        }
+
+    }
+    return -1;
+}
+
+///hash
+void numberofSubarrays_1248_solution::numberofSubarrays2(vector<int> &nums, int k) {
+    multiset<int> helper;
+    //插入0,作为辅助
+    helper.insert(0);
+    int sum = 0;
+    multiset<int>::iterator begin_iter = helper.begin();
+    for (int i = 0; i < nums.size(); ++i) {
+        //x可能为负数nums[i] % 2 == 1不对
+        //奇数
+        if (nums[i] % 2 != 0) {
+            sum = sum + 1;
+        }
+        helper.insert(sum);
+        cout << "the sum: " << sum << endl;
+        //使用lower记录已经搜索过的地方，可以避免重复
+        if(sum - *begin_iter>= k) {
+            //需要搜素位置所对应的奇数个数
+            int n = sum - k;
+            //找到了
+            if (helper.find(n) != helper.end()) {
+                auto iter = helper.find(n);
+                ans.push_back({*iter, sum});
+                advance(begin_iter, 1);
+            }
+            
+        }
+    }
+    return;
+
+}

@@ -853,3 +853,14 @@ public:
     int search(vector<int> nums, int low, int high);
     vector<pair<int, int>> ans;
 };
+///统计优美子数组 leetcode_1248
+//连续数组中有k个奇数
+class numberofSubarrays_1248_solution {
+public:
+    //二分法
+    void numberofSubarrays(vector<int> &nums, int k);
+    int search(vector<int> &helper, int lower, int k);
+    vector<pair<int, int>> ans;
+    //hash
+    void numberofSubarrays2(vector<int> &nums, int k);
+};
