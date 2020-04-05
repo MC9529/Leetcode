@@ -1648,6 +1648,10 @@ int main() {
 */
 int main() {
   vector<int> nums = {-2, 5, -1};
+  for (int i = 0; i < nums.size(); ++i) {
+    cout << nums[i] << endl;
+  }
+  cout << endl;
   int lower = -2, upper = 2;
   countRangeSum_327_solution solu;
   solu.countRangeSum(nums, lower, upper);

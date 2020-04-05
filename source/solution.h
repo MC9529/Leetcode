@@ -849,6 +849,7 @@ public:
 //包含 lower 和 upper。
 class countRangeSum_327_solution {
 public:
-    int countRangeSum(vector<int> &sum, int lower, int upper);
+    int countRangeSum(vector<int> &nums, int lower, int upper);
+    int search(vector<int> nums, int low, int high);
     vector<pair<int, int>> ans;
 };

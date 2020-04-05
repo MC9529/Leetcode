@@ -5523,17 +5523,45 @@ int countRangeSum_327_solution::countRangeSum(vector<int> &nums, int lower, int 
     int sum = 0;
     for (int j = 0; j < nums.size(); ++j) {
         sum = sum + nums[j];
-        helper.insert(sum);
-        multiset<int>::iterator iter0 = helper.lower_bound(sum - upper);
-        multiset<int>::iterator iter1 = helper.upper_bound(sum - lower);
-        if (distance(iter0, iter1)) {
-            res ++;
-            ans.push_back({*iter0, *iter1});
+
+        cout << "the sum: " << sum <<endl;
+        ///使用二分法找一个  大于等于sum - upper,小于等于sum - lower
+        //第一个大于等于sum - upper的数
+        multiset<int>::iterator iter0 = lower_bound(helper.begin(), helper.end(), sum - upper);
+        //第一个大于sum - upper的数
+        //所以 [iter0, iter1)是我们需要的空间范围
+        multiset<int>::iterator iter1 = upper_bound(helper.begin(), helper.end(), sum - lower);
+        cout << "the helper.end(): " << *helper.end() << endl;
+        cout << "in 5529: " << *iter0 << " " << *iter1 << endl;
+        //multiset是非线性的容器，不可以iter0 + 1之类的操作，可以distance(iter0, iter1), advance(iter, 1)
+        while (distance(iter0, iter1) > 0 && iter0 != helper.end() && iter0 != iter1) {
+            res++;
+            ans.push_back({*iter0, sum});
+            cout << "iter0: " << *iter0 << endl;
+            advance(iter0, 1);
         }
+        
+        helper.insert(sum);
     }
     for (int i = 0; i < ans.size(); ++i) {
         cout << ans[i].first << " " << ans[i].second << endl;
     }
     cout << endl;
+
+}
+//使用二分法找一个  大于等于 left,小于等于 right
+int countRangeSum_327_solution::search(vector<int> nums, int low, int high) {
+    int left = 0, right = nums.size() - 1;
+    int mid = left + (right - left) / 2;
+    while (left <= right) {
+        if (nums[mid] >= low && nums[mid] <= high) {
+            cout << "find it: " << mid << endl;
+        } else if (nums[mid] < low) {
+            left = mid + 1;
+        } else if (nums[mid] > high) {
+            right = mid - 1;
+        }
+    }
+    return -1;
 
 }
