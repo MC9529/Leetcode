@@ -5666,7 +5666,11 @@ void numberofSubarrays_1248_solution::numberofSubarrays2(vector<int> &nums, int 
             //找到了
             if (helper.find(n) != helper.end()) {
                 auto iter = helper.find(n);
-                ans.push_back({*iter, sum});
+                cout << "the distance: " << distance(iter, helper.end()) << endl;
+                while(sum - *iter == k) {
+                     ans.push_back({*iter, sum});
+                     advance(iter, 1);
+                }
                 advance(begin_iter, 1);
             }
             
@@ -5674,4 +5678,27 @@ void numberofSubarrays_1248_solution::numberofSubarrays2(vector<int> &nums, int 
     }
     return;
 
+}
+///
+int numberofSubarrays_1248_solution::numberofSubarrays3(vector<int> &nums, int k) {
+    int n = nums.size();
+    vector<int> arr;
+    arr.push_back(0);
+    //计算 奇数个数
+    for(auto x:nums) arr.push_back(arr.back() + (x&1));
+    for (int i = 0; i < arr.size(); ++i) {
+        cout << arr[i] << " " << endl;
+    }
+    cout << endl;
+    unordered_map<int,int> h;
+    int ans = 0;
+    //
+    for(auto x:arr) {
+        cout << "h[x-k]: " << x - k << " " << h[x - k] << endl;
+        cout << "h[x]: " << x  << " "<< h[x] << endl;
+        ans += h[x-k];
+        h[x] ++;
+    }
+    cout << "the ans: " << ans << endl;
+    return ans;
 }

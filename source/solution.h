@@ -865,4 +865,6 @@ public:
     vector<pair<int, int>> ans;
     //hash
     void numberofSubarrays2(vector<int> &nums, int k);
+    //
+    int numberofSubarrays3(vector<int> &nums, int k);
 };
