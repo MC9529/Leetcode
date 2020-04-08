@@ -5702,3 +5702,28 @@ int numberofSubarrays_1248_solution::numberofSubarrays3(vector<int> &nums, int k
     cout << "the ans: " << ans << endl;
     return ans;
 }
+///四个数之和
+int foursumcout_454_solution::foursumcout(vector<int> &A, vector<int> &B, 
+    vector<int> &C, vector<int> &D) {
+    unordered_map<int, pair<int, int>> AB;
+    for (auto a: A) {
+        for (auto b: B) {
+            AB[a + b] = {a, b};
+        }
+    }
+    for (auto c: C) {
+        for (auto d: D) {
+            int ans = c + d;
+            if(AB.find(-ans) != AB.end()) {
+                auto iter = AB.find(-ans);
+                vector<int> temp;
+                temp.push_back(iter->second.first);
+                temp.push_back(iter->second.second);
+                temp.push_back(c);
+                temp.push_back(d);
+                res.push_back(temp);
+            }
+        }
+    }
+    return 0;
+}

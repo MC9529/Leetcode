@@ -868,3 +868,9 @@ public:
     //
     int numberofSubarrays3(vector<int> &nums, int k);
 };
+///四个数相加 leetcode_454
+class foursumcout_454_solution {
+public:
+   int foursumcout(vector<int> &A, vector<int> &B, vector<int> &C, vector<int> &D);
+   vector<vector<int>> res;
+};

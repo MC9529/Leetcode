@@ -1666,12 +1666,33 @@ int main() {
 */
 /////统计优美子数组 leetcode_1248
 //连续数组中有k个奇数
-
+/*
 int main() {
   vector<int> nums = {2,2,2,1,2,2,1,2,2,2};
   int k = 2;
   numberofSubarrays_1248_solution solu;
   solu.numberofSubarrays3(nums, k);
+
+  return 0;
+}
+*/
+// 四个数之和
+int main() {
+  vector<int> A = {1, 2};
+  vector<int> B = {-2, -1};
+  vector<int> C = {-1, 2};
+  vector<int> D = {0, 2};
+  foursumcout_454_solution solu;
+  solu.foursumcout(A, B, C, D);
+  for (int i = 0; i < solu.res.size(); ++i) {
+    for (int j = 0; j < solu.res[i].size(); ++j) {
+      cout << solu.res[i][j] << " ";
+    }
+    cout << endl;
+  }
+  cout << endl;
+
+
 
   return 0;
 }
