@@ -5739,16 +5739,29 @@ void findclosestelement_658_solution::findclosestelement(
         container.push_back({nums[i], abs(nums[i] - x)});
     }
      
-    ///如果频率一样，则值大的放前面
+    ///如果第二个值相等, 则小的数放前面
     auto comp = [](const pair<int, int> val1, const pair<int, int> val2) {
-        bool res;
         if (val1.second == val2.second) {
-            return val1.first > val2.first;
+            return val1.first < val2.first;
         }
-        return val1.second > val2.second;
+        return val1.second < val2.second;
     };
-    //将map转化为vector
-    vector<pair<int, int>> count_vector(count.begin(), count.end());
+
     //排序
-    sort(count_vector.begin(), count_vector.end(), comp);
+    sort(container.begin(), container.end(), comp);
+    for (int i = 0; i < container.size(); ++i) {
+        cout << container[i].first << " " << container[i].second << endl;
+    }
+    cout << endl;
+
+    for (int i = 0; i < k; ++i) {
+        res.push_back(container[i].first);
+    }
+    // 对res从小到大排序
+    sort(res.begin(), res.end());
+    for (int i = 0; i < res.size(); ++i) {
+        cout << res[i] << " ";
+    }
+    cout << endl;
+    return;
 }

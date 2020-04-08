@@ -1676,7 +1676,8 @@ int main() {
   return 0;
 }
 */
-// 四个数之和
+// 四个数之和 leetcode_454
+/*
 int main() {
   vector<int> A = {1, 2};
   vector<int> B = {-2, -1};
@@ -1692,7 +1693,16 @@ int main() {
   }
   cout << endl;
 
-
+  return 0;
+}
+*/
+// // 找到K个最接近的元素 leetcode_658
+int main() {
+  findclosestelement_658_solution solu;
+  vector<int> nums = {1, 2, 3, 4, 5};
+  int k = 4;
+  int x = 3;
+  solu.findclosestelement(nums, k, x);
 
   return 0;
 }
