@@ -874,3 +874,9 @@ public:
    int foursumcout(vector<int> &A, vector<int> &B, vector<int> &C, vector<int> &D);
    vector<vector<int>> res;
 };
+// 找到K个最接近的元素
+class findclosestelement_658_solution {
+public:
+    void findclosestelement(vector<int> &nums, int k, int x);
+    vector<int> res;
+};

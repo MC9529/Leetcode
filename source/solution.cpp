@@ -5705,6 +5705,10 @@ int numberofSubarrays_1248_solution::numberofSubarrays3(vector<int> &nums, int k
 ///四个数之和
 int foursumcout_454_solution::foursumcout(vector<int> &A, vector<int> &B, 
     vector<int> &C, vector<int> &D) {
+    if (A.empty() || B.empty() || C.empty() || D.empty()) {
+        cout << "A, B, C, D someone is empty." << endl;
+        return 0;
+    }
     unordered_map<int, pair<int, int>> AB;
     for (auto a: A) {
         for (auto b: B) {
@@ -5726,4 +5730,25 @@ int foursumcout_454_solution::foursumcout(vector<int> &A, vector<int> &B,
         }
     }
     return 0;
+}
+// 找到K个最接近的元素
+void findclosestelement_658_solution::findclosestelement(
+    vector<int> &nums, int k, int x) {
+    vector<pair<int, int>> container;
+    for (int i = 0; i < nums.size(); ++i) {
+        container.push_back({nums[i], abs(nums[i] - x)});
+    }
+     
+    ///如果频率一样，则值大的放前面
+    auto comp = [](const pair<int, int> val1, const pair<int, int> val2) {
+        bool res;
+        if (val1.second == val2.second) {
+            return val1.first > val2.first;
+        }
+        return val1.second > val2.second;
+    };
+    //将map转化为vector
+    vector<pair<int, int>> count_vector(count.begin(), count.end());
+    //排序
+    sort(count_vector.begin(), count_vector.end(), comp);
 }
