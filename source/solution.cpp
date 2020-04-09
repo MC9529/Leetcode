@@ -5765,3 +5765,87 @@ void findclosestelement_658_solution::findclosestelement(
     cout << endl;
     return;
 }
+
+// 乘法表中第K小的数 leetcode_668
+int findKthnumber_668_solution::findKthnumber(int m, int n, int k) {
+    vector<int> container;
+    int res = -1;
+    for (int i = m + n - 1; i > 0; i = i - 2) {
+        if (container.empty()) {
+            container.push_back(i);
+        } else {
+            container.push_back(i + container[container.size() - 1]);
+        }
+    }
+    int row_posi = binary_search(container, k);
+    cout << "the row_posi: " << row_posi << endl;
+    if (row_posi == -1) {
+        cout << "can not find it in 5782" << endl;
+        return -1;
+    }
+    int rest = k - container[row_posi - 1];
+    cout << "the rest: " << rest << endl;
+    int ability_in_row_posi = container[row_posi] - container[row_posi - 1];
+    vector<int> container2;
+    int start_id = 1;
+    container2.push_back(1);
+    while(start_id < ability_in_row_posi) {
+        int temp = ability_in_row_posi - start_id;
+        if (temp == 1) {
+            int last = container2[container2.size() - 1];
+            container2.push_back(1 + last);
+        } else {
+            int last = container2[container2.size() - 1];
+            container2.push_back(2 + last);
+        }
+        start_id = start_id + 2;
+    }
+    int col_posi = binary_search(container2, rest);
+    cout << "the col_posi: " << col_posi << endl;
+    if (col_posi == -1) {
+        cout << "can not find it in 5796" << endl;
+        return -1;
+    }
+    res = (row_posi + 1) * (row_posi + col_posi + 1);
+    cout << "the kth is :" << res << endl;
+    return res;
+}
+
+int findKthnumber_668_solution::binary_search(vector<int> &container, int k) {
+    if (container[container.size() - 1] < k || k < 0) {
+        cout << "the k is bigger than the container.size or k is negative num" << endl;
+        return -1;
+    }
+    int left = 0, right = container.size() - 1;
+    while(left <= right) {
+        int mid = left + (right - left) / 2;
+        if (container[mid] >= k && container[mid - 1] < k) {
+            return mid;
+        } else if (container[mid] < k) {
+            left = mid + 1;
+        } else if (container[mid] > k) {
+            right = mid - 1;
+        }
+    }
+    return -1;
+ }
+
+ // 最长重复子数组 leetcode_718 
+int findLength_718_solution::findLength(vector<int> &A, vector<int> &B) {
+    int n = A.size();
+    int m = B.size();
+    // dp[i][j]表示以i和j结尾的公共字数组的长度
+    vector<vector<int>> dp(n + 1, vector<int>(m + 1, 0));
+    int res;
+    for (int i = 1; i <= n; ++i) {
+        for (int j = 1; j <= m; ++j) {
+            if (A[i - 1] == B[j - 1]) {
+                dp[i][j] = dp[i - 1][j - 1] + 1;
+                res = max(res, dp[i][j]);
+            }
+        }
+    }
+    return res;
+
+}
+ 

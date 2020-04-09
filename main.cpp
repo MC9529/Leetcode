@@ -1697,12 +1697,23 @@ int main() {
 }
 */
 // // 找到K个最接近的元素 leetcode_658
+/*
 int main() {
   findclosestelement_658_solution solu;
   vector<int> nums = {1, 2, 3, 4, 5};
   int k = 4;
   int x = 3;
   solu.findclosestelement(nums, k, x);
+
+  return 0;
+}*/
+//  乘法表中第K小的数 leetcode_668
+int main() {
+  int m = 3, n = 3, k = 5;
+  findKthnumber_668_solution solu;
+  solu.findKthnumber(m, n, k);
+
+
 
   return 0;
 }

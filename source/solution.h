@@ -880,3 +880,15 @@ public:
     void findclosestelement(vector<int> &nums, int k, int x);
     vector<int> res;
 };
+// 乘法表中第K小的数 leetcode_668
+class findKthnumber_668_solution {
+public:
+    //  二分法
+    int findKthnumber(int m, int n, int k);
+    int binary_search(vector<int> &container, int k);
+};
+// 最长重复子数组 leetcode_718
+class findLength_718_solution {
+public:
+    int findLength(vector<int> &A, vector<int> &B);
+};
