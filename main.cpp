@@ -1708,12 +1708,23 @@ int main() {
   return 0;
 }*/
 //  乘法表中第K小的数 leetcode_668
+/*
 int main() {
   int m = 3, n = 3, k = 5;
   findKthnumber_668_solution solu;
   solu.findKthnumber(m, n, k);
 
 
+
+  return 0;
+}
+*/
+//  最长重复子数组 leetcode_718
+int main() {
+  vector<int> A = {1, 2, 3, 7, 8};
+  vector<int> B = {6, 9, 1, 2, 3};
+  findLength_718_solution solu;
+  solu.findLength(A, B);
 
   return 0;
 }
