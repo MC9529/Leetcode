@@ -5839,6 +5839,7 @@ int findLength_718_solution::findLength(vector<int> &A, vector<int> &B) {
     int res;
     for (int i = 1; i <= n; ++i) {
         for (int j = 1; j <= m; ++j) {
+            // 结尾元素相同
             if (A[i - 1] == B[j - 1]) {
                 dp[i][j] = dp[i - 1][j - 1] + 1;
                 res = max(res, dp[i][j]);
@@ -5853,6 +5854,28 @@ int findLength_718_solution::findLength(vector<int> &A, vector<int> &B) {
     }
     cout << endl;
     return res;
+
+}
+
+// 最短编辑距离，对一个string s进行编辑，使得s变成string t,要求操作次数最短
+void ShortEditLen_solution::ShortEditLen(string &A, string &B) {
+    int len_A = A.size(), len_B = B.size();
+    struct node {
+        int val;
+        // 0: 不操作， 1：删除， 2：替换, 3: 插入。
+        int choice;
+    };
+    vector<vector<node>> dp(len_A + 1, vector<node>(len_B + 1));
+    for (int i = 0; i <= len_A; ++i) {
+        dp[i][0].val = i;
+        dp[i][0].choice = -1;
+    }
+    for (int j = 0; j <= len_B; ++j) {
+        dp[0][j].val = j;
+        dp[0][j].choice = -1;
+    }
+
+
 
 }
  

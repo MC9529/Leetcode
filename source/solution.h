@@ -892,3 +892,10 @@ class findLength_718_solution {
 public:
     int findLength(vector<int> &A, vector<int> &B);
 };
+
+// 最短编辑距离，对一个string s进行编辑，使得s变成string t,要求操作次数最短
+class ShortEditLen_solution {
+public:
+    // 动态规划
+    void ShortEditLen(string &A, string &B);
+};
