@@ -5864,47 +5864,48 @@ void ShortEditLen_solution::ShortEditLen(string &A, string &B) {
         // val: 操作了几步
         int val;
         // 0: 不操作， 1：删除， 2：替换, 3: 插入。
-        int choice;
+        vector<pair<char, int>> choice;
     };
     // dp[i][j] 代表 前i 和 前j 所需要的最短步数，以及操作
     vector<vector<node>> dp(len_A + 1, vector<node>(len_B + 1));
     for (int i = 0; i <= len_A; ++i) {
         dp[i][0].val = i;
-        dp[i][0].choice = -1;
+        dp[i][0].choice.push_back({'o', -1});
     }
     for (int j = 0; j <= len_B; ++j) {
         dp[0][j].val = j;
-        dp[0][j].choice = -1;
+        dp[0][j].choice.push_back({'o', -1});
     }
     for (int i = 1; i <= len_A; ++i) {
         for (int j = 1; j <= len_B; ++j) {
             if (A[i - 1] == B[j - 1]) {
                 dp[i][j].val = dp[i - 1][j - 1].val;
-                dp[i - 1][j - 1].choice = 0;
+                dp[i][j].choice.push_back({A[i - 1], 0});
 
             } else {
                 // 由A[i] 通过编辑变成 B[j]
-                // dp[i - 1][j - 1] -> dp[i][j] :替换
-                // dp[i][j - 1] -> dp[i][j] : 插入
-                // dp[i - 1][j] -> dp[i][j] : 删除
+                // dp[i - 1][j - 1] -> dp[i][j] :替换(2)
+                // dp[i][j - 1] -> dp[i][j] : 插入(3)
+                // dp[i - 1][j] -> dp[i][j] : 删除(1)
                 // 替换最短
-                if (dp[i - 1][j - 1].val < dp[i - 1][j].val && 
-                    dp[i - 1][j - 1].val < dp[i][j - 1].val ) {
+                // 问题： 为什么 dp[i][j]放在前面，可以代表优先替换
+                if (dp[i - 1][j - 1].val <= dp[i - 1][j].val && 
+                    dp[i - 1][j - 1].val <= dp[i][j - 1].val ) {
 
                     dp[i][j].val = dp[i - 1][j - 1].val + 1;
-                    dp[i - 1][j - 1].choice = 2;
+                    dp[i][j].choice.push_back({A[i - 1], 2});
                 // 插入最短
-                } else if (dp[i][j - 1].val < dp[i - 1][j - 1].val && 
-                           dp[i][j - 1].val < dp[i - 1][j].val) {
+                } else if (dp[i][j - 1].val <= dp[i - 1][j - 1].val && 
+                           dp[i][j - 1].val <= dp[i - 1][j].val) {
 
                     dp[i][j].val = dp[i][j - 1].val + 1;
-                    dp[i][j - 1].choice = 3;
+                    dp[i][j].choice.push_back({A[i - 1], 3});
                 // 删除最短
-                } else if (dp[i - 1][j].val < dp[i - 1][j - 1].val && 
-                           dp[i - 1][j].val < dp[i][j - 1].val) {
+                } else if (dp[i - 1][j].val <= dp[i - 1][j - 1].val && 
+                           dp[i - 1][j].val <= dp[i][j - 1].val) {
                                
                     dp[i][j].val = dp[i - 1][j].val + 1;
-                    dp[i - 1][j].choice = 2;
+                    dp[i][j].choice.push_back({A[i - 1], 1});
                 }
             }
         }
@@ -5913,6 +5914,16 @@ void ShortEditLen_solution::ShortEditLen(string &A, string &B) {
     for (int i = 0 ; i <= len_A; ++i) {
         for (int j = 0; j <= len_B; ++j) {
             cout << dp[i][j].val << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+    for (int i = 0 ; i <= len_A; ++i) {
+        for (int j = 0; j <= len_B; ++j) {
+            for (auto iter: dp[i][j].choice) {
+                cout << iter.first << " " << iter.second << " ";
+            }
+            cout << endl;
         }
         cout << endl;
     }
