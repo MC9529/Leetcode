@@ -1720,11 +1720,23 @@ int main() {
 }
 */
 //  最长重复子数组 leetcode_718
+/*
 int main() {
   vector<int> A = {1, 2, 3, 7, 8};
   vector<int> B = {6, 9, 1, 2, 3};
   findLength_718_solution solu;
   solu.findLength(A, B);
+
+  return 0;
+}
+*/
+
+// 最短编辑距离，对一个string s进行编辑，使得s变成string t,要求操作次数最短
+int main() {
+  string s1 = "rad";
+  string s2 = "apple";
+  ShortEditLen_solution solu;
+  solu.ShortEditLen(s1, s2);
 
   return 0;
 }

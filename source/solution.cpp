@@ -5861,10 +5861,12 @@ int findLength_718_solution::findLength(vector<int> &A, vector<int> &B) {
 void ShortEditLen_solution::ShortEditLen(string &A, string &B) {
     int len_A = A.size(), len_B = B.size();
     struct node {
+        // val: 操作了几步
         int val;
         // 0: 不操作， 1：删除， 2：替换, 3: 插入。
         int choice;
     };
+    // dp[i][j] 代表 前i 和 前j 所需要的最短步数，以及操作
     vector<vector<node>> dp(len_A + 1, vector<node>(len_B + 1));
     for (int i = 0; i <= len_A; ++i) {
         dp[i][0].val = i;
@@ -5874,8 +5876,46 @@ void ShortEditLen_solution::ShortEditLen(string &A, string &B) {
         dp[0][j].val = j;
         dp[0][j].choice = -1;
     }
+    for (int i = 1; i <= len_A; ++i) {
+        for (int j = 1; j <= len_B; ++j) {
+            if (A[i - 1] == B[j - 1]) {
+                dp[i][j].val = dp[i - 1][j - 1].val;
+                dp[i - 1][j - 1].choice = 0;
 
+            } else {
+                // 由A[i] 通过编辑变成 B[j]
+                // dp[i - 1][j - 1] -> dp[i][j] :替换
+                // dp[i][j - 1] -> dp[i][j] : 插入
+                // dp[i - 1][j] -> dp[i][j] : 删除
+                // 替换最短
+                if (dp[i - 1][j - 1].val < dp[i - 1][j].val && 
+                    dp[i - 1][j - 1].val < dp[i][j - 1].val ) {
 
+                    dp[i][j].val = dp[i - 1][j - 1].val + 1;
+                    dp[i - 1][j - 1].choice = 2;
+                // 插入最短
+                } else if (dp[i][j - 1].val < dp[i - 1][j - 1].val && 
+                           dp[i][j - 1].val < dp[i - 1][j].val) {
 
+                    dp[i][j].val = dp[i][j - 1].val + 1;
+                    dp[i][j - 1].choice = 3;
+                // 删除最短
+                } else if (dp[i - 1][j].val < dp[i - 1][j - 1].val && 
+                           dp[i - 1][j].val < dp[i][j - 1].val) {
+                               
+                    dp[i][j].val = dp[i - 1][j].val + 1;
+                    dp[i - 1][j].choice = 2;
+                }
+            }
+        }
+    }
+    cout << "the operation:" << endl;
+    for (int i = 0 ; i <= len_A; ++i) {
+        for (int j = 0; j <= len_B; ++j) {
+            cout << dp[i][j].val << " ";
+        }
+        cout << endl;
+    }
+    cout << "the longest operation: " << dp[len_A][len_B].val << endl;
 }
  
