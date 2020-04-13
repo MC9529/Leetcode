@@ -899,3 +899,13 @@ public:
     // 动态规划
     void ShortEditLen(string &A, string &B);
 };
+// 如何去除有序数组的重复元素
+// labuladong 算法小抄
+class removeDuplicate_solu {
+public:
+    // 有序 快慢指针
+    void removeDuplicate(vector<int> &nums);
+    // 无序 set
+    void removeDuplicate2(vector<int> &nums);
+    
+};

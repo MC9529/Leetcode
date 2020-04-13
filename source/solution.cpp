@@ -5929,4 +5929,44 @@ void ShortEditLen_solution::ShortEditLen(string &A, string &B) {
     }
     cout << "the longest operation: " << dp[len_A][len_B].val << endl;
 }
- 
+
+// 如何去除有序数组的重复元素
+// labuladong 算法小抄
+// 两个指针， 一个快一个曼，当fast指针不等于slow,告诉slow, 并且 nums[fast_ptr] = nums[slow_ptr]
+// 因为 nums是有序的， 所以相等的一定在一块
+void removeDuplicate_solu::removeDuplicate(vector<int> &nums) {
+    // vector<int> ans;
+    if (nums.empty()) {
+        cout << "the nums is empty" << endl;
+        return;
+    }
+    int slow_ptr = 0, fast_ptr = 1;
+    while (fast_ptr < nums.size()) {
+        if (nums[fast_ptr] != nums[slow_ptr]) {
+            slow_ptr ++;
+            // 维护 nums[0..slow] 无重复
+            nums[slow_ptr] = nums[fast_ptr];
+        }
+        fast_ptr ++;
+    }
+    for (int i = 0; i < slow_ptr + 1; ++i) {
+        cout << nums[i] << " ";
+    }
+    cout << endl;
+    return;
+}
+// 无序 set
+void removeDuplicate_solu::removeDuplicate2(vector<int> &nums) {
+    std::set<int> container;
+    container.insert(nums[0]);
+    for (int i = 1; i < nums.size(); ++i) {
+        if (container.count(nums[i]) == 0) {
+            container.insert(nums[i]);
+        }
+    }
+    for (set<int>::iterator iter = container.begin(); iter != container.end(); ++iter) {
+        cout << *iter << " ";
+    }
+    cout << endl;
+
+}

@@ -1732,12 +1732,25 @@ int main() {
 */
 
 // 最短编辑距离，对一个string s进行编辑，使得s变成string t,要求操作次数最短
+/*
 int main() {
   string s1 = "ros";
   string s2 = "horse";
   cout << "the string s1 and s2: " << s1 <<" "<< s2 << endl;
   ShortEditLen_solution solu;
   solu.ShortEditLen(s1, s2);
+
+  return 0;
+}
+*/
+int main() {
+  // 有序
+  vector<int> nums = {0, 0, 0, 1, 1, 2, 2, 2, 3, 3, 4, 6};
+  // 无序
+  vector<int> nums1 = {0, 1, 0, 9, 1, 8, 9, 6, 6, 5, 4, 6};
+  removeDuplicate_solu solu;
+  solu.removeDuplicate2(nums1);
+  solu.removeDuplicate(nums);
 
   return 0;
 }
