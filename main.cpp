@@ -1743,6 +1743,10 @@ int main() {
   return 0;
 }
 */
+
+/*
+// 如何去除有序数组的重复元素
+// labuladong 算法小抄
 int main() {
   // 有序
   vector<int> nums = {0, 0, 0, 1, 1, 2, 2, 2, 3, 3, 4, 6};
@@ -1751,6 +1755,25 @@ int main() {
   removeDuplicate_solu solu;
   solu.removeDuplicate2(nums1);
   solu.removeDuplicate(nums);
+
+  return 0;
+}
+*/
+// 如何寻找最长回文子串
+/*
+int main() {
+  string s = "babad";
+  longestPalindrome_solu solu;
+  solu.longestPalindrome(s);
+
+  return 0;
+}
+*/
+// leetcode_45 跳格子
+int main() {
+  vector<int> nums = {2, 3, 1, 1, 4};
+  jump_45_solution solu;
+  solu.jump(nums);
 
   return 0;
 }

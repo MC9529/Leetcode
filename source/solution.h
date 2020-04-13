@@ -909,3 +909,21 @@ public:
     void removeDuplicate2(vector<int> &nums);
     
 };
+// 如何寻找最长回文子串
+class longestPalindrome_solu {
+public:
+    void longestPalindrome(string &s);
+    string find(string &s, int left, int right);
+    vector<pair<string, string>> ans;
+
+};
+
+// leetcode_45 跳格子
+class jump_45_solution {
+public:
+   // 动态规划
+   int jump(vector<int> &nums);
+   int calcu_steps(int posi, vector<int> &nums, vector<int> &dp);
+   // 贪心算法
+   int jump2(vector<int> &nums);
+};

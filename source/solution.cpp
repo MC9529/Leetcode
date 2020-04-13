@@ -5970,3 +5970,85 @@ void removeDuplicate_solu::removeDuplicate2(vector<int> &nums) {
     cout << endl;
 
 }
+// 如何寻找最长回文子串
+void longestPalindrome_solu::longestPalindrome(string &s) {
+    string temp;
+    if (s.size() == 0) {
+        cout << "the string s is empty" << endl;
+        return;
+    }
+    for (int i = 0; i < s.size(); ++i) {
+        // 寻找以 i为中心的会文子串
+        string s1 = find(s, i, i);
+        // 寻找以i, i + 1为中心的回文子串
+        string s2 = find(s, i, i + 1);
+        ans.push_back({s1, s2});
+        temp = temp.size() > s1.size() ? temp : s1;
+        temp = temp.size() > s2.size() ? temp : s2;
+    }
+    cout << "the longest ans: " << temp << endl;
+    for (int i = 0; i < ans.size(); ++i) {
+        cout << ans[i].first << " " << ans[i].second << endl;
+    }
+    cout << endl;
+    return;
+}
+// 寻找以left,right 为中心的回文子串
+string longestPalindrome_solu::find(string &s, int left, int right) {
+    cout << "pass in 6000" << endl;
+    while (left >= 0 && right < s.size() && s[left] == s[right]) {
+        left --;
+        right ++;
+    }
+    return s.substr(left + 1, right - left - 1);
+}
+
+// leetcode_45
+int jump_45_solution::jump(vector<int> &nums) {
+    // dp[i],索引i位置到最后位置的最少步数
+    vector<int> dp(nums.size(), 0);
+    // i = nums.size() - 1,不用跳， 直接等于0
+    for (int i = nums.size() - 2; i >= 0; i--) {
+        int ans = calcu_steps(i, nums, dp);
+        dp[i] = ans;
+    }
+    cout << "the min steps from start to end: " << dp[0] << endl;
+    for (int i = 0; i < dp.size(); ++i) {
+        cout << dp[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+
+}
+
+int jump_45_solution::calcu_steps(int posi, vector<int> &nums, vector<int> &dp) {
+    int temp = INT_MAX;
+    // 直接一步
+    if (posi + nums[posi] >= nums.size() - 1) {
+        return 1;
+    }
+    // 遍历posi所能达到的位置，找一个dp值最小的
+    for (int i = posi + 1; i <= nums[posi] + posi; ++i) {
+        if (dp[i] + 1 < temp) {
+            temp = dp[i] + 1;
+        }
+    }
+    return temp;
+}
+
+ // 贪心算法
+int jump_45_solution::jump2(vector<int> &nums) {
+    int n = nums.size();
+    int end = 0, farthest = 0;
+    int jumps = 0;
+    for (int i = 0; i < n - 1; i++) {
+        // 该posi 所能达到的最大位置
+        farthest = max(nums[i] + i, farthest);
+        if (end == i) {
+            jumps++;
+            end = farthest;
+        }
+    }
+    return jumps;
+}
