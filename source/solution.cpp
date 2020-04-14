@@ -5273,7 +5273,7 @@ int lengthofLis_300_solution::lengthofLis(vector<int> &nums) {
     return *max_element(dp.begin(), dp.end());
 
 }
-//
+// 二分查找
 int lengthofLis_300_solution::lengthofLis2(vector<int> &nums) {
     int n = (int)nums.size();
     if (n == 0) {
@@ -6051,4 +6051,83 @@ int jump_45_solution::jump2(vector<int> &nums) {
         }
     }
     return jumps;
+}
+
+// labuladong算法小抄 
+// 最长递增序列（序列可以不连续，但是串必须连续）
+// 动态规划 dp[i]:以该位置结尾的最长递增序列 dp[i] = min(dp[0.....i-1]) + 1
+   
+void lengthOfLIS_solu::lengthOfLis(vector<int> &nums) {
+    // 初始值设置为1,应为最短就是自己
+    vector<int> dp(nums.size() + 1, 1);
+    // 用来存储具体的序列
+    vector<pair<int, vector<int>>> ans;
+    
+    for (int i = 0; i < nums.size(); ++i) {
+        int flag_choice = -1;
+        vector<int> temp;
+        for (int j = 0; j < i; ++j) {
+            // 既然是递增，则应该向前找一个值小于nums[i]
+            if (nums[i] > nums[j]) {
+                // 记下所在位置，后面用来调用位置
+                if (dp[j] + 1 > dp[i]) {
+                    flag_choice = j;
+                }
+                dp[i] = max(dp[i], dp[j] + 1);
+            }
+        }
+        if (flag_choice != -1) {
+           temp.insert(temp.end(), ans[flag_choice].second.begin(), 
+                            ans[flag_choice].second.end());
+        }
+        temp.push_back(nums[i]);
+        ans.push_back({nums[i], temp});
+    }
+    for (int i = 0; i < ans.size(); ++i) {
+        cout << ans[i].first << endl;
+        for (int j = 0; j < ans[i].second.size(); ++j) {
+            cout << ans[i].second[j] << " ";
+        }
+        cout << endl;
+    }
+}
+// // 贪心算法，二分查找，要使最长，则最顶部的元素要尽可能小
+void lengthOfLIS_solu::lengthOfLis2(vector<int> &nums) {
+    vector<vector<int>> ans;
+    if (nums.size() <= 1) {
+        cout << "the len of nums size is less 1" << endl;
+        return;
+    }
+    vector<int> dp = {nums[0]};
+    for (int i = 0; i < nums.size(); ++i) {
+        int left = 0, right = dp.size();
+        // 二分法查找第一个大于等于num[i]的索引
+        while(left < right) {
+            int mid = left + (right - left) / 2;
+            if (dp[mid] < nums[i]) {
+                left = mid + 1;
+            } else {
+                right = mid;
+            }
+        }
+        // ans.push_back(dp);
+        vector<int> temp;
+        if (left == dp.size()) {
+            dp.push_back(nums[i]);
+            temp.insert(temp.end(), dp.begin(), dp.end());
+        } else {
+            dp[left] = nums[i];
+            temp.insert(temp.end(), dp.begin(), dp.begin() + left);
+        }
+        ans.push_back(temp);
+    }
+    cout << "the most len of dp :" << dp.size() << endl;
+    for (int i = 0; i < ans.size(); ++i) {
+        for (int j = 0; j < ans[i].size(); ++j) {
+            cout << ans[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+    return;
 }

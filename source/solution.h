@@ -927,3 +927,16 @@ public:
    // 贪心算法
    int jump2(vector<int> &nums);
 };
+
+// labuladong算法小抄 
+// 最长递增序列（序列可以不连续，但是串必须连续）
+class lengthOfLIS_solu {
+public:
+    // 动态规划 dp[i]:以该位置结尾的最长递增序列 dp[i] = min(dp[0.....i-1]) + 1
+    void lengthOfLis(vector<int> &nums);
+    // 维护一个数组tail，当出现的数大于这个数组直接append，否则替换掉数组中大于等于这个数的最小值。
+    // 最后tail的长度就是最长上升子序列的长度
+    // 而tail数组是一个有序数组，使用二分查找复杂度为O（log n）
+    // 贪心算法，二分查找，要使最长，则最顶部的元素要尽可能小
+    void lengthOfLis2(vector<int> &nums);
+};

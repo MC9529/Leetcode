@@ -1770,10 +1770,21 @@ int main() {
 }
 */
 // leetcode_45 跳格子
+/*
 int main() {
   vector<int> nums = {2, 3, 1, 1, 4};
   jump_45_solution solu;
   solu.jump(nums);
+
+  return 0;
+}
+*/
+// // labuladong算法小抄 
+// 最长递增序列（序列可以不连续，但是串必须连续）
+int main() {
+  vector<int> nums = {3, 5, 6, 2, 5, 4, 5, 19 ,5, 6, 7, 12};
+  lengthOfLIS_solu solu;
+  solu.lengthOfLis2(nums);
 
   return 0;
 }
