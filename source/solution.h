@@ -940,3 +940,15 @@ public:
     // 贪心算法，二分查找，要使最长，则最顶部的元素要尽可能小
     void lengthOfLis2(vector<int> &nums);
 };
+// labuladong算法小抄 
+// 0-1背包问题
+class knapsack_solu {
+public:
+    void knapsack(int N, int W, vector<int> &weight, vector<int> &value);
+};
+// labuladong算法小抄
+// 高楼掉鸡蛋 
+class superEggDrop_solu {
+public:
+    void superEggDrop(int K, int N);
+};

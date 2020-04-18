@@ -6131,3 +6131,87 @@ void lengthOfLIS_solu::lengthOfLis2(vector<int> &nums) {
     cout << endl;
     return;
 }
+// labuladong算法小抄 
+// 0-1背包问题
+void knapsack_solu::knapsack(int N, int W, vector<int> &weight, vector<int> &value) {
+    // N为数量， W为背包的容量
+    // dp[i][w]表示，对于前 i 个物品，当前背包的容量为 w 时，这种情况下可以装下的最大价值是 dp[i][w]
+    vector<vector<int>> dp(N + 1, vector<int>(W + 1, 0));
+    // 用来存放choice
+    vector<vector< vector<int> >> ans(N + 1, vector< vector<int> >(W + 1, vector<int>()));
+    for (int i = 1; i <= N; ++i) {
+        for (int j = 1; j <= W; ++j) {
+            // 当前容量小于物品的质量
+            // 由于从1开始，则是 i - 1
+            if (j < weight[i - 1]) {
+                dp[i][j] = dp[i - 1][j];
+                ans[i][j] = ans[i - 1][j];
+            } else {
+                // 如果放入i - 1，价值更大，则将其放入
+                if (dp[i - 1][j - weight[i - 1]] + value[i - 1] >= dp[i - 1][j]) {
+                    ans[i][j] = ans[i - 1][j];
+                    ans[i][j].push_back(value[i - 1]);
+                    //ans[i][j].insert(ans[i][j].begin(), ans[i - 1][j - 1].begin(),  ans[i - 1][j - 1].end());
+                } else {
+                    // 不放更大
+                    ans[i][j] = ans[i - 1][j];
+                }
+                
+                dp[i][j] = max(dp[i - 1][j - weight[i - 1]] + value[i - 1], dp[i - 1][j]);
+            }
+        }
+    }
+    cout << "the last res: " << endl;
+    cout << dp[N][W] << endl;
+    cout << "the detail" << endl;
+    for (int i = 0; i < ans.size(); ++i) {
+        for(int j = 0; j < ans[i].size(); ++j) {
+            cout << "the i and j :" << i << " " << j << endl;
+            for (auto iter: ans[i][j]) {
+                cout << iter << " ";
+            }
+            cout << endl;
+        }
+    }
+    cout << endl;
+    return;
+}
+
+// 高楼掉鸡蛋 
+/*
+你面前有一栋从 1 到 N 共 N 层的楼，然后给你 K 个鸡蛋（K 至少为 1）。
+现在确定这栋楼存在楼层 0 <= F <= N，在这层楼将鸡蛋扔下去，
+鸡蛋恰好没摔碎（高于 F 的楼层都会碎，低于 F 的楼层都不会碎）。
+现在问你，最坏情况下，你至少要扔几次鸡蛋，才能确定这个楼层 F 呢
+*/
+void superEggDrop_solu::superEggDrop(int K, int N) {
+    // dp[i][j]: i个鸡蛋j层楼所需要的次数
+    vector<vector<int>> dp(K + 1, vector<int>(N + 1));
+    // base case
+    // 当只有1个鸡蛋时
+    for (int i = 0; i <= N; ++i) {
+        dp[1][i] = i;
+        dp[0][i] = 0;
+    }
+    // 当只有0层楼时
+    for (int i = 0; i <= K; ++i) {
+        dp[i][0] = 0;
+    }
+    int res = INT_MAX;
+    for (int i = 1; i <= N; ++i) {
+        // dp[K][i - 1]: 没碎
+        // dp[K - 1][i - 1]: 碎
+        // 最坏情况
+        int temp = max(dp[K][N - i], dp[K - 1][i - 1]) + 1;
+        // 最小次数
+        int res = min(res, temp);
+        dp[K][i] = res;
+    }
+    for (int i = 0; i <= K; ++i) {
+        for (int j = 0; j <= N; ++j) {
+            cout << dp[i][j] << " ";
+        }
+        cout << endl;
+    }
+    return;
+}

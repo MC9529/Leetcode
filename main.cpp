@@ -1781,10 +1781,34 @@ int main() {
 */
 // // labuladong算法小抄 
 // 最长递增序列（序列可以不连续，但是串必须连续）
+/*
 int main() {
   vector<int> nums = {3, 5, 6, 2, 5, 4, 5, 19 ,5, 6, 7, 12};
   lengthOfLIS_solu solu;
   solu.lengthOfLis2(nums);
+
+  return 0;
+}
+*/
+// 0-1背包问题
+/*
+int main() {
+  int N = 3, W = 4;
+  vector<int> weight = {2, 1, 3};
+  vector<int> value= {4, 2, 3};
+  knapsack_solu solu;
+  solu.knapsack(N, W, weight, value);
+  
+  cout << endl;
+
+  return 0;
+}
+*/
+int main() {
+  // 3个鸡蛋, 7层楼
+  int K = 3, N = 7;
+  superEggDrop_solu solu;
+  solu.superEggDrop(K, N);
 
   return 0;
 }
