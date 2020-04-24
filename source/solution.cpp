@@ -6197,19 +6197,79 @@ void superEggDrop_solu::superEggDrop(int K, int N) {
     for (int i = 0; i <= K; ++i) {
         dp[i][0] = 0;
     }
-    int res = INT_MAX;
-    for (int i = 1; i <= N; ++i) {
-        // dp[K][i - 1]: 没碎
-        // dp[K - 1][i - 1]: 碎
-        // 最坏情况
-        int temp = max(dp[K][N - i], dp[K - 1][i - 1]) + 1;
-        // 最小次数
-        int res = min(res, temp);
-        dp[K][i] = res;
+    for (int i = 1; i <= K; ++i) {
+        for (int j = 1; j <= N; ++j) {
+            dp[i][j] = j;
+        }
     }
+    int res = INT_MAX;
+    for (int n = 2; n <= K; ++n) {
+        for (int m = 1; m <= N; ++m) {
+            for (int k = 1; k < m; ++k) {
+                // dp[K][i - 1]: 没碎
+                // dp[K - 1][i - 1]: 碎
+                // 最坏情况
+                cout << "pass in 6207" << endl;
+                dp[n][m] = min(dp[n][m], max(dp[n - 1][k - 1], dp[n][m - k]) + 1);
+                cout << "pass in 6209" << endl;
+            }
+       }
+    }
+    cout << "pass in 6211" << endl;
     for (int i = 0; i <= K; ++i) {
         for (int j = 0; j <= N; ++j) {
             cout << dp[i][j] << " ";
+        }
+        cout << endl;
+    }
+    return;
+}
+
+// 最长公共子序列
+void longestCommonSubsequence_solution::longestCommonSubsequence(string str1, string str2) {
+    int len_1 = str1.size();
+    int len_2 = str2.size();
+    // dp[i][j],str1[0....i], str2[0.....j]中相等的元素
+    vector<vector<int>> dp(len_1 + 1, vector<int>(len_2 + 1, 0));
+    // 存放具体的元素
+    vector<vector<vector<char>>> ans(len_1 + 1, vector<vector<char>>(len_2 + 1, vector<char>()));
+    for (int i = 1; i <= len_1; ++i) {
+        for (int j = 1; j <= len_2; ++j) {
+            // 如果两者相等，则dp[i][j] + 1,并向前移动
+            if (str1[i - 1] == str2[j - 1]) {
+                dp[i][j] = dp[i - 1][j - 1] + 1;
+                ans[i][j] = ans[i - 1][j - 1];
+                ans[i][j].push_back(str1[i - 1]);
+                //ans[i][j].insert(ans[i][j].end(), ans[i - 1][j - 1].begin(), ans[i - 1][j - 1]);
+            } else {
+                // 给ans[i][j]赋值
+                if (dp[i][j - 1] == max(dp[i][j - 1], max(dp[i - 1][j], dp[i - 1][j - 1]))) {
+                    ans[i][j] = ans[i][j - 1];
+                } else if (dp[i - 1][j] == max(dp[i][j - 1], max(dp[i - 1][j], dp[i - 1][j - 1]))) {
+                    ans[i][j] = ans[i - 1][j];
+                } else if (dp[i - 1][j - 1] == max(dp[i][j - 1], max(dp[i - 1][j], dp[i - 1][j - 1]))) {
+                    ans[i][j] = ans[i - 1][j - 1];
+                }
+                dp[i][j] = max(dp[i][j - 1], max(dp[i - 1][j], dp[i - 1][j - 1]));
+            }
+        }
+    }
+    for (int i = 0; i <= len_1; ++i) {
+        for (int j = 0; j <= len_2; ++j) {
+            cout << dp[i][j] << " ";
+        }
+        cout << endl;
+    }
+    for (int i = 0; i <= len_1; ++i) {
+        for (int j = 0; j <= len_2; ++j) {
+            if (ans[i][j].empty()) {
+                continue;
+            } else {
+                for (auto iter: ans[i][j]) {
+                    cout << iter << " ";
+                }
+            }
+            cout << endl;
         }
         cout << endl;
     }

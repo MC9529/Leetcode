@@ -952,3 +952,9 @@ class superEggDrop_solu {
 public:
     void superEggDrop(int K, int N);
 };
+// labuladong算法小抄
+// 最长公共子序列
+class longestCommonSubsequence_solution {
+public:
+    void longestCommonSubsequence(string str1, string str2);
+};

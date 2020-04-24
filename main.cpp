@@ -1804,11 +1804,22 @@ int main() {
   return 0;
 }
 */
+// 高楼掉鸡蛋 
+/*
 int main() {
   // 3个鸡蛋, 7层楼
   int K = 3, N = 7;
   superEggDrop_solu solu;
   solu.superEggDrop(K, N);
+
+  return 0;
+}
+*/
+int main() {
+  longestCommonSubsequence_solution solu;
+  string str2 = "babcde";
+  string str1 = "ace";
+  solu.longestCommonSubsequence(str1, str2);
 
   return 0;
 }
