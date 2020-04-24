@@ -964,3 +964,19 @@ class longestPalindromeSubseq_solution {
 public:
     void longestPalindromeSubseq(string str1);
 };
+// labuladong算法小抄
+// 动态规划之博弈
+/*你和你的朋友面前有一排石头堆，用一个数组 piles 表示，
+  piles[i] 表示第 i 堆石子有多少个。你们轮流拿石头，
+  一次拿一堆，但是只能拿走最左边或者最右边的石头堆。
+  所有石头被拿完后，谁拥有的石头多，谁获胜。
+*/
+/*
+请你设计一个算法，返回先手和后手的最后得分（石头总数）之差。
+比如上面那个例子，先手能获得 4 分，后手会获得 100 分，
+你的算法应该返回 -96。
+*/
+class stoneGame_solu {
+public:
+    void stoneGame(vector<int> &stone);
+};

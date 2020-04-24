@@ -1827,11 +1827,33 @@ int main() {
 }
 */
 // 最长回文子序列
+/*
 int main() {
   string str1 = "cbbdbdac";
   cout << "the string: " << str1 << endl;
   longestPalindromeSubseq_solution solu;
   solu.longestPalindromeSubseq(str1);
   
+  return 0;
+}
+*/
+// labuladong算法小抄
+// 动态规划之博弈
+/*你和你的朋友面前有一排石头堆，用一个数组 piles 表示，
+  piles[i] 表示第 i 堆石子有多少个。你们轮流拿石头，
+  一次拿一堆，但是只能拿走最左边或者最右边的石头堆。
+  所有石头被拿完后，谁拥有的石头多，谁获胜。
+*/
+/*
+请你设计一个算法，返回先手和后手的最后得分（石头总数）之差。
+比如上面那个例子，先手能获得 4 分，后手会获得 100 分，
+你的算法应该返回 -96。
+*/
+
+int main() {
+  stoneGame_solu solu;
+  vector<int> stone = {3, 9, 1, 2};
+  solu.stoneGame(stone);
+  cout << "pass in 1857" << endl;
   return 0;
 }

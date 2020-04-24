@@ -6330,3 +6330,67 @@ void longestPalindromeSubseq_solution::longestPalindromeSubseq(string str1) {
     }
     return;
 }
+// 动态规划之博弈
+void stoneGame_solu::stoneGame(vector<int> &stone) {
+    int len = stone.size();
+    // dp[i][j].first： 在stone[i, j]范围内，先手取值的和
+    // dp[i][j].second： 在stone[i, j]范围内，后手取值的和
+    vector<vector<pair<int, int>>> dp(len, vector<pair<int, int>>(len));
+    // dp 初始化
+    for (int i = 0; i < len; ++i) {
+        for (int j = 0; j < len; ++j) {
+            dp[i][j] = {0, 0};
+        }
+    }
+    // bace case
+    for (int i = 0; i < len; ++i) {
+        dp[i][i].first = stone[i];
+        dp[i][i].second = 0;
+    }
+    cout << "pass in 6348" << endl;
+    // 方法1
+    // 斜着遍历
+    /*
+    for (int l = 2; l < len; ++l) {
+        for (int i = 0; i < len - 1; ++i) {
+            int j = l + i - 1;
+            int left = stone[i] + dp[i + 1][j].second;
+            int right = stone[j] + dp[i][j - 1].second;
+            if (left > right) {
+                dp[i][j].first = left;
+                dp[i][j].second = dp[i + 1][j].first;
+            } else {
+                dp[i][j].first = right;
+                dp[i][j].second = dp[i][j - 1].first;
+            }
+        }
+    }
+    */
+    // 方法2：
+    // 反着遍历
+    for (int i = len - 1; i >= 0; --i) {
+        for (int j = i + 1; j <= len - 1; ++j) {
+            // 在stone[i, j], 在左边取，为stone[i] + dp[i + 1][j]的后手
+            int left = stone[i] + dp[i + 1][j].second;
+            // 在stone[i, j], 在右边边取，为stone[j] + dp[i][j - 1]的后手
+            int right = stone[j] + dp[i][j - 1].second;
+            if (left > right) {
+                dp[i][j].first = left;
+                dp[i][j].second = dp[i + 1][j].first;
+            } else {
+                dp[i][j].first = right;
+                dp[i][j].second = dp[i][j - 1].first;
+            }
+        }
+    }
+    cout << "pass in 6363" << endl;
+    for (int i = 0; i < len; ++i) {
+        for (int j = 0; j < len; ++j) {
+            cout << dp[i][j].first <<"|"<< dp[i][j].second << "  ";
+        }
+        cout << endl;
+    }
+    cout << "pass in 6370" << endl;
+    
+    return;
+}
