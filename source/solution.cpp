@@ -6250,6 +6250,7 @@ void longestCommonSubsequence_solution::longestCommonSubsequence(string str1, st
                 } else if (dp[i - 1][j - 1] == max(dp[i][j - 1], max(dp[i - 1][j], dp[i - 1][j - 1]))) {
                     ans[i][j] = ans[i - 1][j - 1];
                 }
+                // 取三个中间的最大值
                 dp[i][j] = max(dp[i][j - 1], max(dp[i - 1][j], dp[i - 1][j - 1]));
             }
         }
@@ -6272,6 +6273,60 @@ void longestCommonSubsequence_solution::longestCommonSubsequence(string str1, st
             cout << endl;
         }
         cout << endl;
+    }
+    return;
+}
+// 最长回文子序列
+void longestPalindromeSubseq_solution::longestPalindromeSubseq(string str1) {
+    int len = str1.size();
+    // dp[i][j] 表示 str1[i ... j] 中的回文子序列
+    vector<vector<int>> dp(len, vector<int>(len, 0));
+    vector<vector<vector<char>>> ans(len, vector<vector<char>>(len, vector<char>()));
+    for (int i = 0; i < len; ++i) {
+        dp[i][i] = 1;
+        // 将str1[i]加入
+        ans[i][i].push_back(str1[i]);
+    }
+    // 反着遍历保证正确的状态转移
+    // len
+    for (int i = len - 1; i >= 0; --i) {
+        for (int j = i + 1; j < len; ++j) {
+            // 如果 两者相等
+            //cout << "i and j" << i << " " << j << endl;
+            if (str1[i] == str1[j]) {
+                dp[i][j] = dp[i + 1][j - 1] + 2;
+                //  // 将str1[i]加入
+                ans[i][j].push_back(str1[i]);
+                ans[i][j].insert(ans[i][j].end(), ans[i + 1][j - 1].begin(), ans[i + 1][j - 1].end());
+                ans[i][j].push_back(str1[i]);
+
+            // 将其中一个加入
+            } else {
+                // 
+                if (dp[i][j - 1] == max(dp[i][j - 1], max(dp[i + 1][j], dp[i + 1][j - 1]))) {
+                    ans[i][j] = ans[i][j - 1];
+                } else if (dp[i + 1][j] == max(dp[i][j - 1], max(dp[i + 1][j], dp[i + 1][j - 1]))) {
+                    ans[i][j] = ans[i + 1][j];
+                } else if (dp[i + 1][j - 1] == max(dp[i][j - 1], max(dp[i + 1][j], dp[i + 1][j - 1]))) {
+                    ans[i][j] = ans[i + 1][j - 1];
+                }
+                dp[i][j] = max(dp[i][j - 1], max(dp[i + 1][j], dp[i + 1][j - 1]));
+            }
+        }
+    }
+    for (int i = 0; i < len; ++i) {
+        for (int j = 0; j < len; ++j) {
+            cout << dp[i][j] << " ";
+        }
+        cout << endl;
+    }
+    for (int i = 0; i < len; ++i) {
+        for (int j = 0; j < len; ++j) {
+            for (auto iter: ans[i][j]) {
+                cout << iter << " ";
+            }
+            cout << endl;
+        }
     }
     return;
 }

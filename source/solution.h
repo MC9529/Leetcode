@@ -958,3 +958,9 @@ class longestCommonSubsequence_solution {
 public:
     void longestCommonSubsequence(string str1, string str2);
 };
+// // labuladong算法小抄
+// 最长回文子序列
+class longestPalindromeSubseq_solution {
+public:
+    void longestPalindromeSubseq(string str1);
+};

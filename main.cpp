@@ -1815,11 +1815,23 @@ int main() {
   return 0;
 }
 */
+// 最长公共子序列
+/*
 int main() {
   longestCommonSubsequence_solution solu;
   string str2 = "babcde";
   string str1 = "ace";
   solu.longestCommonSubsequence(str1, str2);
 
+  return 0;
+}
+*/
+// 最长回文子序列
+int main() {
+  string str1 = "cbbdbdac";
+  cout << "the string: " << str1 << endl;
+  longestPalindromeSubseq_solution solu;
+  solu.longestPalindromeSubseq(str1);
+  
   return 0;
 }
