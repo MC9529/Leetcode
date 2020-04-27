@@ -1849,11 +1849,20 @@ int main() {
 比如上面那个例子，先手能获得 4 分，后手会获得 100 分，
 你的算法应该返回 -96。
 */
-
+/*
 int main() {
   stoneGame_solu solu;
   vector<int> stone = {3, 9, 1, 2};
   solu.stoneGame(stone);
   cout << "pass in 1857" << endl;
+  return 0;
+}
+*/
+int main() {
+  vector<vector<int>> nums = 
+    {{2, 4}, {1, 5}, {3, 6}, {5, 7}, {6, 9}, {8, 9}};
+  intervalSchedule_solu solu;
+  solu.intervalSchedule(nums);
+
   return 0;
 }

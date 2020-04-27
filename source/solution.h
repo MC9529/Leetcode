@@ -980,3 +980,14 @@ class stoneGame_solu {
 public:
     void stoneGame(vector<int> &stone);
 };
+
+// 贪心算法之区间调度问题
+/*
+在区间集合 intvs 中选择一个区间 x，这个 x 是在当前所有区间中结束最早的（end 最小）。
+把所有与 x 区间相交的区间从区间集合 intvs 中删除。
+重复步骤 1 和 2，直到 intvs 为空为止。之前选出的那些 x 就是最大不相交子集。
+*/
+class intervalSchedule_solu {
+public:
+    void intervalSchedule(vector<vector<int>> &nums);
+};

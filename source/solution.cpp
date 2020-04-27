@@ -6394,3 +6394,46 @@ void stoneGame_solu::stoneGame(vector<int> &stone) {
     
     return;
 }
+// 贪心算法之区间调度问题
+/*
+在区间集合 intvs 中选择一个区间 x，这个 x 是在当前所有区间中结束最早的（end 最小）。
+把所有与 x 区间相交的区间从区间集合 intvs 中删除。重复步骤 1 和 2，
+直到 intvs 为空为止。之前选出的那些 x 就是最大不相交子集。
+*/
+void intervalSchedule_solu::intervalSchedule(vector<vector<int>> &nums) {
+    // 排序规则
+    auto comp = [](const vector<int> val1, const vector<int> val2) {
+        bool res;
+        return val1[1] < val2[2];
+    };
+    //排序
+    sort(nums.begin(), nums.end(), comp);
+    for (auto iter: nums) {
+        cout << iter[0] <<" " << iter[1] << " " << endl;
+    }
+    cout << endl;
+    vector<vector<int>> temp_res;
+    // 第一个元素
+    vector<int> temp = nums[0];
+    temp_res.push_back(temp);
+    int end = temp[1];
+    // 开始寻找的位置
+    int flag = 1;
+    for (int i = flag; i < nums.size(); ++i) {
+        // 找第一大于end的start
+        int start = nums[i][0];
+        if (start >= end) {
+            temp_res.push_back(nums[i]);
+            end = nums[i][1];
+            // 下一个开始寻找的flag;
+            flag = i + 1;
+        }
+    }
+    for (auto iter: temp_res) {
+        cout << iter[0] <<" " << iter[1] << " ";
+    }
+    cout << endl;
+    int len = temp_res.size();
+    cout << "the len of res: " << len << endl;
+    return;
+}
