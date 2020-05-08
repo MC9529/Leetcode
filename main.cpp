@@ -1858,11 +1858,55 @@ int main() {
   return 0;
 }
 */
+// 贪心算法之区间调度问题
+/*
+在区间集合 intvs 中选择一个区间 x，这个 x 是在当前所有区间中结束最早的（end 最小）。
+把所有与 x 区间相交的区间从区间集合 intvs 中删除。
+重复步骤 1 和 2，直到 intvs 为空为止。之前选出的那些 x 就是最大不相交子集。
+*/
+/*
 int main() {
   vector<vector<int>> nums = 
     {{2, 4}, {1, 5}, {3, 6}, {5, 7}, {6, 9}, {8, 9}};
   intervalSchedule_solu solu;
   solu.intervalSchedule(nums);
+
+  return 0;
+}*/
+// leetcode_435 无重叠区间
+// 给定一个区间，找出最少需要去除的子区间，使得剩下的区间不重复
+// 转化问题， 就是找一个最长的不重叠区间 
+/*
+int main() {
+  vector<vector<int>> nums = 
+    {{1, 2}, {2, 3}, {3, 4}, {1, 3}};
+  eraseOverlapIntervals_435_solu solu;
+  solu.eraseOverlapIntervals(nums);
+
+  return 0;
+}
+*/
+
+// 股票买卖问题 最多允许进行一次买和卖
+/*
+int main() {
+  vector<int> prices = {7, 1, 5, 3, 6, 4};
+  //vector<int> prices = {7, 6, 4, 3, 2, 1};
+  Solution_121_solution solu;
+  solu.maxProfit(prices);
+
+
+  return 0;
+}*/
+
+// 股票买卖问题，允许进行多次买和卖
+
+int main() {
+  vector<int> prices = {7, 1, 5, 3, 6, 4};
+  //vector<int> prices = {7, 6, 4, 3, 2, 1};
+  Solution_122_solution solu;
+  solu.maxProfit(prices);
+
 
   return 0;
 }

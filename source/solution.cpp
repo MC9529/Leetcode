@@ -6437,3 +6437,165 @@ void intervalSchedule_solu::intervalSchedule(vector<vector<int>> &nums) {
     cout << "the len of res: " << len << endl;
     return;
 }
+// leetcode_435 无重叠区间
+void eraseOverlapIntervals_435_solu::eraseOverlapIntervals(vector<vector<int>> &nums) {
+    auto comp = [](const vector<int> val1, const vector<int> val2) {
+        bool res;
+        return val1[1] < val2[2];
+    };
+    //排序
+    sort(nums.begin(), nums.end(), comp);
+    for (auto iter: nums) {
+        cout << iter[0] <<" " << iter[1] << " " << endl;
+    }
+    cout << endl;
+    vector<vector<int>> temp_res, temp_delete;
+    // 第一个元素
+    vector<int> temp = nums[0];
+    temp_res.push_back(temp);
+    int end = temp[1];
+    // 开始寻找的位置
+    int flag = 1;
+    for (int i = flag; i < nums.size(); ++i) {
+        // 找第一大于end的start
+        int flag1 = flag;
+        int flag2 = flag;
+        int start = nums[i][0];
+        if (start >= end) {
+            temp_res.push_back(nums[i]);
+            end = nums[i][1];
+            // 下一个开始寻找的flag;
+            flag2 = i;
+            flag = i + 1;
+        }
+        /*
+        if (i == nums.size() - 1) {
+            flag2 = nums.size() - 1;
+        }
+        */
+        //temp_delete.insert(temp_delete.end(), nums.begin() + flag1, nums.begin() + i);
+    }
+    for (auto iter: temp_res) {
+        cout << iter[0] <<" " << iter[1] << " ";
+    }
+    for (auto iter: temp_delete) {
+        cout << iter[0] <<" " << iter[1] << " ";
+    }
+    cout << endl;
+    int len = temp_res.size();
+    cout << "the len of res: " << len << endl;
+    return;
+
+}
+// 股票买卖问题 最多允许进行一次买和卖
+void Solution_121_solution::maxProfit(vector<int>& prices) {
+    int day_len = prices.size();
+    int opti_len = 1;
+    // dp[i][j][k],表示第i天，j次操作，k状态下的利润， k: 0-没有持有股票。 1持有股票
+    vector<vector<vector<int>>> dp(day_len, vector<vector<int>>(opti_len, vector<int>(2)));
+    // 所对应的操作
+    // opera[i][0]: 买 ; opera[i][1]: 卖  , -100: 表示无动作
+    vector<vector<int>> opera(day_len + 1, vector<int>(2, -100));
+    // vector<vector<int>> opera_0(day_len + 1, vector<int>(2, -100));
+    // base_case
+    // dp[- 1][0][0] = 0, dp[- 1][0][1] = INT_MIN
+    int temp_0 = 0, temp_1 = INT_MIN;
+    cout << "the temp-1: " << temp_1 << endl;
+    cout << "pass in 6498" << endl;
+    for (int i = 0; i < day_len; ++i) {
+        opera[i + 1] = opera[i];
+        
+        if (temp_1 > -prices[i]) {
+            //opera[i + 1][1] = -100;
+        } else {
+            opera[i + 1][0] = prices[i];
+        }
+        //
+        if (temp_0 > temp_1 + prices[i]) {
+            //opera[i + 1][0] = -100;
+        } else {
+            opera[i + 1][1] = prices[i];
+        }
+        // 0 - 没有股票， dp[i][0][0] = dp[i - 1][0][0] 表示不买， dp[i][0][0] = dp[i - 1][0][1] + prices[i]表示卖出
+        dp[i][0][0] = max(temp_0, temp_1 + prices[i]);
+        // 1 - 有股票， dp[i][0][1] = dp[i - 1][0][1] 表示有股票,不卖， dp[i][0][1] = dp[i - 1][0][0] - prices[i]表示没股票,买入
+        // 为什么是 - prices[i], 因为只允许一次买和卖，必须先买入，后卖出
+        dp[i][0][1] = max(temp_1,  - prices[i]);
+        temp_0 = dp[i][0][0];
+        temp_1 = dp[i][0][1];
+    }
+    cout << "the max_profit: " << dp[day_len - 1][0][0] << endl;
+    for (int i = 0; i < day_len; ++i) {
+        cout << dp[i][0][0] << "|" << dp[i][0][1] << endl;
+    }
+    cout << endl;
+    for (int i = 1; i <= day_len; ++i) {
+        cout << opera[i][0] << "|" << opera[i][1] << endl;
+    }
+    cout << endl;
+    // {7, 1, 5, 3, 6, 4};
+    cout << endl;
+    return;
+}
+
+// 股票买卖问题，允许进行多次买和卖
+void Solution_122_solution::maxProfit(vector<int>& prices) {
+    int day_len = prices.size();
+    int opti_len = 1;
+    // dp[i][j][k],表示第i天，j次操作，k状态下的利润， k: 0-没有持有股票。 1持有股票
+    vector<vector<vector<int>>> dp(day_len, vector<vector<int>>(opti_len, vector<int>(2)));
+    // 所对应的操作
+    // opera[i][0]: 买 ; opera[i][1]: 卖  , -100: 表示无动作
+    vector<vector<int>> opera(day_len + 1, vector<int>());
+    // vector<vector<int>> opera_0(day_len + 1, vector<int>(2, -100));
+    // base_case
+    // dp[- 1][0][0] = 0, dp[- 1][0][1] = INT_MIN
+    bool buy_flag = false;
+    int temp_0 = 0, temp_1 = INT_MIN;
+    cout << "the temp-1: " << temp_1 << endl;
+    cout << "pass in 6498" << endl;
+    for (int i = 0; i < day_len; ++i) {
+        if (dp[i][0][0] <= 0) {
+            opera[i + 1] = opera[i];
+        }
+        // opera[i + 1] = opera[i];
+        // 有股票，不卖出
+        if (temp_1 > temp_0 -prices[i]) {
+            //opera[i + 1][1] = -100;
+        } else {
+            // 没有股票，买入
+            cout << "买入：" << prices[i] << endl;
+            opera[i + 1].push_back(prices[i]);
+        }
+        // 没股票，不买
+        if (temp_0 > temp_1 + prices[i]) {
+            //opera[i + 1].push_back(-100);
+        } else {
+            // 没股票，买入
+            cout << "卖出：" << prices[i] << endl;
+            opera[i + 1].push_back(prices[i]);
+        }
+        // 0 - 没有股票， dp[i][0][0] = dp[i - 1][0][0] 表示不买， dp[i][0][0] = dp[i - 1][0][1] + prices[i]表示卖出
+        dp[i][0][0] = max(temp_0, temp_1 + prices[i]);
+        // 1 - 有股票， dp[i][0][1] = dp[i - 1][0][1] 表示有股票,不卖， dp[i][0][1] = dp[i - 1][0][0] - prices[i]表示没股票,买入
+        // 这里允许多次买卖，可以temp_0(之前的利润)减去 prices[i]
+        dp[i][0][1] = max(temp_1,  temp_0 - prices[i]);
+        temp_0 = dp[i][0][0];
+        temp_1 = dp[i][0][1];
+    }
+    cout << "the max_profit: " << dp[day_len - 1][0][0] << endl;
+    for (int i = 0; i < day_len; ++i) {
+        cout << dp[i][0][0] << "|" << dp[i][0][1] << endl;
+    }
+    cout << endl;
+    for (int i = 1; i <= day_len; ++i) {
+        for (auto iter: opera[i]) {
+            cout << iter << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+    // {7, 1, 5, 3, 6, 4};
+    cout << endl;
+    return;
+}

@@ -991,3 +991,21 @@ class intervalSchedule_solu {
 public:
     void intervalSchedule(vector<vector<int>> &nums);
 };
+// leetcode_435 无重叠区间
+// 给定一个区间，找出最少需要去除的子区间，使得剩下的区间不重复
+// 转化问题， 就是找一个最长的不重叠区间 
+class eraseOverlapIntervals_435_solu {
+public:
+    void eraseOverlapIntervals(vector<vector<int>> &nums);
+};
+// 股票买卖问题 最多允许进行一次买和卖
+class Solution_121_solution {
+public:
+    void maxProfit(vector<int>& prices);
+};
+
+// 股票买卖问题，允许进行多次买和卖
+class Solution_122_solution {
+public:
+    void maxProfit(vector<int>& prices);
+};
