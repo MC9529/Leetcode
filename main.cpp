@@ -1900,12 +1900,41 @@ int main() {
 }*/
 
 // 股票买卖问题，允许进行多次买和卖
-
+/*
 int main() {
   vector<int> prices = {7, 1, 5, 3, 6, 4};
   //vector<int> prices = {7, 6, 4, 3, 2, 1};
   Solution_122_solution solu;
   solu.maxProfit(prices);
+
+
+  return 0;
+}
+*/
+// 股票买卖问题，允许进行2次操作(买和卖加起来算一次)
+/*
+int main() {
+  //vector<int> prices = {7, 1, 5, 3, 6, 4, 1};
+  //vector<int> prices = {7, 6, 4, 3, 2, 1};
+  vector<int> prices = {3, 3, 5, 0, 0, 3, 1, 4};
+  Solution_123_solution solu;
+  solu.maxProfit(prices);
+
+
+  return 0;
+}
+*/
+
+// 股票买卖问题，允许进行2次操作(买和卖加起来算一次)
+
+int main() {
+  vector<int> prices = {7, 1, 5, 3, 6, 4, 1};
+  //vector<int> prices = {7, 1, 5, 3, 6, 4};
+  //vector<int> prices = {7, 6, 4, 3, 2, 1};
+  //vector<int> prices = {3, 3, 5, 0, 0, 3, 1, 4};
+  int k = 2;
+  Solution_188_solution solu;
+  solu.maxProfit(prices, k);
 
 
   return 0;

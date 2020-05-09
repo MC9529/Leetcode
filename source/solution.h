@@ -1009,3 +1009,15 @@ class Solution_122_solution {
 public:
     void maxProfit(vector<int>& prices);
 };
+
+// 股票买卖问题，允许进行2次操作（买和卖加起来算一次）
+class Solution_123_solution {
+public:
+    void maxProfit(vector<int>& prices);
+};
+
+// 股票买卖问题，允许进行k次操作（买和卖加起来算一次）
+class Solution_188_solution {
+public:
+    void maxProfit(vector<int>& prices, int k);
+};

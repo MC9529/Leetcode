@@ -6599,3 +6599,76 @@ void Solution_122_solution::maxProfit(vector<int>& prices) {
     cout << endl;
     return;
 }
+// 股票买卖问题，允许进行2次操作（买和卖加起来算一次）
+void Solution_123_solution::maxProfit(vector<int>& prices) {
+    int opt_len = 2;
+    int day_len = prices.size();
+    // dp[i][j][k],表示第i天，j次操作，k状态下的利润， k: 0-没有持有股票。 1持有股票
+    vector<vector<vector<int>>> dp(day_len + 1, vector<vector<int>>(opt_len + 1, vector<int>(2, 0)));
+    // 所对应的操作
+    // opera[i][0]: 买 ; opera[i][1]: 卖  , -100: 表示无动作
+    vector<vector<int>> opera(day_len + 1, vector<int>());
+    // vector<vector<int>> opera_0(day_len + 1, vector<int>(2, -100));
+    // base_case
+    // 从第dp[1][][]开始
+    dp[0][2][0] = 0, dp[0][1][0] = 0;
+    dp[0][2][1] = INT_MIN, dp[0][1][1] = INT_MIN;
+    //int temp_0 = 0, temp_1 = INT_MIN;
+    cout << "pass in 6498" << endl;
+    for (int i = 1; i <= day_len; ++i) {
+        for (int j = opt_len; j >= 1; --j) {
+            // 0 - 没有股票， dp[i][0][0] = dp[i - 1][0][0] 表示不买， dp[i][0][0] = dp[i - 1][0][1] + prices[i]表示卖出
+            dp[i][j][0] = max(dp[i - 1][j][0], dp[i - 1][j][1] + prices[i - 1]);
+            // 1 - 有股票， dp[i][0][1] = dp[i - 1][0][1] 表示有股票,不卖， dp[i][0][1] = dp[i - 1][0][0] - prices[i]表示没股票,买入
+            // 这里允许多次买卖，可以temp_0(之前的利润)减去 prices[i], 对于dp[i - 1][j - 1][0] - prices[i - 1]，买入算一次操作，j + 1;
+            dp[i][j][1] = max(dp[i - 1][j][1],  dp[i - 1][j - 1][0] - prices[i - 1]);
+        }
+    }
+    for (int i = 0; i <= day_len; ++i) {
+        for (int j = 0; j <= opt_len; ++j) {
+            cout << dp[i][j][0] << " " << dp[i][j][1] << endl;
+        }
+        cout << endl;
+    }
+    cout << endl;
+    return;
+}
+
+// 股票买卖问题，允许进行k次操作（买和卖加起来算一次）
+void Solution_188_solution::maxProfit(vector<int>& prices, int k) {
+    int day_len = prices.size();
+    int opt_len = k;
+    // dp[i][j][k],表示第i天，j次操作，k状态下的利润， k: 0-没有持有股票。 1持有股票
+    vector<vector<vector<int>>> dp(day_len + 1, vector<vector<int>>(opt_len + 1, vector<int>(2, 0)));
+    // 所对应的操作
+    // opera[i][0]: 买 ; opera[i][1]: 卖  , -100: 表示无动作
+    vector<vector<int>> opera(day_len + 1, vector<int>());
+    // vector<vector<int>> opera_0(day_len + 1, vector<int>(2, -100));
+    // base_case
+    // 从第dp[1][][]开始
+    dp[0][1][0] = 0;
+    dp[0][1][1] = INT_MIN;
+    if (k >= 2) {
+        dp[0][2][0] = 0;
+        dp[0][2][1] = INT_MIN;
+    }
+    //int temp_0 = 0, temp_1 = INT_MIN;
+    cout << "pass in 6498" << endl;
+    for (int i = 1; i <= day_len; ++i) {
+        for (int j = opt_len; j >= 1; --j) {
+            // 0 - 没有股票， dp[i][0][0] = dp[i - 1][0][0] 表示不买， dp[i][0][0] = dp[i - 1][0][1] + prices[i]表示卖出
+            dp[i][j][0] = max(dp[i - 1][j][0], dp[i - 1][j][1] + prices[i - 1]);
+            // 1 - 有股票， dp[i][0][1] = dp[i - 1][0][1] 表示有股票,不卖， dp[i][0][1] = dp[i - 1][0][0] - prices[i]表示没股票,买入
+            // 这里允许多次买卖，可以temp_0(之前的利润)减去 prices[i], 对于dp[i - 1][j - 1][0] - prices[i - 1]，买入算一次操作，j + 1;
+            dp[i][j][1] = max(dp[i - 1][j][1],  dp[i - 1][j - 1][0] - prices[i - 1]);
+        }
+    }
+    for (int i = 0; i <= day_len; ++i) {
+        for (int j = 0; j <= opt_len; ++j) {
+            cout << dp[i][j][0] << " " << dp[i][j][1] << endl;
+        }
+        cout << endl;
+    }
+    cout << endl;
+    return;
+}
