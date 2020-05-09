@@ -1017,7 +1017,17 @@ public:
 };
 
 // 股票买卖问题，允许进行k次操作（买和卖加起来算一次）
+// #TODO
 class Solution_188_solution {
 public:
     void maxProfit(vector<int>& prices, int k);
+};
+
+// labuladong算法小抄
+// 实现计算器
+class calculator_solution {
+public:
+    void pre_process(string s);
+    void calculator(queue<char> &s, stack<int> &stk);
+
 };

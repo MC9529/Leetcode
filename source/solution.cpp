@@ -232,7 +232,7 @@ void SuDu_37_Solution::DFS(vector<vector<char>> &board, vector<vector<int>> &row
 ////////组合总和  每个数值可以使用多次
 
 vector<vector<int>> combinationSum_39_Solution::combinationSum(vector<int>& candidates, 
-         int target){
+         int target) {
     int sum = target;
     vector<vector<int>> res;
     vector<int> temp;
@@ -6637,6 +6637,9 @@ void Solution_123_solution::maxProfit(vector<int>& prices) {
 // 股票买卖问题，允许进行k次操作（买和卖加起来算一次）
 void Solution_188_solution::maxProfit(vector<int>& prices, int k) {
     int day_len = prices.size();
+    if (day_len / 2 < k) {
+        k = day_len / 2;
+    }
     int opt_len = k;
     // dp[i][j][k],表示第i天，j次操作，k状态下的利润， k: 0-没有持有股票。 1持有股票
     vector<vector<vector<int>>> dp(day_len + 1, vector<vector<int>>(opt_len + 1, vector<int>(2, 0)));
@@ -6646,8 +6649,10 @@ void Solution_188_solution::maxProfit(vector<int>& prices, int k) {
     // vector<vector<int>> opera_0(day_len + 1, vector<int>(2, -100));
     // base_case
     // 从第dp[1][][]开始
-    dp[0][1][0] = 0;
-    dp[0][1][1] = INT_MIN;
+    dp[0][0][0] = 0;
+    dp[0][0][1] = INT_MIN;
+    //dp[0][1][0] = 0;
+    //dp[0][1][1] = INT_MIN;
     if (k >= 2) {
         dp[0][2][0] = 0;
         dp[0][2][1] = INT_MIN;
@@ -6655,7 +6660,7 @@ void Solution_188_solution::maxProfit(vector<int>& prices, int k) {
     //int temp_0 = 0, temp_1 = INT_MIN;
     cout << "pass in 6498" << endl;
     for (int i = 1; i <= day_len; ++i) {
-        for (int j = opt_len; j >= 1; --j) {
+        for (int j = opt_len; j >= i; --j) {
             // 0 - 没有股票， dp[i][0][0] = dp[i - 1][0][0] 表示不买， dp[i][0][0] = dp[i - 1][0][1] + prices[i]表示卖出
             dp[i][j][0] = max(dp[i - 1][j][0], dp[i - 1][j][1] + prices[i - 1]);
             // 1 - 有股票， dp[i][0][1] = dp[i - 1][0][1] 表示有股票,不卖， dp[i][0][1] = dp[i - 1][0][0] - prices[i]表示没股票,买入
@@ -6670,5 +6675,81 @@ void Solution_188_solution::maxProfit(vector<int>& prices, int k) {
         cout << endl;
     }
     cout << endl;
+    return;
+}
+
+// labuladong算法小抄
+// 实现计算器
+void calculator_solution::pre_process(string s) {
+    queue<char> queue_s;
+    stack<int> stk_s;
+    for (int i = 0; i < s.size(); ++i) {
+        queue_s.push(s[i]);
+    }
+    calculator(queue_s, stk_s);
+    int res = 0;
+    while (!stk_s.empty()) {
+        cout << "the element: " << stk_s.top() << endl;
+        res = res + stk_s.top();
+        stk_s.pop();
+    }
+    cout << "the res: " << res << endl;
+    return;
+
+}
+void calculator_solution::calculator(queue<char> &queue_s, 
+                                    stack<int> &stk) {
+    // 用于存放数字例如 2-3+5： +2 / -3 /+5
+    //stack<int> stk;
+    int num = 0;
+    char sign = '+';
+    int pre = 0;
+    while(!queue_s.empty()) {
+        char c = queue_s.front();
+        cout << "the c in 6709: " << c << endl;
+        queue_s.pop();
+        if (isdigit(c)) {
+            // 先计算括号里的，防止溢出
+            num = 10 * num + (c - '0');
+            cout << "the num 6714: " << num << endl;
+        }
+        if (c == '(' || '[' || '{') {
+            calculator(queue_s, stk);
+        }
+        if ((!isdigit(c)) || queue_s.empty()) {
+            cout << "the sign in 6719 :" << sign << endl;
+            // 这个符号是c是之前的符号
+            switch (sign) 
+            {
+                case '+':
+                    cout << "push the element in 6723: " << num << endl;
+                    stk.push(num); break;
+                case '-':
+                    cout << "push the element in 6726: " << -num << endl;
+                    stk.push(-num); break;
+                case '*':
+                    pre = stk.top();
+                    stk.pop();
+                    cout << "push the element in 6731: " << pre * num << endl;
+                    stk.push(pre * num);
+                    break;
+                case '/':
+                    pre = stk.top();
+                    stk.pop();
+                    cout << "push the element in 6737: " << pre / num << endl;
+                    stk.push(pre / num);
+                    break;
+            }
+            // 更新当前符号
+            sign = c;
+            cout << "the sign in 6744:" << sign << endl;
+            num = 0;
+        }
+        // 遇到 尾括号，截至
+        /*
+        if (c == ')' || ']' || '}') {
+            break;
+        }*/
+    }
     return;
 }

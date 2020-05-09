@@ -1925,17 +1925,28 @@ int main() {
 }
 */
 
-// 股票买卖问题，允许进行2次操作(买和卖加起来算一次)
-
+// 股票买卖问题，允许进行k次操作(买和卖加起来算一次)
+/*
 int main() {
-  vector<int> prices = {7, 1, 5, 3, 6, 4, 1};
-  //vector<int> prices = {7, 1, 5, 3, 6, 4};
+  //vector<int> prices = {7, 1, 5, 3, 6, 4, 1};
+  vector<int> prices = {7, 1, 5, 3, 6, 4};
   //vector<int> prices = {7, 6, 4, 3, 2, 1};
   //vector<int> prices = {3, 3, 5, 0, 0, 3, 1, 4};
-  int k = 2;
+  int k = 1;
   Solution_188_solution solu;
   solu.maxProfit(prices, k);
 
+
+  return 0;
+}
+*/
+// labuladong算法小抄
+// 实现计算器
+int main() {
+  string s = "1+2-3";
+  calculator_solution solu;
+  solu.pre_process(s);
+  
 
   return 0;
 }
