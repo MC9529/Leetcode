@@ -1028,6 +1028,6 @@ public:
 class calculator_solution {
 public:
     void pre_process(string s);
-    void calculator(queue<char> &s, stack<int> &stk);
-
+    void calculator(queue<char> &s, stack<int> &stk, char &sign_out);
+    
 };

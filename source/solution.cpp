@@ -6683,10 +6683,11 @@ void Solution_188_solution::maxProfit(vector<int>& prices, int k) {
 void calculator_solution::pre_process(string s) {
     queue<char> queue_s;
     stack<int> stk_s;
+    char sign_out = '+';
     for (int i = 0; i < s.size(); ++i) {
         queue_s.push(s[i]);
     }
-    calculator(queue_s, stk_s);
+    calculator(queue_s, stk_s, sign_out);
     int res = 0;
     while (!stk_s.empty()) {
         cout << "the element: " << stk_s.top() << endl;
@@ -6698,9 +6699,10 @@ void calculator_solution::pre_process(string s) {
 
 }
 void calculator_solution::calculator(queue<char> &queue_s, 
-                                    stack<int> &stk) {
+                                    stack<int> &stk, char &sign_out) {
     // 用于存放数字例如 2-3+5： +2 / -3 /+5
     //stack<int> stk;
+    // string s = "1-(2-3)";
     int num = 0;
     char sign = '+';
     int pre = 0;
@@ -6713,30 +6715,54 @@ void calculator_solution::calculator(queue<char> &queue_s,
             num = 10 * num + (c - '0');
             cout << "the num 6714: " << num << endl;
         }
-        if (c == '(' || '[' || '{') {
-            calculator(queue_s, stk);
+
+        if (c == '(' || c == '[' || c == '{') {
+            if (sign == '-') {
+                // 括号前的符号
+                if (sign_out == '+') {
+                    sign_out = '-';
+                } else {
+                    // 负负得正
+                    sign_out = '+';
+                }
+            }
+            cout << "the c in 6719 :" << c << endl;
+            calculator(queue_s, stk, sign_out);
         }
-        if ((!isdigit(c)) || queue_s.empty()) {
+        if ((!isdigit(c) && c != ' ') || queue_s.empty()) {
             cout << "the sign in 6719 :" << sign << endl;
             // 这个符号是c是之前的符号
             switch (sign) 
             {
                 case '+':
-                    cout << "push the element in 6723: " << num << endl;
-                    stk.push(num); break;
+                    // 括号前的符号为“-”，需要变号
+                    if (sign_out == '-') {
+                        cout << "push the element in 6734: " << -num << endl;
+                        stk.push(-num); break;
+                    } else {
+                        cout << "push the element in 638: " << num << endl;
+                        stk.push(num); break;
+                    }
                 case '-':
-                    cout << "push the element in 6726: " << -num << endl;
-                    stk.push(-num); break;
+                    // 括号前的符号为“-”，需要变号
+                    if (sign_out == '-') {
+                        cout << "push the element in 6744: " << num << endl;
+                        stk.push(num); break;
+                    } else {
+                        // 括号前的符号为“+”，不需要变号
+                        cout << "push the element in 6748: " << -num << endl;
+                        stk.push(-num); break;
+                    }
                 case '*':
                     pre = stk.top();
                     stk.pop();
-                    cout << "push the element in 6731: " << pre * num << endl;
+                    cout << "push the element in 6754: " << pre * num << endl;
                     stk.push(pre * num);
                     break;
                 case '/':
                     pre = stk.top();
                     stk.pop();
-                    cout << "push the element in 6737: " << pre / num << endl;
+                    cout << "push the element in 6760: " << pre / num << endl;
                     stk.push(pre / num);
                     break;
             }
@@ -6746,10 +6772,11 @@ void calculator_solution::calculator(queue<char> &queue_s,
             num = 0;
         }
         // 遇到 尾括号，截至
-        /*
-        if (c == ')' || ']' || '}') {
+        if (c == ')' || c == ']' || c == '}') {
+            // 推出括号，sign_out复原
+            sign_out = '+';
             break;
-        }*/
+        }
     }
     return;
 }

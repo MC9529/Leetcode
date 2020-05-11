@@ -1943,7 +1943,7 @@ int main() {
 // labuladong算法小抄
 // 实现计算器
 int main() {
-  string s = "1+2-3";
+  string s = "-(1-(2-3))-3/3";
   calculator_solution solu;
   solu.pre_process(s);
   
