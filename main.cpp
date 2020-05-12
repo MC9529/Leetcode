@@ -1942,11 +1942,21 @@ int main() {
 */
 // labuladong算法小抄
 // 实现计算器
+/*
 int main() {
   string s = "-(1-(2-3))-3/3";
   calculator_solution solu;
   solu.pre_process(s);
   
+
+  return 0;
+}
+*/
+// 
+int main() {
+  multiply_string_solution solu;
+  string s2 = "123", s1 = "45";
+  solu.multiply_string(s1, s2);
 
   return 0;
 }

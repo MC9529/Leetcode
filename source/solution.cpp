@@ -6780,3 +6780,61 @@ void calculator_solution::calculator(queue<char> &queue_s,
     }
     return;
 }
+
+// labuladong算法小抄
+/*
+对于比较小的数字，做运算可以直接使用编程语言提供的运算符，但是如果相乘的两个因数非常大，
+语言提供的数据类型可能就会溢出。一种替代方案就是，运算数以字符串的形式输入，
+然后模仿我们小学学习的乘法算术过程计算出结果，并且也用字符串表示。
+*/
+void multiply_string_solution::multiply_string(string s1, string s2) {
+    vector<int> res(64, 0);
+    int ten_posi = 0;
+    int one_posi = 0;
+    int iter_s1 = s1.size();
+    int iter_s2 = s2.size(); 
+    int len = s1.size() + s2.size();
+    for (int i = 0; i < s1.size(); ++i) {
+        for (int j = 0; j < s2.size(); ++j) {
+            int temp_num_1 = s1[s1.size() - 1 - i] - '0';
+            int temp_num_2 = s2[s2.size() - 1 - j] - '0';
+            cout << "the num: " << temp_num_1 << " " << temp_num_2 << endl;
+            get_ten_one_posi(temp_num_1, temp_num_2, ten_posi, one_posi);
+            cout << "the one and ten posi: " << ten_posi << " " << one_posi << endl;
+            cout << "the posi(ten, one): " << i << " " << j << endl;
+            cout << "the posi(ten, one): " << 63 - i - j - 1 << " " << 63 - i - j << endl;
+            cout << "the num in res :" << res[63 - i - j - 1] << " " << res[63 - i - j] << endl;
+            cout << "before: " << endl;
+            for (int k = res.size() - len - 1; k <= res.size() - 1; ++k) {
+                cout << k << " | " << res[k] << " ";
+            }
+            cout << endl;
+            // 满10进1
+            if (res[63 - i - j] + one_posi > 10) {
+                res[63 - i - j] = (res[63 - i - j] + one_posi) % 10;
+                res[63 - i - j - 1] = res[63 - i - j - 1] + ten_posi + 1;
+            } else {
+                res[63 - i - j] = res[63 - i - j] + one_posi;
+                res[63 - i - j - 1] = res[63 - i - j - 1] + ten_posi;
+            }
+            cout << "after: " << endl;
+            for (int k = res.size() - len - 1; k <= res.size() - 1; ++k) {
+                cout << res[k];
+            }
+            cout << endl;
+        }
+    }
+    for (int i = res.size() - 1; i >= res.size() - len - 1; --i) {
+        cout << res[i];
+    }
+    cout << endl;
+    return;
+}
+
+ // 
+void multiply_string_solution::get_ten_one_posi(int temp1, int temp2, int &ten_posi, int &one_posi) {
+    int multiply_num = temp1 * temp2;
+    ten_posi = multiply_num / 10;
+    one_posi = multiply_num - ten_posi * 10;
+    return;
+}
