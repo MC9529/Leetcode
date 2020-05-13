@@ -1048,5 +1048,11 @@ public:
 // leetcode_56
 class merge_56_solution {
 public:
-    void merge(vector<vector<int>> &nums);
+    void merge(vector<vector<int>> &nums, vector<pair<int, int>> &ans);
+};
+// 给出两个区间，请输出两个区间的重叠部分
+// leetcode_986
+class intervalIntersection_986_solution {
+public:
+    void intervalIntersection(vector<vector<int>> &nums1, vector<vector<int>> &nums2);
 };

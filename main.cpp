@@ -1968,11 +1968,25 @@ int main() {
   return 0;
 }
 */
+
+// 给出一个区间的集合，请合并所有重叠的区间
+// leetcode_56
+/*
 int main() {
   merge_56_solution solu;
   vector<vector<int>> nums = {{1, 3}, {2, 6}, {8, 10}, {15, 18}};
-  solu.merge(nums);
+  vector<pair<int, int>> ans;
+  solu.merge(nums, ans);
 
+
+  return 0;
+}
+*/
+int main() {
+  intervalIntersection_986_solution solu;
+  vector<vector<int>> nums1 = {{0, 2}, {5, 10}, {13, 23}, {24, 25}};
+  vector<vector<int>> nums2 = {{1, 5}, {8, 12}, {15, 24}, {25, 26}};
+  solu.intervalIntersection(nums1, nums2);
 
   return 0;
 }

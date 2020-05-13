@@ -6832,7 +6832,8 @@ void multiply_string_solution::multiply_string(string s1, string s2) {
 }
 
  // 
-void multiply_string_solution::get_ten_one_posi(int temp1, int temp2, int &ten_posi, int &one_posi) {
+void multiply_string_solution::get_ten_one_posi(int temp1, int temp2, int &ten_posi, 
+                                                                      int &one_posi) {
     int multiply_num = temp1 * temp2;
     ten_posi = multiply_num / 10;
     one_posi = multiply_num - ten_posi * 10;
@@ -6841,8 +6842,8 @@ void multiply_string_solution::get_ten_one_posi(int temp1, int temp2, int &ten_p
 
 // 给出一个区间的集合，请合并所有重叠的区间
 // leetcode_56
-void merge_56_solution::merge(vector<vector<int>> &nums) {
-    vector<pair<int, int>> ans;
+void merge_56_solution::merge(vector<vector<int>> &nums, vector<pair<int, int>> &ans) {
+    //vector<pair<int, int>> ans;
     auto comp = [](const vector<int> val1, const vector<int> val2) {
         return val1[0] < val2[0];
     };
@@ -6877,4 +6878,57 @@ void merge_56_solution::merge(vector<vector<int>> &nums) {
     cout << endl;
     return;
 
+}
+
+// 给出两个区间，请输出两个区间的重叠部分
+// leetcode_986
+void intervalIntersection_986_solution::intervalIntersection(vector<vector<int>> &nums1, 
+                                                             vector<vector<int>> &nums2) {
+    vector<pair<int, int>> ans;
+    auto comp = [](const vector<int> val1, const vector<int> val2) {
+        return val1[0] < val2[0];
+    };
+    //排序
+    merge_56_solution solu;
+    vector<pair<int, int>> ans1;
+    vector<pair<int, int>> ans2;
+    solu.merge(nums1, ans1);
+    solu.merge(nums2, ans2);
+
+    //sort(nums1.begin(), nums1.end(), comp);
+    //sort(nums2.begin(), nums2.end(), comp);
+    for (auto iter: ans1) {
+        cout << iter.first <<" " << iter.second << " " << endl;
+    }
+    for (auto iter: ans2) {
+        cout << iter.first <<" " << iter.second << " " << endl;
+    }
+    int i = 0, j = 0;
+    while (i < ans1.size() && j < ans2.size() ) {
+        int begin_1 = ans1[i].first, end_1 = ans1[i].second;
+        int begin_2 = ans2[j].first, end_2 = ans2[j].second;
+        cout << "begin_1 and end_1: " << begin_1 << " " << end_1 << endl;
+        cout << "begin_2 and end_2: " << begin_2 << " " << end_2 << endl;
+        cout << endl;
+        if (begin_2 > end_1 || begin_1 > end_2) {
+            cout << "没有交集" << endl;
+        } else {
+            int temp_begin = max(begin_1, begin_2);
+            int temp_end = min(end_1, end_2);
+            ans.push_back({temp_begin, temp_end});
+        }
+        // i和j 递增, 谁小谁增加
+        if (end_1 >= end_2) {
+            j ++;
+
+        } else {
+            i ++;
+        }
+        cout << "the i and j: " << i << " " << j << endl;
+    }
+    for (auto iter: ans) {
+        cout << "the ans: " << iter.first << " " << iter.second << endl;
+    }
+    cout << endl;
+    return;
 }
