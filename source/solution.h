@@ -1041,5 +1041,12 @@ class multiply_string_solution {
 public:
     void multiply_string(string s1, string s2);
     void get_ten_one_posi(int temp1, int temp2, int &ten_posi, int &one_posi);
-    
+
+};
+
+// 给出一个区间的集合，请合并所有重叠的区间
+// leetcode_56
+class merge_56_solution {
+public:
+    void merge(vector<vector<int>> &nums);
 };

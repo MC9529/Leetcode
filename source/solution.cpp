@@ -6838,3 +6838,43 @@ void multiply_string_solution::get_ten_one_posi(int temp1, int temp2, int &ten_p
     one_posi = multiply_num - ten_posi * 10;
     return;
 }
+
+// 给出一个区间的集合，请合并所有重叠的区间
+// leetcode_56
+void merge_56_solution::merge(vector<vector<int>> &nums) {
+    vector<pair<int, int>> ans;
+    auto comp = [](const vector<int> val1, const vector<int> val2) {
+        return val1[0] < val2[0];
+    };
+    //排序
+    sort(nums.begin(), nums.end(), comp);
+    for (auto iter: nums) {
+        cout << iter[0] <<" " << iter[1] << " " << endl;
+    }
+    // 初始化
+    int min_begin = nums[0][0];
+    int max_end = nums[0][1];
+    for (int i = 1; i < nums.size(); ++i) {
+        // 判断是否有重合
+        if (nums[i][0] > min_begin && nums[i][0] < max_end) {
+            cout << "have " << endl;
+            if (nums[i][1] > max_end) {
+                max_end = nums[i][1];
+            }
+        } else {
+            // 没有重合
+            cout << "the min_begin and max_end: " << min_begin << " " << max_end << endl; 
+            cout << "do not have" << endl;
+            ans.push_back({min_begin, max_end});
+            min_begin = nums[i][0];
+            max_end = nums[i][1];
+        }
+    }
+    ans.push_back({min_begin, max_end});
+    for (int i = 0; i < ans.size(); ++i) {
+        cout << ans[i].first << " " << ans[i].second << endl;
+    }
+    cout << endl;
+    return;
+
+}

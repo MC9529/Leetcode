@@ -1953,10 +1953,26 @@ int main() {
 }
 */
 // 
+// labuladong算法小抄
+/*
+对于比较小的数字，做运算可以直接使用编程语言提供的运算符，但是如果相乘的两个因数非常大，
+语言提供的数据类型可能就会溢出。一种替代方案就是，运算数以字符串的形式输入，
+然后模仿我们小学学习的乘法算术过程计算出结果，并且也用字符串表示。
+*/
+/*
 int main() {
   multiply_string_solution solu;
   string s2 = "123", s1 = "45";
   solu.multiply_string(s1, s2);
+
+  return 0;
+}
+*/
+int main() {
+  merge_56_solution solu;
+  vector<vector<int>> nums = {{1, 3}, {2, 6}, {8, 10}, {15, 18}};
+  solu.merge(nums);
+
 
   return 0;
 }
