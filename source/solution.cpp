@@ -6932,3 +6932,18 @@ void intervalIntersection_986_solution::intervalIntersection(vector<vector<int>>
     cout << endl;
     return;
 }
+
+// 俄罗斯套娃，信封问题
+void envelops_solution::envelops(vector<vector<int>> &nums) {
+    //vector<pair<int, int>> ans;
+    auto comp = [](const vector<int> val1, const vector<int> val2) {
+        if (val1[0] == val2[0]) {
+            return val1[1] > val2[1];
+        } else {
+            return val1[0] < val2[0];
+        }
+    };
+    // 排序
+    sort(nums.begin(), nums.end(), comp);
+
+}

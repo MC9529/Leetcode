@@ -1056,3 +1056,8 @@ class intervalIntersection_986_solution {
 public:
     void intervalIntersection(vector<vector<int>> &nums1, vector<vector<int>> &nums2);
 };
+// 俄罗斯套娃，信封问题
+class envelops_solution {
+public:
+    void envelops(vector<vector<int>> &nums);
+};
