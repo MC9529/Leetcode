@@ -6945,5 +6945,35 @@ void envelops_solution::envelops(vector<vector<int>> &nums) {
     };
     // 排序
     sort(nums.begin(), nums.end(), comp);
+    for (int i = 0; i < nums.size(); ++i) {
+        cout << nums[i][0] << " " << nums[i][1] << endl;
+    }
+    cout << endl;
+    // dp[i](这是一个vector<int>), 代表前i个元素的最长递增子序列
+    vector<vector<pair<int, int> >> dp(nums.size() + 1, vector<pair<int, int>>());
+    // base_case
+    dp[0].push_back({nums[0][0], nums[0][1]});
+    for (int i = 1; i < nums.size(); ++i) {
+        if (nums[i][1] > dp[i-1][dp[i-1].size() - 1].second) {
+            dp[i] = dp[i - 1];
+            dp[i].push_back({nums[i][0], nums[i][1]});
+        } else {
+            if (dp[i - 1].size() > 1) {
+                dp[i] = dp[i -1];
+            } else {
+                dp[i].push_back({nums[i][0], nums[i][1]});
+            }
+        }
+    }
+    for (int i = 0; i < dp.size(); ++i) {
+        cout << "the i: " << i << endl;
+        for (int j = 0; j < dp[i].size(); ++j) {
+            cout << dp[i][j].first << " " << dp[i][j].second << endl;
+        }
+        cout << endl;
+        cout << endl;
+    }
+    cout << endl;
+    return;
 
 }

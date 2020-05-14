@@ -1982,11 +1982,23 @@ int main() {
   return 0;
 }
 */
+// 给出两个区间，请输出两个区间的重叠部分
+// leetcode_986
+/*
 int main() {
   intervalIntersection_986_solution solu;
   vector<vector<int>> nums1 = {{0, 2}, {5, 10}, {13, 23}, {24, 25}};
   vector<vector<int>> nums2 = {{1, 5}, {8, 12}, {15, 24}, {25, 26}};
   solu.intervalIntersection(nums1, nums2);
+
+  return 0;
+}
+*/
+// 俄罗斯套娃，信封问题
+int main() {
+  envelops_solution solu;
+  vector<vector<int>> nums = {{1, 8}, {2, 3}, {5, 4}, {5, 2}, {6, 7}, {6, 4}};
+  solu.envelops(nums);
 
   return 0;
 }
