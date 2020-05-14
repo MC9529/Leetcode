@@ -6977,3 +6977,17 @@ void envelops_solution::envelops(vector<vector<int>> &nums) {
     return;
 
 }
+// 颜色填充问题 
+void FloodFill_solution::floodfill(vector<vector<int>> &nums, int sr, int sc, int newcolor) {
+    if (nums[sr][sc] != 0 && nums[sr][sc] != newcolor) {
+        nums[sr][sc] = newcolor;
+    } else if (nums[sr][sc] == 0 || nums[sr][sc] == newcolor || sr < 0 || sc < 0 || 
+                                    sr >= nums.size() || sc >= nums[0].size()) {
+        return;
+    }
+    floodfill(nums, sr + 1, sc, newcolor);
+    floodfill(nums, sr - 1, sc, newcolor);
+    floodfill(nums, sr, sc + 1, newcolor);
+    floodfill(nums, sr, sc - 1, newcolor);
+    return;
+}

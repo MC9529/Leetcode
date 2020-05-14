@@ -1061,3 +1061,8 @@ class envelops_solution {
 public:
     void envelops(vector<vector<int>> &nums);
 };
+// 颜色填充问题 
+class FloodFill_solution {
+public:
+    void floodfill(vector<vector<int>> &nums, int sr, int sc, int newcolor);
+};
