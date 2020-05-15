@@ -2004,8 +2004,34 @@ int main() {
   return 0;
 }
 */
+// labuladong算法小抄
+// 颜色填充问题 
+/*
 int main() {
+  FloodFill_solution solu;
+  vector<vector<int>> nums = {{1, 1, 1}, {1, 1, 0}, {1, 0, 1}};
+  int sr = 1, sc = 1;
+  int newcolor = 2;
+  solu.floodfill(nums, sr, sc, newcolor);
 
+  for (int i = 0; i < nums.size(); ++i) {
+      for (int j = 0; j < nums[i].size(); ++j) {
+          cout << nums[i][j] << " ";
+      }
+      cout << endl;
+  }
+    cout << endl;
+  return 0;
+}
+*/
+// labuladong算法小抄
+// 二分查找高效判断子序列
+int main() {
+  isSubsequence_solu solu;
+  string s1 = "abc";
+  string s2 = "cacbhbc";
+  // solu.isSubsequence(s1, s2);
+  solu.isSubsequence2(s1, s2);
 
 
   return 0;

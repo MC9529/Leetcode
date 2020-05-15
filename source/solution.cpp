@@ -6985,9 +6985,113 @@ void FloodFill_solution::floodfill(vector<vector<int>> &nums, int sr, int sc, in
                                     sr >= nums.size() || sc >= nums[0].size()) {
         return;
     }
-    floodfill(nums, sr + 1, sc, newcolor);
-    floodfill(nums, sr - 1, sc, newcolor);
-    floodfill(nums, sr, sc + 1, newcolor);
-    floodfill(nums, sr, sc - 1, newcolor);
+    cout << "pass in 6988" << endl;
+    // 深度优先遍历
+    if (sr + 1 < nums.size()) {
+      floodfill(nums, sr + 1, sc, newcolor);
+    }
+    if (sr - 1 >= 0) {
+      floodfill(nums, sr - 1, sc, newcolor);
+    }
+    if (sc + 1 < nums[0].size()) {
+      floodfill(nums, sr, sc + 1, newcolor);
+    }
+    if (sc - 1 >= 0) {
+      floodfill(nums, sr, sc - 1, newcolor);
+    }
+    /*
+    for (int i = 0; i < nums.size(); ++i) {
+        for (int j = 0; j < nums[i].size(); ++j) {
+            cout << nums[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+    */
+    return;
+}
+
+// labuladong算法小抄
+// 二分查找高效判断子序列
+void isSubsequence_solu::isSubsequence(string s1, string s2) {
+    unordered_map<char, vector<int>> posi_record;
+    for (int i = 0; i < s2.size(); ++i) {
+        posi_record[s2[i]].push_back(i);
+    }
+    for (int i = 0; i < posi_record.size(); ++i) {
+        if (posi_record[i].size() == 0) {
+            continue;
+        }
+        for (int j = 0; j < posi_record[i].size(); ++j) {
+            cout << posi_record[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+    // the posi flag in string s2
+    int j = 0;
+    for (int i = 0; i < s1.size(); ++i) {
+        char c = s1[i];
+        cout << "the s1[i]: " << c << endl;
+        if (posi_record[c].size() == 0) {
+            cout << "there is no element: " << c << "in the string :" << s2 << endl;
+            return;
+        }
+        // 在 posi_record[c]中找第一个大于 j的位置
+        cout << "the j :" << j << endl;
+        auto left_posi = lower_bound(posi_record[c].begin(), posi_record[c].end(), j);
+        // 没有找到
+        if (left_posi == posi_record[c].end()) {
+            cout << "can not find the element that bigger than j" << endl;
+            return;
+        } else {
+            int posi = left_posi - posi_record[c].begin();
+            cout << "the element in posi_record[c][posi] and posi : " 
+                 << s2[posi_record[c][posi]] << " " << posi_record[c][posi] << endl;
+            j = posi_record[c][posi] + 1;
+        }
+
+    }
+    return;
+}
+// 
+void isSubsequence_solu::isSubsequence2(string s1, string s2) {
+    int i = 0, j = 0;
+    vector<int> ans;
+    while(i < s1.size() && j < s2.size()) {
+        if (s1[i] == s2[j]) {
+            i ++;
+            ans.push_back(j);
+        }
+        j ++;
+    }
+    for (int k = 0; k < ans.size(); ++k) {
+        cout << ans[k] << " ";
+    }    
+    cout << endl;
+    if (i == s1.size()) {
+        cout << "yes " << endl;
+    } else {
+        cout << "no " << endl;
+    }
+    return;
+}
+// 脑筋急转弯
+/*
+如果我能赢，那么最后轮到我取石子的时候必须要剩下 1~3 颗石子，这样我才能一把拿完。
+如何营造这样的一个局面呢？显然，如果对手拿的时候只剩 4 颗石子，那么无论他怎么拿，
+总会剩下 1~3 颗石子，我就能赢。如何逼迫对手面对 4 颗石子呢？要想办法，
+让我选择的时候还有 5~7 颗石子，这样的话我就有把握让对方不得不面对 4 颗石子。
+如何营造 5~7 颗石子的局面呢？让对手面对 8 颗石子，无论他怎么拿，
+都会给我剩下 5~7 颗，我就能赢。这样一直循环下去，我们发现只要踩到 4 的倍数，
+就落入了圈套，永远逃不出 4 的倍数，而且一定会输。所以这道题的解法非常简单：
+*/
+void canWinNim_solu::canWinNim(int n) {
+    if (n % 4 == 0) {
+        cout << "you lost" << endl;
+    } else {
+        cout << "you win" << endl;
+    }
+    
     return;
 }
