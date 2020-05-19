@@ -7095,3 +7095,147 @@ void canWinNim_solu::canWinNim(int n) {
     
     return;
 }
+// // 在一个数组中找3个数使得他们的和等于0
+// 时间复杂度0（n * n)
+void ThreeSum_15_solution::ThreeSum(vector<int> &nums) {
+    if (nums.size() == 0) {
+        cout << "the nums is empty" << endl;
+        return;
+    }
+    vector<vector<int>> ans;
+    vector<int> temp;
+    unordered_map<int, int> counter;
+    // 记录各个元素出现的次数
+    for (auto iter: nums) {
+        counter[iter] ++;
+    }
+    cout << endl;
+    for (int i = 0; i < nums.size(); ++i) {
+        for (int j = i + 1; j < nums.size(); ++j) {
+            // 计算还需要的元素
+            int target = 0  - nums[i] - nums[j];
+            // 查看该元素是否有
+            if ((target != nums[i] && target != nums[j] && counter.count(target) > 0) ||
+                ((target == nums[i] || target == nums[j]) && counter.count(target) > 1)) {
+                cout << "there is target element: " << target << " in nums" << endl;
+                temp.push_back(nums[i]);
+                temp.push_back(nums[j]);
+                temp.push_back(target);
+                ans.push_back(temp);
+                temp.clear();
+            }
+        }
+    }
+    for (int i = 0; i < ans.size(); ++i) {
+        for (int j = 0; j < ans[i].size(); ++j) {
+            cout << ans[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+    return;
+}
+// 双指针法，先选定一个C位，左右两个指针，如果太大了，移动左边的，如果太小了，移动右边的
+void ThreeSum_15_solution::ThreeSum2(vector<int> &nums, int sum) {
+    if (nums.size() == 0) {
+        cout << "the nums is empty" << endl;
+        return;
+    }
+    // 排序
+    // greater: 从大到小
+    // less: 从小到大
+    sort(nums.begin(), nums.end(), less<int>());
+    for (int i = 0; i < nums.size(); ++i) {
+        cout << nums[i] << " ";
+    }
+    cout << endl;
+    vector<vector<int>> ans;
+    vector<int> temp;
+    for (int i = 1; i < nums.size(); ++i) {
+        int center = i;
+        int left = i - 1;
+        int right = i + 1;
+        // 如果不相等，且还没有到边界
+        while(nums[center] + nums[left] + nums[right] != sum &&
+             left >= 0 && right < nums.size()) {
+            // 小于目标值，将右边的指针向右移动，使得和变大
+            if (nums[center] + nums[left] + nums[right] < sum) {
+                right ++;
+            // 大于目标值，将左边的指针向左移动，使得和变小
+            } else if (nums[center] + nums[left] + nums[right] > sum) {
+                left --;
+            }
+        }
+        if (nums[center] + nums[left] + nums[right] == sum) {
+            temp.push_back(nums[left]);
+            temp.push_back(nums[center]);
+            temp.push_back(nums[right]);
+            ans.push_back(temp);
+            temp.clear();
+        }
+    }
+    for (int i = 0; i < ans.size(); ++i) {
+        for (int j = 0; j < ans[i].size(); ++j) {
+            cout << ans[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+    return;
+}
+// 四数之和
+// 在一个数组中找4个数使得他们的和等于target
+//双指针法， 固定a ,b 在最左边，c = b + 1, d = nums.size() - 1, 然后根据情况移动c, d
+void FourSum_18_solution::FourSum(vector<int> &nums, int sum) {
+    if (nums.size() == 0) {
+        cout << "the nums is empty" << endl;
+        return;
+    }
+    sort(nums.begin(), nums.end(), less<int>());
+    for (int i = 0; i < nums.size(); ++i) {
+        cout << nums[i] << " ";
+    }
+    cout << endl;
+    vector<vector<int>> ans;
+    vector<int> temp;
+    for (int i = 0; i < nums.size(); ++i) {
+        // 去重复
+        if (i > 0 && nums[i] == nums[i - 1]) {
+            continue;
+        }
+        for (int j = i + 1; j < nums.size(); ++j) {
+            // 去重复
+            if (j > 0 && nums[j] == nums[j - 1]) {
+                continue;
+            }
+            int left = j + 1, right = nums.size() - 1;
+            while (nums[i] + nums[j] + nums[left] + nums[right] != sum 
+                && left < right && left < nums.size() && right > j + 1) {
+                if (nums[i] + nums[j] + nums[left] + nums[right] < sum) {
+                    left ++;
+                } else if (nums[i] + nums[j] + nums[left] + nums[right] > sum) {
+                    right --;
+                }
+            }
+            if (nums[i] + nums[j] + nums[left] + nums[right] == sum && left != right) {
+                // cout << i << " " << j << " " << left << " " << right << endl;
+                temp.push_back(nums[i]);
+                temp.push_back(nums[j]);
+                temp.push_back(nums[left]);
+                temp.push_back(nums[right]);
+                ans.push_back(temp);
+                temp.clear();
+
+            }
+        }
+    }
+    for (int i = 0; i < ans.size(); ++i) {
+        for (int j = 0; j < ans[i].size(); ++j) {
+            cout << ans[i][j] << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+
+    return;
+}

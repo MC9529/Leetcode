@@ -2026,6 +2026,7 @@ int main() {
 */
 // labuladong算法小抄
 // 二分查找高效判断子序列
+/*
 int main() {
   isSubsequence_solu solu;
   string s1 = "abc";
@@ -2033,6 +2034,30 @@ int main() {
   // solu.isSubsequence(s1, s2);
   solu.isSubsequence2(s1, s2);
 
+
+  return 0;
+}
+*/
+//// 三数之和
+// 在一个数组中找3个数使得他们的和等于0
+/*
+int main() {
+  ThreeSum_15_solution solu;
+  vector<int> nums = {-1, 0, 1, 2, -1, -4};
+  // solu.ThreeSum(nums);
+  int target = 0;
+  solu.ThreeSum2(nums, target);
+  return 0;
+}
+*/
+// 四数之和
+// 在一个数组中找4个数使得他们的和等于target
+int main() {
+  FourSum_18_solution solu;
+  vector<int> nums = {-1, -1, 0, 1, 0, -2, 2};
+  // solu.ThreeSum(nums);
+  int target = 0;
+  solu.FourSum(nums, target);
 
   return 0;
 }

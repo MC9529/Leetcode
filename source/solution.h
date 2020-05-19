@@ -1089,3 +1089,17 @@ class canWinNim_solu {
 public:
     void canWinNim(int n);
 };
+// 三数之和
+// 在一个数组中找3个数使得他们的和等于0
+// leetcode_15
+class ThreeSum_15_solution {
+public:
+    void ThreeSum(vector<int> &nums);
+    void ThreeSum2(vector<int> &nums, int sum);
+};
+// 四数之和
+// 在一个数组中找4个数使得他们的和等于target
+class FourSum_18_solution {
+public:
+    void FourSum(vector<int> &nums, int sum);
+};
