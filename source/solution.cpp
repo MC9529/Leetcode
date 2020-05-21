@@ -7239,3 +7239,70 @@ void FourSum_18_solution::FourSum(vector<int> &nums, int sum) {
 
     return;
 }
+// 最接近的三个数之和
+void ThreeSumClosest_16_solution::ThreeSumClosest(vector<int> &nums, int target) {
+    sort(nums.begin(), nums.end(), less<int>());
+    for (int i = 0; i < nums.size(); ++i) {
+        cout << nums[i] << " ";
+    }
+    cout << endl;
+    int ans = nums[0] + nums[1] + nums[2];
+    int flag = 0;
+    int closest = target;
+    vector<int> ColsestContainer;
+    for (int i = 0; i < nums.size() - 1; ++i) {
+        cout << "the i :" << i << endl;
+        int start = i + 1, end = nums.size() - 1;
+        if (start >= end) {
+            continue;
+        }
+        cout << "the start: " << start << " " << "end: " << " " << end << endl;
+        cout << "the sum: " << nums[i] + nums[start] + nums[end] << endl;
+        // vector<int> nums = {-1, 2, 1, -4};
+        while(start < end) {
+            int sum = nums[i] + nums[start] + nums[end];
+            int sum1 = nums[i] + nums[start + 1] + nums[end];
+            int sum2 = nums[i] + nums[start] + nums[end - 1];
+            /*if (abs(target - sum) < abs(target - ans)) {
+                ans = sum;
+            }*/
+            if (sum == target) {
+                cout << "i in 7267: " << i << " " << "start: " << start << " "
+                     << "end: " << end << endl;
+                cout << "the ans :" << nums[i] + nums[start] + nums[end] << endl;
+                return;
+            } else if ( abs(sum1 - target) > abs(sum2 - target) ) {
+                //if (end -start > 1) {
+                    end --;
+                    flag = 1;
+                //}
+            } else if ( abs(sum1 - target) < abs(sum2 - target) ) {
+                //if (end -start > 1) {
+                    start ++;
+                    flag = 2;
+                //}
+            }
+            cout << endl;
+            cout << "the flag: " << flag << endl;
+
+            cout << "the i: " << i << " " << "the start: " << start << " " 
+                 << "end: " << " " << end << endl;
+
+            cout << "the nums[i] and nums[start] and nums[end]: " << nums[i] << " "
+                 << nums[start] << " " << nums[end] << endl;
+
+            cout << "the sum: " << nums[i] + nums[start] + nums[end] << endl;
+        }
+        if (flag == 2) {
+        cout << "in 7275: " << "i: " << i << " " << "start: " << start - 1 << " "
+                 << "end: " << end << endl;
+        cout << "the ans: " << nums[i] + nums[start - 1] + nums[end] << endl;
+        } else if (flag == 1) {
+            cout << "in 7279: " << "i: " << i << " " << "start: " << start << " "
+                 << "end: " << end + 1 << endl;
+            cout << "the ans: " << nums[i] + nums[start] + nums[end + 1] << endl;
+        }
+        
+    }
+    return;
+}

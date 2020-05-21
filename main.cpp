@@ -2052,12 +2052,23 @@ int main() {
 */
 // 四数之和
 // 在一个数组中找4个数使得他们的和等于target
+/*
 int main() {
   FourSum_18_solution solu;
   vector<int> nums = {-1, -1, 0, 1, 0, -2, 2};
   // solu.ThreeSum(nums);
   int target = 0;
   solu.FourSum(nums, target);
+
+  return 0;
+}
+*/
+int main() {
+  vector<int> nums = {-1, 2, 1, -4};
+  int target = 1;
+  ThreeSumClosest_16_solution solu;
+  solu.ThreeSumClosest(nums, target);
+
 
   return 0;
 }

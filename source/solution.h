@@ -1103,3 +1103,10 @@ class FourSum_18_solution {
 public:
     void FourSum(vector<int> &nums, int sum);
 };
+
+// 最接近的三个数之和
+// 
+class ThreeSumClosest_16_solution {
+public:
+    void ThreeSumClosest(vector<int> &nums, int target);
+};
