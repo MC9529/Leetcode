@@ -1110,3 +1110,14 @@ class ThreeSumClosest_16_solution {
 public:
     void ThreeSumClosest(vector<int> &nums, int target);
 };
+// 盛最多水的容器
+// leetcode_11
+class maxArea_11_solution {
+public:
+    // 暴力法
+    void maxArea(vector<int> &nums);
+    // 备忘录法
+    void maxArea2(vector<int> &nums);
+    // 双指针法
+    void maxArea3(vector<int> &nums);
+};

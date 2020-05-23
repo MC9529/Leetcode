@@ -7241,6 +7241,7 @@ void FourSum_18_solution::FourSum(vector<int> &nums, int sum) {
 }
 // 最接近的三个数之和
 void ThreeSumClosest_16_solution::ThreeSumClosest(vector<int> &nums, int target) {
+    // 排序
     sort(nums.begin(), nums.end(), less<int>());
     for (int i = 0; i < nums.size(); ++i) {
         cout << nums[i] << " ";
@@ -7251,6 +7252,7 @@ void ThreeSumClosest_16_solution::ThreeSumClosest(vector<int> &nums, int target)
     int closest = target;
     vector<int> ColsestContainer;
     for (int i = 0; i < nums.size() - 1; ++i) {
+        // 依次遍历
         cout << "the i :" << i << endl;
         int start = i + 1, end = nums.size() - 1;
         if (start >= end) {
@@ -7263,24 +7265,19 @@ void ThreeSumClosest_16_solution::ThreeSumClosest(vector<int> &nums, int target)
             int sum = nums[i] + nums[start] + nums[end];
             int sum1 = nums[i] + nums[start + 1] + nums[end];
             int sum2 = nums[i] + nums[start] + nums[end - 1];
-            /*if (abs(target - sum) < abs(target - ans)) {
-                ans = sum;
-            }*/
             if (sum == target) {
                 cout << "i in 7267: " << i << " " << "start: " << start << " "
                      << "end: " << end << endl;
                 cout << "the ans :" << nums[i] + nums[start] + nums[end] << endl;
                 return;
+            // 判断移动start好，还是移动end好
             } else if ( abs(sum1 - target) > abs(sum2 - target) ) {
-                //if (end -start > 1) {
-                    end --;
-                    flag = 1;
-                //}
+                end --;
+                flag = 1;
+            // 判断移动start好，还是移动end好
             } else if ( abs(sum1 - target) < abs(sum2 - target) ) {
-                //if (end -start > 1) {
-                    start ++;
-                    flag = 2;
-                //}
+                start ++;
+                flag = 2;
             }
             cout << endl;
             cout << "the flag: " << flag << endl;
@@ -7304,5 +7301,103 @@ void ThreeSumClosest_16_solution::ThreeSumClosest(vector<int> &nums, int target)
         }
         
     }
+    return;
+}
+// leetcode_11
+// 盛最多水的容器
+// 暴力法
+/*
+位置 i 能达到的水柱高度和其左边的最高柱子、右边的最高柱子有关，
+我们分别称这两个柱子高度为 l_max 和 r_max；
+位置 i 最大的水柱高度就是 min(l_max, r_max)。
+*/
+void maxArea_11_solution::maxArea(vector<int> &nums) {
+    int n = nums.size();
+    cout << "the size of nums: " << n << endl;
+    vector<int> container;
+    int ans = 0;
+    for (int i = 1; i < nums.size() - 1; ++i) {
+        int l_max = 0, r_max = 0;
+        // 找右边的最高柱子
+        for (int j = i; j < nums.size(); ++j) {
+            r_max = max(r_max, nums[j]);
+        }
+        // 找左边的最高柱子
+        for (int k = i; k >= 0; --k) {
+            l_max = max(l_max, nums[k]);
+        }
+        container.push_back(min(l_max, r_max) - nums[i]);
+        ans = ans + min(l_max, r_max) - nums[i];
+        
+    }
+    cout << "the ans: " << ans << endl;
+    for (int i = 0; i < container.size(); ++i) {
+        cout << container[i] << " ";
+    }
+    cout << endl;
+    return;
+}
+// 备忘录法
+void maxArea_11_solution::maxArea2(vector<int> &nums) {
+    vector<int> container;
+    int ans = 0;
+    // 需要 nums.size() -2个lmax 和 r_max(左边最大值和右边最大值)，包含自己
+    vector<int> lmax(nums.size(), 0), rmax(nums.size(), 0);
+    lmax[0] = nums[0];
+    rmax[nums.size() - 1] = nums[nums.size() - 1];
+    // 从左到右计算l_max
+    for (int i = 1; i < nums.size(); ++i) {
+        lmax[i] = max(nums[i], lmax[i - 1]);
+    }
+    // 从右往左计算r_max
+    for (int i = nums.size() - 2; i >= 0; --i) {
+        rmax[i] = max(nums[i], rmax[i + 1]);
+    }
+    // 计算答案
+    for (int i = 1; i < nums.size() - 1; ++i) {
+        cout << "the nums[i]: " << nums[i] << endl;
+        cout << "the lmax and rmax: " << 
+                              lmax[i] << " " << rmax[i] << endl;
+        ans = ans + min(lmax[i], rmax[i]) - nums[i];
+        container.push_back(min(lmax[i], rmax[i]) - nums[i]);
+    }
+    cout << "the ans: " << ans << endl;
+    for (int i = 0; i < container.size(); ++i) {
+        cout << container[i] << " ";
+    }
+    cout << endl;
+    return;
+
+}
+//  // 双指针法
+void maxArea_11_solution::maxArea3(vector<int> &nums) {
+    if (nums.size() == 0) {
+        cout << "the size of nums is empty" << endl;
+        return;
+    }
+    int left = 0, right = nums.size() - 1;
+    int ans = 0;
+    vector<int> container;
+    int l_max = nums[0];
+    int r_max = nums[nums.size() - 1];
+    while (left <= right) {
+        l_max = max(l_max, nums[left]);
+        r_max = max(r_max, nums[right]);
+        if (l_max < r_max) {
+            // 每个柱子能存多少水，只与最短的那根有关
+            ans = ans + l_max - nums[left];
+            left ++;
+            container.push_back(l_max - nums[left]);
+        } else {
+            ans = ans + r_max - nums[right];
+            right --;
+            container.push_back(r_max - nums[right]);
+        }
+    }
+    cout << "the ans: " << ans << endl;
+    for (int i = 0; i < container.size(); ++i) {
+        cout << container[i] << " ";
+    }
+    cout << endl;
     return;
 }

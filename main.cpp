@@ -2063,6 +2063,9 @@ int main() {
   return 0;
 }
 */
+// 最接近的三个数之和
+// 
+/*
 int main() {
   vector<int> nums = {-1, 2, 1, -4};
   int target = 1;
@@ -2070,5 +2073,15 @@ int main() {
   solu.ThreeSumClosest(nums, target);
 
 
+  return 0;
+}*/
+
+int main() {
+  maxArea_11_solution solu;
+  //vector<int> nums = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
+  vector<int> nums = {1, 8, 6, 2, 5, 4, 8, 3, 7};
+  // solu.maxArea(nums);
+  // solu.maxArea2(nums);
+  solu.maxArea3(nums);
   return 0;
 }
