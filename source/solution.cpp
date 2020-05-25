@@ -7445,3 +7445,50 @@ bool Stack_2_queue_solution::empty() {
     }
     return false;
 }
+
+// // labuladong算法小抄
+// 用队列实现栈，用队列实现栈
+/*
+queue<int> queue1;
+*/
+void Queue_2_stack_solution::push(int x) {
+    queue1.push(x);
+    top_element = x;
+    return;
+}
+int Queue_2_stack_solution::pop() {
+    int len = queue1.size();
+    if (queue1.empty()) {
+        cout << "the stack is empty" << endl;
+        return -404;
+    }
+    // 循环，将前面的放在后面，只有最后的不动
+    while(len > 1) {
+        int temp = queue1.front();
+        // 更新top_element
+        if (len == 2) {
+            top_element = temp;
+        }
+        queue1.pop();
+        queue1.push(temp);
+        len --;
+    }
+    int pop_element = queue1.front();
+    queue1.pop();
+    return pop_element;
+
+}
+int Queue_2_stack_solution::top() {
+    if (queue1.empty()) {
+        cout << "the stack is empty" << endl;
+        return -404;
+    }
+    return top_element;
+
+}
+bool Queue_2_stack_solution::empty() {
+    if (queue1.empty()) {
+        return true;
+    }
+    return false;
+}

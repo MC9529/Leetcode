@@ -1138,3 +1138,14 @@ public:
     // 用于取出场景
     stack<int> s2;
 };
+// // labuladong算法小抄
+// 用队列实现栈，用队列实现栈
+class Queue_2_stack_solution {
+public:
+    void push(int x);
+    int pop();
+    int top();
+    bool empty();
+    queue<int> queue1;
+    int top_element;
+};

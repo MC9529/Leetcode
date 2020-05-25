@@ -2088,6 +2088,9 @@ int main() {
   return 0;
 }
 */
+// labuladong算法小抄
+// 用栈实现队列，用双栈实现队
+/*
 int main() {
   Stack_2_queue_solution solu;
   solu.push(1);
@@ -2114,6 +2117,40 @@ int main() {
   top_val = solu.peek();
   cout << "the top: " << top_val << endl;
   solu.pop();
+
+  return 0;
+}
+*/
+// // labuladong算法小抄
+// 用队列实现栈，用队列实现栈
+
+int main() {
+  Queue_2_stack_solution solu;
+  solu.push(1);
+  solu.push(2);
+  solu.push(3);
+  solu.push(4);
+  //
+  int top_val = solu.top();
+  cout << "the top: " << top_val << endl;
+  solu.pop();
+  //
+  top_val = solu.top();
+  cout << "the top: " << top_val << endl;
+  solu.pop();
+  //
+  top_val = solu.top();
+  cout << "the top: " << top_val << endl;
+  solu.pop();
+  //
+  top_val = solu.top();
+  cout << "the top: " << top_val << endl;
+  solu.pop();
+  //
+  top_val = solu.top();
+  cout << "the top: " << top_val << endl;
+  solu.pop();
+
 
   return 0;
 }
