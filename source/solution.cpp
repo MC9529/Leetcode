@@ -7401,3 +7401,47 @@ void maxArea_11_solution::maxArea3(vector<int> &nums) {
     cout << endl;
     return;
 }
+// labuladong算法小抄
+// 用栈实现队列，用双栈实现队列
+// 将一个元素添加到队尾
+// 用于存放场景
+//stack<int> s1;
+// 用于取出场景
+//stack<int> s2;
+void Stack_2_queue_solution::push(int x) {
+    s1.push(x);
+    return;
+}
+// 删除队头元素并返回
+int Stack_2_queue_solution::pop() {
+    if (empty()) {
+        cout << "the queue is empty" << endl;
+        return -404;
+    }
+    int res = peek();
+    s2.pop();
+    return res;
+}
+// 返回队头元素
+int Stack_2_queue_solution::peek() {
+    // 如果s2是空的，先将s1的元素一次插入
+    if (empty()) {
+        cout << "the queue is empty" << endl;
+        return -404;
+    }
+    if (s2.empty()) {
+        while (!s1.empty()) {
+            s2.push(s1.top());
+            s1.pop();
+        }
+    }
+    return s2.top();
+}
+
+// 判断元素是否为空
+bool Stack_2_queue_solution::empty() {
+    if (s1.empty() && s2.empty()) {
+        return true;
+    }
+    return false;
+}

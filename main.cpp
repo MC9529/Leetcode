@@ -2075,7 +2075,9 @@ int main() {
 
   return 0;
 }*/
-
+// 盛最多水的容器
+// leetcode_11
+/*
 int main() {
   maxArea_11_solution solu;
   //vector<int> nums = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
@@ -2083,5 +2085,35 @@ int main() {
   // solu.maxArea(nums);
   // solu.maxArea2(nums);
   solu.maxArea3(nums);
+  return 0;
+}
+*/
+int main() {
+  Stack_2_queue_solution solu;
+  solu.push(1);
+  solu.push(2);
+  solu.push(3);
+  solu.push(4);
+  //
+  int top_val = solu.peek();
+  cout << "the top: " << top_val << endl;
+  solu.pop();
+  //
+  top_val = solu.peek();
+  cout << "the top: " << top_val << endl;
+  solu.pop();
+  //
+  top_val = solu.peek();
+  cout << "the top: " << top_val << endl;
+  solu.pop();
+  //
+  top_val = solu.peek();
+  cout << "the top: " << top_val << endl;
+  solu.pop();
+  //
+  top_val = solu.peek();
+  cout << "the top: " << top_val << endl;
+  solu.pop();
+
   return 0;
 }

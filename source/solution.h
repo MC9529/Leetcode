@@ -1121,3 +1121,20 @@ public:
     // 双指针法
     void maxArea3(vector<int> &nums);
 };
+// labuladong算法小抄
+// 用栈实现队列，用双栈实现队列
+class Stack_2_queue_solution {
+public:
+    // 将一个元素添加到队尾
+    void push(int x);
+    // 删除队头元素并返回
+    int pop();
+    // 返回队头元素
+    int peek();
+    // 判断元素是否为空
+    bool empty();
+    // 用于存放场景
+    stack<int> s1;
+    // 用于取出场景
+    stack<int> s2;
+};
