@@ -1149,3 +1149,9 @@ public:
     queue<int> queue1;
     int top_element;
 };
+// 最长回文子串 leetcode_5
+class longestPalindrome_5_solution {
+public:
+    void longestPalindrome(string s);
+
+};

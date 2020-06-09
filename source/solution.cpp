@@ -7492,3 +7492,44 @@ bool Queue_2_stack_solution::empty() {
     }
     return false;
 }
+
+// 
+void longestPalindrome_5_solution::longestPalindrome(string s) {
+    int n = s.size();
+    if (n <= 1) {
+        cout << "the len of s is <= 1" << endl;
+        if (n == 1) {
+            cout << "the ans: " << s << endl;
+        }
+    }
+    vector<vector<int>> res(n, vector<int>(n, 0));
+    for (int i = 0; i < n; ++i) {
+        res[i][i] = 1;
+    }
+    int start = 0; // 记录最长回文子串的开始位子
+    int maxlen = 1; // 记录长度
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < i; ++j) {
+            // 两个元素相等
+            if (s[i] == s[j]) {
+                // 如果i - j = 1 或 i - j = 2, 则是回文
+                if (i - j < 3) {
+                    res[j][i] = 1;
+                } else {
+                    // 否则如果 从 j+1 -> i-1是回文,则是回文
+                    res[j][i] = res[j+1][i-1];
+                }
+            }
+            // 更新最长长度
+            if (res[j][i]) {
+                if (i - j + 1 > maxlen) {
+                    maxlen = i - j + 1;
+                    start = j;
+                }
+            }
+        }
+    }
+    cout << "the ans: " << s.substr(start, maxlen) << endl;
+
+    return;
+}

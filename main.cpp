@@ -2123,7 +2123,7 @@ int main() {
 */
 // // labuladong算法小抄
 // 用队列实现栈，用队列实现栈
-
+/*
 int main() {
   Queue_2_stack_solution solu;
   solu.push(1);
@@ -2150,6 +2150,17 @@ int main() {
   top_val = solu.top();
   cout << "the top: " << top_val << endl;
   solu.pop();
+
+
+  return 0;
+}
+*/
+// 最长回文子串 leetcode_5
+int main() {
+  longestPalindrome_5_solution solu;
+  string s = "abbawerwt";
+  solu.longestPalindrome(s);
+
 
 
   return 0;
