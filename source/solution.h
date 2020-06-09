@@ -1153,5 +1153,6 @@ public:
 class longestPalindrome_5_solution {
 public:
     void longestPalindrome(string s);
+    void longestPalindrome2(string s);
 
 };

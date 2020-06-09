@@ -2159,7 +2159,7 @@ int main() {
 int main() {
   longestPalindrome_5_solution solu;
   string s = "abbawerwt";
-  solu.longestPalindrome(s);
+  solu.longestPalindrome2(s);
 
 
 

@@ -7493,7 +7493,7 @@ bool Queue_2_stack_solution::empty() {
     return false;
 }
 
-// 
+// 最长回文子串 leetcode_5 动态规划
 void longestPalindrome_5_solution::longestPalindrome(string s) {
     int n = s.size();
     if (n <= 1) {
@@ -7502,6 +7502,7 @@ void longestPalindrome_5_solution::longestPalindrome(string s) {
             cout << "the ans: " << s << endl;
         }
     }
+    // res(i, j) 表示 从i 到j是回文子串
     vector<vector<int>> res(n, vector<int>(n, 0));
     for (int i = 0; i < n; ++i) {
         res[i][i] = 1;
@@ -7532,4 +7533,48 @@ void longestPalindrome_5_solution::longestPalindrome(string s) {
     cout << "the ans: " << s.substr(start, maxlen) << endl;
 
     return;
+}
+
+void longestPalindrome_5_solution::longestPalindrome2(string s) {
+    int n = s.size();
+    if (n <= 1) {
+        cout << "the len of s is <= 1" << endl;
+        if (n == 1) {
+            cout << "the ans: " << s << endl;
+        }
+    }
+    // res(i, j) 表示 从i 到j是回文子串
+    vector<vector<int>> res(n, vector<int>(n, 0));
+    for (int i = 0; i < n; ++i) {
+        res[i][i] = 1;
+    }
+    int start = 0; // 记录最长回文子串的开始位子
+    int maxlen = 1; // 记录长度
+    // l: i到j的距离， 由于i=j的以及初始化了，所以从1开始
+    for (int l = 1; l < n; ++l) {
+        for (int i = 0; i + l < n; ++i) {
+            int j = i + l;
+            // 两个元素
+            if (l == 1) {
+                if (s[i] == s[j]) {
+                    res[i][j] = 1;
+                }
+            } else {
+                // 多个元素
+                if (s[i] == s[j] && res[i + 1][j - 1]) {
+                    res[i][j] = 1;
+                }
+            }
+            if (res[i][j]) {
+                if (j - i + 1 > maxlen) {
+                    maxlen = j - i + 1;
+                    start = i;
+                }
+            }
+        }
+    }
+    cout << "int way 2" << endl;
+    cout << "the ans: " << s.substr(start, maxlen) << endl;
+    return;
+
 }
