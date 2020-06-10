@@ -2156,12 +2156,28 @@ int main() {
 }
 */
 // 最长回文子串 leetcode_5
+/*
 int main() {
   longestPalindrome_5_solution solu;
   string s = "abbawerwt";
   solu.longestPalindrome2(s);
 
 
+
+  return 0;
+}
+*/
+// 正则表达式 leetcode_10
+int main() {
+  isMatch_10_solution solu;
+  string p = "b.*";
+  string s = "aab";
+  bool res = solu.isMatch(s, p); 
+  if (res) {
+    cout << "the res: true" << endl;
+  } else {
+    cout << "the res: false" << endl;
+  }
 
   return 0;
 }

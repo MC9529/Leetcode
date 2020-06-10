@@ -7578,3 +7578,82 @@ void longestPalindrome_5_solution::longestPalindrome2(string s) {
     return;
 
 }
+// 二维降低为一维
+void longestPalindrome_5_solution::longestPalindrome3(string s) {
+    if (s.size() <= 1) {
+        cout << "the size of s is <= 1" << endl;
+        cout << s << endl;
+        return;
+    }
+    vector<int> dp(s.size(), 0);
+    int start = 0;
+    int maxlen = 1;
+    for (int i = 1; i < s.size(); ++i) {
+        for (int j = 0; j < i; ++j) {
+            if (s[i] == s[j]) {
+                if (i - j < 3) {
+                    dp[j] = 1;
+                } else {
+                    dp[j] = dp[j+1];
+                }
+            } else {
+                dp[j] = 0;
+
+            }
+            if (dp[j]) {
+                int len = i - j + 1;
+                if (len > maxlen) {
+                    maxlen = len;
+                    start = j;
+                }
+            }
+        }
+    }
+    cout << "the ans: " << s.substr(start, maxlen) << endl;
+    return;
+
+}
+
+bool isMatch_10_solution::isMatch(string &s, string &p) {
+    int ns = s.length();
+    int np = p.length();
+    // 如果两者都是空的，则是true
+    if (p.empty()) {
+        return s.empty();
+    }
+    // dp[i][j]表示，s的前i个， p的前j个是否匹配
+    vector<vector<bool>> dp(ns + 1, vector<bool>(np + 1, false));
+    // base_case
+    // 两个元素都是空的，为真
+    dp[0][0] = true;
+    // 
+    for (int i = 1; i <= np; ++i) {
+        if (i - 2 >= 0 && p[i - 1] == '*' && p[i - 2]) {
+            dp[0][i] = dp[0][i - 2];
+        }
+    }
+    for (int i = 1; i <= ns; ++i) {
+        for (int j = 1; j <= np; ++j) {
+            if (s[i - 1] == p[j - 1] || p[j - 1] == '.') {
+                dp[i][j] = dp[i-1][j-1];
+            }
+            if (p[j-1] == '*') {
+                bool zero, one;
+                // 如果 p[j-2]存在
+                if (j - 2 >= 0) {
+                    // 如果 p[j-1]=='.'和p[j-1]==s[i]都不成立
+                    // * 不发生替代, dp[i][j]=dp[i][j-2]
+                    zero = dp[i][j-2];
+                    // p[j-2] == s[i-1],或 p[j-2]='.',则 dp[i][j] == dp[i-1][j]
+                    // *号发生一次替代，*替代 s[i]
+                    // one = (p[j - 2]== s[i-1] || p[j-2] == '.') && dp[i-1][j];
+                    one = dp[i-1][j];
+                    dp[i][j] = zero || one; 
+                }
+            }
+        }
+    }
+    return dp[ns][np];
+
+    
+}

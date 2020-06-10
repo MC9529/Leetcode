@@ -1154,5 +1154,14 @@ class longestPalindrome_5_solution {
 public:
     void longestPalindrome(string s);
     void longestPalindrome2(string s);
+    // 二维降低为一维
+    void longestPalindrome3(string s);
 
+};
+
+// 正则表达式 leetcode_10
+class isMatch_10_solution {
+public:
+    // 动态规划
+    bool isMatch(string &s, string &p);
 };
