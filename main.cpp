@@ -2168,6 +2168,7 @@ int main() {
 }
 */
 // 正则表达式 leetcode_10
+/*
 int main() {
   isMatch_10_solution solu;
   string p = "b.*";
@@ -2178,6 +2179,16 @@ int main() {
   } else {
     cout << "the res: false" << endl;
   }
+
+  return 0;
+}
+*/
+int main() {
+  search_33_solution solu;
+  vector<int> nums = {6, 7, 0, 1 ,2, 4, 5};
+  int target = 0;
+  int posi = solu.search(nums, target);
+  cout << "the posi: " << posi << endl;
 
   return 0;
 }

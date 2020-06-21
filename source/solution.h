@@ -1165,3 +1165,10 @@ public:
     // 动态规划
     bool isMatch(string &s, string &p);
 };
+
+// 搜索旋转排序数组 leetcode_33
+class search_33_solution {
+public:
+    int search(vector<int> &nums, int target);
+
+};

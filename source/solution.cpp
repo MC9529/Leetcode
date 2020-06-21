@@ -7654,6 +7654,43 @@ bool isMatch_10_solution::isMatch(string &s, string &p) {
         }
     }
     return dp[ns][np];
+}
 
-    
+// 搜索旋转排序数组 leetcode_33
+int search_33_solution::search(vector<int> &nums, int target) {
+    int n = nums.size();
+    if (!n) return -1;
+    if (n == 1) {
+        // 只有一个数，如果相等，返回0, 否者返回-1
+        return nums[0] == target? 0: -1;
+    }
+    int l = 0, r = n -1;
+    while (l <= r) {
+        int mid = (r + l) / 2;
+        // vector<int> nums = {6, 7, 0, 1 ,2, 4, 5};
+        cout << "the mid: " << mid << endl;
+        if (nums[mid] == target) return mid;
+        // 从 0 到  mid 是有序数组
+        if (nums[0] < nums[mid]) {
+            cout << "pass in 7673" << endl;
+            // nums[mid]刚好在 0 -》 mid
+            if (nums[l] <= target && nums[mid] > target) {
+                r = mid - 1;
+                cout << "r : " << r << endl;
+            } else {
+                l = mid + 1;
+                cout << "l : " << l << endl;
+            }
+        } else {
+            cout << "pass in 7681" << endl;
+            if (nums[mid] < target && nums[r] >= target) {
+                l = mid + 1;
+                cout << "l : " << l << endl;
+            } else {
+                r = mid - 1;
+                cout << "r : " << r << endl;
+            }
+        }
+    }
+    return -1;
 }
