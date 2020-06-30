@@ -1172,3 +1172,24 @@ public:
     int search(vector<int> &nums, int target);
 
 };
+// 字符相乘 leetcode_43
+class multiply_43_solution {
+public:
+    void multiply(string num1, string nums2);
+    void get_ten_one_posi(int temp1, int temp2, 
+                          int &ten_posi, int &one_posi);
+};
+
+// 螺旋矩阵
+class spiralOrder_54_solution {
+public:
+    vector<int> spiralOrder(vector<vector<int>> &matrix);
+};
+
+// 插入区间，leetcode_57
+class insert_57_solution {
+public:
+    vector<vector<int>> insert(vector<vector<int>> &matrix, vector<int> &new_matrix);
+    bool cover(vector<int> &matrix1, vector<int> &matrix2, vector<int> &ans);
+    void PrintMatrix(vector<int> &matrix);
+};

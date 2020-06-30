@@ -7694,3 +7694,203 @@ int search_33_solution::search(vector<int> &nums, int target) {
     }
     return -1;
 }
+//
+void multiply_43_solution::multiply(string s1, string s2) {
+    vector<int> res(64, 0);
+    int ten_posi = 0;
+    int one_posi = 0;
+    int iter_s1 = s1.size();
+    int iter_s2 = s2.size(); 
+    int len = s1.size() + s2.size();
+    for (int i = 0; i < s1.size(); ++i) {
+        for (int j = 0; j < s2.size(); ++j) {
+            int temp_num_1 = s1[s1.size() - 1 - i] - '0';
+            int temp_num_2 = s2[s2.size() - 1 - j] - '0';
+            cout << "the num: " << temp_num_1 << " " << temp_num_2 << endl;
+            get_ten_one_posi(temp_num_1, temp_num_2, ten_posi, one_posi);
+            cout << "the one and ten posi: " << ten_posi << " " << one_posi << endl;
+            cout << "the posi(ten, one): " << i << " " << j << endl;
+            cout << "the posi(ten, one): " << 63 - i - j - 1 << " " << 63 - i - j << endl;
+            cout << "the num in res :" << res[63 - i - j - 1] << " " << res[63 - i - j] << endl;
+            cout << "before: " << endl;
+            for (int k = res.size() - len - 1; k <= res.size() - 1; ++k) {
+                cout << k << " | " << res[k] << " ";
+            }
+            cout << endl;
+            // 满10进1
+            if (res[63 - i - j] + one_posi >= 10) {
+                res[63 - i - j] = (res[63 - i - j] + one_posi) % 10;
+                res[63 - i - j - 1] = res[63 - i - j - 1] + ten_posi + 1;
+            } else {
+                res[63 - i - j] = res[63 - i - j] + one_posi;
+                res[63 - i - j - 1] = res[63 - i - j - 1] + ten_posi;
+            }
+            cout << "after: " << endl;
+            for (int k = res.size() - len - 1; k <= res.size() - 1; ++k) {
+                cout << res[k];
+            }
+            cout << endl;
+        }
+    }
+    string ans;
+    cout << "passed in 7736" << endl;
+    for (int i = res.size() - len - 1; i <= res.size(); ++i) {
+        cout << res[i];
+        //ans.push_back(res[i] + '0');
+    }
+    //cout << "the ans: " << ans << endl;
+    cout << endl;
+    return;
+}
+
+// 
+void multiply_43_solution::get_ten_one_posi(int temp1, int temp2, int &ten_posi, 
+                                                                      int &one_posi) {
+    int multiply_num = temp1 * temp2;
+    ten_posi = multiply_num / 10;
+    one_posi = multiply_num - ten_posi * 10;
+    return;
+}
+
+// 
+vector<int> spiralOrder_54_solution::spiralOrder(vector<vector<int>> &matrix) {
+    vector<int> ans;
+    // vector<vector<bool>> dp(ns + 1, vector<bool>(np + 1, false));
+    vector<vector<bool>> visited(matrix.size(), vector<bool>(matrix[0].size(), false));
+    const vector<vector<int>> direction = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+    int cur_direct_flag = 0;
+    const int total_num = matrix.size() * matrix[0].size();
+    const int size_row = matrix.size();
+    const int size_col = matrix[0].size();
+    // curent row and curent col
+    int row = 0, col = 0;
+    ans.emplace_back(matrix[row][col]);
+    visited[row][col] = true;
+    cout << "passed in 7768" << endl;
+    while(ans.size() != total_num) {
+        // reset the direction
+        if (cur_direct_flag == 3 && visited[row - 1][col] == true) {
+            cur_direct_flag = 0;
+        }
+        // change the direction
+        // arrive the end of row or col
+        if ( (cur_direct_flag == 0 && col == size_col - 1) ||
+             (cur_direct_flag == 0 && visited[row][col+1] == true) ||
+             (cur_direct_flag == 1 && row == size_row - 1) ||
+             (cur_direct_flag == 1 && visited[row + 1][col] == true) ||
+             (cur_direct_flag == 2 && col == 0) ||
+             (cur_direct_flag == 2 && visited[row][col - 1] == true)) {
+            cur_direct_flag ++;
+        }
+        // get the direction
+        vector<int> curent_direct = direction[cur_direct_flag];
+        cout << endl;
+        row = row + curent_direct[0];
+        col = col + curent_direct[1];
+        ans.emplace_back(matrix[row][col]);
+        visited[row][col] = true;
+ 
+    }
+    for (auto iter: ans) {
+        cout << iter << " ";
+    }
+    cout << endl;
+
+    return ans;
+}
+
+vector<vector<int>> insert_57_solution ::insert(vector<vector<int>> &matrix, vector<int> &new_matrix) {
+    vector<vector<int>> ans;
+    ans.emplace_back(std::move(matrix[0]));
+    bool use_new_matrix = false;
+    for (int i = 1; i < matrix.size(); ++i) {
+        // print
+        for (int i = 0; i < ans.size(); ++i) {
+            for (auto iter: ans[i]) {
+               cout << iter << " ";
+            }
+            cout << endl;
+        }
+        cout << endl;
+        // 
+        vector<int> temp_matrix;
+        if(cover(ans[ans.size() - 1], matrix[i], temp_matrix)) {
+            cout << "has cover in 7818" << endl;
+            PrintMatrix(temp_matrix);
+            if (temp_matrix.size() > 0) {
+                ans[ans.size() - 1] = temp_matrix;
+                temp_matrix.clear();
+            }
+            if (!use_new_matrix) {
+                if (cover(ans[ans.size() - 1], new_matrix, temp_matrix)) {
+                    if (temp_matrix.size() > 0) {
+                       ans[ans.size() - 1] = temp_matrix;
+                       temp_matrix.clear();
+                       use_new_matrix = true;
+                    }
+                }
+            }
+
+        } else {
+            cout << "has no cover in 7834" << endl;
+            if (!use_new_matrix) {
+                if (cover(ans[ans.size() - 1], new_matrix, temp_matrix)) {
+                    cout << "has cover in 7837" << endl;
+                    PrintMatrix(temp_matrix);
+                    if (temp_matrix.size() > 0) {
+                       ans[ans.size() - 1] = temp_matrix;
+                       temp_matrix.clear();
+                       use_new_matrix = true;
+                    }
+                }
+            }
+            if (!use_new_matrix) {
+                ans.emplace_back(std::move(matrix[i]));
+            } else {
+                if (cover(ans[ans.size() - 1], matrix[i], temp_matrix)) {
+                    cout << "has cover in 7850" << endl;
+                    PrintMatrix(temp_matrix);
+                    if (temp_matrix.size() > 0) {
+                       ans[ans.size() - 1] = temp_matrix;
+                       temp_matrix.clear();
+                       use_new_matrix = true;
+                    }
+                } else {
+                    ans.emplace_back(std::move(matrix[i]));
+
+                }
+            }
+        }
+    }
+    cout << "print the ans: " << endl;
+    for (int i = 0; i < ans.size(); ++i) {
+        for (auto iter: ans[i]) {
+            cout << iter << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+    return ans;
+}
+
+bool insert_57_solution::cover(vector<int> &matrix1, vector<int> &matrix2, vector<int> &ans) {
+    if (matrix1[0] > matrix2[1] || matrix1[1] < matrix2[0]) {
+        return false;
+    } else {
+        int min_element = min(matrix1[0], matrix2[0]);
+        int max_element = max(matrix1[1], matrix2[1]);
+        ans.emplace_back(std::move(min_element));
+        ans.emplace_back(std::move(max_element));
+        return true;
+    }
+
+}
+
+void insert_57_solution::PrintMatrix(vector<int> &matrix) {
+    cout << "print the TempMatrix " << endl;
+    for (int i = 0; i < matrix.size(); ++i) {
+        cout << matrix[i] << " ";
+    }
+    cout << endl;
+
+}

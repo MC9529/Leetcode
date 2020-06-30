@@ -2183,12 +2183,53 @@ int main() {
   return 0;
 }
 */
+// // 搜索旋转排序数组 leetcode_33
+/*
 int main() {
   search_33_solution solu;
   vector<int> nums = {6, 7, 0, 1 ,2, 4, 5};
   int target = 0;
   int posi = solu.search(nums, target);
   cout << "the posi: " << posi << endl;
+
+  return 0;
+}
+*/
+
+// 字符相乘 leetcode_43
+/*
+int main() {
+  multiply_43_solution solu;
+  string nums1 = "123";
+  string nums2 = "456";
+  solu.multiply(nums1, nums2);
+  
+
+
+  return 0;
+}
+*/
+// 螺旋矩阵
+/*
+int main() {
+  vector<vector<int>> matrix = { {1, 2, 3, 4},
+                                 {5, 6, 7, 8}, 
+                                 {9, 10, 11, 12}, 
+                                 {13, 14, 15, 16}};
+  spiralOrder_54_solution solu;
+  solu.spiralOrder(matrix);
+  
+
+  return 0;
+}
+*/
+// 插入区间，leetcode_57
+int main() {
+  insert_57_solution solu;
+  vector<vector<int>> matrix = {{1, 2}, {3, 5}, {6, 7}, {8, 10}, {12, 16}};
+  vector<int> newmatrix = {4, 8};
+  solu.insert(matrix, newmatrix);
+
 
   return 0;
 }
