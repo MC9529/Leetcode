@@ -7799,6 +7799,64 @@ vector<int> spiralOrder_54_solution::spiralOrder(vector<vector<int>> &matrix) {
     return ans;
 }
 
+vector<vector<int>> generateMatrix_59_solution::generateMatrix(int n) {
+    if (n <= 0) {
+        cout << "the n is <= 0" << endl;
+        vector<vector<int>> ans;
+        return ans; 
+    }
+    vector<vector<int>> ans(n, vector<int>(n, -1));
+      // vector<vector<bool>> dp(ns + 1, vector<bool>(np + 1, false));
+    vector<vector<bool>> visited(n, vector<bool>(n, false));
+    const vector<vector<int>> direction = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+    int cur_direct_flag = 0;
+    const int total_num = n * n;
+    const int size_row = n;
+    const int size_col = n;
+    // curent row and curent col
+    int row = 0, col = 0;
+    ans[0][0] = 1;
+    visited[0][0] = true;
+    int count = 1;
+    cout << "passed in 7768" << endl;
+    while(count != total_num) {
+        // reset the direction
+        if (cur_direct_flag == 3 && visited[row - 1][col] == true) {
+            cur_direct_flag = 0;
+        }
+        // change the direction
+        // arrive the end of row or col
+        if ( (cur_direct_flag == 0 && col == size_col - 1) ||
+             (cur_direct_flag == 0 && visited[row][col+1] == true) ||
+             (cur_direct_flag == 1 && row == size_row - 1) ||
+             (cur_direct_flag == 1 && visited[row + 1][col] == true) ||
+             (cur_direct_flag == 2 && col == 0) ||
+             (cur_direct_flag == 2 && visited[row][col - 1] == true)) {
+            cur_direct_flag ++;
+        }
+        // get the direction
+        vector<int> curent_direct = direction[cur_direct_flag];
+        cout << endl;
+        row = row + curent_direct[0];
+        col = col + curent_direct[1];
+        count++;
+        ans[row][col] = count;
+        visited[row][col] = true;
+ 
+    }
+    for (auto iter: ans) {
+        for (auto iter1: iter) {
+            cout << iter1 << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+
+    return ans;
+}
+
+
+
 vector<vector<int>> insert_57_solution ::insert(vector<vector<int>> &matrix, vector<int> &new_matrix) {
     vector<vector<int>> ans;
     ans.emplace_back(std::move(matrix[0]));

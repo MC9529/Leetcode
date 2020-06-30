@@ -2224,12 +2224,22 @@ int main() {
 }
 */
 // 插入区间，leetcode_57
+/*
 int main() {
   insert_57_solution solu;
   vector<vector<int>> matrix = {{1, 2}, {3, 5}, {6, 7}, {8, 10}, {12, 16}};
   vector<int> newmatrix = {4, 8};
   solu.insert(matrix, newmatrix);
 
+
+  return 0;
+}
+*/
+// 螺旋矩阵2
+int main() {
+  generateMatrix_59_solution solu;
+  int n = 5;
+  solu.generateMatrix(n);
 
   return 0;
 }

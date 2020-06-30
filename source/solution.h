@@ -1185,7 +1185,11 @@ class spiralOrder_54_solution {
 public:
     vector<int> spiralOrder(vector<vector<int>> &matrix);
 };
-
+// 螺旋矩阵2
+class generateMatrix_59_solution {
+public:
+    vector<vector<int>> generateMatrix(int n);
+};
 // 插入区间，leetcode_57
 class insert_57_solution {
 public:
