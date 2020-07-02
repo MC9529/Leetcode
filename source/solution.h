@@ -1180,12 +1180,12 @@ public:
                           int &ten_posi, int &one_posi);
 };
 
-// 螺旋矩阵
+// 螺旋矩阵 leetcode_54
 class spiralOrder_54_solution {
 public:
     vector<int> spiralOrder(vector<vector<int>> &matrix);
 };
-// 螺旋矩阵2
+// 螺旋矩阵2 leetcode_59
 class generateMatrix_59_solution {
 public:
     vector<vector<int>> generateMatrix(int n);
@@ -1196,4 +1196,14 @@ public:
     vector<vector<int>> insert(vector<vector<int>> &matrix, vector<int> &new_matrix);
     bool cover(vector<int> &matrix1, vector<int> &matrix2, vector<int> &ans);
     void PrintMatrix(vector<int> &matrix);
+};
+// 第k个排列 leetcode_60
+class getPermutation_60_solution {
+public:
+    string gerPermutation(int n, int k);
+    bool Is_k_valide(int n, int k);
+
+    void DFS(vector<int> &nums, vector<int> &temp, vector<vector<int>> &res, 
+             vector<int>::size_type cursize, vector<bool> &visited);
+
 };

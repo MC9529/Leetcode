@@ -7743,7 +7743,7 @@ void multiply_43_solution::multiply(string s1, string s2) {
     return;
 }
 
-// 
+// 字符相乘 leetcode_43
 void multiply_43_solution::get_ten_one_posi(int temp1, int temp2, int &ten_posi, 
                                                                       int &one_posi) {
     int multiply_num = temp1 * temp2;
@@ -7752,7 +7752,7 @@ void multiply_43_solution::get_ten_one_posi(int temp1, int temp2, int &ten_posi,
     return;
 }
 
-// 
+// 螺旋矩阵 leetcode_54
 vector<int> spiralOrder_54_solution::spiralOrder(vector<vector<int>> &matrix) {
     vector<int> ans;
     // vector<vector<bool>> dp(ns + 1, vector<bool>(np + 1, false));
@@ -7798,7 +7798,7 @@ vector<int> spiralOrder_54_solution::spiralOrder(vector<vector<int>> &matrix) {
 
     return ans;
 }
-
+// 螺旋矩阵2 leetcode_59
 vector<vector<int>> generateMatrix_59_solution::generateMatrix(int n) {
     if (n <= 0) {
         cout << "the n is <= 0" << endl;
@@ -7856,7 +7856,7 @@ vector<vector<int>> generateMatrix_59_solution::generateMatrix(int n) {
 }
 
 
-
+// 插入区间，leetcode_57
 vector<vector<int>> insert_57_solution ::insert(vector<vector<int>> &matrix, vector<int> &new_matrix) {
     vector<vector<int>> ans;
     ans.emplace_back(std::move(matrix[0]));
@@ -7943,7 +7943,7 @@ bool insert_57_solution::cover(vector<int> &matrix1, vector<int> &matrix2, vecto
     }
 
 }
-
+// 插入区间，leetcode_57
 void insert_57_solution::PrintMatrix(vector<int> &matrix) {
     cout << "print the TempMatrix " << endl;
     for (int i = 0; i < matrix.size(); ++i) {
@@ -7952,3 +7952,76 @@ void insert_57_solution::PrintMatrix(vector<int> &matrix) {
     cout << endl;
 
 }
+
+
+// 第k个排列 leetcode_60
+string getPermutation_60_solution::gerPermutation(int n, int k) {
+    string ans;
+    vector<vector<int>> total_ans;
+    
+    if ( !(Is_k_valide(n, k)) ) {
+        cout << "the k or n is not valid num" << endl;
+        return ans;
+    }
+    vector<int> nums;
+    for (int i = 1; i <= n; ++i) {
+        nums.emplace_back(i);
+    }
+    vector<int> temp;
+    vector<vector<int>> res;
+    vector<bool> visited(n, false);
+    DFS(nums, temp, res, 0, visited);
+    for (const auto iter: res) {
+        for (const auto iter1: iter) {
+            cout << iter1 << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+    cout << "the kth of permute: " << endl;
+    for (const auto iter: res[k - 1]) {
+        cout << iter << " ";
+        ans.push_back(iter + '0');
+    }
+    cout << endl;
+    cout << "the ans: " << ans <<endl;
+    return ans;
+}
+
+ bool getPermutation_60_solution::Is_k_valide(int n, int k) {
+     int total = 1;
+     if (n < 0) {
+         return false;
+     }
+     for (int i = 2; i <= n; ++i) {
+         total = total * i;
+     }
+     cout << "the total: " << total << endl;
+     if (k < 0 || k > total) {
+         return false;
+     }
+     return true;
+
+ }
+
+void getPermutation_60_solution::DFS(vector<int> &nums, vector<int> &temp,
+                 vector<vector<int>> &res, vector<int>::size_type cursize,
+                 vector<bool> &visited)
+{
+    if(cursize == nums.size())
+    {
+        res.push_back(temp);
+        return;
+    }
+    for(vector<int>::size_type i = 0; i< nums.size(); i++)
+    {
+        if(!visited[i]){
+            temp.push_back(nums[i]);
+            visited[i] = true;
+            DFS(nums, temp, res, cursize+1, visited);
+            temp.pop_back();
+            visited[i] = false;
+        }
+    }
+}
+

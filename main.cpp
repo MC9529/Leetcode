@@ -2236,10 +2236,24 @@ int main() {
 }
 */
 // 螺旋矩阵2
+/*
 int main() {
   generateMatrix_59_solution solu;
   int n = 5;
   solu.generateMatrix(n);
+
+  return 0;
+}
+*/
+
+// 第k个排列 leetcode_60
+int main() {
+  getPermutation_60_solution solu;
+  int n = 3;
+  int k = 3;
+  solu.gerPermutation(n, k);
+
+
 
   return 0;
 }
