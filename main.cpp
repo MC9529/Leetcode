@@ -223,7 +223,7 @@ int main(){
 */
 /////不同路径1  63
 
-
+/*
 int main(){
   vector<vector<int>> obstacleGrid = {{0, 0, 0},
                                       {0, 1, 0},
@@ -234,6 +234,7 @@ int main(){
   // cout << "the num of route : " << res << endl;
   return 0;
 }
+*/
 
 ////////////最大子序列   LeetCode 53
 
@@ -2259,3 +2260,15 @@ int main() {
   return 0;
 }
 */
+
+int main() {
+  vector<vector<int>> matrix = {{1, 1, 1},
+                                 {1, 0, 1},
+                                 {1, 1, 1}};
+  
+  setZero_73_solution solu;
+  solu.setZero(matrix);
+  
+
+  return 0;
+}

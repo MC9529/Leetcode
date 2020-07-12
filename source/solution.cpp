@@ -8181,3 +8181,64 @@ void getPermutation_60_solution::DFS(vector<int> &nums, vector<int> &temp,
     }
 }
 
+// leetcode 矩阵置0
+// 首行和首列 用来存放时候含有0的信息
+void setZero_73_solution::setZero(vector<vector<int>> &matrix) {
+
+    bool rowflag = false;
+    for (int i = 0; i < matrix[0].size(); ++i) {
+        if (matrix[0][i] == 0) {
+            rowflag = true;
+            break;
+        }
+    }
+    bool colflag = false;
+    for (int j = 0; j < matrix.size();++j) {
+        if (matrix[j][0] == 0) {
+            colflag = true;
+            break;
+        }
+    }
+    for (int i = 1; i < matrix.size(); ++i) {
+        for (int j = 1; j < matrix[0].size(); ++j) {
+            if (matrix[i][j] == 0) {
+                matrix[i][0] = 0;
+                matrix[0][j] = 0;
+            }
+        }
+    }
+    for (int i = 1; i < matrix[0].size(); ++i) {
+        if (matrix[0][i] == 0) {
+            for (int j = 0; j < matrix.size(); ++j) {
+                matrix[j][i] = 0;
+            }
+        }
+    }
+    for (int i = 1; i < matrix.size();++i) {
+        if (matrix[i][0] == 0) {
+            for (int j = 0; j < matrix[0].size(); ++j) {
+                matrix[i][j] = 0;
+            }
+        }
+    }
+    if (rowflag) {
+        for (int i = 0; i < matrix[0].size(); ++i) {
+            matrix[0][i] = 0;
+        }
+    }
+    if (colflag) {
+        for (int i = 0; i < matrix.size(); ++i) {
+            matrix[i][0] = 0;
+        }
+    }
+    for (int i = 0; i < matrix.size(); ++i) {
+        vector<int> temp = matrix[i];
+        for (const auto iter: temp) {
+            cout << iter << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+
+}
+

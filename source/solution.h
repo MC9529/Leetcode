@@ -1224,3 +1224,8 @@ public:
 
 };
 // 
+// 矩阵置0 leetcode_73
+class setZero_73_solution {
+public:
+    void setZero(vector<vector<int>> &matrix);
+};
