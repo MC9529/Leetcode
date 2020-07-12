@@ -212,28 +212,28 @@ int main(){
 /*
 int main(){
 
-  int m = 3, n =2;
+  int m = 7, n =3;
   uniquePaths_62_Solution s1;
-  int res = s1.uniquePaths(3, 2);
+  s1.BFS(m, n);
+  // int res = s1.uniquePaths(3, 2);
 
-  cout << "the num of route : " << res << endl;
+  // cout << "the num of route : " << res << endl;
   return 0;
 }
 */
 /////不同路径1  63
 
-/*
+
 int main(){
   vector<vector<int>> obstacleGrid = {{0, 0, 0},
                                       {0, 1, 0},
                                       {0, 0, 0}};
   uniquePathsWithObstacles_63_Solution s1;
-  int res = s1.uniquePathsWithObstacles(obstacleGrid);
-
-  cout << "the num of route : " << res << endl;
+  // int res = s1.uniquePathsWithObstacles(obstacleGrid);
+  s1.BFS(obstacleGrid);
+  // cout << "the num of route : " << res << endl;
   return 0;
 }
-*/
 
 ////////////最大子序列   LeetCode 53
 
@@ -2247,6 +2247,7 @@ int main() {
 */
 
 // 第k个排列 leetcode_60
+/*
 int main() {
   getPermutation_60_solution solu;
   int n = 3;
@@ -2257,3 +2258,4 @@ int main() {
 
   return 0;
 }
+*/

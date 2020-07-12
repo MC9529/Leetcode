@@ -429,6 +429,7 @@ int uniquePaths_62_Solution::uniquePaths(int m, int n){
     res = route.size();
     return res;
 }
+// 回溯算法
 void uniquePaths_62_Solution::DFS(vector<vector<int>> &route, vector<int> &temp,
      vector<int> &start, vector<int> &target){
     if((start[1] == target[1]) && (start[0] == target[0]))
@@ -442,6 +443,7 @@ void uniquePaths_62_Solution::DFS(vector<vector<int>> &route, vector<int> &temp,
             return;
     }
     for(int i = 0; i < 2; i++){
+        ////0  代表向右移动， 1 代表向下移动
         if(i == 0){
         start [1] = start [1] + 1;
         temp.push_back(0);
@@ -460,7 +462,161 @@ void uniquePaths_62_Solution::DFS(vector<vector<int>> &route, vector<int> &temp,
     }
 }
 
-///动态规划 不同路径2  63
+// 动态规划
+void uniquePaths_62_Solution::BFS(int m, int n) {
+    // vector<vector<int>> route;
+    // m row * n col
+    vector<vector< route >> dp(m, vector<route>(n));
+    // base case  //
+    // 0 : 代表向右移动， 1: 代表向下移动
+    dp[0][0].data = {{}};
+    for (int i = 1; i < m; ++i) {
+        vector<vector<int>> temp(1, vector<int>(i, 1));
+        dp[i][0].data = temp;
+    }
+    for (int j = 1; j < n; ++j) {
+        vector<vector<int>> temp(1, vector<int>(j, 0));
+        dp[0][j].data = temp;
+    }
+    /*
+    dp[1][0].data = {{1}};
+    dp[2][0].data = {{1, 1}};
+    dp[0][1].data = {{0}};
+    */
+    for (int i = 1; i < m; ++i) {
+        for (int j = 1; j < n; ++j) {
+            // 能从上一行到这个位置
+            cout << "the target: " << i << " " << j << endl;
+            if (i - 1 >= 0) {
+                // 遍历每一个上一行的路径，并添加1
+                cout << "the posi: " << i-1 << " " << j << endl;
+                cout << "the size of dp[i-1][j]: " << dp[i - 1][j].data.size() << endl;
+                for (int k = 0; k < dp[i - 1][j].data.size(); ++k) {
+                    vector<int> temp = dp[i - 1][j].data[k];
+                    for(const auto iter: temp) {
+                        cout << iter << " ";
+                    }
+                    cout << endl;
+                    temp.emplace_back(1);
+                    dp[i][j].data.emplace_back(temp);
+                }
+
+            }
+            // 能从上一列到这个位置
+            if (j - 1 >= 0) {
+                cout << "the posi: " << i << " " << j-1 << endl;
+                cout << "the size of dp[i][j-1]: " << dp[i][j-1].data.size() << endl;
+                for (int k = 0; k < dp[i][j-1].data.size(); ++k) {
+                    vector<int> temp = dp[i][j-1].data[k];
+                    for(const auto iter: temp) {
+                        cout << iter << " ";
+                    }
+                    cout << endl;
+                    temp.emplace_back(0);
+                    dp[i][j].data.emplace_back(temp);
+                }
+
+            }
+            
+        }
+    }
+    cout << "the size of res: " << dp[m-1][n-1].data.size() << endl;
+    for (int i = 0; i < dp[m - 1][n-1].data.size();++i) {
+        vector<int> temp1 = dp[m-1][n-1].data[i];
+        for (int j = 0; j < temp1.size(); ++j) {
+            cout << temp1[j] << " ";
+
+        }
+        cout << endl;
+    }
+    cout << endl;
+    return;
+
+}
+
+// 动态规划，leetcode_63
+void uniquePathsWithObstacles_63_Solution::BFS(vector<vector<int>> &obstacleGrid) {
+    int m = obstacleGrid.size();
+    int n = obstacleGrid[0].size();
+    // vector<vector<int>> route;
+    // m row * n col
+    vector<vector< route >> dp(m, vector<route>(n));
+    // base case  //
+    // 0 : 代表向右移动， 1: 代表向下移动
+    dp[0][0].data = {{}};
+    for (int i = 1; i < m; ++i) {
+        if (obstacleGrid[i][0] == 1) {
+            // 有障碍物，后面无路可走
+            break;
+        }
+        vector<vector<int>> temp(1, vector<int>(i, 1));
+        dp[i][0].data = temp;
+    }
+    for (int j = 1; j < n; ++j) {
+        if (obstacleGrid[0][j] == 1) {
+            // 有障碍物，后面无路可走
+            break;
+        }
+        vector<vector<int>> temp(1, vector<int>(j, 0));
+        dp[0][j].data = temp;
+    }
+    for (int i = 1; i < m; ++i) {
+        for (int j = 1; j < n; ++j) {
+            // 该位置有障碍物，可以跳过该循环
+            if (obstacleGrid[i][j] == 1) {
+                continue;
+            }
+            // 能从上一行到这个位置
+            cout << "the target: " << i << " " << j << endl;
+            if (i - 1 >= 0) {
+                // 遍历每一个上一行的路径，并添加1
+                cout << "the posi: " << i-1 << " " << j << endl;
+                cout << "the size of dp[i-1][j]: " << dp[i - 1][j].data.size() << endl;
+                for (int k = 0; k < dp[i - 1][j].data.size(); ++k) {
+                    vector<int> temp = dp[i - 1][j].data[k];
+                    for(const auto iter: temp) {
+                        cout << iter << " ";
+                    }
+                    cout << endl;
+                    temp.emplace_back(1);
+                    dp[i][j].data.emplace_back(temp);
+                }
+
+            }
+            // 能从上一列到这个位置
+            if (j - 1 >= 0) {
+                cout << "the posi: " << i << " " << j-1 << endl;
+                cout << "the size of dp[i][j-1]: " << dp[i][j-1].data.size() << endl;
+                for (int k = 0; k < dp[i][j-1].data.size(); ++k) {
+                    vector<int> temp = dp[i][j-1].data[k];
+                    for(const auto iter: temp) {
+                        cout << iter << " ";
+                    }
+                    cout << endl;
+                    temp.emplace_back(0);
+                    dp[i][j].data.emplace_back(temp);
+                }
+
+            }
+            
+        }
+    }
+    cout << "the size of res: " << dp[m-1][n-1].data.size() << endl;
+    for (int i = 0; i < dp[m - 1][n-1].data.size();++i) {
+        vector<int> temp1 = dp[m-1][n-1].data[i];
+        for (int j = 0; j < temp1.size(); ++j) {
+            cout << temp1[j] << " ";
+
+        }
+        cout << endl;
+    }
+    cout << endl;
+    return;
+
+
+}
+
+//回溯算法 不同路径2  63
 /////
 
 int uniquePathsWithObstacles_63_Solution::uniquePathsWithObstacles(

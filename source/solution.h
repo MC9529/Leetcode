@@ -86,7 +86,15 @@ public:
 class uniquePaths_62_Solution {
 public:
     int uniquePaths(int m, int n);
+    // 动态规划
     void DFS(vector<vector<int>> &route, vector<int> &temp, vector<int> &start, vector<int> &target);
+    // 回溯算法
+    void BFS(int m, int n);
+    // 存储路径
+    vector<vector<int>> ans;
+    struct route{
+        vector<vector<int>> data;
+    };
     
     
 };
@@ -98,6 +106,14 @@ public:
     int uniquePathsWithObstacles(vector<vector<int>> &obstacleGrid);
     void DFS(vector<vector<int>> &route, vector<int> &temp, vector<int> &start, 
        vector<int> &target, vector<vector<int>> &obstacleGrid);
+    // 动态规划
+    void BFS(vector<vector<int>> &obstacleGrid);
+    // 对于下面的struct,不能把括号提到上面来
+    struct route
+    {
+        vector<vector<int>> data;
+    };
+    
 };
 
 ///////最大子序列   LeetCode 53
@@ -1207,3 +1223,4 @@ public:
              vector<int>::size_type cursize, vector<bool> &visited);
 
 };
+// 
