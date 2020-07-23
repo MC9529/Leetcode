@@ -7850,6 +7850,47 @@ int search_33_solution::search(vector<int> &nums, int target) {
     }
     return -1;
 }
+// 搜索旋转数组 leetcode_81
+bool search_81_solution::search(const vector<int> &nums, const int target) {
+    bool ans = false;
+    int n = nums.size();
+    if (n == 0) {
+        return ans;
+    }
+    if (n == 1) {
+        // 如果只有一个数，两者相等，返回true, 否则返回 false
+        return nums[0] == target? true: false;
+    }
+    int l = 0, r = n - 1;
+    while(l <= r) {
+        int mid = l + (r - l)/2;
+        cout << "the mid: " << mid << endl;
+        if (nums[mid] == target) return true;
+        // 0 -> mid 是递增的
+        if (nums[0] < nums[mid]) {
+            cout << "pass in 7673" << endl;
+            // nums[mid]刚好在 0 -》 mid
+            if (nums[l] <= target && nums[mid] > target) {
+                r = mid - 1;
+                cout << "r : " << r << endl;
+            } else {
+                l = mid + 1;
+                cout << "l : " << l << endl;
+            }
+        } else {
+            cout << "pass in 7681" << endl;
+            if (nums[mid] < target && nums[r] >= target) {
+                l = mid + 1;
+                cout << "l : " << l << endl;
+            } else {
+                r = mid - 1;
+                cout << "r : " << r << endl;
+            }
+        }
+    }
+
+    return ans;
+}
 //
 void multiply_43_solution::multiply(string s1, string s2) {
     vector<int> res(64, 0);
@@ -8202,6 +8243,7 @@ void setZero_73_solution::setZero(vector<vector<int>> &matrix) {
     for (int i = 1; i < matrix.size(); ++i) {
         for (int j = 1; j < matrix[0].size(); ++j) {
             if (matrix[i][j] == 0) {
+                // 用首行和首列来存储
                 matrix[i][0] = 0;
                 matrix[0][j] = 0;
             }
@@ -8242,3 +8284,184 @@ void setZero_73_solution::setZero(vector<vector<int>> &matrix) {
 
 }
 
+///// 组合 leetcode_77
+
+vector<vector<int>> combine_77_solution::combine(int n, int k) {
+    vector<vector<int>> ans;
+    vector<bool> used(n, false);
+    vector<int> temp;
+    int cur_posi = 1;
+    /*
+    for (int cur_posi = 1; cur_posi <= n; ++cur_posi) {
+         vector<int> temp;
+         temp.emplace_back(cur_posi);
+         DFS(cur_posi, n, k, temp, used, ans);
+    }
+    */
+    DFS(cur_posi, n, k, temp, used, ans);
+
+
+   for (int i = 0; i < ans.size(); ++i) {
+       vector<int> temp = ans[i];
+       for (int j = 0; j < temp.size(); ++j) {
+           cout << temp[j] << " ";
+       }
+       cout << endl;
+   }
+   cout << endl;
+
+
+
+
+    return ans;
+}
+
+void combine_77_solution::DFS(int &cur_posi, int n, int k, vector<int> &temp,
+         vector<bool> &used, vector<vector<int>> &ans) {
+    // temp.emplace_back(cur_posi);
+    if (temp.size() == k) {
+        ans.emplace_back(temp);
+        return;
+    }
+    if (cur_posi >= n) {
+        return;
+    }
+    for (int i = cur_posi; i <= n; ++i) {
+        temp.emplace_back(i);
+        cur_posi ++;
+
+        DFS(cur_posi, n, k, temp, used, ans);
+        temp.pop_back();
+        cur_posi --;
+
+    }
+
+}
+
+vector<vector<int>> combine_77_solution::combine2(int n, int k) {
+    
+    vector<bool> vis(n, false);
+    for (int i = 1; i <= n; ++i) {
+        temp.emplace_back(i);
+        vis[i-1] = true;
+        trackback(i, vis, n, k, 1);
+        // vis[i-1] = false;
+        cout << "in 8308" << endl;
+        for (const auto iter: temp) {
+            cout << iter << " ";
+        }
+        cout << endl;
+        temp.pop_back();
+        
+    }
+    cout << "the res: " << endl;
+    for (int j = 0; j < ans.size(); ++j) {
+        vector<int> temp = ans[j];
+        for (const auto iter: temp) {
+            cout << iter << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+    cout << "run in combine2 " << endl;
+    return ans;
+
+}
+
+void combine_77_solution::trackback(int i, vector<bool> &vis, int n, int k, int len) {
+    if (len == k) {
+        // cout << "the k: " << k << endl;
+        /*for (auto iter: temp) {
+            cout << iter << " ";
+        }
+        */
+        cout << endl;
+        ans.emplace_back(temp);
+        return;
+    }
+    for (int j = i + 1; j <= n; ++j) {
+        if(!vis[j - 1]) {
+            vis[j - 1] = true;
+            temp.emplace_back(j);
+            trackback(j, vis, n, k, len+1);
+            vis[j - 1] = false;
+            temp.pop_back();
+        }
+
+    }
+
+}
+
+vector<vector<int>> subsets_78_solution::subsets(vector<int> &nums) {
+    int start = 0;
+    DFS(start, temp, nums);
+    for (int i = 0; i < ans.size(); ++i) {
+        vector<int> temp_ans = ans[i];
+        for (const auto iter: temp_ans) {
+            cout << iter << " ";
+        }
+        cout << endl;
+    }
+    return ans;
+
+}
+
+void subsets_78_solution::DFS(int start, vector<int> &temp,
+                              const vector<int> &nums) {
+    ans.emplace_back(temp);
+    cout << "the temp in 8371: " << endl;
+    for (const auto iter: temp) {
+        cout << iter << " ";
+    }
+    cout << endl;
+    for (int i = start; i < nums.size(); ++i) {
+        temp.emplace_back(nums[i]);
+        DFS(i + 1, temp, nums);
+        cout << "the temp in 8379: " << endl;
+        for (const auto iter: temp) {
+            cout << iter << " ";
+        }
+        cout << endl;
+        temp.pop_back();
+        cout << "the temp in 8385: " << endl;
+        for (const auto iter: temp) {
+            cout << iter << " ";
+        }
+        cout << endl;
+
+    }
+    return;
+}
+
+vector<vector<pair<int, int>>> permute_solution::permute(vector<int> &nums) {
+    vector<bool> used(nums.size(), false);
+    DFS(nums, used);
+
+    for (int i = 0; i < ans.size(); ++i) {
+        vector<pair<int, int>> temp_i = ans[i];
+        for (const auto iter_j: temp_i) {
+            cout << iter_j.second << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+    return ans;
+}
+void permute_solution::DFS(vector<int> &nums, vector<bool> &used) {
+    if (temp.size() == nums.size()) {
+        ans.emplace_back(temp);
+        return;
+    }
+    for (int i = 0; i < nums.size(); ++i) {
+        if (used[i]) {
+            continue;
+        }
+        temp.emplace_back(i, nums[i]);
+        used[i] = true;
+        DFS(nums, used);
+        int index = temp[temp.size() - 1].first;
+        temp.pop_back();
+        used[index] = false;
+    }
+
+}

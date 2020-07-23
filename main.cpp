@@ -2260,7 +2260,8 @@ int main() {
   return 0;
 }
 */
-
+// leetcode_73  矩阵置0
+/*
 int main() {
   vector<vector<int>> matrix = {{1, 1, 1},
                                  {1, 0, 1},
@@ -2268,7 +2269,58 @@ int main() {
   
   setZero_73_solution solu;
   solu.setZero(matrix);
+
+
+  return 0;
+}
+*/
+// // 组合 leetcode_77
+/*
+int main() {
+  int n = 4, k = 2;
+  combine_77_solution solu;
+  solu.combine2(n, k);
+
+
+  return 0;
+}
+*/
+
+// 子集 leetcode_78
+/*
+int main() {
+  subsets_78_solution solu;
+  vector<int> nums = {1, 2, 3};
+  solu.subsets(nums);
   
+
+  return 0;
+}
+*/
+
+// 组合
+/*
+int main() {
+  permute_solution solu;
+  vector<int> nums = {1, 2, 3};
+  solu.permute(nums);
+
+
+  return 0;
+}
+*/
+// 搜索旋转数组 leetcode_81
+int main() {
+  search_81_solution solu;
+  vector<int> nums = {3, 5, 6, 0, 0, 1, 2};
+  int target = 0;
+
+  bool ans = solu.search(nums, target);
+  if (ans) {
+    cout << "the target is in nums" << endl;
+  } else {
+    cout << "the target is not in nums" << endl;
+  }
 
   return 0;
 }

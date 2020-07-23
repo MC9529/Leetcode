@@ -1188,6 +1188,13 @@ public:
     int search(vector<int> &nums, int target);
 
 };
+// 搜索旋转数组 leetcode_81
+
+class search_81_solution {
+public:
+    bool search(const vector<int> &nums, const int target);
+};
+
 // 字符相乘 leetcode_43
 class multiply_43_solution {
 public:
@@ -1229,3 +1236,40 @@ class setZero_73_solution {
 public:
     void setZero(vector<vector<int>> &matrix);
 };
+
+// 组合 leetcode_77
+class combine_77_solution {
+public:
+    // 从1到n, k个数的组合，不需要顺序
+    vector<vector<int>> combine(int n, int k);
+    void DFS(int &cur_posi, int n, int k, vector<int> &temp, 
+        vector<bool> &used, vector<vector<int>> &ans);
+    /// way_2
+    vector<vector<int>> combine2(int n, int k);
+    void trackback(int i, vector<bool> &vis, int n, int k, int len);
+private:
+    vector<int> temp;
+    vector<vector<int>> ans;
+};
+
+// 子集 leetcode_78
+class subsets_78_solution {
+public:
+    vector<vector<int>> subsets(vector<int> &nums);
+    void DFS(int start, vector<int> &temp, const vector<int> &nums);
+private:
+    vector<vector<int>> ans;
+    vector<int> temp;
+
+};
+// 排列 
+class permute_solution {
+public:
+    vector<vector< pair<int, int> >> permute(vector<int> &nums);
+    void DFS(vector<int> &nums, vector<bool> &used);
+private:
+    vector<vector< pair<int, int> >> ans;
+    vector<pair<int, int>> temp;
+};
+
+//
