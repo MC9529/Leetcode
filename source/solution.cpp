@@ -8465,3 +8465,39 @@ void permute_solution::DFS(vector<int> &nums, vector<bool> &used) {
     }
 
 }
+
+vector<int> minimumTotal_120_solution::minimumTotal(
+                     vector<vector<int>> &triangle) {
+    vector<int> ans;
+    int cur_posi = 0;
+    for (int i = 0; i < triangle.size(); ++i) {
+        vector<int> temp = triangle[i];
+        int min_flag = 0;
+        int min_value = 100000;
+        for (int j = cur_posi; j <= cur_posi + 1; ++j) {
+            if (j > temp.size() - 1) {
+                continue;
+            }
+            cout << "the temp and min_value: "
+                 << temp[j] << " " << min_value << endl;
+            if (temp[j] < min_value) {
+                min_value = temp[j];
+                min_flag = j;
+            }
+        }
+        cout << "the cur_posi: " << min_flag << endl;
+        cout << "the min_element: " << temp[min_flag] << endl;
+        cur_posi = min_flag;
+        ans.emplace_back(temp[min_flag]);
+    }
+
+    for (int i = 0; i < ans.size(); ++i) {
+        cout << ans[i] << " ";
+    }
+    cout << endl;
+
+
+    return ans;
+
+}
+

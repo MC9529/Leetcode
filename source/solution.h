@@ -1272,4 +1272,8 @@ private:
     vector<pair<int, int>> temp;
 };
 
-//
+// 三角形最小路径和 leetcode_120
+class minimumTotal_120_solution {
+public:
+    vector<int> minimumTotal(vector<vector<int>> &triangle);
+};

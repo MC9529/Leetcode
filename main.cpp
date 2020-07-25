@@ -2310,6 +2310,7 @@ int main() {
 }
 */
 // 搜索旋转数组 leetcode_81
+/*
 int main() {
   search_81_solution solu;
   vector<int> nums = {3, 5, 6, 0, 0, 1, 2};
@@ -2321,6 +2322,18 @@ int main() {
   } else {
     cout << "the target is not in nums" << endl;
   }
+
+  return 0;
+}
+*/
+int main() {
+  vector<vector<int>> nums = { {2},
+                              {3, 4},
+                             {6, 5, 7},
+                            {4, 1, 8, 3} };
+  
+  minimumTotal_120_solution solu;
+  solu.minimumTotal(nums);
 
   return 0;
 }
