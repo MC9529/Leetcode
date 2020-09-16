@@ -1277,3 +1277,9 @@ class minimumTotal_120_solution {
 public:
     vector<int> minimumTotal(vector<vector<int>> &triangle);
 };
+
+// leetcode_85 最大矩形
+class maximalRectangle_85_solution {
+public:
+    int maxmalRectangle(vector<vector<int>> &matrix);
+};
