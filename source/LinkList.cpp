@@ -1,41 +1,8 @@
+#include "LinkList.h"
 
-#pragma once
-#include <string>
-#include <iostream>
+
 using namespace std;
 
-// 节点
-struct Node {
-    int val;
-    Node *next;
-    // Node(int x): val(x), next(NULL) {}
-};
-
-
-// 链表
-
-class LinkList {
-public: 
-    LinkList();
-    ~LinkList();
-    void creatLinkList(int size);
-    void creatLinkList_one(int num);
-    void ByeLinkList();
-    void TravelLinkList();
-    void insertLinkList(int data, int posi);
-    void deleteLinkLint(int n);
-    
-    int Getlen();
-    bool Isempty();
-    // 链表头
-    Node *head;
-    Node *current;
-    // 长度
-    int size;
-
-};
-
-/*
 int LinkList::Getlen() {
     cout << "the len : " << this->size << endl;
     return this->size;
@@ -152,7 +119,7 @@ LinkList::LinkList() {
 LinkList::~LinkList() {
     ByeLinkList();
     delete head;
-    cout << "destory the list" << endl;
+    cout << "destory the head" << endl;
 }
 
  void LinkList::creatLinkList(int n) {
@@ -231,4 +198,3 @@ LinkList::~LinkList() {
 
  }
  
- */

@@ -3767,6 +3767,7 @@ void levelOrder_102_solution::levelOrder(Bitnode<char> * root) {
     }
 
 }
+
 ///队列
 void levelOrder_102_solution::levelOrder2(Bitnode<char>* root) {
     queue<Bitnode<char>*> vec;
@@ -3798,6 +3799,7 @@ void levelOrder_102_solution::levelOrder3(Bitnode<char>* root) {
     return;
 
 }
+
 void levelOrder_102_solution::DFS(Bitnode<char>* root, int n) {
     res[n].push_back(root->val);
     if (root->left) DFS(root->left, n + 1);
@@ -4093,7 +4095,7 @@ void findBottomLeftValue_513_solution::findBottomLeftValue(Bitnode<char>* root) 
     }
 
 }
-////在每一个树行中找最大值
+////在每一个树��中找最大值
 void largestValue_515_solution::largestValue(Bitnode<char>* root) {
     queue<Bitnode<char>* > vec;
     vec.push(root);
@@ -6199,7 +6201,7 @@ int jump_45_solution::jump2(vector<int> &nums) {
     int end = 0, farthest = 0;
     int jumps = 0;
     for (int i = 0; i < n - 1; i++) {
-        // 该posi 所能达到的最大位置
+        // 该posi 所能达到���最大位置
         farthest = max(nums[i] + i, farthest);
         if (end == i) {
             jumps++;

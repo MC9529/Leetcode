@@ -10,8 +10,9 @@
 #include "solution.h"
 #include "job.h"
 #include <vector>
-#include "BiTree.h"
-#include "LinkList.h"
+// #include "BiTree.h"
+// #include "LinkList.h"
+
 using namespace std;
 // leetcode_120
 
@@ -70,6 +71,9 @@ int main() {
 }
 */
 
+// 创建一个链表
+
+/*
 int main() {
 
     LinkList list;
@@ -106,5 +110,166 @@ int main() {
      list.Getlen();
     list.Isempty();
     list.TravelLinkList();
+    return 0;
+}
+*/
+
+// offer06 从尾到头打印链表
+/*
+int main() {
+
+    LinkList list;
+    list.creatLinkList_one(1);
+    list.creatLinkList_one(2);
+    list.creatLinkList_one(3);
+    list.creatLinkList_one(4);
+    list.TravelLinkList();
+    offer06 solu;
+    solu.reverseprint(list.head);
+    
+    return 0;
+}
+*/
+
+// // offer 24 反转链表
+/*
+int main() {
+
+    LinkList list;
+    list.creatLinkList_one(1);
+    list.creatLinkList_one(2);
+    list.creatLinkList_one(3);
+    list.creatLinkList_one(4);
+    list.TravelLinkList();
+    offer24 solu;
+    solu.reverselist(list.head);
+    list.TravelLinkList();
+
+    return 0;
+}
+*/
+
+/*
+int main() {
+  Tree<char> my_tree;
+  //A{ B {C, },  D} ->ABC###D##
+  //      A
+  //     / \
+  //     B  D
+  //    /
+  //   C
+  //A{B{, D}, C}  ->AB#D##C##
+  Bitnode<char>* root = my_tree.GetRoot();
+  cout << "the res in inorder:" << endl;
+  my_tree.InOrder(root);
+  cout << "the res in preorder:" << endl;
+  my_tree.PreOrder(root);
+  cout << "the res in postorder:" << endl;
+  my_tree.PostOrder(root);
+  //层次
+  my_tree.PrintNode_style(root);
+  cout << endl;
+  my_tree.~Tree();
+
+  return 0;
+}
+*/
+// offer07 重建二叉树
+/*
+
+int main() {
+    offer07 solu;
+    vector<int> preorder = {3, 9, 20, 15, 7};
+    vector<int> inorder = {9, 3, 15, 20, 7};
+
+    Bitnode<int> *tree = solu.buildTree(preorder, inorder);
+
+    solu.levelorder(tree);
+    for (int i = 0; i < solu.res.size(); ++i) {
+        vector<int> temp = solu.res[i];
+        for (auto iter: temp) {
+            cout << iter << " ";
+        }
+        cout << endl;
+    }
+    
+   
+    return 0;
+}
+*/
+
+/*
+int main() {
+     queue2stack solu;
+     int temp = 1;
+     solu.push(temp);
+
+     solu.push(2);
+     solu.push(3);
+     solu.push(4);
+
+     cout << "the top: " << solu.top() << endl;
+     cout << "the top1: " << solu.top_element << endl;
+     solu.pop();
+
+     cout << "the top: " << solu.top() << endl;
+     cout << "the top1: " << solu.top_element << endl;
+     solu.pop();
+
+     cout << "the top: " << solu.top() << endl;
+     cout << "the top1: " << solu.top_element << endl;
+     solu.pop();
+
+     cout << "the top: " << solu.top() << endl;
+     cout << "the top1: " << solu.top_element << endl;
+     solu.pop();
+      
+     solu.pop();
+     
+
+
+    return 0;
+}
+*/
+
+int main () {
+    stack2queue solu;
+    
+    int temp = 1;
+     solu.push(temp);
+
+     solu.push(2);
+     solu.push(3);
+     solu.push(4);
+     solu.pop();
+
+     
+     cout << "the top: " << solu.front() << endl;
+     // cout << "the top1: " << solu.top_element << endl;
+      solu.push(5);
+
+     solu.pop();
+
+     cout << "the top: " << solu.front() << endl;
+     // cout << "the top1: " << solu.top_element << endl;
+     solu.pop();
+
+     cout << "the top: " << solu.front() << endl;
+     // cout << "the top1: " << solu.top_element << endl;
+     solu.pop();
+
+     cout << "the top: " << solu.front() << endl;
+     // cout << "the top1: " << solu.top_element << endl;
+     solu.pop();
+
+     cout << "the top: " << solu.front() << endl;
+     // cout << "the top1: " << solu.top_element << endl;
+     solu.pop();
+      
+     solu.pop();
+     
+
+
+
     return 0;
 }

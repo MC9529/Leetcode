@@ -24,10 +24,6 @@ struct ListNode {
 
 
 
-
-
-
-
 // offer 03 数组中重复的数字
 void offer03::findRepeatNum(vector<int> &nums) {
     unordered_map<int, int> map;
@@ -123,5 +119,191 @@ void offer05::replaceSpace2(string s) {
     }
     cout << s << endl;
     return;
+
+}
+
+// offer06 从尾到头打印链表
+
+
+void offer06::reverseprint(Node *head) {
+    stack<int> stack_list;
+    Node *ptemp = head;
+    while(ptemp->next != NULL) {
+        int temp_val = ptemp->next->val;
+        stack_list.emplace(temp_val);
+        // Node *ptemp2 = ptemp;
+        ptemp = ptemp->next;
+    }
+    cout << "the res: " << endl;
+    while(!stack_list.empty()) {
+        cout << stack_list.top() << " ";
+        stack_list.pop();
+    }
+    cout << endl;
+    return;
+
+}
+
+// // offer 24 反转链表
+void offer24::reverselist(Node *head) {
+    stack<int> stack_list;
+    Node *ptemp = head;
+    while(ptemp->next != NULL) {
+        int temp_val = ptemp->next->val;
+        stack_list.emplace(temp_val);
+        // Node *ptemp2 = ptemp;
+        ptemp = ptemp->next;
+    }
+
+    while (head->next != NULL) {
+        head->next->val = stack_list.top();
+        stack_list.pop();
+        head = head->next;
+    }
+
+    
+    cout << endl;
+
+    return;
+}
+
+Bitnode<int>* offer07::buildTree(vector<int> &preorder, vector<int> &inorder) {
+    for (int i = 0; i < inorder.size(); ++i) {
+        map[inorder[i]] = i;
+    }
+    
+    return dfs(preorder, inorder, 0, 0, inorder.size() - 1);
+
+
+}
+
+// 中序的 start  end  前序的 root
+Bitnode<int>* offer07::dfs(vector<int> &preorder, vector<int> &inorder, int root, int start, int end) {
+    if (start > end) return NULL;
+    Bitnode<int> * head = new Bitnode<int>( preorder[root] );
+    // 找到 root 在前序的位置
+    /*
+    int i = start;
+    while (i < end && preorder[root] != inorder[i]) {
+        i ++;
+    }
+    */
+    int i = map[preorder[root]];
+
+    head->left = dfs(preorder, inorder, root + 1, start, i - 1);
+    head->right = dfs(preorder, inorder, root + 1 + i - start, i + 1, end);
+
+    return head;
+
+
+}
+
+void offer07::levelorder(Bitnode<int>* root) {
+    if (!root) return;
+    int n = howlen(root);
+    res.resize(n);
+    DFS(root, 0);
+    return;
+
+}
+void offer07::DFS(Bitnode<int>* root, int n) {
+    res[n].push_back(root->val);
+    if (root->left) DFS(root->left, n + 1);
+    if (root->right) DFS(root->right, n + 1); 
+
+}
+
+int offer07::howlen(Bitnode<int>* root) {
+    if (root == NULL) return 0;
+    return max(howlen(root->left), howlen(root->right)) + 1;
+
+}
+
+// 用队列实现栈
+
+void queue2stack::push(int x) {
+    queue1.push(x);
+    top_element = x;
+    count ++;
+    return;
+
+
+}
+int queue2stack::pop() {
+
+    int len = queue1.size();
+    if (queue1.empty()) {
+        cout << "the stack is empty" << endl;
+        return -404;
+    }
+    while(len > 1) {
+        int temp = queue1.front();
+        if (len == 2) {
+            top_element = temp;
+        }
+        queue1.pop();
+        queue1.push(temp);
+        len --;
+    }
+    int pop_element = queue1.front();
+    queue1.pop();
+    return pop_element;
+
+}
+int queue2stack::top() {
+    if (queue1.empty()) {
+        cout << "there is no top element" << endl;
+        return -404;
+    }
+    return top_element;
+
+}
+bool queue2stack::empty() {
+    if (queue1.empty()) {
+        return true;
+    }
+    return false;
+
+}
+
+// stack_2_queue
+
+void  stack2queue::push(int x) {
+    s1.push(x);
+    return;
+
+}
+
+int stack2queue::pop() {
+    if (empty()) {
+        cout << "the queueu is empty" << endl;
+        return -404;
+    }
+    int res = front();
+    s2.pop();
+    return res;
+
+}
+int stack2queue::front() {
+    if (empty()) {
+        cout << "the queueu is empty" << endl;
+        return 404;
+    }
+    if (s2.empty()) {
+        while(!s1.empty()) {
+            s2.push(s1.top());
+            s1.pop();
+        }
+    }
+    return s2.top();
+
+
+}
+
+bool stack2queue::empty() {
+    if (s1.empty() && s2.empty()) {
+        return true;
+    }
+    return false;
 
 }
