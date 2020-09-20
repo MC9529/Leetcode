@@ -232,6 +232,7 @@ int main() {
 }
 */
 
+/*
 int main () {
     stack2queue solu;
     
@@ -267,7 +268,33 @@ int main () {
      solu.pop();
       
      solu.pop();
-     
+    
+
+
+    return 0;
+}
+*/
+
+// 费波那契数列
+/*
+int main() {
+
+    offer10 solu;
+    for (int i = 1; i < 10; ++i) {
+        solu.fib(i);
+    }
+    // solu.fib(7);
+
+    return 0;
+}
+*/
+// 青蛙跳台 offer10_2
+int main() {
+    offer10_2 solu;
+    for (int i = 0; i < 10; ++i) {
+
+        solu.numWays(i);
+    }
 
 
 

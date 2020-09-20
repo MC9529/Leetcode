@@ -92,3 +92,15 @@ public:
 
 };
 
+// offer_10 费伯纳起数列
+class offer10 {
+public:
+    long long fib(int n);
+    vector<long long> dp = {0, 1};
+};
+
+// offer10_2 青蛙跳台
+class offer10_2 {
+public:
+    int numWays(int n);
+};
