@@ -350,3 +350,149 @@ int offer10_2::numWays(int n) {
     return ans;
 
 }
+
+// 旋转数组的最小值  二分法
+// 递增的数组，则
+int  offer11::minArray(vector<int> &nums) {
+    int low = 0;
+    int high = nums.size() - 1;
+    while(low < high) {
+        int mid = low + (high - low) / 2;
+        // 只要右边比中间大，则右边一定是有序数组
+        // 中间值小于右边值，则最小值在左边
+        if (nums[mid] < nums[high]) {
+            high = mid;
+        } else if (nums[mid] > nums[high]) {
+            low = mid + 1;
+        } else {
+            high = high - 1;
+        }
+    }
+    cout << "the res: " << nums[low] << endl;
+
+    return nums[low];
+
+}
+// offer12 矩阵中的路径
+
+ bool offer12::exit(vector<vector<char>> &board,
+                     string word) {
+    vector<pair<int, int> > temp_path;
+    bool ans = false;
+    word_ = word;
+    board_ = board;
+    int cur_posi = 0;
+    for (int i = 0; i < board.size(); ++i) {
+        for (int j = 0; j < board[0].size(); ++j) {
+            cout << "i and j" << i << " " << j << endl;
+            dfs(i, j, cur_posi, ans, temp_path);
+
+        }
+    }
+    for (int i = 0; i < path.size(); ++i) {
+        vector<pair<int, int> > iter_path = path[i];
+        for (int j = 0; j < iter_path.size(); ++j) {
+            cout << iter_path[j].first << " " << iter_path[j].second << "->";
+        }
+        cout << endl;
+        
+    }
+    cout << endl;
+    return ans;
+
+ }
+
+ void offer12::dfs(int row, int col, int &cur_posi, bool &ans,
+                   vector<pair<int, int> > &temp_path) {
+
+     if (cur_posi == word_.size()) {
+         path.emplace_back(temp_path);
+         ans = true;
+         return;
+     }
+     if (board_[row][col] == word_[cur_posi]) {
+        temp_path.push_back({row, col});
+         for (int k = 0; k < direction.size(); ++k) {
+             int temp_row = row + direction[k][0];
+             int temp_col = col + direction[k][1];
+             if ( (temp_row >= 0 && temp_row < board_.size()) &&
+                  (temp_col >= 0 && temp_col < board_[0].size()) ) {
+                      int temp_posi = cur_posi + 1;
+                      dfs(temp_row, temp_col, temp_posi, ans, temp_path);
+
+                }
+         }
+
+     } else {
+         return;
+     }
+
+ }
+
+ // offer13 机器人的运动范围
+ int offer13::movingCount(int m, int n, int k) {
+    int temp = 0;
+    vector<vector<bool>> visiter(m, vector<bool>(n, false));
+    int cur_row = 0, cur_col = 0;
+    dfs(cur_row, cur_col, m, n, k, temp, visiter);
+    cout << "the res: " << longest << endl;
+    return longest;
+    
+
+ }
+
+ void offer13::dfs(int &row, int &col, int m, int n,
+        int k, int &temp, vector<vector<bool>> &visiter) {
+    if (!enter(row, col, k)) {
+
+        if (longest < temp) {
+            longest = temp;
+        }
+        cout << "can not enter" << endl;
+        return;
+    } else {
+        visiter[row][col] = true;
+
+        for (int k = 0; k < direction.size(); ++k) {
+             int temp_row = row + direction[k][0];
+             int temp_col = col + direction[k][1];
+             if ( (temp_row >= 0 && temp_row < m &&
+                   temp_col >= 0 && temp_col < n) && 
+                   !visiter[temp_row][temp_col]) {
+
+                      int new_temp = temp + 1;
+                      cout << "the temp: " << new_temp << endl;
+                      dfs(temp_row, temp_col, m, n, k, new_temp, visiter);
+
+                }
+         }
+        
+    }
+
+ }
+
+ bool offer13::enter(int row, int col, int k) {
+     bool ans = false;
+     int sum_row = sum(row);
+     int sum_col = sum(col);
+     cout << "the sum of row: " << sum_row
+          << " " << "col: " << sum_col << endl;
+     if (sum_col + sum_row > k) {
+         ans = false;
+     } else {
+         ans = true;
+     }
+
+     return ans;
+ }
+
+ int offer13::sum(int num) {
+     int ans = 0;
+     while(num > 0) {
+         int temp = num % 10;
+         ans = ans + temp;
+         num = num / 10;
+     }
+     return ans;
+
+ }

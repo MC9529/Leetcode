@@ -289,6 +289,7 @@ int main() {
 }
 */
 // 青蛙跳台 offer10_2
+/*
 int main() {
     offer10_2 solu;
     for (int i = 0; i < 10; ++i) {
@@ -296,6 +297,49 @@ int main() {
         solu.numWays(i);
     }
 
+
+
+    return 0;
+}
+*/
+// 旋转数组的最小值  二分法
+/*
+int main() {
+    offer11 solu;
+    vector<int> nums = {3, 4, 5, 6, 1, 2};
+    solu.minArray(nums);
+
+
+    return 0;
+}*/
+
+// offer12 矩阵中的路径
+
+/*
+int main() {
+    offer12 solu;
+    // string word = "abcd";
+    string word = "ABCCED";
+    vector<vector<char>> borad = { {'A', 'B', 'C', 'E'},
+                                    {'S', 'F', 'C', 'S'},
+                                    {'A', 'D', 'E', 'E'} };
+
+    bool ans = solu.exit(borad, word);
+    if(ans) {
+        cout << "there exit" << endl;
+    } else {
+        cout << "there do not exit" << endl;
+    }
+
+
+    return 0;
+}
+*/
+int main() {
+    offer13 solu;
+    // int m = 2, n = 3, k = 1;
+    int m = 3, n = 1, k = 0;
+    solu.movingCount(m, n, k);
 
 
     return 0;

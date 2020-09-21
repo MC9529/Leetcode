@@ -104,3 +104,41 @@ class offer10_2 {
 public:
     int numWays(int n);
 };
+
+// 旋转数组的最小值  二分法
+class offer11 {
+public:
+   int minArray(vector<int> &nums);
+};
+
+// offer12 矩阵中的路径
+class offer12 {
+public:
+    bool exit(vector<vector<char>> &board, string word);
+
+    vector<vector<char>> board_;
+    string word_;
+    void dfs(int i, int j, int &cur_posi, bool &ans,
+              vector<pair<int, int> > &temp_path);
+
+    vector<vector<int>> direction = { {1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+    vector<vector<pair<int, int> > > path;
+
+};
+
+// offer13 机器人的运动范围
+class offer13 {
+public:
+    int movingCount(int m, int n, int k);
+    void dfs(int &row, int &col, int m,
+             int n, int k, int &temp,
+             vector<vector<bool>> &visiter);
+
+    int longest = 0;
+    vector<vector<int>> direction =
+        {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+    
+    bool enter(int row, int col, int k);
+    int sum(int num);
+};
+
