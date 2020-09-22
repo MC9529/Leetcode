@@ -335,12 +335,35 @@ int main() {
     return 0;
 }
 */
+
+// offer13 机器人的运动范围
+/*
 int main() {
     offer13 solu;
     // int m = 2, n = 3, k = 1;
     int m = 3, n = 1, k = 0;
     solu.movingCount(m, n, k);
 
+
+    return 0;
+}
+*/
+
+/*
+// // offer14_1 割绳子
+int main() {
+    offer14_1 solu;
+    int n = 10;
+    solu.cuttingRope(n);
+
+    return 0;
+}
+*/
+
+int main() {
+    offer15 solu;
+    int n = 4;
+    solu.hammingWeight(n);
 
     return 0;
 }

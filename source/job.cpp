@@ -496,3 +496,69 @@ int  offer11::minArray(vector<int> &nums) {
      return ans;
 
  }
+
+// offer14_1 割绳子
+ int offer14_1::cuttingRope(int n) {
+     vector<vector<int>> path(n + 1, vector<int>());
+     vector<int> temp;
+     path.push_back(temp);
+     path.push_back(temp);
+     temp = {1, 1};
+     path.push_back(temp);
+     vector<int> dp(n + 1, 0);
+     dp[0] = 0, dp[1] = 0, dp[2] = 1;
+     for (int i = 3; i <= n; ++i) {
+         vector<int> temp_path;
+         int max_res = 0;
+
+         for (int j = 1; j < i; ++j) {
+             // j * (i - j) 不继续分
+             // j * dp[i-j] 继续分
+             
+             if ( j * (i - j) >= j * dp[i - j]) {
+                 max_res = j * (i - j);
+                 temp_path = {j, (i - j)};
+
+             } else {
+                 max_res = j * dp[i - j];
+                 temp_path = path[i - j];
+                 temp_path.push_back(j);
+             }
+
+             if (dp[i] > max_res) {
+                max_res = dp[i];
+                temp_path = path[i];
+
+             } 
+             dp[i] = max_res;
+             path[i] = temp_path;
+             // dp[i] = max(dp[i], max( (j * (i - j)), j * dp[i-j]) );
+         }
+          
+         // dp[i] = max_res;
+         // path[i] = temp_path;
+     }
+     cout << "the sement of rope: " << endl; 
+     for (int i = 0; i < path[n].size(); ++i) {
+         cout << path[n][i] << " ";
+     }
+     cout << endl;
+     cout << "the bigesst res: " << dp[n] << endl;
+     return dp[n];
+
+ }
+
+ // 二进制中1的个数
+ int offer15::hammingWeight(int n) {
+     int res = 0;
+     while (n > 0) {
+         int temp = n % 2;
+         if (temp == 1) {
+             res ++;
+         }
+         n = n /2;
+     }
+     cout << "the res: " << res << endl;
+     return res;
+
+ }

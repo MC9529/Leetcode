@@ -142,3 +142,14 @@ public:
     int sum(int num);
 };
 
+// offer14_1 割绳子
+class offer14_1 {
+public:
+    int cuttingRope(int n);
+};
+
+// 二进制中1的个数
+class offer15 {
+public:
+    int hammingWeight(int n);
+};
