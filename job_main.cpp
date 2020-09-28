@@ -360,10 +360,161 @@ int main() {
 }
 */
 
+ // 二进制中1的个数
+ /*
 int main() {
     offer15 solu;
     int n = 4;
     solu.hammingWeight(n);
 
     return 0;
+}
+*/
+ // offer_16 数值的整数次方
+
+ /*
+ int main() {
+    offer16 solu;
+    double x = 2.1000;
+    int n = 3;
+    solu.mypow(x, n);
+
+
+     return 0;
+ }
+ */
+
+
+
+// offer18 删除链表的节点
+
+/*
+int main() {
+    LinkList list;
+    list.creatLinkList_one(1);
+    list.creatLinkList_one(2);
+    list.creatLinkList_one(3);
+    list.creatLinkList_one(3);
+    list.creatLinkList_one(4);
+    list.TravelLinkList();
+    int val = 3;
+    offer18 solu;
+    solu.deleteNode(list.head, val);
+
+    list.TravelLinkList();
+
+
+    return 0;
+}
+*/
+// offer21 调整数组顺序使得奇数位于偶数前面
+
+/*
+int main() {
+
+   offer21 solu;
+   vector<int> nums = {1, 2, 3, 4, 5, 6};
+   solu.exchange(nums);
+   return 0;
+}
+*/
+
+ // offer24 反转链表
+/*
+int main() {
+
+    LinkList list;
+    list.creatLinkList_one(1);
+    list.creatLinkList_one(2);
+    list.creatLinkList_one(3);
+    list.creatLinkList_one(3);
+    list.creatLinkList_one(4);
+    list.TravelLinkList();
+
+    offer241 solu;
+    Node * head = solu.reverseList(list.head);
+
+
+    return 0;
+}
+*/
+
+
+/*
+int main() {
+
+  Tree<char> my_tree;
+  // Tree<char> my_tree_2;
+  //A{ B {C, },  D} ->ABC# ## D##
+  //      A
+  //     / \
+  //     B  D
+  //    /
+  //   C
+  //A{B{, D}, C}  ->ABD###C##
+  //      A
+  //     / \
+  //     B  C
+  //    /
+  //   D
+  Bitnode<char>* root = my_tree.GetRoot();
+  // Bitnode<char>* root2 = my_tree_2.GetRoot();
+  
+  cout << "the res in inorder:" << endl;
+  my_tree.InOrder(root);
+  /*
+  cout << "the res in preorder:" << endl;
+  my_tree.PreOrder(root);
+  cout << "the res in postorder:" << endl;
+  my_tree.PostOrder(root);
+  //层次
+  my_tree.PrintNode_style(root);
+  cout << endl;
+  // Bitnode<char>* root2 = my_tree.GetRoot();
+  cout << endl;
+*/
+
+/*
+  string a = "abcdefg";
+  string b = "cdde";
+  offer26 solu;
+  solu.judge(a, b);
+  string str_root;
+  solu.preOrder(root, str_root);
+  cout << "the preorder: " << str_root << endl;
+  // Bitnode<char>* root2 = my_tree.GetRoot();
+  // solu.isSubstructure(root, root2);
+  // my_tree.~Tree();
+
+  return 0;
+}
+
+*/
+
+// // offer27 二叉树的镜像
+
+int main() {
+
+    Tree<char> my_tree;
+  // Tree<char> my_tree_2;
+  //A{ B {C, },  D} ->ABC# ## D##
+  //      A
+  //     / \
+  //     B  D
+  //    /
+  //   C
+  //A{B{, D}, C}  ->ABD###C##
+  //      A
+  //     / \
+  //     B  C
+  //    /
+  //   D
+  Bitnode<char>* root = my_tree.GetRoot();
+   //层次
+  my_tree.PrintNode_style(root);
+  offer27 solu;
+  solu.mirrorTree(root);
+  my_tree.PrintNode_style(root);
+
+  return 0;
 }

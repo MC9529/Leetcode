@@ -562,3 +562,173 @@ int  offer11::minArray(vector<int> &nums) {
      return res;
 
  }
+
+ // 数值的整数次方
+ double offer16::mypow(double x, int n) {
+     int n_ = n;
+     double x_ = x;
+     if (n < 0) {
+         n_ = abs(n);
+         x_ = 1.0 / x;
+     }
+     vector<double> dp(n_ + 1, 0.0);
+     dp[0] = 0.0;
+     dp[1] = x_;
+     for (int i = 2; i <= n_; ++i) {
+         cout << "dp[i-1]: " << dp[i-1] << endl; 
+         dp[i] = dp[i-1] * x_;
+     }
+     cout << "the res: " << dp[n_] << endl;
+     return dp[n_];
+ }
+
+ // offer18 删除链表的节点
+ Node* offer18::deleteNode(Node *head, int val) {
+     Node *temp_head = head;
+     while (temp_head->next != NULL) {
+
+          Node *target_node = temp_head->next;
+
+         int temp_val = target_node->val;
+         if (temp_val == val) {
+            temp_head->next = target_node->next;
+            free(target_node);
+            // return head;
+
+         } else {
+             temp_head = temp_head->next;
+         }
+
+     }
+     return head;
+
+ }
+
+// offer21 调整数组顺序使得奇数位于偶数前面
+ vector<int> offer21::exchange(vector<int> &nums) {
+     for (int i = 0; i < nums.size(); ++i) {
+         if (nums[i] % 2 == 1) {
+            int temp_val = nums[i];
+
+            for (int j = i; j >= 1; --j) {
+                nums[j] = nums[j -1];
+            }
+
+            nums[0] = temp_val;
+         }
+     }
+
+    for (int i = 0; i < nums.size(); ++i) {
+
+        cout << nums[i] << " ";
+    }
+    cout << endl;
+    return nums;
+
+ }
+ // offer24 反转链表
+
+ Node *offer241::reverseList(Node *head) {
+     stack<Node*> node_stack;
+     Node *temp_head = head;
+     while(temp_head->next != NULL) {
+         node_stack.emplace(temp_head->next);
+         temp_head = temp_head->next;
+     }
+
+     Node *new_head;
+     Node *tail = new_head;
+     while(node_stack.empty()) {
+         tail->next = node_stack.top();
+         tail = tail->next;
+         node_stack.pop();
+     }
+
+     return new_head;
+
+ }
+
+// 树的子结构
+bool offer26::isSubstructure(Bitnode<char> *A, Bitnode<char> *B) {
+    bool res = false;
+    string str_A, str_B;
+    preOrder(A, str_A);
+    preOrder(B, str_B);
+    
+    if (judge(str_B, str_A) || judge(str_A, str_B)) {
+        res = true;
+    }
+    if (res) {
+        cout << "yes" <<endl;
+    } else {
+        cout << "no" <<endl;
+    }
+
+    return res;
+
+}
+
+
+void offer26::preOrder(Bitnode<char> *A, string &str_A) {
+    if (A->left != NULL) {
+        preOrder(A->left, str_A);
+    }
+    str_A.push_back(A->val);
+    if (A->right != NULL) {
+       preOrder(A->right, str_A);
+    }
+    return;
+}
+bool offer26::judge(const string &a,const string &b) {
+    int i,j;
+    bool res = false;
+    if(a.length()<b.length()) {
+        res = false;
+        cout << "not the substr" << endl;
+        return res;
+    }
+    for(i=0;i<a.length();i++){
+        for(j=0;j<b.length();j++){
+            if(a[i+j]!=b[j])
+                break;   // 字符不相等，退出
+        }
+        if(j==b.length()) { // 达到了b.length,说明字符全部相等
+            cout << "yes, is the substr" <<endl;
+            res = true;
+            return res;
+        }
+    }
+    cout << "not the substr" << endl;
+    return false;
+
+}
+
+// offer27 二叉树的镜像
+Bitnode<char> *offer27::mirrorTree(Bitnode<char> *root) {
+    if (root == NULL || 
+       (root->left == NULL && root->right !=NULL) || 
+       (root->right == NULL && root->left !=NULL) ) {
+        cout << "the tree is the mirror tree " << endl;
+        return NULL;
+
+    } 
+    mirror(root);
+    mirrorTree(root->left);
+    mirrorTree(root->right);
+    
+
+   
+    return root;
+
+}
+
+void offer27::mirror(Bitnode<char> *root) {
+    if (!root || (!root->left && !root->right ) ) {
+        return;
+    }
+    Bitnode<char> * tmp = root->left;
+    root->left = root->right;
+    root->right = tmp;
+    
+
+}

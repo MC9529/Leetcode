@@ -62,7 +62,7 @@ void Tree<T>::PrintNode_style(Bitnode<T>* node) {
 template<typename T>
 Tree<T>::Tree() {
     T ch[100];
-    cout << "please input the string (the type: AB#D##C##): " << endl;
+    cout << "please input the string (the type: AB#D##C##): ";
     cin.get(ch, 100);
     int num = 0;
     m_root = createTree(ch, num);

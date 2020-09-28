@@ -153,3 +153,48 @@ class offer15 {
 public:
     int hammingWeight(int n);
 };
+
+// 数值的整数次方
+class offer16 {
+public:
+    double mypow(double x, int n);
+};
+
+// offer18 删除链表的节点
+class offer18 {
+public:
+    Node* deleteNode(Node *head, int val);
+
+};
+
+// offer21 调整数组顺序使得奇数位于偶数前面
+
+class offer21 {
+public:
+    vector<int> exchange(vector<int> &nums);
+
+};
+
+// offer24 反转链表
+class offer241 {
+public:
+    Node *reverseList(Node *head);
+};
+
+// 树的子结构
+class offer26 {
+public:
+   bool isSubstructure(Bitnode<char> *A, Bitnode<char> *B);
+   void preOrder(Bitnode<char> *A, string &str_A);
+   bool judge(const string &a,const string &b); // 判断b是不是a的子串
+};
+
+
+// offer27 二叉树的镜像
+class offer27 {
+public:
+   Bitnode<char> *mirrorTree(Bitnode<char> * root);
+   void mirror(Bitnode<char> * root);
+
+
+};
