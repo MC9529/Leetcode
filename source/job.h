@@ -196,5 +196,35 @@ public:
    Bitnode<char> *mirrorTree(Bitnode<char> * root);
    void mirror(Bitnode<char> * root);
 
+};
 
+// 对称的二叉数  offer28
+class offer28 {
+public:
+    bool issymmetric(Bitnode<char> *root);
+    bool judge(Bitnode<char> *left, Bitnode<char> *right);
+};
+
+// offer29 顺时针的打印矩阵
+class offer29 {
+public:
+    vector<int> spiralOrder(vector<vector<int>> &matrix);
+    void travel(vector<vector<bool>> &visited,
+                vector<vector<int>> &matrix, int row, int col, int direct);
+
+    vector<int> res;
+    vector<vector<int>> direction =
+        {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+};
+
+// 从上到下打印二叉树  offer32_1
+class offer321 {
+public:
+    vector<char> levelorder(Bitnode<char> *root);
+};
+
+// 从上到下打印二叉树  offer32_2
+class offer322 {
+public:
+    vector<vector<char>> levelorder(Bitnode<char> *root);
 };

@@ -730,5 +730,147 @@ void offer27::mirror(Bitnode<char> *root) {
     root->left = root->right;
     root->right = tmp;
     
+}
 
+//
+// 对称的二叉数  offer28
+bool offer28::issymmetric(Bitnode<char> *root) {
+    if (!root) return true;
+    return judge(root->left, root->right);
+
+}
+bool offer28::judge(Bitnode<char> *left, Bitnode<char> *right) {
+    if (!left && !right) return true;
+    if ((!left && right) && (left && !right)) return false;
+    if (left->val != right->val) {
+        return false;
+    }
+    return judge(left->left, right->right) &&
+           judge(left->right, right->left);
+
+}
+// offer29 顺时针的打印矩阵
+vector<int> offer29::spiralOrder(vector<vector<int>> &matrix) {
+
+    // vector<vector<int>> direction =
+    //     {{0, 1}, {1, 0}, {-1, 0}, {0, -1}};
+    vector<vector<bool>> visited( matrix.size(),
+                         vector<bool>(matrix[0].size(), false));
+    cout << "pass in 759" << endl;
+    travel(visited, matrix, 0, 0, 0);
+     cout << "pass in 761" << endl;
+    for (auto iter: res) {
+        cout << iter << " ";
+    }
+    cout << endl;
+    cout << "pass in 766" << endl;
+    return res;
+
+}
+
+void offer29::travel(vector<vector<bool>> &visited,
+vector<vector<int>> &matrix, int row, int col, int direct) {
+    if (res.size() == matrix.size() * matrix[0].size()) {
+        return;
+
+    }
+    res.push_back(matrix[row][col]);
+    visited[row][col] = true;
+    cout << "pass in 775" << endl;
+    int new_direct = direct;
+    int new_row = row + direction[new_direct][0];
+    int new_col = col + direction[new_direct][1];
+
+    if (new_row < 0 || new_row >= matrix.size() || new_col < 0 ||
+        new_col >= matrix[0].size() || visited[new_row][new_col] ) {
+
+        new_direct = direct + 1;
+        if (direct == 3) {
+            new_direct = 0;
+        }
+    }
+
+    cout << "pass in 789" << endl;
+    new_row = row + direction[new_direct][0];
+    new_col = col + direction[new_direct][1];
+    travel(visited, matrix, new_row, new_col, new_direct);
+     cout << "pass in 793" << endl;
+}
+
+// // 从上到下打印二叉树
+vector<char> offer321::levelorder(Bitnode<char> *root) {
+    vector<char> res;
+
+    queue<Bitnode<char> *> container;
+    container.push(root);
+    while( !container.empty() ) {
+
+        Bitnode<char> *temp = container.front();
+        res.push_back(temp->val);
+        if (temp->left) {
+            container.push(temp->left);
+        }
+        if (temp->right) {
+            container.push(temp->right);
+        }
+        container.pop();
+
+    }
+    cout << "the res: " << endl;
+    for (auto iter: res) {
+        cout << iter << " ";
+    }
+    cout << endl;
+    return res;
+}
+
+//
+vector<vector<char>> offer322::levelorder(Bitnode<char> *root) {
+    vector<vector<char>> res;
+
+    queue<Bitnode<char> *> container;
+    container.push(root);
+    int len_container = container.size();
+    vector<char> temp_res;
+    while( !container.empty() ) {
+        // vector<char> temp_res;
+        Bitnode<char> *temp = container.front();
+        temp_res.push_back(temp->val);
+        if (temp->left) {
+            container.push(temp->left);
+        }
+        if (temp->right) {
+            container.push(temp->right);
+        }
+        // if (len_container == 0) {
+        //     res.push_back(temp_res);
+        //     len_container = container.size();
+        //     temp_res.clear();
+        // }
+        container.pop();
+        len_container --;
+        if (len_container == 0) {
+            res.push_back(temp_res);
+            len_container = container.size();
+            temp_res.clear();
+        }
+
+    }
+
+    cout << "the res: " << endl;
+    for (int i = 0; i < res.size(); ++i) {
+        vector<char> iter_res = res[i];
+        for (auto iter: iter_res) {
+            cout <<  iter << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+
+
+
+
+
+    return res;
+    
 }

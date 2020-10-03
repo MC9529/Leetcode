@@ -493,6 +493,7 @@ int main() {
 
 // // offer27 二叉树的镜像
 
+/*
 int main() {
 
     Tree<char> my_tree;
@@ -517,4 +518,113 @@ int main() {
   my_tree.PrintNode_style(root);
 
   return 0;
+}
+*/
+
+// 对称的二叉数  offer28
+/*
+int main() {
+    bool res = false;
+    Tree<char> my_tree;
+  // Tree<char> my_tree_2;
+  //A{ B {C, },  D} ->ABC# ## D##
+  //      A
+  //     / \
+  //     B  D
+  //    /
+  //   C
+  //A{B{, D}, C}  ->ABD###C##
+  //      A
+  //     / \
+  //     B  C
+  //    /
+  //   D
+
+    Bitnode<char>* root = my_tree.GetRoot();
+    my_tree.PrintNode_style(root);
+    offer28 solu;
+    res = solu.issymmetric(root);
+    if (res) {
+        cout << "yse" << endl;
+    } else {
+        cout << "no" << endl;
+    }
+
+
+    return 0;
+}
+*/
+
+// offer29 顺时针的打印矩阵
+
+/*
+int main() {
+
+    vector<vector<int>> matrix = { {1, 2, 3},
+                                    {4, 5, 6}, 
+                                    {7, 8, 9} };
+    
+
+   offer29 solu;
+   solu.spiralOrder(matrix);
+   return 0;
+
+
+}*/
+
+/*
+// 从上到下打印二叉树  offer32_1
+int main() {
+
+    Tree<char> my_tree;
+  // Tree<char> my_tree_2;
+  //A{ B {C, },  D} ->ABC# ## D##
+  //      A
+  //     / \
+  //     B  D
+  //    /
+  //   C
+  //A{B{, D}, C}  ->ABD###C##
+  //      A
+  //     / \
+  //     B  C
+  //    /
+  //   D
+
+    Bitnode<char>* root = my_tree.GetRoot();
+
+    offer321 solu;
+    solu.levelorder(root);
+    
+
+    return 0;
+
+}
+*/
+
+int main() {
+
+    Tree<char> my_tree;
+  // Tree<char> my_tree_2;
+  //A{ B {C, },  D} ->ABC# ## D##
+  //      A
+  //     / \
+  //     B  D
+  //    /
+  //   C
+  //A{B{, D}, C}  ->ABD###C##
+  //      A
+  //     / \
+  //     B  C
+  //    /
+  //   D
+
+    Bitnode<char>* root = my_tree.GetRoot();
+
+    offer322 solu;
+    solu.levelorder(root);
+    
+
+    return 0;
+
 }
