@@ -228,3 +228,31 @@ class offer322 {
 public:
     vector<vector<char>> levelorder(Bitnode<char> *root);
 };
+
+// 从上到下打印二叉树  offer32_3
+class offer323 {
+public:
+    vector<vector<char>> levelorder(Bitnode<char> *root);
+};
+
+// offer34 二叉树中和为某一值的路径
+class offer34 {
+public:
+     vector<vector<int>> pathSum(Bitnode<char>* root, int sum);
+     void dfs(Bitnode<char>* root, int sum, vector<int> &temp_res);
+     vector<vector<int>> res;
+     vector<int> tep_res;
+};
+
+// Search for a Range
+// Given a sorted array of integers, find the starting and ending position of a given target value.
+// Your algorithm’s runtime complexity must be in the order of O(log n).
+// If the target is not found in the array, return [-1, -1].
+// For example, Given [5, 7, 7, 8, 8, 10] and target value 8, return [3, 4].
+
+class searchRange_solution {
+public:
+    vector<int> searchRange(vector<int>& nums, int target);
+    
+};
+

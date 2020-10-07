@@ -797,7 +797,7 @@ vector<vector<int>> &matrix, int row, int col, int direct) {
      cout << "pass in 793" << endl;
 }
 
-// // 从上到下打印二叉树
+// // 从上到下打印二叉树 offer32_1
 vector<char> offer321::levelorder(Bitnode<char> *root) {
     vector<char> res;
 
@@ -824,7 +824,7 @@ vector<char> offer321::levelorder(Bitnode<char> *root) {
     return res;
 }
 
-//
+//// 从上到下打印二叉树 offer32_2
 vector<vector<char>> offer322::levelorder(Bitnode<char> *root) {
     vector<vector<char>> res;
 
@@ -854,7 +854,6 @@ vector<vector<char>> offer322::levelorder(Bitnode<char> *root) {
             len_container = container.size();
             temp_res.clear();
         }
-
     }
 
     cout << "the res: " << endl;
@@ -867,10 +866,121 @@ vector<vector<char>> offer322::levelorder(Bitnode<char> *root) {
     }
     cout << endl;
 
+    return res;
+}
 
 
+// // 从上到下打印二叉树 offer32_3
+vector<vector<char>> offer323::levelorder(Bitnode<char> *root) {
 
+    vector<vector<char>> res;
+    int reverse = -1;
+    queue<Bitnode<char> *> container;
+    container.push(root);
+    int len_container = container.size();
+    vector<char> temp_res;
+    while( !container.empty() ) {
+        // vector<char> temp_res;
+        Bitnode<char> *temp = container.front();
+        temp_res.push_back(temp->val);
+        if (temp->left) {
+            container.push(temp->left);
+        }
+        if (temp->right) {
+            container.push(temp->right);
+        }
+        // if (len_container == 0) {
+        //     res.push_back(temp_res);
+        //     len_container = container.size();
+        //     temp_res.clear();
+        // }
+        container.pop();
+        len_container --;
+        if (len_container == 0) {
+            if (reverse == 1) {
+                std::reverse(temp_res.begin(), temp_res.end());
+                res.push_back(temp_res);
+            } else {
+                 res.push_back(temp_res);
+            }
+            // res.push_back(temp_res);
+            len_container = container.size();
+            temp_res.clear();
+            reverse = -1 * reverse;
+        }
+    }
+
+    cout << "the res: " << endl;
+    for (int i = 0; i < res.size(); ++i) {
+        vector<char> iter_res = res[i];
+        for (auto iter: iter_res) {
+            cout <<  iter << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
 
     return res;
+   
+}
+
+
+vector<vector<int>> offer34::pathSum(Bitnode<char>* root, 
+                                     int sum) {
+    if (!root) return {};
+    vector<vector<int>> res_last;
+    vector<int> temp_res;
+    dfs(root, sum, temp_res);
+     cout << "pass in 933" << endl;
+    cout << "the res: " << endl;
+
+    for (int i = 0; i < res.size(); ++i) {
+        vector<int> iter_res = res[i];
+        for (int j = 0; j < iter_res.size(); ++j) {
+            cout << iter_res[j] << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
     
+    cout << "pass in 945" << endl;
+
+    return res_last;
+
+}
+
+void offer34::dfs(Bitnode<char>* root, int sum, vector<int> &temp_res) {
+    if (!root) return;
+    cout << "pass in 953" << endl;
+    int val = (root->val) - 48;
+    cout << "the char and int: " 
+         << root->val << " " << val <<endl;
+    temp_res.push_back(val);
+    int new_sum = sum - val;
+    for (int i = 0; i < temp_res.size(); ++i) {
+        cout << temp_res[i] << " ";
+    }
+    cout << endl;
+    if (new_sum == 0) {
+        res.push_back(temp_res);
+    }
+    cout << "pass in 962" << endl;
+    dfs(root->left, new_sum, temp_res);  // 左分支
+    dfs(root->right, new_sum, temp_res);  // 右分支
+    temp_res.pop_back();
+    dfs(root->left, sum, temp_res);  // 左分支
+    dfs(root->right, sum, temp_res);  // 右分支
+    // temp_res.pop_back();
+}
+
+// Search for a Range
+vector<int> searchRange_solution::searchRange(vector<int>& nums, int target) {
+    const int l = distance(nums.begin(), lower_bound(nums.begin(), nums.end(), target));
+    const int u = distance(nums.begin(), prev(upper_bound(nums.begin(), nums.end(), target)));
+
+    if (nums[l] != target) {
+        return vector<int> { -1, -1 };
+    } else {
+        return vector<int> { l, u };
+    }
 }

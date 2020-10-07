@@ -602,6 +602,8 @@ int main() {
 }
 */
 
+// 从上到下打印二叉树  offer32_2
+/*
 int main() {
 
     Tree<char> my_tree;
@@ -624,7 +626,88 @@ int main() {
     offer322 solu;
     solu.levelorder(root);
     
-
     return 0;
 
 }
+*/
+
+// 从上到下打印二叉树  offer32_3
+
+/*
+int main() {
+
+    Tree<char> my_tree;
+  // Tree<char> my_tree_2;
+  //A{ B {C, },  D} ->ABC# ## D##
+  //      A
+  //     / \
+  //     B  D
+  //    /
+  //   C
+  //A{B{, D}, C}  ->ABD###C##
+  //      A
+  //     / \
+  //     B  C
+  //    /
+  //   D
+
+    Bitnode<char>* root = my_tree.GetRoot();
+    vector<int> example = {1, 2, 3, 4};
+    reverse(example.begin(), example.end());
+    for (auto iter: example) {
+        cout << iter << " ";
+    }
+    cout << endl;
+
+    offer323 solu;
+    solu.levelorder(root);
+    
+    return 0;
+
+}
+*/
+
+
+// offer34 二叉树中和为某一值的路径
+
+int main() {
+    
+    Tree<char> my_tree;
+  // Tree<char> my_tree_2;
+  //A{ B {C, },  D} ->ABC# ## D##
+  //      A
+  //     / \
+  //     B  D
+  //    /
+  //   C
+  //A{B{, D}, C}  ->ABD###C##
+  //      A
+  //     / \
+  //     B  C
+  //    /
+  //   D
+
+    Bitnode<char>* root = my_tree.GetRoot();
+    cout << "pass in 691" << endl;
+    offer34 solu;
+    int sum = 6;
+    solu.pathSum(root, sum);
+    
+    return 0;
+}
+
+/*
+int main() {
+
+    searchRange_solution solu;
+    int target = 8;
+    vector<int> nums = {5, 7, 7, 8, 8, 10};
+    vector<int> res = solu.searchRange(nums, target);
+    for (int i = 0; i < res.size(); ++i) {
+        cout << res[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
+*/
