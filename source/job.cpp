@@ -984,3 +984,138 @@ vector<int> searchRange_solution::searchRange(vector<int>& nums, int target) {
         return vector<int> { l, u };
     }
 }
+
+
+string offer37::serialize(Bitnode<char>* root) {
+    string res;
+    // vector<char> res;
+    queue<Bitnode<char> *> container;
+    container.push(root);
+    bool flag = true;
+    
+    while( !container.empty() ) {
+
+        Bitnode<char> *temp = container.front();
+        container.pop();
+        if (temp) {
+            res.push_back(temp->val);
+            container.push(temp->left);
+            container.push(temp->right);
+            if (temp->left) {
+                flag = true;
+            }
+            if (temp->right) {
+                flag = true;
+            }
+        } else {
+            res.push_back('#');
+        }
+
+    }
+    cout << "the res: " << endl;
+    for (auto iter: res) {
+        cout << iter << " ";
+    }
+    cout << endl;
+
+    return res;
+}
+Bitnode<char>* offer37::deserialize(string data) {
+    int num = 0;
+    Bitnode<char> *root = creatNode(data, num);
+    return root;
+}
+
+Bitnode<char>* offer37::creatNode(string data, int &n) {
+    char ch = data[n];
+    n ++;
+    if (ch == 'null') {
+        return NULL;
+    } else {
+        Bitnode<char> *node = new Bitnode<char>(ch);
+        node->left = creatNode(data, n);
+        node->right = creatNode(data, n);
+        return node;
+
+    }
+
+}
+
+// offer38
+
+vector<string> offer38::permutable(string s) {
+    if (s.empty()) {
+        return {};
+    }
+    sort(s.begin(), s.end());
+    vector<bool> visited(s.size(), false);
+    string track;
+    dfs(s, track, visited);
+    for (int i = 0 ; i < res.size(); ++i) {
+        cout << res[i] << endl;
+    }
+    cout << endl;
+    return res;
+}
+
+void offer38::dfs(string s, string &track, vector<bool> &visited) {
+    if (track.size() == s.size()) {
+        res.push_back(track);
+    }
+    for (int i = 0; i < s.size(); ++i) {
+        if (visited[i]) {
+            continue;
+        }
+        if (i > 0 && !visited[i - 1] && s[i - 1] == s[i]) {
+            continue;
+        }
+        visited[i] = true;
+        track.push_back(s[i]);
+        dfs(s, track, visited);
+        track.pop_back();
+        visited[i] = false;
+    }
+
+}
+
+// offer39  次数超过一半的数字
+int offer39::majorityElement(vector<int> &nums) {
+    unordered_map<int, int> map;
+    for (auto iter: nums) {
+        map[iter] ++;
+        if (map[iter] > nums.size() / 2) {
+            cout << "the ans: " << iter << endl;
+            return iter;
+        }
+    }
+    cout << "find the majorityElement failed" << endl;
+    return 0;
+
+}
+
+// offer40 最小的k个数字
+
+vector<int> offer40::getKthNumber(vector<int> &nums, int k) {
+    vector<int> res;
+    if (nums.size() == 0 || k > nums.size()) {
+        cout << "the len of nums is zero or k is bigger than the len of nums" << endl;
+        return {};
+    }
+    priority_queue<int, vector<int>, less<int>> store;
+    for (int i = 0; i < nums.size(); ++i) {
+        store.push(nums[i]);
+        if (store.size() > k) {
+            store.pop();
+        }
+    }
+    while( !store.empty() ) {
+        res.push_back(store.top());
+        store.pop();
+
+    }
+    for (int i = 0; i < res.size(); ++i) {
+        cout << res[i] << " ";
+    }
+    cout << endl;
+    return res;
+}

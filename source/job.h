@@ -256,3 +256,31 @@ public:
     
 };
 
+// offer37
+class offer37 {
+public:
+    string serialize(Bitnode<char>* root);
+    Bitnode<char>* deserialize(string data);
+    Bitnode<char>* creatNode(string data, int &n);
+};
+
+// offer38 字符串的排列
+class offer38 {
+public:
+    vector<string> permutable(string s);
+    void dfs(string s, string &track, vector<bool> &visited);
+    vector<string> res;
+
+};
+
+// offer39 次数超过一半的数字
+class offer39 {
+public:
+    int majorityElement(vector<int> &nums);
+};
+
+// offer40 最小的k个数字
+class offer40 {
+public:
+    vector<int> getKthNumber(vector<int> &nums, int k);
+};

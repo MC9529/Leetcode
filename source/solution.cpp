@@ -1218,6 +1218,7 @@ int findKthLargest_215_solution::findKthLargest2(vector<int> &nums, int k){
     int res = store[store.size() - 1];
     return res;
 }
+
 //滑动窗口,Leetcode_239
 void maxSlideWindow_239_solution::maxSlideWindow(vector<int> &nums, int k) {
     vector<int> res;

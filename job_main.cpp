@@ -670,6 +670,7 @@ int main() {
 
 // offer34 二叉树中和为某一值的路径
 
+/*
 int main() {
     
     Tree<char> my_tree;
@@ -696,6 +697,7 @@ int main() {
     return 0;
 }
 
+*/
 /*
 int main() {
 
@@ -711,3 +713,65 @@ int main() {
     return 0;
 }
 */
+
+// offer37 序列化二叉树
+/*
+int main() {
+    
+    Tree<char> my_tree;
+  // Tree<char> my_tree_2;
+  //A{ B {C, },  D} ->ABC# ## D##
+  //      A
+  //     / \
+  //     B  D
+  //    /
+  //   C
+  //A{B{, D}, C}  ->ABD###C##
+  //      A
+  //     / \
+  //     B  C
+  //    /
+  //   D
+
+    Bitnode<char>* root = my_tree.GetRoot();
+    cout << "pass in 691" << endl;
+    offer37 solu;
+    solu.serialize(root);
+    
+    return 0;
+}
+
+*/
+// offer38
+/*
+int main() {
+    offer38 solu;
+    string s = "abcddc";
+    solu.permutable(s);
+
+    return 0;
+}
+*/
+
+
+
+// offer39
+/*
+int main() {
+    int ans;
+    offer39 solu;
+    vector<int> nums = {1, 2, 3, 2, 2, 2, 5, 4, 2};
+    solu.majorityElement(nums);
+
+    return 0;
+}
+*/
+
+int main() {
+    offer40 solu;
+    int k = 3;
+    vector<int> nums = {1, 7, 6, 4, 5, 3, 2};
+    solu.getKthNumber(nums, k);
+
+    return 0;
+}
