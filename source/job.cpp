@@ -1119,3 +1119,234 @@ vector<int> offer40::getKthNumber(vector<int> &nums, int k) {
     cout << endl;
     return res;
 }
+
+
+// // offer42 连续子数组的最大和
+int offer42::maxSubArray(vector<int> &nums) {
+    // dp[i] 前i个数组的最大和
+    vector<int> dp(nums.size(), 0);
+    // base case
+    dp[0] = nums[0];
+    for (int i = 1; i < nums.size(); ++i) {
+        dp[i] = max(dp[i-1] + nums[i], nums[i]);
+    }
+
+
+    int res = 0;
+    for (int i = 0; i < dp.size(); ++i) {
+        cout << dp[i] << " ";
+        if (dp[i] > res) {
+            res = dp[i];
+        }
+    }
+    cout << endl;
+    return res;
+
+}
+
+// offer43 1～n整数中1出现的次数
+
+int offer43::countDigitone(int n) {
+    // dp[i], 数字i 出现1的次数
+    vector<int> dp(n + 1, 0);
+    // base case
+    dp[0] = 0;
+    dp[1] = 1;
+    for (int i = 2; i <= n; ++i) {
+        int previous = 0;
+        if (dp[i - 1] - dp[i - 2] == 1) {
+            previous = 1;
+        }
+        dp[i] = dp[i - 1] + calcu(i, previous);
+
+    }
+    for (int i = 0; i < dp.size(); ++i) {
+        cout << "i: " << i << " " << "count_one: " << dp[i] << endl;
+    }
+    cout << "the res: " << dp[n] << endl;
+    return dp[n];
+
+}
+
+// offer43 1～n整数中1出现的次数
+int offer43::calcu(int n, int previous_one) {
+    int res = 0;
+    int temp = n;
+    while (temp > 0) {
+        if (temp % 10 == 1) {
+            res = 1;
+            break;
+        }
+        temp = temp / 10;
+    }
+
+    return res;
+
+}
+// // offer44 数字序列中的某一位的数字
+
+int offer44::findNthDigit(int n) {
+
+
+
+}
+
+// 把数组排列成最小的数 offer45
+ string offer45::minNumber(vector<int> &nums) {
+     auto compare = [](string sa, string sb) {
+         return sa + sb < sb + sa;
+     };
+
+     vector<string> temp;
+     for(int i = 0; i < nums.size(); ++i) {
+         temp.push_back(to_string(nums[i]));
+
+     }
+     sort(temp.begin(), temp.end(), compare);
+     string ans = "";
+     for(string s: temp) {
+         ans = ans + s;
+     }
+     cout << "the ans: " << ans << endl;
+     return ans;
+
+ }
+
+ // offer47 礼物的最大值
+
+ int offer47::maxValue(vector<vector<int>> &grid) {
+     // dp[i][j] 位置 i和j的礼物的最大值
+     vector<vector<int>> dp( grid.size(),
+                           vector<int> (grid[0].size(), 0) );
+     // path
+     vector<int> path;
+
+     // base case
+     dp[0][0] = grid[0][0];
+     dp[0][1] = grid[0][0] + grid[0][1];
+     dp[1][0] = grid[0][0] + grid[1][0];
+     for (int i = 1; i < grid.size(); ++i) {
+         for (int j = 1; j < grid[0].size(); ++j) {
+             dp[i][j] = max(dp[i - 1][j] + grid[i][j], 
+                            dp[i][j - 1] + grid[i][j] );
+         }
+     }
+     cout << "the max: " << 
+          dp[ grid.size()-1 ][ grid[0].size()-1 ] << endl;
+
+     return dp[ grid.size()-1 ][ grid[0].size()-1 ];
+ }
+
+ // offer48 最长不含重复字符的子字符串
+
+ int offer48::lengthOflongestSubstring(string s) {
+     // dp[i], 前i个子字符 ，最长不含重复字符的子字符串
+    int len = s.size();
+    if (len == 0) return 0;
+    int res = 1;
+    int i = 0, j = 0;
+    map<char, int> mp;
+    for (; j< len; ++j) {
+        mp[s[j]] ++;
+        if (mp[s[j]] == 1) {
+            res = max(j - i + 1, res);
+            continue;
+        } 
+        if (j == len - 1) break;
+        while(mp[s[j]] > 1) {
+            mp[s[i]] --;
+            ++i;
+        }
+    }
+    cout << "the res: " << res << endl;
+    return res;
+ }
+
+ /// 丑数 offer49
+
+ int offer49::nthUglyNumber(int n) {
+     vector<int> dp(n, 0);
+     dp[0] = 1;
+     int p2 = 0, p3 = 0, p5 = 0;
+     for (int i = 1; i < n; ++i) {
+         dp[i] = min(min(dp[p2] * 2, dp[p3] * 3), dp[p5]*5 );
+         if (dp[i] == dp[p2] * 2) {
+             p2++;
+         }
+         if (dp[i] == dp[p3] * 3) {
+             p3++;
+         }
+         if (dp[i] == dp[p5] * 5) {
+             p5++;
+         }
+     }
+     
+     for (int i = 0; i < dp.size(); ++i) {
+         cout << dp[i] << endl;
+     }
+     cout << endl;
+
+     return dp[n-1];
+
+ }
+ // 
+  // // 第一个只出现一次的字符
+char offer50::firstUniqChar(string s) {
+    char res = '1';
+
+    unordered_map<char, int> map;
+    for (int i = 0; i < s.size(); ++i) {
+        map[s[i]]++;
+    }
+    for (int i = 0; i < s.size(); ++i) {
+        cout << "i and s[i]: " << i <<" " << s[i] << endl;
+         if (map[s[i]] <= 1) {
+             res = s[i];
+             map[s[i]] = 1;
+             break;
+         } 
+    }
+    cout << "the res: " << res << endl;
+
+    return res;
+
+}
+
+//
+// 数组中的逆序对 offer51
+int offer51::reversePairs(vector<int> &nums) {
+    int ans = 0;
+    // vector<int> temp_res;
+    for ( int i = 0; i < nums.size(); ++i ) {
+        vector<int> temp_res;
+        temp_res.push_back(nums[i]);
+        dfs(i, nums, temp_res);
+    }
+
+    for (int i = 0; i < res.size(); ++i) {
+        vector<int> iter_res = res[i];
+        for (auto iter: iter_res) {
+            cout << iter << " ";
+        }
+        cout << endl;
+    }
+
+    ans = res.size();
+    return ans;
+}
+
+void offer51::dfs(int i, vector<int> &nums, vector<int> &temp) {
+    if (temp.size() == 2) {
+        if (temp[0] > temp[1]) {
+            res.push_back(temp);
+        }
+    }
+    for (int j = i + 1; j < nums.size(); ++j) {
+        temp.push_back(nums[j]);
+        int new_i = j + 1;
+        dfs(new_i, nums, temp);
+        temp.pop_back();
+
+    }
+
+}

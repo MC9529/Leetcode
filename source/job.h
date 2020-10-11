@@ -284,3 +284,64 @@ class offer40 {
 public:
     vector<int> getKthNumber(vector<int> &nums, int k);
 };
+
+// offer42 连续子数组的最大和
+class offer42 {
+public:
+    int maxSubArray(vector<int> &nums);
+};
+
+// offer43 1～n整数中1出现的次数
+class offer43 {
+public:
+    int countDigitone(int n);
+    int calcu(int n, int previous_one);
+    // vector<int> dp(n + 1, 0);
+};
+
+// offer44 数字序列中的某一位的数字
+class offer44 {
+public:
+    int findNthDigit(int n);
+};
+
+// 把数组排列成最小的数 offer45
+class offer45 {
+public:
+    string minNumber(vector<int> &nums);
+};
+
+// offer47 礼物的最大值
+class offer47 {
+public:
+    int maxValue(vector<vector<int>> &grid);
+};
+
+// offer48 最长不含重复字符的子字符串
+class offer48 {
+public:
+    int lengthOflongestSubstring(string s);
+};
+
+// 丑数
+class offer49 {
+public:
+    int nthUglyNumber(int n);
+
+};
+
+// 第一个只出现一次的字符
+class offer50 {
+public:
+    char firstUniqChar(string s);
+
+};
+
+// 数组中的逆序对
+class offer51 {
+public:
+    int reversePairs(vector<int> &nums);
+    void dfs(int i, vector<int> &nums,
+                    vector<int> &temp);
+    vector<vector<int>> res;
+};

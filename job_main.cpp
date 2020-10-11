@@ -767,11 +767,111 @@ int main() {
 }
 */
 
+/*
 int main() {
     offer40 solu;
     int k = 3;
     vector<int> nums = {1, 7, 6, 4, 5, 3, 2};
     solu.getKthNumber(nums, k);
+
+    return 0;
+}
+*/
+
+// // offer42 连续子数组的最大和
+/*
+int main() {
+    vector<int> nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+    offer42 solu;
+    solu.maxSubArray(nums);
+
+    return 0;
+}
+*/
+
+/*
+//  offer43 1～n整数中1出现的次数
+int main() {
+    int n = 12;
+    offer43 solu;
+    solu.countDigitone(n);
+
+    return 0;
+}
+*/
+
+
+// 把数组排列成最小的数 offer45
+/*
+int main() {
+    offer45 solu;
+    vector<int> nums = {3, 30, 34, 5, 9};
+
+    solu.minNumber(nums);
+
+    return 0;
+}
+
+*/
+
+// offer47 礼物的最大值
+/*
+int main() {
+    offer47 solu;
+    vector<vector<int>> grid = {{1, 3, 1},
+                                {1, 5, 1},
+                                {4, 2, 1}};
+
+    solu.maxValue(grid);
+
+
+    return 0;
+}
+*/
+
+ // offer48 最长不含重复字符的子字符串
+ /*
+ int main() {
+    string s = "abcdeabcdecfghbb";
+    offer48 solu;
+    solu.lengthOflongestSubstring(s);
+
+
+     return 0;
+ }
+
+ */
+
+/*
+int main() {
+    offer49 solu;
+    int n = 10;
+    solu.nthUglyNumber(n);
+
+    return 0;
+}
+*/
+
+// offer50  // 第一个只出现一次的字符
+
+/*
+int main() {
+    offer50 solu;
+
+    string s = "abaccdeff";
+    solu.firstUniqChar(s);
+
+
+    return 0;
+}
+
+*/
+
+int main() {
+
+    vector<int> nums = {7, 5, 6, 4, 1};
+    offer51 solu;
+    solu.reversePairs(nums);
 
     return 0;
 }
