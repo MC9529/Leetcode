@@ -1350,3 +1350,187 @@ void offer51::dfs(int i, vector<int> &nums, vector<int> &temp) {
     }
 
 }
+
+// offer53_1  在排序数组中查找数字
+
+int offer532::search(vector<int> &nums, int target) {
+    int res = -1;
+    unordered_map<int, int> map;
+    for (int i = 0; i < nums.size(); ++i) {
+        map[nums[i]] ++;
+    }
+
+    res = map[target];
+    cout << "the res: " << res << endl;
+    return res;
+}
+
+// // offer533 在 0 - n-1中缺失的数字
+
+int offer533::missingnum(vector<int> &nums) {
+    int res = -1;
+    for (int i = 1; i < nums.size(); ++i) {
+        if (nums[i] - nums[i-1] != 1) {
+            res = nums[i-1] + 1;
+            break;
+        }
+    }
+    cout << "the res: " << res << endl;
+    return res;
+
+}
+
+// 55 二叉树的的深度
+int offer55::maxdepth(Bitnode<char>* root) {
+
+    vector< vector<Bitnode<char>*> > res;
+    int depth = 0;
+    queue<Bitnode<char>*> container;
+    container.push(root);
+    int len = container.size();
+    while(!container.empty()) {
+        Bitnode<char> *temp = container.front();
+        if (temp->left) {
+            container.push(temp->left);
+        }
+        if (temp->right) {
+            container.push(temp->right);
+        }
+        container.pop();
+        len --;
+        if (len == 0) {
+            depth ++;
+            len = container.size();
+        }
+    }
+
+    cout << "the depth: " << depth << endl;
+    return depth;
+}
+
+// offer55_2 平衡二叉树
+
+bool offer552::isblanced(Bitnode<char>* root) {
+    bool res = true;
+    if (root == NULL) {
+        res = true;
+    }
+    if ( abs( getheight(root->left) - getheight(root->right) ) > 1) {
+        res = false;
+    }
+
+    if (isblanced(root->left) && isblanced(root->right)) {
+        res = true;
+    }
+
+    return res;
+
+}
+
+
+int offer552::getheight(Bitnode<char>* root) {
+    if (root == NULL) return 0;
+    int left = getheight(root->left);
+    int right = getheight(root->right);
+    return left > right ? left + 1 : right + 1;
+
+}
+
+// offer561 数组中数字出现的次数
+
+vector<int> offer561::singlenumber(vector<int> &nums) {
+    vector<int> res;
+    unordered_map<int, int> map;
+    for (int i = 0; i < nums.size(); ++i) {
+        map[nums[i]] ++;
+    }
+    for (int i = 0; i < nums.size(); ++i) {
+        if (map[nums[i]] == 1) {
+            res.push_back(nums[i]);
+        }
+    }
+    for (int i = 0; i < res.size(); ++i) {
+        cout << res[i] << endl;
+    }
+    cout << endl;
+
+    return res;
+
+}
+
+// offer57 和为s的两个数字
+ vector<int> offer57::twosum(vector<int> &nums, int target) {
+    vector<vector<int>> res;
+    unordered_map<int, int> map;
+    for (int i = 0; i < nums.size(); ++i) {
+        map[nums[i]] ++;
+    }
+    for (int i = 0; i < nums.size(); ++i) {
+        if (map[target - nums[i]] >= 1) {
+            vector<int> temp;
+            temp.push_back(target - nums[i]);
+            temp.push_back(nums[i]);
+            res.push_back(temp);
+        }
+    }
+
+
+
+   for (int i = 0; i < res.size(); ++i) {
+       vector<int> temp_res = res[i];
+       for (int i = 0; i < temp_res.size(); ++i) {
+           cout << temp_res[i] << " ";
+       }
+       cout << endl;
+   }
+    cout << endl;
+
+    return res[0];
+
+ }
+
+ // 双指针
+ vector<int> offer57::twosum2(vector<int> &nums, int target) {
+     vector<vector<int>> res;
+     // sort(nums.begin(), nums.end());
+     int l = 0, r = nums.size() - 1;
+     while(l <= r) {
+
+         if (nums[l] + nums[r] < target) {
+             l ++;
+         } else if (nums[l] + nums[r] > target) {
+             r --;
+         } else if (nums[l] + nums[r] == target) {
+             vector<int> temp;
+             temp.push_back(nums[l]);
+             temp.push_back(nums[r]);
+             res.push_back(temp);
+             l ++;
+             r --;
+
+         }
+         
+     }
+
+     cout << "the res: " << endl;
+     for (int i = 0; i < res.size(); ++i) {
+         vector<int> temp_res = res[i];
+
+         for (int j = 0; j < temp_res.size(); ++j) {
+             cout << temp_res[j] << " ";
+         }
+         cout << endl;
+     }
+     cout << "in 1518" << endl;
+     cout << endl;
+
+     return {};
+
+ }
+
+
+// 和为s的连续正数序列
+
+vector<vector<int>> offer572::findcontinussequence(int target) {
+
+}

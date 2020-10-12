@@ -867,11 +867,95 @@ int main() {
 
 */
 
+/*
 int main() {
 
     vector<int> nums = {7, 5, 6, 4, 1};
     offer51 solu;
     solu.reversePairs(nums);
+
+    return 0;
+}
+*/
+
+// // offer53_1  在排序数组中查找数字
+
+/*
+int main() {
+    vector<int> nums = {5, 7, 7, 8, 8, 10};
+    int target = 8;
+    int target1 = 6;
+
+    offer532 solu;
+    solu.search(nums, target);
+    solu.search(nums, target1);
+
+    return 0;
+}
+*/
+
+/*
+int main() {
+
+    vector<int> nums = {0, 1, 3};
+    offer533 solu;
+    solu.missingnum(nums);
+
+    return 0;
+}
+*/
+
+// 55 二叉树的的深度
+
+/*
+int main() {
+
+   offer55 solu;
+    
+    Tree<char> my_tree;
+  // Tree<char> my_tree_2;
+  //A{ B {C, },  D} ->ABC# ## D##
+  //      A
+  //     / \
+  //     B  D
+  //    /
+  //   C
+  //A{B{, D}, C}  ->ABD###C##
+  //      A
+  //     / \
+  //     B  C
+  //    /
+  //   D
+
+    Bitnode<char>* root = my_tree.GetRoot();
+    cout << "pass in 691" << endl;
+    solu.maxdepth(root);
+
+    return 0;
+}
+*/
+
+//  / offer561 数组中数字出现的次数
+/*
+int main() {
+
+    vector<int> nums = {4, 1, 4, 6};
+    offer561 solu;
+    solu.singlenumber(nums);
+
+    return 0;
+}
+*/
+
+// offer57 和为s的两个数字
+int main() {
+
+    vector<int> nums = {2, 3, 5, 6, 11};
+    int target = 8;
+    offer57 solu;
+    // solu.twosum(nums, target);
+    solu.twosum2(nums, target);
+
 
     return 0;
 }

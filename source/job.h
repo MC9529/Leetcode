@@ -345,3 +345,53 @@ public:
                     vector<int> &temp);
     vector<vector<int>> res;
 };
+
+// offer53_1  在排序数组中查找数字
+class offer532 {
+public:
+    int search(vector<int> &nums, int target);
+
+};
+
+// offer533 在 0 - n-1中缺失的数字
+class offer533 {
+public:
+    int missingnum(vector<int> &nums);
+};
+
+// 55 二叉树的的深度
+class offer55 {
+public:
+    int maxdepth(Bitnode<char>* root);
+};
+
+// offer55_2 平衡二叉树
+class offer552 {
+public:
+    bool isblanced(Bitnode<char>* root);
+    int getheight(Bitnode<char>* root);
+};
+
+// offer561 数组中数字出现的次数
+class offer561 {
+public:
+    vector<int> singlenumber(vector<int> &nums);
+};
+
+// offer57 和为s的两个数字
+class offer57 {
+public:
+    // unorder_map
+    vector<int> twosum(vector<int> &nums, int target);
+    // 双指针
+    vector<int> twosum2(vector<int> &nums, int target);
+
+
+};
+
+// 和为s的连续正数序列
+class offer572 {
+public:
+    vector<vector<int>> findcontinussequence(int target);
+
+};
