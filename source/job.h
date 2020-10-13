@@ -395,3 +395,10 @@ public:
     vector<vector<int>> findcontinussequence(int target);
 
 };
+
+// offer581 反转单词顺序
+class offer581 {
+public:
+    string resverseWord(string s);
+    
+};

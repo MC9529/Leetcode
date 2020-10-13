@@ -948,6 +948,7 @@ int main() {
 */
 
 // offer57 和为s的两个数字
+/*
 int main() {
 
     vector<int> nums = {2, 3, 5, 6, 11};
@@ -956,6 +957,28 @@ int main() {
     // solu.twosum(nums, target);
     solu.twosum2(nums, target);
 
+
+    return 0;
+}
+*/
+
+// // 和为s的连续正数序列 offer572
+/*
+int main() {
+    offer572 solu;
+    int target = 15;
+    solu.findcontinussequence(target);
+
+    return 0;
+}
+*/
+
+// offer581 反转单词顺序
+int main() {
+    offer581 solu;
+
+    string s = "the sky is blue";
+    solu.resverseWord(s);
 
     return 0;
 }

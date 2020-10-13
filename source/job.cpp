@@ -1529,8 +1529,75 @@ vector<int> offer561::singlenumber(vector<int> &nums) {
  }
 
 
-// 和为s的连续正数序列
+// 和为s的连续正数序列 offer572
 
 vector<vector<int>> offer572::findcontinussequence(int target) {
+    vector<vector<int>> res;
+    vector<int> res_temp;
+    int l = 1, r = 2;
+
+    while (r < target) {
+
+        int sum = (l + r) * (r - l + 1) / 2;
+        if (sum == target) {
+            res_temp.clear();
+            for (int i = l; i <= r; ++i) {
+                res_temp.emplace_back(i);
+            }
+            res.emplace_back(res_temp);
+            l ++;
+        } else if (sum < target) {
+            r ++;
+        } else {
+            l ++;
+        }
+
+    }
+    for (int i = 0; i < res.size(); ++i) {
+        vector<int> iter_res = res[i];
+        for (int j = 0; j < iter_res.size(); ++j) {
+            cout << iter_res[j] << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+
+    return res;
+
+}
+
+// offer581 反转单词顺序
+
+string offer581::resverseWord(string s) {
+    string res;
+    string res_temp;
+    vector<string> res_vec;
+    for (int i = 0; i < s.size() + 1; ++i) {
+        // cout << "the res_temp: " << res_temp << endl;
+        if (s[i] == ' ' || i == s.size()) {
+            // res_temp.push_back(s[i]);
+            res_vec.push_back(res_temp);
+            res_temp.clear();
+        } else {
+            if (i < s.size()) {
+                res_temp.push_back(s[i]);
+                // res_vec.push_back(res_temp);
+            }
+        }
+        cout << "the res_temp: " << res_temp << endl;
+
+    }
+    cout << "the size of res_vec: " << res_vec.size() << endl;
+    for (int i = 0; i < res_vec.size(); ++i) {
+        cout << res_vec[i] << " ";
+        res = res + res_vec[res_vec.size() - 1 - i];
+        if (i < res.size() - 1) {
+            res = res + " ";
+        }
+    }
+
+    cout << endl;
+    cout << "the res: " << res << endl;
+    return res;
 
 }
