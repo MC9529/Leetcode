@@ -974,11 +974,36 @@ int main() {
 */
 
 // offer581 反转单词顺序
+
+/*
 int main() {
     offer581 solu;
 
     string s = "the sky is blue";
     solu.resverseWord(s);
+
+    return 0;
+}
+*/
+
+/*
+int main() {
+    string s = "abcdefg";
+    int n = 2;
+    offer582 solu;
+    solu.resverseLeftWords(s, n);
+
+    return 0;
+}
+*/
+
+// offer591 滑动窗口的最大值
+
+int main() {
+    offer591 solu;
+    vector<int> nums = {1, 3, -1, -3, 5, 3, 6, 7};
+    int k = 3;
+    solu.maxSlidingWindow(nums, k);
 
     return 0;
 }

@@ -6,7 +6,7 @@
 #include <set>
 #include <limits.h>
 #include "LinkList.h"
-
+#include <algorithm>
 
 
 // offer 03 数组中重复的数字
@@ -400,5 +400,19 @@ public:
 class offer581 {
 public:
     string resverseWord(string s);
-    
+
+};
+
+// offer582 左旋转字符串
+class offer582 {
+public:
+    string resverseLeftWords(string s, int n);
+
+};
+
+// offer591 滑动窗口的最大值
+class offer591 {
+public:
+    vector<int> maxSlidingWindow(vector<int> &nums, int k);
+
 };

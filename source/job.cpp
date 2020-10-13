@@ -1601,3 +1601,50 @@ string offer581::resverseWord(string s) {
     return res;
 
 }
+
+// offer582 左旋转字符串
+
+string offer582::resverseLeftWords(string s, int n) {
+    string res;
+    string left;
+    string right;
+    for (int i = 0; i < s.size(); ++i) {
+        if (i < n) {
+            left.push_back(s[i]);
+        } else {
+            right.push_back(s[i]);
+        }
+
+    }
+    res = right + left;
+    cout << "the res: " << res << endl;
+    return res;
+}
+
+// offer591 滑动窗口的最大值
+
+vector<int> offer591::maxSlidingWindow(vector<int> &nums, int k) {
+    vector<int> res;
+    int l = 0, r = k - 1;
+    while(r < nums.size()) {
+        // int max_ele = 0;
+        for (int i = l; i <= r; ++i) {
+            cout << nums[i] << " ";
+        }
+        cout << endl;
+        auto iter = max_element(nums.begin() + l, nums.begin() + r + 1);
+        cout << "the max: " << *iter << endl;
+        res.push_back(*iter);
+        l ++;
+        r ++;
+    }
+
+    for (int i = 0; i < res.size(); ++i) {
+        cout << res[i] << " ";
+    }
+
+    cout << endl;
+
+    return res;
+
+}
