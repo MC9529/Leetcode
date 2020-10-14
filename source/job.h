@@ -416,3 +416,16 @@ public:
     vector<int> maxSlidingWindow(vector<int> &nums, int k);
 
 };
+
+// offer60 n个赛子的点数
+class offer60 {
+public:
+    vector<double> twosum(int n);
+};
+
+// offer61 扑克牌中的顺子
+class offer61 {
+public:
+    bool isstraight(vector<int> &nums);
+    
+};

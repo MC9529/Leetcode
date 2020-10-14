@@ -999,11 +999,39 @@ int main() {
 
 // offer591 滑动窗口的最大值
 
+/*
 int main() {
     offer591 solu;
     vector<int> nums = {1, 3, -1, -3, 5, 3, 6, 7};
     int k = 3;
     solu.maxSlidingWindow(nums, k);
+
+    return 0;
+}
+*/
+
+// offer60 n个赛子的点数
+
+/*
+int main() {
+    offer60 solu;
+    int n = 2;
+    solu.twosum(n);
+
+
+
+    return 0;
+}
+*/
+//// offer61 扑克牌中的顺子
+
+int main() {
+    offer61 solu;
+    vector<int> nums = {0, 6, 3, 2, 6};
+
+    // vector<int> nums = {3, 4, 1,2, 5};
+    solu.isstraight(nums);
+
 
     return 0;
 }

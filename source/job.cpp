@@ -1648,3 +1648,81 @@ vector<int> offer591::maxSlidingWindow(vector<int> &nums, int k) {
     return res;
 
 }
+
+// offer60 n个赛子的点数
+// n枚赛子，点数范围为（n, 6n), 数组长度为5n+1, 因为每个赛子指出的概率为1/6,所有n个赛子
+// 每次指出概率为（1/6）^n ,如果有k种组合， 概率不为 k*（1/6）^n
+vector<double>  offer60::twosum(int n) {
+    // dp[n][j] 表示掷完n个赛子后，总点数为j的次数，
+    // 如果前n-1次赛子的总点数为j-i, 则第n次掷出i就可以满足条件
+    vector<vector<int>> dp(n + 1, vector<int>(6*n + 1, 0));
+    vector<double> ans;
+    for (int i = 1; i <= n; ++i) {
+        for (int j = i; j <= 6 * i; ++j) {
+            if (i == 1) {
+                dp[i][j] = 1;
+                continue;
+            }
+            for (int k = 1; k <= 6; ++k) {
+                // if (j - k >= i -1) {
+                dp[i][j] += dp[i - 1][j - k];
+                // }
+            }
+        }
+    }
+    for (int i = n; i <= 6*n; ++i) {
+        ans.push_back(dp[n][i] * pow(1.0/6, n));
+    } 
+    for (int i = 0; i < ans.size(); ++i) {
+        cout << ans[i] << " ";
+    }
+
+    cout << endl;
+    return ans;
+    
+}
+
+
+//// offer61 扑克牌中的顺子
+bool offer61::isstraight(vector<int> &nums) {
+    bool res = false;
+    sort(nums.begin(), nums.end());
+    for (int i = 0; i < nums.size(); ++i) {
+        cout << nums[i] << " ";
+    }
+    cout << endl;
+    int len = 0;
+    for (int i = 0; i < nums.size() - 1;++i) {
+        if (nums[i] == 0) {
+            len ++;
+        }
+        cout << "the len: " << len << endl;
+        cout << "the nums: " << nums[i] << endl;
+        if (nums[i+1] - nums[i] == 0 && nums[i] != 0) {
+            res = false;
+            continue;
+
+        }
+        if (nums[i+1] - nums[i] > 1 && nums[i] != 0) {
+            len = len - (nums[i+1] - nums[i] - 1);
+            cout << "the len in 1708: " << len << endl;
+
+        }
+
+    }
+    cout << "the len: " << len << endl;
+    if (len >= 0) {
+        res = true;
+    } else {
+        // len > 0
+        res = false;
+    }
+    if (res) {
+        cout << "yes , is the straight" << endl;
+    } else {
+        cout << "no , not the straight" << endl;
+    }
+    
+    return res;
+
+}
