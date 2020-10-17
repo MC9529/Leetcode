@@ -1682,7 +1682,6 @@ vector<double>  offer60::twosum(int n) {
     
 }
 
-
 //// offer61 扑克牌中的顺子
 bool offer61::isstraight(vector<int> &nums) {
     bool res = false;
@@ -1724,5 +1723,102 @@ bool offer61::isstraight(vector<int> &nums) {
     }
     
     return res;
+
+}
+// 股票的最大利润  offer65
+int offer63::maxprofit(vector<int> &prices) {
+    int profit = 0;
+    // dp[i]表示前i的最大利润
+    int price = prices[0];
+    for (int i = 0; i < prices.size(); ++i) {
+        // 取最小值
+        cout << "the price: " << price <<  endl;
+        cout << "the prices[i]: " << prices[i] << endl;
+        price = min(price, prices[i]);
+        // 取最大利润
+        profit = max(profit, prices[i] - price);
+        cout << "the profit: " << profit << endl;
+    }
+    cout << "the most profit: " << profit << endl;
+    return profit;
+}
+
+int offer64::sumnums(int n) {
+    vector<int> dp(n + 1, 0);
+    dp[0] = 0;
+    dp[1] = 1;
+    for (int i = 2; i <= n; ++i) {
+        dp[i] = i + dp[i-1];
+    }
+    cout << "the res: " << dp[n] << endl;
+    return dp[n];
+
+}
+
+// 
+
+int offer65::add (int a, int b) {
+    // 无进位和， 只有进位和
+    int carry = 0, sum = 0;
+    while(b != 0) {
+        // 异或操作得无进位和
+        sum = a ^ b;
+        // 与操作后移位得进位值
+        carry = ((unsigned int)(a & b) << 1);
+        // 循环，直到进位为0
+        a = sum;
+        b = carry;
+    }
+    cout << "the add res: " << a << endl;
+    return a;
+}
+
+int offer65::subtrack(int a, int b) {
+
+    int c = ~b + 1;
+    cout << "the res subtract: " << add(a, c) << endl;
+    return add (a, c);
+
+}
+
+// 构建乘积数组
+vector<int> offer66::constractArr(vector<int> &a) {
+    vector<int> res(a.size(), 0);
+    for (int i = 0; i < a.size(); ++i) {
+        int temp_res = 1;
+        for (int j = 0; j < i; ++j) {
+            temp_res = temp_res * a[j];
+        }
+        for (int k = i + 1; k < a.size(); ++k) {
+            temp_res = temp_res * a[k];
+        }
+        res[i] = temp_res;
+    }
+    for (int i = 0; i < res.size(); ++i) {
+        cout << res[i] <<  " ";
+    }
+    cout << endl;
+    return res;
+}
+
+vector<int> offer66::constractArr2(vector<int> &a) {
+    int n = a.size();
+    vector<int> ret(n, 1);
+    int left = 1;
+    for (int i = 0; i < n; ++i) {
+        ret[i] = left;
+        left = left * a[i];
+    }
+    int right = 1;
+    for (int j = n-1; j >= 0; --j) {
+        ret[j] = ret[j] * right;
+        right = right * a[j];
+    }
+
+    for (int i = 0; i < ret.size(); ++i) {
+        cout << ret[i] << " ";
+    }
+    cout << endl;
+    return ret;
 
 }

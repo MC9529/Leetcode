@@ -1025,6 +1025,7 @@ int main() {
 */
 //// offer61 扑克牌中的顺子
 
+/*
 int main() {
     offer61 solu;
     vector<int> nums = {0, 6, 3, 2, 6};
@@ -1033,5 +1034,52 @@ int main() {
     solu.isstraight(nums);
 
 
+    return 0;
+}
+*/
+
+/*
+int main() {
+    offer64 solu;
+
+    int n = 4;
+    solu.sumnums(n);
+
+
+    return 0;
+}
+*/
+
+// 股票最大利润  offfer63;
+/*
+int main() {
+    offer63 solu;
+    vector<int> prices = {7, 1, 5, 3, 6, 4};
+    solu.maxprofit(prices);
+
+    return 0;
+}
+*/
+
+// 
+/*
+int main() {
+    int a = 2, b = 3;
+    int c = 3;
+    offer65 solu;
+    solu.add(a, b);
+    solu.subtrack(a, c);
+
+
+    return 0;
+}
+*/
+
+int main() {
+    vector<int> a = {1, 2, 3, 4, 5};
+
+    offer66 solu;
+    // solu.constractArr(a);
+    solu.constractArr2(a);
     return 0;
 }

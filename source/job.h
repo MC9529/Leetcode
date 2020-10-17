@@ -429,3 +429,34 @@ public:
     bool isstraight(vector<int> &nums);
     
 };
+
+// 圆圈中最后剩下的数字 offer62
+
+// 求 1+2....+n
+class offer64 {
+public:
+    int sumnums(int n);
+};
+
+// 股票的最大的利润  offer63
+class offer63 {
+public:
+    int maxprofit(vector<int> &prices);
+};
+
+// 不用加减乘除做加法 offer65
+class offer65 {
+public:
+    int add (int a, int b);
+    int subtrack(int a, int b);
+};
+
+// 构建乘积数组 offer66
+class offer66 {
+public:
+    // 时间复杂度 o(n^2)
+    vector<int> constractArr(vector<int> &a);
+    // 时间复杂副  o(2n)
+    vector<int> constractArr2(vector<int> &a);
+};
+
