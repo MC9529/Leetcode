@@ -1822,3 +1822,144 @@ vector<int> offer66::constractArr2(vector<int> &a) {
     return ret;
 
 }
+
+//  将字符串转换成整数  offer67
+
+int offer67::str2int(string str) {
+    int res = 0;
+    for (int i = 0; i < str.size(); ++i) {
+        int temp_int = str[i] - '0';
+        res = res * 10 + temp_int;
+    }
+    cout << "the res: " << res <<  endl;
+
+    return res;
+}
+
+// // 二叉树的最近公共祖先 offer681;
+// 迭代版本
+Bitnode<char>* offer681::lowestcommonancester(
+    Bitnode<char> * root, int p_val, int q_val) {
+    while(root) {
+        int root_val = root->val - '0';
+        // int p_val = p->val - '0';
+        // int q_val = q->val - '0';
+        if (root_val > p_val && root_val > q_val) {
+            root = root-> left;
+        } else if (root_val < p_val && root_val < q_val) {
+            root = root->right;
+        } else {
+            cout << "the root_val in iteration: " << root_val << endl;
+            return root;
+        }
+    }
+
+    return NULL;
+
+}
+// 递归版本
+Bitnode<char>* offer681::lowestcommonancester2(
+    Bitnode<char> * root, int p_val, int q_val) {
+    Bitnode<char> * res = NULL;
+    cout << "pass in 1864 " << endl;
+    res = travel(root, p_val, q_val);
+
+   cout << "pass in 1867 " << endl;
+   // cout << "the res in recusion: " << res->val << endl;
+    return res;
+}
+
+Bitnode<char>* offer681::travel(
+    Bitnode<char> * root, int p_val, int q_val) {
+    if (!root) {
+        return NULL;
+    }
+    int root_val = root->val - '0';
+    cout << "the root_val: " << root_val << endl;
+    // int p_val = p->val - '0';
+    // int q_val = q->val - '0';
+    cout << "pass in 1876 " << endl;
+    if (root_val < p_val && root_val < q_val) {
+        cout << "pass in 1879 " << endl;
+        travel(root->right, p_val, q_val);
+    } else if(root_val > p_val && root_val > q_val) {
+        cout << "pass in 1881 " << endl;
+        travel(root->left, p_val, q_val);
+    } else {
+        cout << "pass in 1884 " << endl;
+        cout << "the root_val in in recurse: " << root_val << endl;
+        return root;
+    }
+
+    return NULL;
+
+}
+
+// 二叉树的最近公共祖先 offer682;
+
+Bitnode<char>* offer682::lowestcommonancester(
+        Bitnode<char> * root, int val_p, int val_q) {
+    Bitnode<char> *res = NULL;
+    if (root == NULL) {
+        return NULL;
+    }
+    int root_val = root->val - '0';
+    if (root_val == val_p || root_val == val_q) {
+        
+        // cout << "the res_val in 1908: " << root_val << endl;
+        return root;
+    }
+    Bitnode<char> *left = lowestcommonancester(root->left, val_p, val_q);
+    Bitnode<char> *right = lowestcommonancester(root->right, val_p, val_q);
+    if (left && right) {
+        // cout << "the res_val in 1914: " << root->val << endl;
+        return root;
+    }
+    
+    res = left ? left: right;
+    if (res) {
+        // cout << "the res_val in 1919: " << res->val << endl;
+    }
+    return  res;
+
+}
+
+// leetcode844 
+ bool leetcode844::backspaceCCompare(string t, string s) {
+     string str_t = getString(t);
+     string str_s = getString(s);
+     if (str_t == str_s || (str_t.size() == 0 && str_s.size() == 0) ) {
+         cout << "yes.." << endl;
+         return true;
+     } else {
+         cout << "no.." << endl;
+         return false;
+     }
+
+ }
+
+ string leetcode844::getString(string str) {
+     string res;
+     string temp_res;
+     for (int i = 0; i < str.size(); ++i) {
+        if (str[i] == '#') {
+            if (temp_res.size() == 0) {
+                continue;
+            } else {
+                temp_res.erase(temp_res.begin() + temp_res.size() - 1);
+            }
+
+        } else {
+            temp_res.push_back(str[i]);
+
+        }
+     }
+     
+    //  for (int i = 0; i < temp_res.size(); ++i) {
+    //      if (temp_res[i] != '#') {
+    //          res.push_back(temp_res[i]);
+    //      }
+    //  }
+
+     return temp_res;
+ }

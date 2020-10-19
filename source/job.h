@@ -460,3 +460,39 @@ public:
     vector<int> constractArr2(vector<int> &a);
 };
 
+// 将字符串转换成整数  offer67
+class offer67 {
+public:
+    int str2int(string str);
+};
+
+// 二叉树的最近公共祖先 offer681;
+class offer681 {
+public: 
+    // 迭代版本
+    Bitnode<char>* lowestcommonancester(
+    Bitnode<char> * root, int val_p, int val_q);
+    
+    // 递归版本
+    Bitnode<char>* lowestcommonancester2(
+    Bitnode<char> * root, int val_p, int val_q);
+    
+    Bitnode<char>* travel(
+    Bitnode<char> * root, int p_val, int q_val);
+    
+};
+
+// 二叉树的最近公共祖先 offer682;
+class offer682 {
+public:
+    Bitnode<char>* lowestcommonancester(
+        Bitnode<char> * root, int val_p, int val_q);
+    
+};
+
+///////////// leetcode 
+class leetcode844 {
+public:
+    bool backspaceCCompare(string t, string s);
+    string getString(string str);
+};

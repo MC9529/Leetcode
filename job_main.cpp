@@ -1074,12 +1074,109 @@ int main() {
     return 0;
 }
 */
+// 构建乘积数组 offer66
 
+/*
 int main() {
     vector<int> a = {1, 2, 3, 4, 5};
 
     offer66 solu;
     // solu.constractArr(a);
     solu.constractArr2(a);
+    return 0;
+}
+*/
+
+// //  将字符串转换成整数  offer67
+/*
+int main() {
+    string str = "4200";
+    offer67 solu;
+    solu.str2int(str);
+
+    return 0;
+}
+
+*/
+
+// // 二叉树的最近公共祖先 offer681;
+
+/*
+int main() {
+    int p = 7, q = 9;
+    offer681 solu;
+    Tree<char> my_tree;
+  // Tree<char> my_tree_2;
+  //A{ B {C, },  D} ->ABC# ## D##
+  //      A
+  //     / \
+  //     B  D
+  //    /
+  //   C
+  //A{B{, D}, C}  ->ABD###C##
+  //      A
+  //     / \
+  //     B  C
+  //    /
+  //   D
+
+    Bitnode<char>* root = my_tree.GetRoot();
+    // 迭代
+    //solu.lowestcommonancester(root, p, q);
+    // 递归
+    solu.lowestcommonancester2(root, p, q);
+
+
+
+    return 0;
+}
+*/
+
+// 二叉树的最近公共祖先 offer682;
+
+
+/*
+int main() {
+    int p = 7, q = 6;
+    offer682 solu;
+    Tree<char> my_tree;
+  // Tree<char> my_tree_2;
+  //A{ B {C, },  D} ->ABC# ## D##
+  //      A
+  //     / \
+  //     B  D
+  //    /
+  //   C
+  //A{B{, D}, C}  ->ABD###C##
+  //      A
+  //     / \
+  //     B  C
+  //    /
+  //   D
+
+    Bitnode<char>* root = my_tree.GetRoot();
+    // 迭代
+    //solu.lowestcommonancester(root, p, q);
+    // 递归
+    Bitnode<char> *res = solu.lowestcommonancester(root, p, q);
+    if (res) {
+        cout << "the res_val: " << res->val << endl;
+    }
+
+
+    return 0;
+}
+
+*/
+
+// leetcode844 比较含有退格的字符
+int main() {
+//    string T = "ab#c";
+//    string S = "ad#c";
+   string T = "a##b";
+   string S = "#c#b";
+   leetcode844 solu;
+   solu.backspaceCCompare(T,S);
+
     return 0;
 }
