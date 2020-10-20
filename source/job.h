@@ -496,3 +496,22 @@ public:
     bool backspaceCCompare(string t, string s);
     string getString(string str);
 };
+
+// leetcode1 两个数之和
+class leetcode1 {
+public:
+    vector<int> twosum(vector<int> &nums, int target);
+};
+
+// 两数相加 leetcode2
+class leetcode2 {
+public:
+    Node* addTwonumbers(Node* l1, Node* l2);
+
+};
+
+// 无重复字符的最长子串
+class leetcode3 {
+public:
+    int lenoflongestsubstring(string s);
+};

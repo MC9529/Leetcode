@@ -1258,6 +1258,7 @@ int offer44::findNthDigit(int n) {
             ++i;
         }
     }
+    
     cout << "the res: " << res << endl;
     return res;
  }
@@ -1963,3 +1964,87 @@ Bitnode<char>* offer682::lowestcommonancester(
 
      return temp_res;
  }
+
+ // leetcode1 两个数之和
+ vector<int> leetcode1::twosum(vector<int> &nums, int target) {
+     vector<int> res;
+     unordered_map<int, int> map;
+     for (int i = 0; i < nums.size(); ++i) {
+         map[nums[i]] = i;
+     }
+     for (int i = 0; i < nums.size(); ++i) {
+         auto iter = map.find(target - nums[i]);
+         if (iter != map.end()) {
+             cout << i << " " << iter->second << endl;
+             res.push_back(i);
+             res.push_back(iter->second);
+         }
+     }
+
+    //  for (int i = 0; i < res.size(); ++i) {
+    //      cout << res[i] << " " << nums[i] << endl;
+
+    //  }
+     cout << endl;
+
+
+     return res;
+
+ }
+
+
+// 两数相加 leetcode2
+Node* leetcode2::addTwonumbers(Node* l1, Node* l2) {
+    LinkList list;
+    int next_posi = 0;
+    int cur_posi = 0;
+    while(l1->next) {
+        int temp = l1->next->val + l2->next->val;
+        cur_posi = temp % 10 + next_posi;
+        next_posi = temp / 10 + cur_posi / 10;
+        cout << "the temp: " << temp << " "
+             << "cur_posi: " << cur_posi << " "
+             << "next_posi: " << next_posi << endl;
+        
+        list.creatLinkList_one(cur_posi);
+        l1 = l1->next;
+        l2 = l2->next;
+        if (!l1->next && next_posi != 0) {
+            list.creatLinkList_one(next_posi);
+        }
+    }
+     Node *temp = list.head->next;
+     while(temp) {
+         cout << temp->val << endl;
+         temp = temp->next;
+
+     }
+    return list.head;
+
+}
+
+// // 无重复字符的最长子串
+// 滑动窗口法
+int leetcode3::lenoflongestsubstring(string s) {
+    int len = s.size();
+    if (len == 0) return 0;
+    int res = 1;
+    // 滑动窗口
+    int i = 0, j = 0;  // start   end
+    unordered_map<char, int> mp;
+    for (; j < len; ++j) {
+        mp[s[j]] ++;
+        if (mp[s[j]] == 1) {
+            res = max(j - i + 1, res);
+        }
+        if (j == len - 1) break;
+        while (mp[s[j]] > 1) {
+            mp[s[i]] --;
+            ++i;
+        }
+    }
+    cout << "the res :" << res << endl;
+
+   return res;
+
+}

@@ -1170,6 +1170,7 @@ int main() {
 */
 
 // leetcode844 比较含有退格的字符
+/*
 int main() {
 //    string T = "ab#c";
 //    string S = "ad#c";
@@ -1177,6 +1178,59 @@ int main() {
    string S = "#c#b";
    leetcode844 solu;
    solu.backspaceCCompare(T,S);
+
+    return 0;
+}
+*/
+// // leetcode1 两个数之和
+
+/*
+int main() {
+
+    vector<int> nums = {2, 7, 11, 15, -2, -6};
+    int target = 9;
+    leetcode1 solu;
+    solu.twosum(nums, target);
+
+    return 0;
+}
+*/
+
+// leetcode2 两数相加
+
+/*
+int main() {
+
+    LinkList list;
+    list.creatLinkList_one(1);
+    list.creatLinkList_one(2);
+    list.creatLinkList_one(3);
+    list.creatLinkList_one(4);
+    list.TravelLinkList();
+    
+    LinkList list1;
+    list1.creatLinkList_one(5);
+    list1.creatLinkList_one(6);
+    list1.creatLinkList_one(7);
+    list1.creatLinkList_one(8);
+    list1.TravelLinkList();
+    
+    leetcode2 solu;
+
+    solu.addTwonumbers(list.head, list1.head);
+
+
+    return 0;
+}
+
+*/
+
+int main() {
+
+    string str = "pwwkew";
+    leetcode3 solu;
+    solu.lenoflongestsubstring(str);
+
 
     return 0;
 }
