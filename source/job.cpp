@@ -2048,3 +2048,148 @@ int leetcode3::lenoflongestsubstring(string s) {
    return res;
 
 }
+
+// 最长回文子串  leetcode5
+string leetcode5::longestPalindrome(string s) {
+    int n = s.size();
+    // dp[i][j] 表示从i到j的子串是否为回文
+    vector<vector<int>> dp(n, vector<int>(n));
+    string ans;
+    for (int l = 0; l < n; ++l) {
+        for (int i = 0; i + l < n; ++i) {
+            int j = i + l;
+            if (l == 0) {
+                dp[i][j] = 1;
+            } else if (l == 1) {
+                dp[i][j] = (s[i] == s[j]);
+            } else {
+                dp[i][j] = (s[i] == s[j] && dp[i + 1][j-1]);
+            }
+            if (dp[i][j] && l + 1 > ans.size()) {
+                ans = s.substr(i, l +1);
+            }
+
+        }
+    }
+
+    cout << "the res: " << ans << endl;
+
+    return ans;
+}
+
+//
+
+string leetcode5::longestPalindrome2(string s) {
+    int n = s.size();
+    string ans = "";
+    vector<vector<int>> dp(n, vector<int>(n));
+   
+    return ans;
+}
+
+// 整数反转 leetcode7
+int leetcode7::reverse(int x) {
+    int temp_x = x > 0 ? x: -1 * x;
+    int ans = 0;
+    while(temp_x > 0) {
+        int tail = temp_x % 10;
+        temp_x = temp_x / 10;
+        ans = tail + ans * 10;
+
+    }
+
+    if (x < 0) {
+        ans = -1 * ans;
+    }
+    cout << "res: " << ans << endl;
+
+    return ans;
+}
+
+// 字符串转整数 leetcode8
+int leetcode8::myatoi(string s) {
+    int ans = 0;
+    bool negative_flag = false;
+    for (int i = 0; i < s.size(); ++i) {
+        if (s[i] == '-') {
+            negative_flag = true;
+        } else if (s[i] - 48 >= 0 && s[i] - 48 <= 9) {
+            int temp = s[i] - 48;
+            ans = temp + ans * 10;
+        }
+    }
+
+    if (negative_flag) {
+        ans = -1 * ans;
+    }
+    cout << "the res: " << ans << endl;
+
+    return ans;
+
+}
+
+// // 回文  leetcode9
+
+bool leetcode9::ispalindrome(int x) {
+    bool res = false;
+    if (x < 0) {
+        res = false;
+        return res;
+    }
+    int temp_x = x;
+    int ans = 0;
+    while(x > 0) {
+        int tail = x % 10;
+        x = x / 10;
+        ans = tail + ans * 10;
+
+    }
+    if (ans == temp_x) {
+        res = true;
+       
+    } else {
+        res = false;
+    }
+
+    return res;
+
+}
+
+// 成最多水的容器 leetcode11
+// 双指针法
+int leetcode11::maxarea(vector<int> &height) {
+    int l = 0, r = height.size() - 1;
+    int ans = 0;
+    while(l < r) {
+        int area = min(height[l], height[r]) * (r - l);
+        ans = max(area, ans);
+        // 哪边高度低,就移动哪一个
+        if (height[l] < height[r]) {
+            l ++;
+        } else {
+            r--;
+        }
+    }
+    cout << "ans: " << ans << endl;
+    return ans;
+}
+
+// 整数转罗马数字 leetcode12
+
+string leetcode12::int2roman(int num) {
+    string res;
+    vector<string> tmp_1 = {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
+    vector<string> tmp_10 = {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"};
+    vector<string> tmp_100 = {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"};
+    vector<string> tmp_1000 = {"", "M", "MM", "MMM"};
+    res.append(tmp_1000[num / 1000 % 10]);
+
+    res.append(tmp_100[num / 100 % 10]);
+    res.append(tmp_10[num / 10 % 10]);
+
+    res.append(tmp_1[num / 1 % 10]);
+
+    cout << "the res: " << res << endl;
+    return res;
+
+}

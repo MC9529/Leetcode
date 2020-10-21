@@ -1224,13 +1224,93 @@ int main() {
 }
 
 */
-
+//  // // 无重复字符的最长子串
+/*
 int main() {
-
+  
     string str = "pwwkew";
     leetcode3 solu;
     solu.lenoflongestsubstring(str);
 
+
+    return 0;
+}
+*/
+
+// // 最长回文子串  leetcode5
+
+/*
+int main() {
+    string s = "babad";
+    // string s = "cbba";
+    leetcode5 solu;
+    // solu.longestPalindrome(s);
+    solu.longestPalindrome2(s);
+
+    return 0;
+}
+*/
+
+// 
+// 整数反转 leetcode7
+/*
+int main() {
+    // int x = 123;
+    // int x = -123;
+    int x = 120;
+    leetcode7 solu;
+    solu.reverse(x);
+
+    return 0;
+}
+*/
+// leetcode8 
+/*
+int main() {
+ //  string s = "42";
+ //   string s = "  -42";
+    string s = "  -42 with the words";
+
+   leetcode8 solu;
+   solu.myatoi(s);
+
+    return 0;
+}
+*/
+/*
+int main() {
+    int x = -121;
+    leetcode9 solu;
+    bool ans = solu.ispalindrome(x);
+    if (ans) {
+        cout << "yes" << endl;
+    } else {
+        cout << "no " << endl;
+    }
+    return 0;
+}
+*/
+/*
+
+int main() {
+    vector<int> nums = {1, 8, 6, 2, 5, 4, 8, 3, 7};
+    leetcode11 solu;
+    solu.maxarea(nums);
+
+    return 0;
+}
+*/
+
+int main() {
+
+
+    // int num = 3;
+    // int num = 4;
+    // int num = 9;
+    int num = 58;
+    leetcode12 solu;
+
+    solu.int2roman(num);
 
     return 0;
 }

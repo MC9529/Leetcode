@@ -514,4 +514,45 @@ public:
 class leetcode3 {
 public:
     int lenoflongestsubstring(string s);
+    int lenoflongestsubstring2(string s);
+};
+
+// 最长回文子串  leetcode5
+class leetcode5 {
+public:
+    string longestPalindrome(string s);
+    string longestPalindrome2(string s);
+};
+
+// 整数反转 leetcode7
+class leetcode7 {
+public:
+    int reverse(int x);
+    
+};
+
+// 字符串转整数 leetcode8
+class leetcode8 {
+public:
+    int myatoi(string s);
+
+};
+
+// 回文数 leetcode9
+class leetcode9 {
+public:
+    bool ispalindrome(int x);
+};
+
+// 成最多水的容器 leetcode11
+// 双指针法
+class leetcode11 {
+public:
+    int maxarea(vector<int> &height);
+};
+
+// 整数转罗马数字 leetcode12
+class leetcode12 {
+public:
+    string int2roman(int num);
 };
