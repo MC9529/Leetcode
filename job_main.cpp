@@ -1301,6 +1301,7 @@ int main() {
 }
 */
 
+/*
 int main() {
 
 
@@ -1311,6 +1312,36 @@ int main() {
     leetcode12 solu;
 
     solu.int2roman(num);
+
+    return 0;
+}
+*/
+
+// // 罗马数字转数字  leetcode13
+
+/*
+int main() {
+    leetcode13 solu;
+    //string s = "III";
+    // string s = "IV";
+    // string s = "IX";
+    // string s = "LVIII";
+    string s = "MCMXCIV";
+
+
+    solu.roman2int(s);
+
+    return 0;
+}
+*/
+
+// // leetcode14 最长公共子串
+
+int main() {
+    leetcode14 solu;
+    vector<string> strs = {"flower", "flow", "flight"};
+    solu.longestcommonPrefix(strs);
+
 
     return 0;
 }

@@ -2193,3 +2193,61 @@ string leetcode12::int2roman(int num) {
     return res;
 
 }
+
+// // 罗马数字转数字  leetcode13
+
+int leetcode13::roman2int(string s) {
+    int res = 0;
+    map<char, int> luomab = {
+        {'I', 1},
+        {'V', 5},
+        {'X', 10},
+        {'L', 50},
+        {'C', 100},
+        {'D', 500},
+        {'M', 1000}
+    };
+    for (int i = 0; i < s.size(); ++i) {
+
+        if (luomab[s[i]] < luomab[s[i+1]]) {
+            res = res - luomab[s[i]];
+        } else {
+            res = res + luomab[s[i]];
+        }
+
+    }
+    cout << "the res: " << res << endl;
+
+    return res;
+
+}
+
+
+// leetcode14 最长公共子串
+string leetcode14::longestcommonPrefix(vector<string> &strs) {
+    if (!strs.size()) {
+        return "";
+    }
+    string prefix = strs[0];
+    int count = strs.size();
+    for (int i = 1; i < count; ++i) {
+        prefix = longestcommonPrefix(prefix, strs[i]);
+        if (prefix.size() == 0) {
+            break;
+        }
+    }
+    cout << "the res: " << prefix << endl;
+
+    return prefix;
+
+}
+string leetcode14::longestcommonPrefix(const string &str1, const string &str2) {
+    int len = min(str1.size(), str2.size());
+    int index = 0;
+    while(index < len && str1[index] == str2[index]) {
+        ++index;
+    }
+    return str1.substr(0, index);
+
+}
+    

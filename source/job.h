@@ -556,3 +556,18 @@ class leetcode12 {
 public:
     string int2roman(int num);
 };
+
+// 罗马数字转数字  leetcode13
+
+class leetcode13 {
+public:
+    int roman2int(string s);
+};
+
+// leetcode14 最长公共子串
+class leetcode14 {
+public:
+    string longestcommonPrefix(vector<string> &strs);
+    string longestcommonPrefix(const string &str1, const string &str2);
+    
+};
