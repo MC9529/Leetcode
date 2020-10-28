@@ -1337,11 +1337,47 @@ int main() {
 
 // // leetcode14 最长公共子串
 
+/*
 int main() {
     leetcode14 solu;
     vector<string> strs = {"flower", "flow", "flight"};
     solu.longestcommonPrefix(strs);
 
+
+    return 0;
+}
+*/
+
+// 三数之和  leetcode15  二数之和 leetcode1
+/*
+int main() {
+
+    leetcode15 solu;
+    vector<int> nums = {-1, 0, 1, 2, -1, -4};
+    int target = 1;
+    solu.threeSum(nums, target);
+
+    return 0;
+}
+*/
+
+// leetcode16 最接近的三数之和 
+/*
+int main() {
+    leetcode16 solu;
+    vector<int> nums = {-1,2,1,-4};
+    int target = 1;
+    solu.threeSumClosest(nums, target);
+
+    return 0;
+}
+*/
+
+// 电话号码的字母组合 leetcode17
+int main() {
+    leetcode17 solu;
+    string digits = "234";
+    solu.letterCombinations(digits);
 
     return 0;
 }

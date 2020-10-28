@@ -2241,6 +2241,7 @@ string leetcode14::longestcommonPrefix(vector<string> &strs) {
     return prefix;
 
 }
+
 string leetcode14::longestcommonPrefix(const string &str1, const string &str2) {
     int len = min(str1.size(), str2.size());
     int index = 0;
@@ -2250,4 +2251,140 @@ string leetcode14::longestcommonPrefix(const string &str1, const string &str2) {
     return str1.substr(0, index);
 
 }
+
+// 三数之和  leetcode15  二数之和 leetcode1
+
+vector<vector<int>> leetcode15::threeSum(vector<int>& nums, int target) {
+    vector<vector<int>> res;
+    int n = nums.size();
+    sort(nums.begin(), nums.end());
+    for (int first = 0; first < n; ++first) {
+        if (nums[first] > target) {
+            continue;
+        }
+        if (first > 0 && nums[first] == nums[first -1]) {
+            continue;
+        }
+        int left = first + 1, right = n - 1;
+        while(left < right) {
+            if (nums[first] + nums[left] + nums[right] > target) {
+                right --;
+            } else if (nums[first] + nums[left] + nums[right] < target) {
+                left ++;
+            } else {
+                res.push_back({nums[first], nums[left], nums[right]});
+                while(right > left && nums[right] == nums[right - 1]) {
+                    right --;
+                }
+                while(right > left && nums[left] == nums[left + 1]) {
+                    left ++;
+                }
+                right --;
+                left ++;
+            }
+        }
+    }
+    for (int i = 0; i < res.size(); ++i) {
+        vector<int> temp_vec = res[i];
+        for (int j = 0; j < temp_vec.size(); ++j) {
+            cout << temp_vec[j] << " ";
+        }
+        cout << endl;
+        
+    }
+    cout << endl;
+    return res;
+}
+
+// leetcode16 最接近的三数之和 
+int leetcode16::threeSumClosest(vector<int>& nums, int target) {
+    int res;
+    int n = nums.size();
+    int mincut = nums[1] + nums[2] + nums[3];
+
+    sort(nums.begin(), nums.end());
+    for (int first = 0; first < n; ++first) {
+         
+        if (first > 0 && nums[first] == nums[first -1]) {
+            continue;
+        }
+        int left = first + 1, right = n - 1;
+        while(left < right) {
+            cout << "the first and left and right: " << first << " "
+                 << left << " " << right << endl;
+            int threesum = nums[first] + nums[left] + nums[right];
+            cout << "the three sum: " << threesum << endl;
+            if (abs(threesum - target) < abs(mincut - target)) {
+                mincut = threesum;
+                cout << "the mincut: " << mincut << endl;
+            } else if(threesum < target) {
+                while(left < right && nums[right] == nums[right]) {
+                    right --;
+                }
+            } else if(threesum > target) {
+
+                while(left < right && nums[left] == nums[left + 1]) {
+                    left ++;
+                }
+            }
+
+            left ++;
+            right --;
+
+        }
+    }
+
+    cout << "the res: " << mincut << endl;
     
+    cout << endl;
+    return mincut;
+
+}
+
+// 电话号码的字母组合 leetcode17
+vector<string> leetcode17::letterCombinations(string digits) {
+    vector<string> combinations;
+    if (digits.empty()) {
+        return combinations;
+    }
+    unordered_map<char, string> phonemap {
+        {'2', "abc"},
+        {'3', "def"},
+        {'4', "ghi"},
+        {'5', "jkl"},
+        {'6', "mno"},
+        {'7', "pqrs"},
+        {'8', "tuv"},
+        {'9', "wxyz"}
+    };
+    string combination;
+    backtrack(combinations, phonemap, digits, 0, combination);
+    for (auto iter: combinations) {
+        cout << iter << endl;
+    }
+    cout << endl;
+    
+    return combinations;
+
+}
+
+void leetcode17::backtrack(vector<string>& combinations, 
+    const unordered_map<char, string>& phoneMap,
+    const string& digits, int index, string& combination) {
+    if (index == digits.size()) {
+        combinations.emplace_back(combination);
+    } else {
+        char digit = digits[index];
+        const string letters = phoneMap.at(digit);
+        for (auto iter: letters) {
+            combination.push_back(iter);
+            backtrack(combinations, phoneMap, digits, index + 1, combination);
+            combination.pop_back();
+        }
+    }
+
+}
+
+
+
+

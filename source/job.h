@@ -571,3 +571,32 @@ public:
     string longestcommonPrefix(const string &str1, const string &str2);
     
 };
+
+// 三数之和  leetcode15  二数之和 leetcode1
+
+class leetcode15 {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums, int target);
+};
+
+// leetcode16 最接近的三数之和 
+class leetcode16 {
+public:
+    int threeSumClosest(vector<int>& nums, int target);
+    
+};
+
+// leetcode17 电话号码的字母组合
+class leetcode17 {
+public:
+    vector<string> letterCombinations(string digits);
+    void backtrack(vector<string>& combinations, 
+        const unordered_map<char, string>& phoneMap,
+        const string& digits, int index, string& combination);
+
+
+
+    
+};
+
+
