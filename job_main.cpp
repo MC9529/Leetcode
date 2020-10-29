@@ -1374,10 +1374,43 @@ int main() {
 */
 
 // 电话号码的字母组合 leetcode17
+
+/*
 int main() {
     leetcode17 solu;
     string digits = "234";
     solu.letterCombinations(digits);
+
+    return 0;
+}
+*/
+
+//  leetcode18 四数之和
+/*
+int main() {
+    leetcode18 solu;
+    vector<int> nums = {1, 0, -1, 0, -2, 2};
+    int target = 0;
+    solu.fourSum(nums, target);
+
+    return 0;
+}
+*/
+
+int main() {
+    LinkList list;
+    list.creatLinkList_one(1);
+    list.creatLinkList_one(2);
+    list.creatLinkList_one(3);
+    list.creatLinkList_one(4);
+    list.creatLinkList_one(5);
+    list.TravelLinkList();
+    int n = 3;
+    leetcode19 solu;
+    solu.deleteNthNode(list.head, n);
+
+    list.TravelLinkList();
+
 
     return 0;
 }

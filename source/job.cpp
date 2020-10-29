@@ -2385,6 +2385,82 @@ void leetcode17::backtrack(vector<string>& combinations,
 
 }
 
+//  leetcode18 四数之和
 
+vector<vector<int>> leetcode18::fourSum(vector<int>& nums, int target) {
+    sort(nums.begin(), nums.end());
+    vector<vector<int>> res;
+    if (nums.size() < 4) {
+        return res;
+    }
+    int a, b, c, d, len = nums.size();
+    for (int a = 0; a < len - 4; ++a) {
+        if (a > 0 && nums[a] == nums[a-1]) {
+            continue;
+        }
+        for (b = a+1; b < len -3; ++b) {
+            if (b > a + 1 && nums[b] == nums[b-1]) {
+                continue;
+            }
+            c = b + 1;
+            d = len - 1;
+            while(c < d) {
+                if (nums[a] + nums[b] + nums[c] +nums[d] < target) {
+                    c++;
+                } else if (nums[a] + nums[b] + nums[c] +nums[d] > target) {
+                    d--;
+                } else {
+                    res.push_back({nums[a], nums[b], nums[c], nums[d]});
+                    while(c < d && nums[c+1] == nums[c]) {
+                        c ++;
+                    }
+                    while(c < d && nums[d -1] == nums[d]) {
+                        d --;
+                    }
+                    c ++;
+                    d --;
+                }
 
+            }
+        }
+    }
+    for (int i = 0; i < res.size(); ++i) {
+        vector<int> temp_res = res[i];
+        for (auto iter: temp_res) {
+            cout << iter << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+    return res;
 
+}
+
+//  删除链表的第n个节点 leetcode19
+Node* leetcode19::deleteNthNode(Node *head, int n) {
+    Node *temp_head = head;
+    int count = 0;
+     while (temp_head->next != NULL) {
+
+          Node *target_node = temp_head->next;
+          count++;
+         
+         if (count == n) {
+            temp_head->next = target_node->next;
+            free(target_node);
+            break;
+            // return head;
+
+         } else {
+             temp_head = temp_head->next;
+         }
+
+     }
+     cout << "the count: " << count << endl;
+     if (count < n) {
+         cout << "the num of node < n" << endl;
+     }
+
+     return head;
+
+}

@@ -594,9 +594,18 @@ public:
         const unordered_map<char, string>& phoneMap,
         const string& digits, int index, string& combination);
 
-
-
-    
 };
 
 
+// leetcode18 四数之和
+class leetcode18 {
+public:
+    vector<vector<int>> fourSum(vector<int>& nums, int target);
+};
+
+
+//  删除链表的第n个节点 leetcode19
+class leetcode19 {
+public:
+    Node* deleteNthNode(Node *head, int n);
+};
