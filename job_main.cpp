@@ -1497,6 +1497,8 @@ int main() {
 }
 */
 
+// 移除元素 leetcode27 
+/*
 int main() {
 
     leetcode27 solu;
@@ -1506,6 +1508,19 @@ int main() {
     int val = 2;
 
     solu.removeelement(nums, val);
+
+    return 0;
+}
+*/
+
+// 除法 leetcode29
+int main() {
+    int dividend = 11;
+    int divisor = 3;
+
+    leetcode29 solu;
+    int res = solu.divide(dividend, divisor);
+    cout << "the res: " << res << endl;
 
     return 0;
 }

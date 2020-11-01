@@ -660,5 +660,7 @@ public:
 // 除法 leetcode29
 class leetcode29 {
 public:
+    int divide(int dividend, int divisor);
+    int div(long a, long b);
 
 };
