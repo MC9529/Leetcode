@@ -1397,6 +1397,7 @@ int main() {
 }
 */
 
+/*
 int main() {
     LinkList list;
     list.creatLinkList_one(1);
@@ -1411,6 +1412,100 @@ int main() {
 
     list.TravelLinkList();
 
+
+    return 0;
+}
+*/
+
+/// // 有效括号  leetcode20
+
+/*
+int main() {
+    leetcode20 solu;
+    //string s = "()";
+    //string s = "(){}[]";
+    //string s = "(]";
+    string s = "([])";
+    solu.isValid(s);
+
+    return 0;
+}
+
+*/
+/*
+int main() {
+    leetcode21 solu;
+
+    LinkList list;
+    list.creatLinkList_one(1);
+    list.creatLinkList_one(2);
+    list.creatLinkList_one(3);
+   
+    list.TravelLinkList();
+    
+    LinkList list2;
+    list2.creatLinkList_one(2);
+    list2.creatLinkList_one(4);
+    list2.creatLinkList_one(5);
+   
+    list2.TravelLinkList();
+    cout << "pass in 1451" << endl;
+    solu.merge2Node(list.head, list2.head);
+    cout << "pass in 1453" << endl;
+
+    list.TravelLinkList();
+    list2.TravelLinkList();
+
+
+    return 0;
+}
+*/
+// 
+
+/*
+int main() {
+    leetcode22 solu;
+    int n = 3;
+    solu.generaterParents(n);
+
+    return 0;
+}
+*/
+
+/*
+int main() {
+    leetcode24 solu;
+    LinkList list;
+    list.creatLinkList_one(1);
+    list.creatLinkList_one(2);
+    list.creatLinkList_one(3);
+    //list.creatLinkList_one(4);
+    list.TravelLinkList();
+    solu.swapPairs(list.head);
+
+    return 0;
+}
+*/
+
+/*
+int main() {
+    leetcode26 solu;
+    vector<int> nums = {1, 1, 2, 3, 3, 3, 4};
+    solu.removeDuplicates(nums);
+
+    return 0;
+}
+*/
+
+int main() {
+
+    leetcode27 solu;
+    //vector<int> nums = {3, 2, 2, 3};
+
+    vector<int> nums = {0, 1, 2, 2, 3, 0, 4, 2};
+    int val = 2;
+
+    solu.removeelement(nums, val);
 
     return 0;
 }

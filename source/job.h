@@ -503,11 +503,11 @@ public:
     vector<int> twosum(vector<int> &nums, int target);
 };
 
+
 // 两数相加 leetcode2
 class leetcode2 {
 public:
     Node* addTwonumbers(Node* l1, Node* l2);
-
 };
 
 // 无重复字符的最长子串
@@ -608,4 +608,57 @@ public:
 class leetcode19 {
 public:
     Node* deleteNthNode(Node *head, int n);
+};
+
+// 有效括号  leetcode20
+class leetcode20 {
+public:
+    bool isValid(string s);
+};
+
+// 合并两个升序链表  leetcode21
+class leetcode21 {
+public:
+    Node* merge2Node(Node *head1, Node *head2);
+};
+
+// 括号生成器  leetcode22
+class leetcode22 {
+public:
+    vector<string> generaterParents(int n);
+    void dfs(vector<string> &res, string path, int n,
+            int lc, int rc);
+};
+
+// 两两交换链表中的节点  leetcode24
+class leetcode24 {
+public:
+    Node *swapPairs(Node *head);
+
+};
+
+// 删除排序数组中的重复数组  leetcode26
+class leetcode26 {
+public:
+    int removeDuplicates(vector<int> &nums);
+};
+
+// 移除元素 leetcode27 
+class leetcode27 {
+public:
+    int removeelement(vector<int> &nums, int val);
+
+};
+
+// 实现 strStr leetcode28
+class leetcode28 {
+public:
+    int strStr(string haystack, string needle);
+
+};
+
+// 除法 leetcode29
+class leetcode29 {
+public:
+
 };

@@ -2367,7 +2367,7 @@ vector<string> leetcode17::letterCombinations(string digits) {
     return combinations;
 
 }
-
+// 回溯
 void leetcode17::backtrack(vector<string>& combinations, 
     const unordered_map<char, string>& phoneMap,
     const string& digits, int index, string& combination) {
@@ -2462,5 +2462,188 @@ Node* leetcode19::deleteNthNode(Node *head, int n) {
      }
 
      return head;
+
+}
+
+// 有效括号  leetcode20
+
+bool leetcode20::isValid(string s) {
+    stack<char> s_stack;
+    bool res = false;
+    for (int i = 0; i < s.size(); ++i) {
+        if (s_stack.empty()) {
+            s_stack.push(s[i]);
+        } else {
+            if ((s_stack.top() == '(' && s[i] == ')') ||
+                 (s_stack.top() == '{' && s[i] == '}') ||
+                 (s_stack.top() == '[' && s[i] == ']')) {
+                s_stack.pop();
+
+            } else {
+                s_stack.push(s[i]);
+            }  
+        }
+    }
+    if (s_stack.empty()) {
+        cout << "is true" << endl;
+        res = true;
+    } else {
+        cout << "is false" << endl;
+        res = false;
+    }
+
+    return res;
+}
+
+// // 合并两个升序链表  leetcode21
+Node* leetcode21::merge2Node(Node *head1, Node *head2) {
+    // 链表2插入链表1
+    Node* insert_node = head1->next;
+    Node* head2_temp = head2->next;
+
+    while(head2_temp != nullptr) {
+        // head2_temp的值小于插入点, 且该点是第一个点
+        if (insert_node->next == nullptr) {
+            insert_node->next = head2_temp;
+            break;
+        }
+        if (head2_temp->val < insert_node->val &&
+            insert_node->val == head1->next->val) {
+
+            Node *ptemp = new Node;
+            ptemp->val = head2_temp->val;
+            ptemp->next = insert_node;
+
+            insert_node = insert_node->next;
+
+            head2_temp = head2_temp->next;
+
+        } else if (head2_temp->val < insert_node->next->val && 
+                   head2_temp->val >= insert_node->val){
+
+            Node *ptemp = new Node;
+            ptemp->val = head2_temp->val;
+            ptemp->next = insert_node->next;
+            insert_node->next = ptemp;
+
+            insert_node = insert_node->next;
+            head2_temp = head2_temp->next;
+
+        } else if (head2_temp->val >= insert_node->next->val) {
+            cout << "the insert node: " << insert_node->val << endl;
+            cout << "the head2_temp node: " << head2_temp->val << endl;
+            while(head2_temp->val >= insert_node->next->val) {
+                if (insert_node->next != nullptr) {
+                    insert_node = insert_node->next;
+                    cout << "the insert node insert in 2542: " << insert_node->val << endl;
+                } 
+                if (insert_node->next == nullptr) {
+                    break;
+                }
+            }
+
+            cout << "the insert node: " << insert_node->val << endl;
+            
+        }
+
+    }
+    Node* search_node = head1->next;
+    while (search_node) {
+        cout << "the val: " << search_node->val << endl;
+        search_node = search_node->next;
+    }
+
+    return head1;
+
+}
+
+// 括号生成器  leetcode22
+vector<string> leetcode22::generaterParents(int n) {
+    vector<string> res;
+    string path;
+    int lc = 0, rc = 0;
+    dfs(res, path, n, lc, rc);
+    for (int i = 0; i < res.size(); ++i) {
+        cout << res[i] << endl;
+    }
+    cout << endl;
+    return res;
+}
+
+void leetcode22::dfs(vector<string> &res, string path, int n,
+            int lc, int rc) {
+    if (rc > lc || lc > n || rc > n) {
+        return;
+    }
+    if (lc == n && rc == n) {
+        res.push_back(path);
+        return;
+    }
+
+    dfs(res, path + '(', n, lc + 1, rc);
+    dfs(res, path + ')', n, lc, rc + 1);
+
+}
+
+// 两两交换链表中的节点  leetcode24
+
+Node *leetcode24::swapPairs(Node *head) {
+    Node* temp_node = head->next;
+    while(temp_node->next) {
+        auto temp_val = temp_node->val;
+        auto temp_next_val = temp_node->next->val;
+        temp_node->val = temp_next_val;
+        temp_node->next->val = temp_val;
+        if (temp_node->next->next == nullptr) {
+            break;
+
+        } else {
+            temp_node = temp_node->next->next;
+        }
+
+    }
+    Node* temp_node1 = head->next;
+    while(temp_node1) {
+        cout << "the temp_node1: " << temp_node1->val << endl;
+        temp_node1 = temp_node1->next;
+    }
+    
+    return head;
+
+}
+
+// 删除排序数组中的重复数组  leetcode26
+int leetcode26::removeDuplicates(vector<int> &nums) {
+    // unordered_set<int> set_nums;
+    set<int> set_nums;
+    for (int i = 0; i < nums.size(); ++i) {
+        set_nums.emplace(nums[i]);
+    }
+    cout << "the len of set_nums: " << set_nums.size() << endl;
+    return set_nums.size();
+}
+
+// 移除元素 leetcode27 
+
+int leetcode27::removeelement(vector<int> &nums, int val) {
+
+    for (int i = 0; i < nums.size(); ++i) {
+        if (nums[i] == val) {
+            nums.erase(nums.begin() + i);
+            i --;
+        }
+    }
+
+    for (int i = 0; i < nums.size(); ++i) {
+        cout << nums[i] << " " << endl;
+    }
+    cout << endl;
+
+    return nums.size();
+}
+
+
+// 实现 strStr leetcode28
+int leetcode28::strStr(string haystack, string needle) {
 
 }
