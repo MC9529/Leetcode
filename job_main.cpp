@@ -1514,6 +1514,8 @@ int main() {
 */
 
 // 除法 leetcode29
+
+/*
 int main() {
     int dividend = 11;
     int divisor = 3;
@@ -1521,6 +1523,46 @@ int main() {
     leetcode29 solu;
     int res = solu.divide(dividend, divisor);
     cout << "the res: " << res << endl;
+
+    return 0;
+}
+*/
+
+// // 搜索排序数组  leetcode 33
+/*
+int main() {
+    vector<int> nums = {4, 5, 6, 7, 0, 1, 2};
+    int target = 3;
+    leetcode33 solu;
+    solu.search(nums, target);
+
+    return 0;
+}
+*/
+
+// 在排序数组中查找元素的第一个和最后一个位置 时间复杂度O(log(n))
+// leetcode34
+/*
+int main() {
+    leetcode34 solu;
+    vector<int> nums = {5, 7, 7, 8, 8, 10};
+    int target = 8;
+
+    solu.searchRange(nums, target);
+
+    return 0;
+}
+*/
+
+int main() {
+    vector<int> nums = {1, 3, 5, 6};
+    int target = 4;
+    leetcode35 solu;
+    solu.searchInsert(nums, target);
+
+
+
+
 
     return 0;
 }

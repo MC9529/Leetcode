@@ -2691,3 +2691,117 @@ int leetcode29::div(long a, long b) {
     return count + div(a - tb, b);
 
 }
+
+// 搜索排序数组  leetcode 33
+int leetcode33::search(vector<int> &nums, int target) {
+    int res = -1;
+    int l = 0, r = nums.size() - 1;
+    cout << "the l and r" << l << " " << r << endl;
+    while(l < r) {
+        int mid = (r + l) / 2;
+        if (nums[mid] == target) {
+            res = mid;
+            break;
+        }
+        if (nums[mid] >= nums[l]) {
+            if (nums[l] <= target && nums[mid] > target) {
+                r = mid - 1;
+            } else {
+                l = mid + 1;
+            }
+        } else {
+
+            if (nums[mid] <= target && nums[r] > target) {
+                l = mid + 1;
+            } else {
+                r = mid - 1;
+            }
+            
+        }
+        cout << "in 2721" << endl;
+    }
+
+    cout << "the posi: " << res << endl;
+    cout << "in 2722 " << endl;
+    return res;
+}
+
+// 在排序数组中查找元素的第一个和最后一个位置 时间复杂度O(log(n))
+// leetcode34
+ vector<int> leetcode34::searchRange(vector<int> &nums, int target) {
+     vector<int> res;
+     auto liter = lower_bound(nums.begin(), nums.end(), target);
+     auto hiter = upper_bound(nums.begin(), nums.end(), target);
+
+     int low = liter -nums.begin();
+     int high = hiter - nums.begin();
+     if (low == high) {
+         res = {-1, -1};
+     } else {
+         res = {low, high-1};
+     }
+     for (int i = 0; i < res.size(); ++i) {
+         cout << res[i] << " ";
+     }
+     cout << endl;
+     return res;
+
+ }
+
+/*
+int leetcode34::lower_bound(vector<int> &nums, int target) {
+    int l = 0, r = nums.size();
+    while(l < r) {
+        int mid = (r+l) >> 1;
+        if (target <= nums[mid]) {
+            r = mid;
+        } else {
+            l = mid + 1;
+        }
+    }
+    return l;
+}
+int leetcode34::upper_bound(vector<int> &nums, int target) {
+    int l = 0, r = nums.size();
+
+    while(l < r) {
+        int mid = (r+l) >> 1;
+        if (target < nums[mid]) {
+            r = mid;
+        } else {
+            l = mid + 1;
+        }
+    }
+    return l;
+
+}
+
+*/
+
+// 搜索插入位置  leetcode35
+
+int leetcode35::searchInsert(vector<int> &nums, int target) {
+    int res = 0;
+    for (int i = 0; i < nums.size(); ++i) {
+        if (nums[i] == target) {
+            res = i;
+            break;
+        } else {
+            if (nums[i] < target && nums[i+1] > target && i + 1 < nums.size()) {
+                res = i + 1;
+                break;
+            }
+            if (nums[i] > target && i == 0) {
+                res = 0;
+                break;
+            }
+            if (nums[i] < target && i == nums.size() - 1) {
+                res = i + 1;
+                break;
+            }
+        }
+    }
+    cout << "the posi: " << res << endl;
+
+    return res;
+}

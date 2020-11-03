@@ -664,3 +664,27 @@ public:
     int div(long a, long b);
 
 };
+
+// 搜索排序数组  leetcode 33
+class leetcode33 {
+public:
+    int search(vector<int> &nums, int target);
+};
+
+// 在排序数组中查找元素的第一个和最后一个位置 时间复杂度O(log(n))
+// leetcode34
+class leetcode34 {
+public:
+    vector<int> searchRange(vector<int> &nums, int target);
+    //int lower_bound(vector<int> &nums, int target);
+    //int upper_bound(vector<int> &nums, int target);
+};
+
+
+// 搜索插入位置  leetcode35
+class leetcode35 {
+public:
+    int searchInsert(vector<int> &nums, int target);
+};
+
+// 
