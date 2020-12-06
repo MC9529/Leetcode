@@ -388,7 +388,7 @@ int  offer11::minArray(vector<int> &nums) {
             dfs(i, j, cur_posi, ans, temp_path);
 
         }
-    }
+    }   
     for (int i = 0; i < path.size(); ++i) {
         vector<pair<int, int> > iter_path = path[i];
         for (int j = 0; j < iter_path.size(); ++j) {
@@ -2804,4 +2804,321 @@ int leetcode35::searchInsert(vector<int> &nums, int target) {
     cout << "the posi: " << res << endl;
 
     return res;
+}
+
+
+// 快速排序 
+void quickSort::quicksort(vector<int> &nums, int l, int r) {
+    if (l > r) {
+        return;
+    }
+    int i = l, j = r;
+    int key = nums[i];
+    while (j > i) {
+        while(j > i && nums[j] >= key) {
+            j --;
+        }
+        if (i < j) {
+            nums[i] = nums[j];
+            i++;
+        }
+        while(j > i && nums[i] <= key) {
+            i++;
+        }
+        if (i < j) {
+            nums[j] = nums[i];
+            j --;
+        }
+
+    }
+    nums[i] = key;
+    quicksort(nums, l, i - 1);
+    quicksort(nums, i + 1, r);
+
+}
+
+//  归并排序
+void mergeSort::mergesort(vector<int> &nums, int low, int high) {
+    if (low >= high) {return;}
+    int mid = low + (high - low)/2;
+    mergesort(nums, low, mid);
+    mergesort(nums, mid + 1, high);
+    cout << "pass in 2846" << endl;
+    merge(nums, low, mid, high);
+
+}
+void mergeSort::merge(vector<int> &nums, int low, int mid, int high) {
+    int i = low, j = mid + 1, k = 0;
+    vector<int> nums_c;
+    while( i <= mid && j <= high) {
+        if (nums[i] < nums[j]) {
+            nums_c.push_back(nums[i++]);
+        } else {
+            nums_c.push_back(nums[j++]);
+        }
+
+    }
+    while(i <= mid) {
+        nums_c.push_back(nums[i++]);
+    }
+    while(j <= high) {
+        nums_c.push_back(nums[j++]);
+    }
+
+    k = nums_c.size();
+    for (int i = low, j = 0; i <= high, j < k; ++i, ++j) {
+        nums[i] = nums_c[j];
+    }
+
+}
+
+// 
+// leetcode36 有效数独
+bool leetcode36::isvalidsuduku(vector<vector<char>> &board) {
+    // row[i][num] 第i行num元素存在与否  0 不存在 1 存在
+    int row[9][10] = {0};
+    // col[j][num] 第j列num元素存在与否  0 不存在 1 存在
+    int col[9][10] = {0};
+    // box[j/3 + (i/3) * 3][num] 第（j/3 +(i/3)*3）BOX第num元素存在与否  0 不存在 1 存在
+    int box[9][10] = {0};
+    // 
+    for (int i = 0; i < 9; i++) {
+        for (int j = 0; j < 9; j++) {
+            if(board[i][j] = ',') {
+                continue;
+            }
+            int curnumber = board[i][j] - '0';
+            if (row[i][curnumber]) {
+                return false;
+            }
+            if (col[j][curnumber]) {
+                return false;
+            }
+            if (box[j/3 + (i/3) * 3][curnumber]) {
+                return false;
+            }
+            row[i][curnumber] = 1;
+            col[j][curnumber] = 1;
+            // 第几个boX 
+            box[j/3 + (i/3) * 3][curnumber] = 1;
+        }
+    }
+
+    return true;
+}
+
+// leetcode39 组合总和
+vector<vector<int>> leetcode39::commbinationsum(vector<int> &nums, int target) {
+        vector<int> temp;
+        int sum = 0;
+        int i = 0;
+        //sort(nums.begin(), nums.end());
+        dfs(nums, temp, target, sum, i);
+    for (int i = 0; i < res.size(); ++i) {
+        vector<int> temp_res = res[i];
+        for (int j = 0; j < temp_res.size(); ++j) {
+            cout << temp_res[j] << " ";
+        }
+        cout << endl;
+    }
+
+
+    return res;
+
+}
+void leetcode39::dfs(vector<int> &nums, vector<int> &temp,int target, int sum, int posi) {
+    if (sum == target) {
+        res.push_back(temp);
+        return;
+    }
+    for (int j = posi; j < nums.size(); ++j) {
+        if (sum < target) {
+            sum = sum + nums[j];
+            temp.push_back(nums[j]);
+            // j 表示可以重复利用
+
+            //dfs(nums, temp, target, sum, j);
+            dfs(nums, temp, target, sum, j);
+             sum = sum - nums[j];
+             temp.pop_back();
+
+        }
+    }
+    
+}
+
+void leetcode39::dfs1(vector<int> &nums, vector<int> &temp,int target, int sum, int posi) {
+    if (sum == target) {
+        res.push_back(temp);
+        return;
+    }
+    for (int j = posi; j < nums.size(); ++j) {
+        // 重复元素，跳过
+        if (j > posi && nums[j] == nums[j-1]) {
+            continue;
+        }
+        if (sum < target) {
+            sum = sum + nums[j];
+            temp.push_back(nums[j]);
+            // j+1 表示可以重复利用
+            
+            dfs1(nums, temp, target, sum, j+1);
+             sum = sum - nums[j];
+             temp.pop_back();
+
+        }
+    }
+    
+}
+
+// leetcode40
+vector<vector<int>> leetcode40::commbinationsum(vector<int> &nums, int target) {
+    vector<int> temp;
+    int sum = 0;
+    int i = 0;
+    sort(nums.begin(), nums.end());
+    dfs1(nums, temp, target, sum, i);
+    for (int i = 0; i < res.size(); ++i) {
+    vector<int> temp_res = res[i];
+    for (int j = 0; j < temp_res.size(); ++j) {
+        cout << temp_res[j] << " ";
+    }
+        cout << endl;
+    }
+
+    return res;
+
+}
+    // 不可以重复利用
+void leetcode40::dfs1(vector<int> &nums, vector<int> &temp,int target, int sum, int posi) {
+    if (sum == target) {
+        res.push_back(temp);
+        return;
+    }
+    for (int j = posi; j < nums.size(); ++j) {
+        // 重复元素，跳过
+        if (j > posi && nums[j] == nums[j-1]) {
+            continue;
+        }
+        if (sum < target) {
+            sum = sum + nums[j];
+            temp.push_back(nums[j]);
+            // j+1 表示可以重复利用
+            
+            dfs1(nums, temp, target, sum, j+1);
+             sum = sum - nums[j];
+             temp.pop_back();
+
+        }
+    }
+}
+
+// leetcode42 接雨水
+int leetcode42::trap(vector<int> &height) {
+    int left = 0, right = height.size() - 1;
+    int ans = 0;
+    int left_max = 0, right_max = 0;
+    
+    while(left < right) {
+        cout << "pass in 3023" << endl;
+        // 左边值小于右边，这个时候装多少水取决于最短的板块
+        // 如果值比左边最大值还大，则更新，否则进行计算
+        if (height[left] < height[right]) {
+            if (height[left] >= left_max) {
+                left_max = height[left];
+            } else {
+                ans = ans + left_max - height[left];
+                cout << "the ans: " << ans << endl;
+            }
+            ++left;
+        } else {
+            if (height[right] >= right_max) {
+                right_max = height[right];
+            } else {
+                ans = ans + right_max - height[right];
+                cout << "the ans: " << ans << endl;
+            }
+            right--;
+
+        }
+    }
+    cout << "the ans: " << ans << endl;
+    return ans;
+
+}
+
+// 全排列  leetcode46
+
+vector<vector<int>> leetcode46::permut(vector<int> &nums) {
+    vector<int> temp;
+    vector<bool> visited(nums.size(), false);
+    int posi = 0;
+    dfs(visited, temp, nums, posi);
+    for (int i = 0; i < ans.size(); ++i) {
+        vector<int> temp_ans = ans[i];
+        for (int j = 0; j < temp_ans.size(); ++j) {
+            cout << temp_ans[j] << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+    
+    return ans;
+
+}
+void leetcode46::dfs(vector<bool> &visited, vector<int> &temp, vector<int> &nums, int &posi) {
+    if (temp.size() == nums.size()) {
+        ans.push_back(temp);
+        return;
+    }
+    for (int i = 0; i < nums.size(); ++i) {
+        if (!visited[i]) {
+            temp.push_back(nums[i]);
+            visited[i] = true;
+            dfs(visited, temp, nums, posi);
+            temp.pop_back();
+            visited[i] = false;
+        }
+    }
+
+}
+
+// leetcode47 全排列2
+vector<vector<int>> leetcode47::permut(vector<int> &nums) {
+    vector<int> temp;
+    vector<bool> visited(nums.size(), false);
+    sort(nums.begin(), nums.end());
+    int posi = 0;
+    dfs(visited, temp, nums, posi);
+    for (int i = 0; i < ans.size(); ++i) {
+        vector<int> temp_ans = ans[i];
+        for (int j = 0; j < temp_ans.size(); ++j) {
+            cout << temp_ans[j] << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+    
+    return ans;
+
+}
+void leetcode47::dfs(vector<bool> &visited, vector<int> &temp, vector<int> &nums, int &posi) {
+    if (temp.size() == nums.size()) {
+        ans.push_back(temp);
+        return;
+    }
+    for (int i = 0; i < nums.size(); ++i) {
+        // 去除已经遍历的， 以及去除重复
+        if ( (i > 0 && nums[i] == nums[i -1] && !visited[i-1]) || visited[i] ) {
+            continue;
+        }
+        
+        temp.push_back(nums[i]);
+        visited[i] = true;
+        dfs(visited, temp, nums, posi);
+        temp.pop_back();
+        visited[i] = false;
+        
+    }
+
 }

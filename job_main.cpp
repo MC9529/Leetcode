@@ -1553,7 +1553,8 @@ int main() {
     return 0;
 }
 */
-
+// 
+/*
 int main() {
     vector<int> nums = {1, 3, 5, 6};
     int target = 4;
@@ -1561,8 +1562,119 @@ int main() {
     solu.searchInsert(nums, target);
 
 
+    return 0;
+}
+
+*/
+// 快速排序  
+/*
+int main() {
+    vector<int> nums = {2, 5, 4, 6, 9, 1};
+    quickSort solu;
+    solu.quicksort(nums, 0, nums.size());
+    for (int i = 0; i < nums.size(); ++i) {
+        cout << nums[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
+*/
 
 
+// 归并排序 
+/*
+int main() {
+    mergeSort solu;
+    vector<int> nums = {2, 5, 3, 6, 1, 7, 4, 8};
+    
+    solu.mergesort(nums, 0, nums.size() - 1);
+
+    for (int i = 0; i < nums.size(); ++i) {
+        cout << nums[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
+*/
+// // leetcode36 有效数独
+/*
+int main() {
+    leetcode36 solu;
+
+     vector<vector<char>> grid = {{'5','3',',', ',','7', ',', ',',',',','},
+                                   {'6',',',',', '1','9', '5', ',',',',','},
+                                   {',','9','8', ',',',', ',', ',','6',','},
+                                   {'8',',',',', ',','6', ',', ',',',','3'},
+                                   {'4',',',',', '8',',', '3', ',',',','1'},
+                                    {'7',',',',', ',','2', ',', ',',',','6'},
+                                    {',','6',',', ',',',', ',', '2','8',','},
+                                    {',',',',',', '4','1', '9', ',',',','5'},
+                                    {',',',',',', ',','8', ',', ',','7','9'}};
+
+    bool res = solu.isvalidsuduku(grid);
+    if (res) {
+        cout << "yes" << endl;
+
+    } else {
+        cout << "no" << endl;
+    }
+
+    return 0;
+}
+*/
+/*
+// leetcode39 组合总和
+int main() {
+    vector<int> sum = {2, 3, 5};
+    int target = 8;
+    leetcode39 solu;
+    solu.commbinationsum(sum, target);
+
+    return 0;
+}
+*/
+// leetcode40 组合总和
+/*
+int main() {
+    vector<int> sum = {1, 2, 3, 5};
+    int target = 8;
+    leetcode40 solu;
+    solu.commbinationsum(sum, target);
+
+    return 0;
+}
+*/
+// 接雨水  leetcode
+/*
+int main() {
+    leetcode42 solu;
+    vector<int> nums = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
+    solu.trap(nums);
+
+
+
+    return 0;
+}
+*/
+// 全排列 leetcode46
+/*
+int main() {
+    leetcode46 solu;
+    vector<int> nums = {1, 2, 3};
+    solu.permut(nums);
+
+    return 0;
+}
+*/
+
+// 全排列 leetcode47
+
+int main() {
+    leetcode47 solu;
+    vector<int> nums = {1, 2, 1};
+    solu.permut(nums);
 
     return 0;
 }

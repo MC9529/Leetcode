@@ -687,4 +687,67 @@ public:
     int searchInsert(vector<int> &nums, int target);
 };
 
-// 
+// 排序  快速排序
+class quickSort {
+public:
+    void quicksort(vector<int> &nums, int l, int r);
+};
+
+// 排序  归并排序
+class mergeSort {
+public:
+    void mergesort(vector<int> &nums, int low, int high);
+    void merge(vector<int> &nums, int low, int mid, int high);
+};
+
+// leetcode36 有效数独
+class leetcode36 {
+public:
+    bool isvalidsuduku(vector<vector<char>> &board);
+};
+
+// leetcode39 组合总和
+class leetcode39 {
+public:
+// 元素可以无数次引用
+    vector<vector<int>> commbinationsum(vector<int> &nums, int target);
+    // 可以重复利用
+    void dfs(vector<int> &nums, vector<int> &temp,int target, int sum, int posi);
+    // 不可以重复利用
+    void dfs1(vector<int> &nums, vector<int> &temp,int target, int sum, int posi);
+    
+    vector<vector<int>> res;
+
+
+};
+
+class leetcode40 {
+public:
+     vector<vector<int>> commbinationsum(vector<int> &nums, int target);
+    // 不可以重复利用
+     vector<vector<int>> res;
+    void dfs1(vector<int> &nums, vector<int> &temp,int target, int sum, int posi);
+};
+
+// 接雨水
+class leetcode42 {
+public:
+  int trap(vector<int> &height);  
+};
+
+// 全排列 leetcode46
+class leetcode46 {
+public:
+    vector<vector<int>> permut(vector<int> &nums);
+    void dfs(vector<bool> &visited, vector<int> &temp, vector<int> &nums, int &posi);
+    vector<vector<int>> ans;
+};
+
+//  全排列2 leetcode47
+class leetcode47 {
+public:
+    vector<vector<int>> permut(vector<int> &nums);
+    void dfs(vector<bool> &visited, vector<int> &temp, vector<int> &nums, int &posi);
+    vector<vector<int>> ans;
+    
+};
