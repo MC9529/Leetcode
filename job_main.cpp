@@ -1670,11 +1670,43 @@ int main() {
 */
 
 // 全排列 leetcode47
-
+/*
 int main() {
     leetcode47 solu;
     vector<int> nums = {1, 2, 1};
     solu.permut(nums);
+
+    return 0;
+}
+*/
+
+//  // Pow(x, n) leetcode50
+/*
+int main() {
+    leetcode50 solu;
+    int n = 5; 
+    double x = 4.0;
+    //solu.myPow(x, n);
+    solu.myPow2(x, n);
+    return 0;
+}
+*/
+// n 皇后  leetcode51
+/*
+int main() {
+    int n = 4;
+    leetcode51 solu;
+    solu.SolveNQueens(n);
+
+    return 0;
+}
+*/
+
+// leetcode53 最大子序列和 
+int main() {
+    vector<int> nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+    leetcode53 solu;
+    solu.maxSubarray(nums);
 
     return 0;
 }

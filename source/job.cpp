@@ -3122,3 +3122,108 @@ void leetcode47::dfs(vector<bool> &visited, vector<int> &temp, vector<int> &nums
     }
 
 }
+
+//  // Pow(x, n) leetcode50
+double leetcode50::myPow(double x, int n) {
+    vector<double> dp(n+1);
+    // base case
+    dp[0] = 0;
+    dp[1] = x;
+    for (int i = 2; i <= n; ++i) {
+        dp[i] = dp[i-1] * x;
+    }
+    cout << "the nth of dp: " << dp[n] << endl;
+ }
+
+
+ // O(log(N))
+double leetcode50::myPow2(double x, int n) {
+    // n是否能被2 整除
+    double ans = 0.0;
+    bool flag = n%2 == 0 ? true: false;
+    vector<double> dp(n/2);
+    dp[0] = 0;
+    dp[1] = x * x;
+    for (int i = 2; i <= n/2; ++i) {
+        dp[i] = dp[i-1] * dp[i-1];
+    }
+    if (flag) {
+        ans = dp[n/2];
+    } else {
+        ans = dp[n/2] * x;
+    }
+    cout << "the ans: " << ans << endl;
+    return ans;
+
+}
+
+
+// // N 皇后 leetcode51
+
+vector<vector<string>> leetcode51::SolveNQueens(int n) {
+    //vector<vector<string>> ans;
+    //vector<string> temp;
+    string string_temp(n, ',');
+    vector<string> temp(n, string_temp);
+    int row = 0;
+    dp(n, row, temp);
+    for (int i = 0; i < ans.size(); ++i) {
+        vector<string> temp_ans = ans[i];
+        for (int j = 0; j < temp_ans.size(); ++j) {
+            cout << temp_ans[j] << endl;
+        }
+        cout << endl;
+        cout << endl;
+    }
+    return ans;
+}
+void leetcode51::dp(int n, int row, vector<string> &temp) {
+    if (row == n) {
+        ans.push_back(temp);
+        return;
+    }
+    // i -> col  
+    for (int i = 0; i < n; ++i) {
+        if ( valid(row, i, temp, n) ) {
+            temp[row][i] = 'Q';
+            dp(n, row + 1, temp);
+            temp[row][i] = ',';
+        }
+    }
+
+}
+bool leetcode51::valid(int row, int col, vector<string> &temp, int n) {
+    // 检查 列
+    for (int i =0; i < row; ++i) {
+        if (temp[i][col] == 'Q') {
+            return false;
+        }
+    }
+    for (int i = row -1, j = col -1; i >= 0 && j >= 0; i--, j--) {
+        if (temp[i][j] == 'Q') {
+            return false;
+        }
+    }
+    for (int i = row -1, j = col+1; i >= 0 && j < n; i--, j++) {
+        if (temp[i][j] == 'Q') {
+            return false;
+        }
+    }
+    return true;
+    
+
+}
+
+// leetcode53 最大子序列和 
+
+int leetcode53::maxSubarray(vector<int> & nums) {
+    int n = nums.size();
+    int tailsum = nums[0], ans = nums[0];
+    for (int i = 1; i < n; ++i) {
+        tailsum = tailsum > 0? tailsum + nums[i]: nums[i];
+        ans = max(ans, tailsum);
+    }
+    cout << "the ans: " << ans << endl;
+    return ans;
+
+}

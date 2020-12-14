@@ -751,3 +751,27 @@ public:
     vector<vector<int>> ans;
     
 };
+
+// Pow(x, n) leetcode50
+class leetcode50 {
+public:
+    // 一步一步 迭代 0(n)
+    double myPow(double x, int n);
+    // O(log(N))
+    double myPow2(double x, int n);
+};
+
+// N 皇后 leetcode51
+class leetcode51 {
+public:
+   vector<vector<string>> SolveNQueens(int n);
+   void dp(int n, int row, vector<string> &temp);
+   bool valid(int row, int col, vector<string> &temp, int n);
+    vector<vector<string>> ans;
+};
+
+// leetcode53 最大子序列和 
+class leetcode53 {
+public:
+    int maxSubarray(vector<int> & nums);
+};
