@@ -813,3 +813,29 @@ class leetcode61 {
 public:
     Node* rotateRight(Node* head, int k);
 };
+
+// leetcode62 不同路径
+class leetcode62 {
+public:
+    // 回溯算法
+    int uniquePath(int m, int n);
+    void dfs(vector<pair<int, int>> &path, int &row, int &col, int m, int n);
+    vector<vector<pair<int, int>>> ans;
+    vector<vector<int>> directions = {{1, 0}, {0, 1}};
+    // 动态规划
+    int uniquePath2(int m, int n);
+
+};
+
+// leetcode63  不同路径 障碍物
+class leetcode63 {
+public:
+    int uniquePathwithobs(vector<vector<int>> &obsgrid);
+    
+    void dfs(vector<pair<int, int>> &path, int &row, int &col, int m, int n);
+    vector<vector<pair<int, int>>> ans;
+    vector<vector<int>> directions = {{1, 0}, {0, 1}};
+    // 动态规划
+    int uniquePath2(int m, int n);
+    
+};

@@ -1750,10 +1750,45 @@ int main() {
 */
 
 // leetcode59 旋转区间
+/*
 int main() {
    int n = 3;
    leetcode59 solu;
    solu.generatematrix(n);
+
+    return 0;
+}
+*/
+
+// 旋转链表  leetcode61
+/*
+int main() {
+    
+    LinkList list;
+    list.creatLinkList_one(1);
+    list.creatLinkList_one(2);
+    list.creatLinkList_one(3);
+    list.creatLinkList_one(4);
+    list.creatLinkList_one(5);
+    list.TravelLinkList();
+    // solu.swapPairs(list.head);
+    int k = 2;
+    leetcode61 solu;
+    solu.rotateRight(list.head, k);
+
+    return 0;
+}
+*/
+
+// 不同路径  leetcode62 
+int main() {
+    int m = 3, n = 7;
+    leetcode62 solu;
+    // solu.uniquePath(m, n);
+
+    solu.uniquePath2(m, n);
+    
+
 
     return 0;
 }

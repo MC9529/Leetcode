@@ -3420,3 +3420,106 @@ vector<vector<int>> leetcode59::generatematrix(int n) {
     return ans;
 
 }
+
+// leetcode61 旋转列表
+
+Node* leetcode61::rotateRight(Node* head, int k) {
+    if (!head->next) return NULL;
+    int n = 0;
+    for (auto p = head->next; p; p = p->next) {
+        n ++;
+    }
+    cout << "the len of list: " << n << endl;
+    k = k % n; // 求余数 整数倍是可以回到原点的
+    // 双指针
+    auto first = head->next;
+    auto second = head->next;
+    // 先动k
+    while(k > 0) {
+        first = first->next;
+        k --;
+    }
+    cout << "the first val: " << first->val << endl;
+    cout << "the second val: " << second->val << endl;
+    // 移动到末尾
+    while(first->next) {
+        first = first->next;
+        second = second->next;
+    }
+    // 切断
+    cout << "the first val after k: " << first->val << endl;
+    cout << "the second val after k: " << second->val << endl;
+    first->next = head->next;
+    head->next = second->next;
+    second->next = NULL;
+    Node *temp = head->next;
+    while(temp) {
+        cout << temp->val << " ";
+        temp = temp->next;
+    }
+    cout << endl;
+    return head;
+
+}
+
+// leetcode62 不同路径
+// 回溯算法
+int leetcode62::uniquePath(int m, int n) {
+    vector<pair<int, int>> path;
+    int row = 0, col = 0;
+    path.push_back({0, 0});
+
+    dfs(path, row, col, m, n);
+    for (int i = 0; i < ans.size(); ++i) {
+        vector<pair<int, int>> temp = ans[i];
+        for (auto iter: temp) {
+            cout << iter.first << "-" << iter.second << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+    cout << "the size of ans: " << ans.size() << endl;
+    return ans.size();
+}
+
+// 
+
+void leetcode62::dfs(vector<pair<int, int>> &path, int &row, int &col, int m, int n) {
+    if (row == m-1 && col == n-1 ) {
+        ans.push_back(path);
+        return;
+    }
+    for (int i = 0; i < 2; ++i) {
+        int newrow = row + directions[i][0];
+        int newcol = col + directions[i][1];
+        cout << "the row ans col: " << newrow << " " << newcol << endl;
+        if (newrow >= m || newcol >= n) {
+            continue;
+        }
+        path.push_back({newrow, newcol});
+        dfs(path, newrow, newcol, m, n);
+        path.pop_back();
+    }
+
+}
+
+// 
+// 动态规划
+int leetcode62::uniquePath2(int m, int n) {
+    vector<vector<int>> dp(m, vector<int>(n, 0));
+    for (int i = 0; i < m; ++i) {
+        dp[i][0] = 1;
+    }
+    for (int j = 0; j < n; ++j) {
+        dp[0][j] = 1;
+    }
+    for (int i = 1; i < m; ++i) {
+        for (int j = 1; j < n; ++j) {
+            dp[i][j] = dp[i-1][j] + dp[i][j-1];
+
+
+        }
+    }
+    cout << "the  ans: " << dp[m-1][n-1] << endl;
+    return dp[m-1][n-1];
+}
