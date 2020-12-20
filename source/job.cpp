@@ -3388,3 +3388,21 @@ vector<vector<int>> leetcode59::generatematrix(int n) {
     return ans;
 
 }
+
+// 旋转矩阵
+Node *leetcode61::rotateRight(Node* head, int k) {
+    queue<int> nums;
+    Node* temp = head->next;
+    while(temp->next) {
+        nums.push(temp->val);
+    }
+    for (int i = 0; i < k; ++i) {
+        int top = nums.front();
+        nums.pop();
+        nums.push(top);
+    
+    }
+    
+
+
+}

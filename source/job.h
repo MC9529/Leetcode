@@ -798,5 +798,11 @@ public:
 class leetcode59 {
 public:
     vector<vector<int>> generatematrix(int n);
-    
+
+};
+
+// leetcode 61 旋转列表 
+class leetcode61 {
+public:
+    Node* rotateRight(Node* head, int k);
 };
