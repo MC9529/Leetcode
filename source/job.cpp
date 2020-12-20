@@ -3227,3 +3227,34 @@ int leetcode53::maxSubarray(vector<int> & nums) {
     return ans;
 
 }
+// leetcode54 旋转矩阵
+vector<int> leetcode54::spiralOrer(vector<vector<int>> &nums) {
+    
+    int rows = nums.size(), cols= nums[0].size();
+    vector<vector<int>> direction = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+    vector<vector<bool>> visiter(rows, vector<bool>(cols, false));
+    int total = rows * cols;
+    int directions = 0;
+    int row = 0, col = 0;
+    vector<int> res;
+    for (int i = 0; i < total;  ++i) {
+        
+        res.push_back(nums[row][col]);
+        visiter[row][col] = true;
+        int next_row = row + direction[directions][0];
+        int next_col = col + direction[directions][1];
+        if (next_row < 0 || next_row >= rows || next_col < 0 || next_col >= cols ||
+            visiter[next_row][next_col] == true) {
+            directions = (directions + 1) % 4;
+
+        }
+        row = row + direction[directions][0];
+        col = col + direction[directions][1];
+    }
+    for (int i = 0; i < total; ++i) {
+        cout << res[i] << " ";
+    }
+    cout << endl;
+
+    return res;
+}
