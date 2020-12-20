@@ -3227,3 +3227,164 @@ int leetcode53::maxSubarray(vector<int> & nums) {
     return ans;
 
 }
+
+
+// leetcode55 跳跃游戏
+bool leetcode55::canjump(vector<int> &nums) {
+    int n = nums.size();
+    // 可以往右边跳的最大位置
+    int rightmost = 0;
+    for (int i = 0; i < n; ++i) {
+        // i这个位置是能跳到的
+        if (i <= rightmost) {
+            rightmost = max(rightmost, i + nums[i]);
+            if (rightmost > n-1) {
+                cout << "yes, can jump" << endl;
+                return true;
+            }
+        }
+    }
+    cout << "no, can not jump" << endl;
+    return false;
+
+}
+
+// leetcode55 回溯算法
+bool leetcode55::canjump2(vector<int> &nums) {
+    // vector<vector<int>> path;
+    bool ans = false;
+    vector<int> temp_path;
+    int cur_level = 0;
+    int most_step = nums[0];
+    temp_path.push_back(0);
+    ans = dfs(cur_level, most_step, temp_path, nums);
+    cout << "the path: " << endl;
+    for (int i = 0; i < path.size(); ++i) {
+        vector<int> temp = path[i];
+        for (int j = 0; j < temp.size(); ++j) {
+            cout << temp[j] << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+    return ans;
+}
+
+bool leetcode55::dfs(int cur_level, int &most_step, vector<int> &temp_step, vector<int> &nums) {
+    if (cur_level == nums.size() - 2 && cur_level + nums[cur_level] < nums.size() - 1) {
+        // path.push_back(temp_step);
+        return false;
+    }
+    if (cur_level + most_step >= nums.size() - 1) {
+        cout <<" the level: " << cur_level << " " 
+             << "most step: " << most_step << endl;
+        temp_step.push_back(nums.size() - 1);
+        path.push_back(temp_step);
+        return true;
+    }
+    for (int i = 1; i <= most_step; ++i) {
+        cout << "the most_step: " << most_step << endl;
+        cout << "i: " << i << endl;
+        int new_level = cur_level + i;
+        cout << "the new_level: " << new_level << endl;
+
+        int new_most_step = nums[new_level];
+        cout << "the new_most_level: " << new_most_step << endl;
+        temp_step.push_back(new_level);
+        for (int k = 0; k < temp_step.size(); ++k) {
+            cout << temp_step[k] << " ";
+        }
+        cout << endl;
+        dfs(new_level, new_most_step, temp_step, nums);
+        temp_step.pop_back();
+
+    }
+
+}
+
+// leetcode56 合并区间
+void leetcode56::merge(vector<vector<int>> &nums, 
+           vector<pair<int, int>> &ans) {
+    auto comp = [](const vector<int> &val1, const vector<int> &val2) {
+        return val1[0] < val2[0];
+    };
+    sort(nums.begin(), nums.end(), comp);
+    for (int i = 0; i < nums.size(); ++i) {
+        cout << nums[i][0] <<" " << nums[i][1] << endl;
+    }
+    int min_begin = nums[0][0];
+    int max_end = nums[0][1];
+    for (int i = 1; i < nums.size(); ++i) {
+        if (nums[i][0] > min_begin && nums[i][0] < max_end) {
+            cout << "have: " << endl;
+            if (nums[i][i] > max_end) {
+                max_end = nums[i][1];
+            }
+        } else {
+            cout << "the min_begin and max_end: " << min_begin << " " << max_end << endl; 
+            cout << "do not have" << endl;
+            ans.push_back({min_begin, max_end});
+            min_begin = nums[i][0];
+            max_end = nums[i][1];
+
+        }
+    }
+    ans.push_back({min_begin, max_end});
+    for (int i = 0; i < ans.size(); ++i) {
+        cout << ans[i].first << " " << ans[i].second << endl;
+    }
+    cout << endl;
+    return;
+
+}
+
+// 旋转矩阵 leetcode59 
+
+vector<vector<int>> leetcode59::generatematrix(int n) {
+    if (n <= 0) {
+        cout << "the n is <= 0" << endl;
+        vector<vector<int>> ans;
+        return ans; 
+    }
+    vector<vector<int>> ans(n, vector<int>(n));
+    vector<vector<bool>> visited(n, vector<bool>(n, false));
+    vector<vector<int>> direction = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+    int row = 0, col = 0;
+    int cur_direct_flag = 0;
+    const int total_num = n * n;
+    const int size_row = n;
+    const int size_col = n;
+    ans[0][0] = 1;
+    visited[0][0] = true;
+    int count = 1;
+    while(count != total_num) {
+        if (cur_direct_flag == 3 && visited[row - 1][col] == true) {
+            cur_direct_flag = 0;
+        }
+        if ( (cur_direct_flag == 0 && col == size_col - 1) ||
+             (cur_direct_flag == 0 && visited[row][col+1] == true) ||
+             (cur_direct_flag == 1 && row == size_row - 1) ||
+             (cur_direct_flag == 1 && visited[row + 1][col] == true) ||
+             (cur_direct_flag == 2 && col == 0) ||
+             (cur_direct_flag == 2 && visited[row][col - 1] == true)) {
+            cur_direct_flag ++;
+        }
+        vector<int> curent_direct = direction[cur_direct_flag];
+        cout << endl;
+        row = row + curent_direct[0];
+        col = col + curent_direct[1];
+        count++;
+        ans[row][col] = count;
+        visited[row][col] = true;
+    }
+    for (auto iter: ans) {
+        for (auto iter1: iter) {
+            cout << iter1 << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+
+    return ans;
+
+}

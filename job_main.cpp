@@ -1703,10 +1703,47 @@ int main() {
 */
 
 // leetcode53 最大子序列和 
+/*
 int main() {
     vector<int> nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
     leetcode53 solu;
     solu.maxSubarray(nums);
+
+    return 0;
+}
+*/
+// leetcode55 跳跃游戏
+/*
+int main() {
+    vector<int> nums = {2, 3, 1, 1, 4};
+    leetcode55 solu;
+    // solu.canjump(nums);
+    solu.canjump2(nums);
+
+    return 0;
+}
+
+*/
+
+// leetcode56 合并区间
+/*
+int main() {
+  leetcode56 solu;
+
+  vector<vector<int>> nums = {{1, 3}, {2, 6}, {8, 10}, {15, 18}};
+  vector<pair<int, int>> ans;
+  solu.merge(nums, ans);
+
+
+  return 0;
+}
+*/
+
+// leetcode59 旋转区间
+int main() {
+   int n = 3;
+   leetcode59 solu;
+   solu.generatematrix(n);
 
     return 0;
 }
