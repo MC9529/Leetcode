@@ -783,3 +783,33 @@ public:
     vector<int> spiralOrer(vector<vector<int>> &nums);
 
 };
+// leetcode 55 跳跃游戏
+class leetcode55 {
+public:
+    // 贪心算法
+    bool canjump3(vector<int> &nums);
+    // 回溯算法
+    bool canjump2(vector<int> &nums);
+    bool dfs(int cur_level, int &most_step, vector<int> &temp_step, vector<int> &nums);
+    vector<vector<int>> path;
+};
+
+// leetcode56 合并区间
+class leetcode56 {
+public:
+    void merge(vector<vector<int>> &nums, vector<pair<int, int>> &ans);
+
+};
+
+// 螺旋矩阵 leetcode59 
+class leetcode59 {
+public:
+    vector<vector<int>> generatematrix(int n);
+
+};
+
+// leetcode 61 旋转列表 
+class leetcode61 {
+public:
+    Node* rotateRight(Node* head, int k);
+};

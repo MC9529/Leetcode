@@ -1712,7 +1712,7 @@ int main() {
     return 0;
 }
 */
-
+/*
 int main() {
     vector<vector<int>> nums = { {1, 2, 3},
                                  {4, 5, 6},
@@ -1720,6 +1720,40 @@ int main() {
 
     leetcode54 solu;
     solu.spiralOrer(nums);
+}
+*/
+// leetcode55 跳跃游戏
+/*
+int main() {
+    vector<int> nums = {2, 3, 1, 1, 4};
+    leetcode55 solu;
+    // solu.canjump3(nums);
+    solu.canjump2(nums);
+
+    return 0;
+}
+
+*/
+
+// leetcode56 合并区间
+/*
+int main() {
+  leetcode56 solu;
+
+  vector<vector<int>> nums = {{1, 3}, {2, 6}, {8, 10}, {15, 18}};
+  vector<pair<int, int>> ans;
+  solu.merge(nums, ans);
+
+
+  return 0;
+}
+*/
+
+// leetcode59 旋转区间
+int main() {
+   int n = 3;
+   leetcode59 solu;
+   solu.generatematrix(n);
 
     return 0;
 }
