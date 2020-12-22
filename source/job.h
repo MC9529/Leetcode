@@ -835,7 +835,8 @@ public:
     void dfs(vector<pair<int, int>> &path, int &row, int &col, int m, int n);
     vector<vector<pair<int, int>>> ans;
     vector<vector<int>> directions = {{1, 0}, {0, 1}};
+    vector<vector<int>> obsgrid_;
     // 动态规划
-    int uniquePath2(int m, int n);
+    int uniquePath2(vector<vector<int>> &obsgrid);
     
 };

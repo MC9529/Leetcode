@@ -1781,6 +1781,7 @@ int main() {
 */
 
 // 不同路径  leetcode62 
+/*
 int main() {
     int m = 3, n = 7;
     leetcode62 solu;
@@ -1791,4 +1792,18 @@ int main() {
 
 
     return 0;
+}
+*/
+
+// leetcode63  不同路径 障碍物
+
+int main() {
+    // vector<vector<int>> nums = {{0, 0, 0}, {0, 1, 0}, {0, 0, 0}};
+    vector<vector<int>> nums = {{0, 1},
+                                {0, 0}};
+    leetcode63 solu;
+    // solu.uniquePathwithobs(nums);
+     solu.uniquePath2(nums);
+    return 0;
+
 }
