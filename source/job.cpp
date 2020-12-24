@@ -3625,3 +3625,135 @@ int leetcode63::uniquePath2(vector<vector<int>> &obsgrid) {
     return dp[m-1][n-1];
 
 }
+
+// leetcode64  最小路径和
+int leetcode64::minPathsum(vector<vector<int>> &grid) {
+    int m = grid.size();
+    int n = grid[0].size();
+    vector<vector<int>> dp(m, vector<int>(n, 0) );
+    dp[0][0] = grid[0][0];
+    for (int i = 1; i < m; ++i) {
+        dp[i][0] = dp[i-1][0] + grid[i][0];
+    }
+    for (int j = 1; j < n; ++j) {
+        dp[0][j] = dp[0][j-1] + grid[0][j];
+    }
+    for (int i = 1; i < m; ++i) {
+        for (int j = 1; j < n; ++j) {
+            dp[i][j] = min(dp[i][j-1] + grid[i][j], dp[i-1][j] + grid[i][j]);
+        }
+    }
+    for (int i = 0; i < dp.size(); ++i) {
+        vector<int> temp_dp = dp[i];
+        for (int j = 0; j < temp_dp.size(); ++j) {
+            cout << temp_dp[j] << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+    cout << "the minsum of dp[m-1][n-1]: " << dp[m-1][n-1];
+    return dp[m-1][n-1];
+}
+
+// leetcode67 二进制求和
+
+string leetcode67::addBinary(string a, string b) {
+    int a1 = a.size();
+    int b1 = b.size();
+    while(a1 < b1) {
+        a = '0' + a;
+        ++a1;
+    }
+    while(a1 > b1) {
+        b = '0' + b;
+        ++b1;
+    }
+    cout << "the a: " << a << endl;
+    cout << "the b: " << b << endl;
+    for (int j = a.size() -1; j > 0; --j) {
+        a[j] = a[j] - '0' + b[j];
+        if (a[j] >= '2') {
+            a[j] = (a[j] - '0') % 2 + '0';
+            a[j-1] = a[j-1] + 1;
+        }
+    }
+    cout << "the a: " << a << endl;
+    cout << "the b: " << b << endl;
+    a[0] = a[0] - '0' + b[0];
+    if (a[0] >= '2') {
+        a[0] = (a[0] - '0') % 2 + '0';
+        a = '1' + a;
+    }
+    cout << "the a: " << a << endl;
+    cout << "the b: " << b << endl;
+    cout << "the res: " << a << endl;
+    return a;
+}
+
+// leetcode69     x的平方根
+int leetcode69::mysqrt(int x) {
+    int ans = 0;
+    for (int i = 0; i < x; ++i) {
+        if (i * i <= x && (i + 1) * (i + 1) > x ) {
+            ans = i;
+            break;
+        }
+    }
+    cout << "the ans: " << ans << endl;
+    return ans;
+}
+
+// leetcode70 爬楼梯
+
+int leetcode70::climbStairs(int n) {
+    vector<int> dp(n, 0);
+    dp[0] = 1;
+    dp[1] = 2;
+
+    // 可以从走1步和2步
+    for (int i = 2; i < n; ++i) {
+        dp[i] = dp[i-1] + dp[i-2];
+    }
+    
+    cout << "the res: " << dp[n-1] << endl;
+    return dp[n-1];
+
+}
+
+//// leetcode74 搜索二维矩阵
+
+bool leetcode74::searchMatrix(vector<vector<int>> &matrix, int target) {
+    bool ans = false;
+    int m = matrix.size();
+    if (m==0) {
+        ans = false;
+    }
+    int n = matrix[0].size();
+    // 二分查找
+    int left = 0, right = m * n -1;
+    int pivotIDX, pivotElenment;
+    while(left <= right) {
+        pivotIDX = (left + right) / 2;
+        int  row = pivotIDX / n;
+        int col = pivotIDX % n;
+        pivotElenment = matrix[row][col];
+        if (target == pivotElenment) {
+            ans = true;
+            cout << "the row ans col: " << row << " " << col << endl;
+
+            return ans;
+        } else {
+
+            if (target < pivotElenment) {
+                right = pivotIDX -1;
+            } else {
+                left = pivotIDX + 1;
+            }
+
+        }
+
+    }
+
+    return ans;
+
+}

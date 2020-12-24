@@ -840,3 +840,39 @@ public:
     int uniquePath2(vector<vector<int>> &obsgrid);
     
 };
+
+// leetcode64  最小路径和
+class leetcode64 {
+public:
+    int minPathsum(vector<vector<int>> &grid);
+};
+
+// leetcode67 二进制求和
+class leetcode67 {
+public:
+    string addBinary(string a, string b);
+};
+
+// leetcode69  x的平方根
+class leetcode69 {
+public:
+    int mysqrt(int x);
+};
+
+//  leetcode70 爬楼梯
+class leetcode70 {
+public:
+    int climbStairs(int n);
+};
+
+// leetcode74 搜索二维矩阵
+class leetcode74 {
+public:
+    bool searchMatrix(vector<vector<int>> &matrix, int target);
+};
+
+// leetcode75 颜色分类
+class leetcode75 {
+public:
+    
+};

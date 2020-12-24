@@ -1796,7 +1796,7 @@ int main() {
 */
 
 // leetcode63  不同路径 障碍物
-
+/*
 int main() {
     // vector<vector<int>> nums = {{0, 0, 0}, {0, 1, 0}, {0, 0, 0}};
     vector<vector<int>> nums = {{0, 1},
@@ -1806,4 +1806,71 @@ int main() {
      solu.uniquePath2(nums);
     return 0;
 
+}
+*/
+
+// leetcode64  最小路径和
+/*
+int main() {
+    vector<vector<int>> nums = {{1, 3, 1}, 
+                                {1, 5, 1}, 
+                                {4, 2, 1}};
+
+    leetcode64 solu;
+    solu.minPathsum(nums);
+
+    return 0;
+}
+*/
+
+// leetcode67  二进制求和
+/*
+int main() {
+
+    string a = "1010";
+    string b = "1011";
+    leetcode67 solu;
+    solu.addBinary(a, b);
+
+
+    return 0;
+}
+*/
+
+// leetcode69  x的平方根
+
+/*
+int main() {
+    leetcode69 solu;
+    // int x = 4;
+    int x = 9;
+    solu.mysqrt(x);
+
+    return 0;
+}
+*/
+
+// leetcode70 爬楼梯
+/*
+int main() {
+    leetcode70 solu;
+    int n = 3;
+    solu.climbStairs(n);
+
+
+    return 0;
+}
+*/
+
+//// leetcode74 搜索二维矩阵
+int main() {
+    leetcode74 solu;
+    int target = 16;
+    vector<vector<int>> matrix = {{1, 3, 5, 7}, 
+                                {10, 11, 16, 20}, 
+                                {23, 30, 34, 60}};
+
+
+    solu.searchMatrix(matrix, target);
+    return 0;
 }
