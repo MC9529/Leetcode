@@ -1863,6 +1863,8 @@ int main() {
 */
 
 //// leetcode74 搜索二维矩阵
+
+/*
 int main() {
     leetcode74 solu;
     int target = 16;
@@ -1872,5 +1874,42 @@ int main() {
 
 
     solu.searchMatrix(matrix, target);
+    return 0;
+}
+*/
+
+// leetcode75 颜色分类
+/*
+int main() {
+    leetcode75 solu;
+    vector<int> nums = {0, 1, 0, 2, 1, 0, 1, 2};
+    //solu.sortColor(nums);
+     solu.sortColor2(nums);
+
+    return 0;
+}
+*/
+
+// leetcode77 组合
+/*
+int main() {
+    int n = 4, k = 2;
+    leetcode77 solu;
+    solu.combine(n, k);
+
+
+    return 0;
+}
+*/
+
+// // 子集 leetcode78
+
+int main() {
+    
+    vector<int> nums = {1, 2, 3};
+    leetcode78 solu;
+    solu.subsets(nums);
+
+
     return 0;
 }

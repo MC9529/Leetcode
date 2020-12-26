@@ -874,5 +874,26 @@ public:
 // leetcode75 颜色分类
 class leetcode75 {
 public:
+    // 单指针
+    void sortColor(vector<int> &nums);
+    // 双指针
+    void sortColor2(vector<int> &nums);
     
+};
+
+// 组合 leetcode77
+class leetcode77 {
+public:
+    vector<vector<int>> combine(int n, int k);
+    void dfs(vector<int> &temp, int cur_posi, int n, int k);
+    vector<vector<int>> ans;
+};
+
+// 子集 leetcode78
+class leetcode78 {
+public:
+    vector<vector<int>> subsets(vector<int> &nums);
+    void dfs(int cur_posi, vector<int> nums);
+    vector<vector<int>> ans;
+    vector<int> temp;
 };

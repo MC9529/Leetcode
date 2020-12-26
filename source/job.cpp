@@ -3721,7 +3721,7 @@ int leetcode70::climbStairs(int n) {
 }
 
 //// leetcode74 搜索二维矩阵
-
+// 将二维矩阵扩展为单维矩阵 然后进行 二分法搜索
 bool leetcode74::searchMatrix(vector<vector<int>> &matrix, int target) {
     bool ans = false;
     int m = matrix.size();
@@ -3755,5 +3755,121 @@ bool leetcode74::searchMatrix(vector<vector<int>> &matrix, int target) {
     }
 
     return ans;
+
+}
+
+// 
+// 单指针
+void leetcode75::sortColor(vector<int> &nums) {
+    int n = nums.size();
+    int front_ptr = 0;
+    int end_ptr = n - 1;
+    for (int i = 0; i < n; ++i) {
+        if (nums[i] == 0) {
+            // 将0 扔到头部
+            swap(nums[i], nums[front_ptr]);
+            ++front_ptr;
+        } 
+    }
+
+    for (int i = n-1; i >= 0; --i) {
+        if (nums[i] == 2) {
+            swap(nums[i], nums[end_ptr]);
+            end_ptr = end_ptr - 1;
+        }
+    }
+    for (int i = 0; i < n; ++i) {
+        cout << nums[i] << " ";
+    }
+    cout << endl;
+    return;
+
+}
+
+
+// 双指针
+void leetcode75::sortColor2(vector<int> &nums) {
+    int n = nums.size();
+    int front = 0, end = n -1;
+    for(int i = 0; i <= end; ++i) {
+        while(i <= end && nums[i] == 2) {
+            swap(nums[i], nums[end]);
+            --end;
+        }
+        if (nums[i] == 0) {
+            swap(nums[i], nums[front]);
+            ++front;
+
+        }
+    }
+    for (int i = 0; i < nums.size(); ++i) {
+        cout << nums[i] << " ";
+    }
+    cout << endl;
+    return ;
+}
+ // 组合 leetcode77
+
+vector<vector<int>> leetcode77::combine(int n, int k) {
+   int cur_posi = 1;
+   vector<int> temp;
+   dfs(temp, cur_posi, n, k);
+   for (int i = 0; i < ans.size(); ++i) {
+       vector<int> temp_ans = ans[i];
+       for (int j = 0; j < temp_ans.size(); ++j) {
+           cout << temp_ans[j] << " ";
+       }
+       cout << endl;
+   }
+   cout << endl;
+
+
+
+
+    return ans;
+}
+void leetcode77::dfs(vector<int> &temp, int cur_posi, int n, int k) {
+    if (temp.size() == k) {
+        ans.push_back(temp);
+        return;
+    }
+    for(int j = cur_posi; j <= n; ++j) {
+        temp.push_back(j);
+        // int new_posi = cur_posi + 1;
+        // 从下一个数开始
+        dfs(temp, j + 1, n, k);
+        // 从
+        // dfs(temp, j + 1, n, k);
+        temp.pop_back();
+
+    }
+
+}
+
+// 子集 leetcode78
+
+vector<vector<int>> leetcode78::subsets(vector<int> &nums) {
+    int n = 0;
+    dfs(n, nums);
+    cout << "the size of ans: " << ans.size() << endl;
+    for (int i = 0; i < ans.size(); ++i) {
+        vector<int> temp_ans = ans[i];
+        for (int j = 0; j < temp_ans.size(); ++j) {
+            cout << temp_ans[j] << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+    return ans;
+
+}
+void leetcode78::dfs(int cur_posi, vector<int> nums) {
+    ans.push_back(temp);
+    for (int j = cur_posi; j < nums.size(); ++j) {
+        temp.push_back(nums[j]);
+        dfs(j + 1, nums);
+        temp.pop_back();
+    }
+
 
 }
