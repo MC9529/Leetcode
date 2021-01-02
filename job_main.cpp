@@ -1903,12 +1903,67 @@ int main() {
 */
 
 // // 子集 leetcode78
-
+/*
 int main() {
     
     vector<int> nums = {1, 2, 3};
     leetcode78 solu;
     solu.subsets(nums);
+
+
+    return 0;
+}
+*/
+
+// leetcode80 
+
+/*
+int main() {
+    leetcode80 solu;
+
+    vector<int> nums = {0, 1, 1, 1, 2, 2, 3};
+    solu.removeDuplicates(nums);
+
+
+    return 0;
+}
+*/
+
+// leetcode81 
+
+/*
+int main() {
+    vector<int> nums = {2, 5, 6, 0, 0, 1, 2};
+    int target = 1;
+    leetcode81 solu;
+    bool ans = solu.search(nums, target);
+    if (ans) {
+        cout << "yes !" << endl;
+    } else {
+        cout << "no !" << endl;
+    }
+
+    return 0;
+}
+*/
+
+// leetcode84 
+/*
+int main() {
+    vector<int> nums = {2, 1, 5, 6, 2, 3};
+    leetcode84 solu;
+    solu.largeRectangleArea(nums);
+
+    return 0;
+}
+*/
+
+// leetcode90 
+int main() {
+    vector<int> nums = {1, 2, 2};
+    leetcode90 solu;
+    cout << "pass in 1965" << endl;
+    solu.subsetwithDup(nums);
 
 
     return 0;

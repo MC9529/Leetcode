@@ -897,3 +897,35 @@ public:
     vector<vector<int>> ans;
     vector<int> temp;
 };
+
+// leetcode80 
+
+class leetcode80 {
+public:
+    int removeDuplicates(vector<int> &nums);
+    
+};
+
+// leetcode81  搜索旋转矩阵
+class leetcode81 {
+public:
+    bool search(vector<int> &nums, int target);
+
+};
+
+// leetcode84 柱状图中的最大柱形图
+class leetcode84 {
+public:
+// 暴力法
+    int largeRectangleArea(vector<int> &nums);
+
+    int largeRectangleArea1(vector<int> &nums);
+};
+
+// leetcode90 子集
+class leetcode90 {
+public:
+    vector<vector<int>> subsetwithDup(vector<int> &nums);
+    vector<vector<int>> ans;
+    void dfs(vector<int> &nums, vector<int> &temp, int posi, vector<bool> &used);
+};

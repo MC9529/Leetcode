@@ -3873,3 +3873,137 @@ void leetcode78::dfs(int cur_posi, vector<int> nums) {
 
 
 }
+
+// leetcode80
+
+int leetcode80::removeDuplicates(vector<int> &nums) {
+   if (nums.size() == 0) {
+       return 0;
+   }
+   int fast = 1;
+   int slow = 1;
+   int count = 1;
+   while(fast < nums.size()) {
+       if (nums[fast] == nums[fast-1]) {
+           count ++;
+       } else {
+           count = 1;
+       }
+       nums[slow] = nums[fast];
+       if (count <= 2) {
+           slow++;
+       }
+
+       fast++;
+   }
+   cout << "the ans: " << slow << endl;
+   return slow;
+}
+
+// leetcode81  搜索旋转矩阵2
+
+bool leetcode81::search(vector<int> &nums, int target) {
+    if (nums.empty()) {
+        return false;
+    }
+    int left = 0, right = nums.size();
+    while(left < right) {
+        int mid = left + (right - left) /2;
+        if (nums[mid] == target) {
+            return true;
+        }
+        if(nums[mid] > nums[left]) {  // left -> mid 是有序的
+            if (target >= nums[left] && target < nums[mid]) {
+                right = mid;
+            } else {
+                left = mid + 1;
+            }
+
+        } else if (nums[mid] < nums[left]) { // mid -> right 有序
+            if (target > nums[mid] && target <= nums[target - 1]) {
+                left = mid + 1;
+            } else {
+                right = mid;
+            }
+        } else if (nums[mid] == nums[left]) {
+            left ++;
+        }
+    }
+    return false;
+
+}
+
+//
+
+ int leetcode84::largeRectangleArea(vector<int> &nums) {
+     int n = nums.size();
+     int ans = 0;
+     for (int left = 0; left < n; ++left) {
+         int minHeight = INT_MAX;
+         for (int right = left; right < n; ++right) {
+             minHeight = min(minHeight, nums[right]);
+             ans = max(ans, (right - left + 1) * minHeight);
+         }
+     }
+    cout << "the ans: " << ans << endl;
+     return ans;
+
+ }
+ //
+
+ int leetcode84::largeRectangleArea1(vector<int> &nums) {
+     int n = nums.size();
+     vector<int> left(n), right(n, n);
+     stack<int> mono_stack;
+     for (int i = 0; i < n; ++i) {
+         while(! mono_stack.empty() && nums[mono_stack.top()] >= nums[i]) {
+
+         }
+     }
+
+ }
+
+ // leetcode90 // 没有重复的元素
+vector<vector<int>> leetcode90::subsetwithDup(vector<int> &nums) {
+    if (nums.size() == 0) {
+        return ans;
+    }
+    sort(nums.begin(), nums.end());
+    vector<int> temp;
+    vector<bool> used(nums.size(), false);
+    int curposi = 0;
+    dfs(nums, temp, curposi, used);
+    cout << "passed in 3975" << endl;
+    for (int i = 0; i < ans.size(); ++i) {
+        vector<int> temp_ans = ans[i];
+        for (int j = 0; j < temp_ans.size(); ++j) {
+            cout << temp_ans[j] << " "; 
+        }
+        cout << endl;
+    }
+    cout << endl;
+    cout << "the size of ans: " << ans.size() << endl;
+    return ans;
+}
+
+
+//
+
+void leetcode90::dfs(vector<int> &nums, vector<int> &temp, int posi, vector<bool> &used) {
+    ans.push_back(temp);
+
+    for (int i = posi; i < nums.size(); ++i) {
+        cout << "the i: " << i << endl;
+        temp.push_back(nums[i]);
+        used[i] = true;
+        dfs(nums, temp, i + 1, used);
+        temp.pop_back();
+        used[i] = false;
+        // 去除重复
+        while( i < nums.size() - 1 && nums[i] == nums[i + 1]) {
+            ++i;
+        }
+
+    }
+
+}
