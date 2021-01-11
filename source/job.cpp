@@ -4007,3 +4007,149 @@ void leetcode90::dfs(vector<int> &nums, vector<int> &temp, int posi, vector<bool
     }
 
 }
+
+// leetcode92  反转链表2
+
+Node* leetcode92::reverseBetween(Node *head, int m, int n) {
+   if (m == n || !head->next) {
+       return head;
+   }
+   Node *prehead = head;
+   cout << "pass in 4018" << endl;
+   Node *p = prehead, *q = head;
+   for (int i = 1; i < n; ++i) {
+       p = p->next; // 翻转前一个
+   }
+   cout << "pass in 4023" << endl;
+   q = p->next;
+   int i = n - m -1;
+   while(i -- ) {
+       Node *t = q->next;  // 头插法
+       q->next = t->next;
+       t->next = p->next;
+       p->next = t;
+   }
+   cout << "pass in 4030" << endl;
+   Node *temp = head;
+   while(temp->next) {
+       cout << temp->next->val << " ";
+       temp = temp->next;
+   }
+   cout << endl;
+    return head;
+}
+
+// 递归实现
+
+Node* leetcode92::reverseBetween2(Node *head, int m, int n) {
+    // Node* successor = nullptr;
+    // base case
+    if (m == 0) {
+        return reverseN(head, n);
+    }
+    // 前进到反转的起点触发base_case
+    head->next = reverseBetween2(head->next, m -1, n -1);
+    cout << "pass in 4030" << endl;
+    // Node *temp = head;
+    // cout << "the res: " << endl;
+    // while(temp->next) {
+    //    cout << temp->next->val << " ";
+    //    temp = temp->next;
+    // }
+    // cout << endl;
+    return head;
+
+}
+Node* leetcode92::reverseN(Node *head_m, int n) {
+    if (n == 0) {
+        successor = head_m->next;
+        return head_m;
+    }
+    Node* last = reverseN(head_m->next, n -1);
+    head_m->next->next = head_m;
+    head_m->next = successor;
+    return last;
+}
+
+// leetcode94 二叉树的中序遍历
+void leetcode94::inorder(Bitnode<char> *root, vector<char> &res) {
+    if (!root) {
+        return;
+    }
+    inorder(root->left, res);
+    res.push_back(root->val);
+    inorder(root->right, res);
+}
+
+// 
+
+void leetcode94::inorderTravel(Bitnode<char> *root) {
+    vector<char> res;
+    inorder(root, res);
+    for (int i = 0; i < res.size(); ++i) {
+        cout << res[i] << " ";
+    }
+    cout << endl;
+    return;
+}
+
+//  leetcode120 
+
+int leetcode120::minisumTotal(vector<vector<int>> &triangle) {
+    int n = triangle.size();
+    vector<vector<int>> dp(n, vector<int>(n));
+    dp[0][0] = triangle[0][0];
+    cout << "passed in 4102" << endl;
+    for (int i = 1; i < n; ++i) {
+        // j = 0 , dp[i-1][j-1] 没有意义
+        dp[i][0] = dp[i-1][0] + triangle[i][0];
+        for (int j = 1; j < i; ++j) {
+            dp[i][j] = min(dp[i-1][j-1], dp[i-1][j]) + triangle[i][j];
+        }
+        // 当 i= j时， 上一行i-1 行， 将 j最大为 i-1
+        dp[i][i] = dp[i-1][i-1] + triangle[i][i];
+    }
+    cout << "passed in 4111." << endl;
+    int ans = *min_element(dp[n-1].begin(), dp[n-1].end());
+    cout << "the ans: " << ans << endl;
+    return ans;
+
+}
+
+// leetcode121 买卖股票的最佳时机
+
+int leetcode121::maxProfit(vector<int> &prices) {
+   int inf = 1e9;
+   // 用最低的价格买入，然后计算在该天卖出的利润，求利润的最大值
+   int minprices = inf, maxprofit = 0;
+   for (int price: prices) {
+        maxprofit = max(maxprofit, price - minprices);
+        cout << "the maxprofit: " << maxprofit << endl;
+        minprices = min(price, minprices);
+        cout << "the the minprice: " << minprices << endl;
+   }
+
+   cout << "the ans: " << maxprofit << endl;
+
+   return maxprofit;
+
+}
+         
+// leetcode122 买卖股票的最佳时机2
+// dp[i][0] 表示 第i天交易完后手里没有股票的最大利润 
+// dp[i][1] 表示 第i天交易完后手里有股票的最大利润
+// dp[i][0] = max(dp[i-1][0], dp[i-1][1] + prices[i] )
+// dp[i][1] = max(dp[i-1][1], dp[i-1][0] - prices[i] )
+int leetcode122::maxProfit(vector<int> &profit) {
+    int n = profit.size();
+    vector<vector<int>> dp(n, vector<int> (2, 0));
+    dp[0][0] = 0, dp[0][1] = -profit[0];
+    for (int i = 1; i < n; ++i) {
+        dp[i][0] = max(dp[i-1][0], dp[i-1][1] + profit[i] );
+
+        dp[i][1] = max(dp[i-1][1], dp[i-1][0] - profit[i] );
+    }
+
+    cout << "the maxprofit: " << dp[n-1][0] << endl;
+    return dp[n-1][0];
+}

@@ -1959,6 +1959,7 @@ int main() {
 */
 
 // leetcode90 
+/*
 int main() {
     vector<int> nums = {1, 2, 2};
     leetcode90 solu;
@@ -1966,5 +1967,85 @@ int main() {
     solu.subsetwithDup(nums);
 
 
+    return 0;
+}
+*/
+
+// leetcode92 
+
+/*
+int main() {
+
+   LinkList list;
+    list.creatLinkList_one(1);
+    list.creatLinkList_one(2);
+    list.creatLinkList_one(3);
+    list.creatLinkList_one(4);
+    list.creatLinkList_one(5);
+    list.TravelLinkList();
+    // solu.swapPairs(list.head);
+    leetcode92 solu;
+    int m = 2;
+    int n = 4;
+    Node* head1 = solu.reverseBetween2(list.head, m, n);
+    Node *temp = head1;
+    cout << "the res: " << endl;
+    while(temp->next) {
+       cout << temp->next->val << " ";
+       temp = temp->next;
+    }
+    cout << endl;
+
+    return 0;
+}
+*/
+
+/*
+int main() {
+    Tree<char> my_tree;
+    Bitnode<char>* root = my_tree.GetRoot();
+    my_tree.InOrder(root);
+    leetcode94 solu;
+    solu.inorderTravel(root);
+
+
+    return 0;
+}
+*/
+// leetcode120 
+
+/*
+int main() {
+   vector<vector<int>> triangle = {{2}, {3, 4}, {6, 5, 7}, {4, 1, 8, 3}};
+
+   leetcode120 solu;
+
+   solu.minisumTotal(triangle);
+
+    return 0;
+}
+*/
+
+// leetcode121
+/*
+int main() {
+    vector<int> prices = {7, 1, 5, 3, 6, 4};
+    leetcode121 solu;
+
+    solu.maxProfit(prices);
+
+
+    return 0;
+}
+*/
+
+// leetcode122 
+
+int main() {
+    vector<int> prices = {7, 1, 5, 3, 6, 4};
+    leetcode122 solu;
+
+    solu.maxProfit(prices);
+    
     return 0;
 }

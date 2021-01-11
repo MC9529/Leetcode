@@ -929,3 +929,42 @@ public:
     vector<vector<int>> ans;
     void dfs(vector<int> &nums, vector<int> &temp, int posi, vector<bool> &used);
 };
+
+// leetcode92 反转链表2
+class leetcode92 {
+public:
+    Node* reverseBetween(Node *head, int m, int n);
+    // 递归实现
+
+    Node* reverseBetween2(Node *head, int m, int n);
+    Node* reverseN(Node *head_m, int n);
+    Node* successor = nullptr;
+};
+// leetcode94 二叉树的中序遍历
+class leetcode94 {
+public:
+    //  Bitnode<char>* lowestcommonancester(
+    // Bitnode<char> * root, int val_p, int val_q);
+    void inorder(Bitnode<char> *root, vector<char> &res);
+    void inorderTravel(Bitnode<char> *root);
+    
+};
+
+// leetcode120 最小路径和
+class leetcode120 {
+public:
+    int minisumTotal(vector<vector<int>> &triangle);
+};
+
+// leetcode121 买卖股票的最佳时机
+class leetcode121 {
+public:
+    int maxProfit(vector<int> &prices);
+};
+
+// leetcode122 买卖股票的最佳时机2
+class leetcode122 {
+public:
+    int maxProfit(vector<int> &profit);
+    
+};
