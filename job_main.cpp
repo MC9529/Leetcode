@@ -5,7 +5,7 @@
 #include <utility>
 #include <vector>
 //#include "Eigen/LU"
-#include<iostream>
+#include <iostream>
 
 #include "solution.h"
 #include "job.h"
@@ -360,8 +360,8 @@ int main() {
 }
 */
 
- // 二进制中1的个数
- /*
+// 二进制中1的个数
+/*
 int main() {
     offer15 solu;
     int n = 4;
@@ -370,9 +370,9 @@ int main() {
     return 0;
 }
 */
- // offer_16 数值的整数次方
+// offer_16 数值的整数次方
 
- /*
+/*
  int main() {
     offer16 solu;
     double x = 2.1000;
@@ -383,8 +383,6 @@ int main() {
      return 0;
  }
  */
-
-
 
 // offer18 删除链表的节点
 
@@ -419,7 +417,7 @@ int main() {
 }
 */
 
- // offer24 反转链表
+// offer24 反转链表
 /*
 int main() {
 
@@ -438,7 +436,6 @@ int main() {
     return 0;
 }
 */
-
 
 /*
 int main() {
@@ -667,7 +664,6 @@ int main() {
 }
 */
 
-
 // offer34 二叉树中和为某一值的路径
 
 /*
@@ -753,8 +749,6 @@ int main() {
 }
 */
 
-
-
 // offer39
 /*
 int main() {
@@ -800,7 +794,6 @@ int main() {
 }
 */
 
-
 // 把数组排列成最小的数 offer45
 /*
 int main() {
@@ -829,8 +822,8 @@ int main() {
 }
 */
 
- // offer48 最长不含重复字符的子字符串
- /*
+// offer48 最长不含重复字符的子字符串
+/*
  int main() {
     string s = "abcdeabcdecfghbb";
     offer48 solu;
@@ -1061,7 +1054,7 @@ int main() {
 }
 */
 
-// 
+//
 /*
 int main() {
     int a = 2, b = 3;
@@ -1133,7 +1126,6 @@ int main() {
 */
 
 // 二叉树的最近公共祖先 offer682;
-
 
 /*
 int main() {
@@ -1251,7 +1243,7 @@ int main() {
 }
 */
 
-// 
+//
 // 整数反转 leetcode7
 /*
 int main() {
@@ -1264,7 +1256,7 @@ int main() {
     return 0;
 }
 */
-// leetcode8 
+// leetcode8
 /*
 int main() {
  //  string s = "42";
@@ -1361,7 +1353,7 @@ int main() {
 }
 */
 
-// leetcode16 最接近的三数之和 
+// leetcode16 最接近的三数之和
 /*
 int main() {
     leetcode16 solu;
@@ -1460,7 +1452,7 @@ int main() {
     return 0;
 }
 */
-// 
+//
 
 /*
 int main() {
@@ -1497,7 +1489,7 @@ int main() {
 }
 */
 
-// 移除元素 leetcode27 
+// 移除元素 leetcode27
 /*
 int main() {
 
@@ -1553,7 +1545,7 @@ int main() {
     return 0;
 }
 */
-// 
+//
 /*
 int main() {
     vector<int> nums = {1, 3, 5, 6};
@@ -1566,7 +1558,7 @@ int main() {
 }
 
 */
-// 快速排序  
+// 快速排序
 /*
 int main() {
     vector<int> nums = {2, 5, 4, 6, 9, 1};
@@ -1581,8 +1573,7 @@ int main() {
 }
 */
 
-
-// 归并排序 
+// 归并排序
 /*
 int main() {
     mergeSort solu;
@@ -1702,7 +1693,7 @@ int main() {
 }
 */
 
-// leetcode53 最大子序列和 
+// leetcode53 最大子序列和
 /*
 int main() {
     vector<int> nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
@@ -1780,7 +1771,7 @@ int main() {
 }
 */
 
-// 不同路径  leetcode62 
+// 不同路径  leetcode62
 /*
 int main() {
     int m = 3, n = 7;
@@ -1915,7 +1906,7 @@ int main() {
 }
 */
 
-// leetcode80 
+// leetcode80
 
 /*
 int main() {
@@ -1929,7 +1920,7 @@ int main() {
 }
 */
 
-// leetcode81 
+// leetcode81
 
 /*
 int main() {
@@ -1947,7 +1938,7 @@ int main() {
 }
 */
 
-// leetcode84 
+// leetcode84
 /*
 int main() {
     vector<int> nums = {2, 1, 5, 6, 2, 3};
@@ -1958,7 +1949,7 @@ int main() {
 }
 */
 
-// leetcode90 
+// leetcode90
 /*
 int main() {
     vector<int> nums = {1, 2, 2};
@@ -1971,7 +1962,7 @@ int main() {
 }
 */
 
-// leetcode92 
+// leetcode92
 
 /*
 int main() {
@@ -2012,7 +2003,7 @@ int main() {
     return 0;
 }
 */
-// leetcode120 
+// leetcode120
 
 /*
 int main() {
@@ -2039,13 +2030,73 @@ int main() {
 }
 */
 
-// leetcode122 
+// leetcode122
 
+/*
 int main() {
     vector<int> prices = {7, 1, 5, 3, 6, 4};
     leetcode122 solu;
 
     solu.maxProfit(prices);
     
+    return 0;
+}
+*/
+
+// leetcode123
+
+/*
+int main()
+{
+    vector<int> prices = {1, 2, 3, 4, 5};
+    leetcode123 solu;
+
+    solu.maxprofit(prices);
+
+    return 0;
+}
+*/
+
+// leetcode130
+
+/*
+int main()
+{
+    leetcode130 solu;
+
+    vector<vector<char>> matrix = {
+        {'x', 'x', 'x', 'x'},
+        {'x', 'o', 'o', 'x'},
+        {'x', 'x', 'o', 'x'},
+        {'x', 'o', 'x', 'x'},
+    };
+    solu.solve(matrix);
+
+    return 0;
+}
+*/
+
+// // leetcode131 分割回文串
+/*
+int main()
+{
+
+    leetcode131 solu;
+    string s = "aab";
+    solu.partition(s);
+
+    return 0;
+}
+*/
+
+// leetcode132 分割回文串2
+
+int main()
+{
+
+    leetcode132 solu;
+    string s = "aab";
+    solu.partition(s);
+
     return 0;
 }
