@@ -2091,6 +2091,7 @@ int main()
 
 // leetcode132 分割回文串2
 
+/*
 int main()
 {
 
@@ -2098,5 +2099,38 @@ int main()
     string s = "aab";
     solu.partition(s);
 
+    return 0;
+}
+*/
+// leetcode134 加油站
+/*
+int main()
+{
+    leetcode134 solu;
+    vector<int> gas = {1, 2, 3, 4, 5};
+    vector<int> cost = {3, 4, 5, 1, 2};
+    int res = solu.canCompletecircuit(gas, cost);
+    if (res != -1)
+    {
+        cout << "the res: " << res << endl;
+    }
+    else if (res == -1)
+    {
+        cout << "there is no answer and can not" << endl;
+    }
+    return 0;
+}
+
+*/
+
+// leetcode136 只出现一次的数字
+
+int main()
+{
+    leetcode136 solu;
+    vector<int> nums = {1, 2, 3, 1, 2};
+    solu.singleNumber(nums);
+    cout << "the second way" << endl;
+    solu.singleNumber2(nums);
     return 0;
 }

@@ -1078,3 +1078,20 @@ public:
     vector<vector<string>> res;
     vector<string> path;
 };
+
+// leetcode134 加油站
+
+class leetcode134
+{
+public:
+    int canCompletecircuit(vector<int> &gas, vector<int> &cost);
+};
+
+// leetcode136 只出现一次的数字
+
+class leetcode136
+{
+public:
+    int singleNumber(vector<int> &nums);
+    int singleNumber2(vector<int> &nums);
+};

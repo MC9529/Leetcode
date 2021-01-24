@@ -4990,3 +4990,60 @@ void leetcode132::backtracking(const string &s, int startIdex)
         path.pop_back();        // 回溯过程， 弹出本次已经填在的子串
     }
 }
+
+// leetcode134 加油站
+
+int leetcode134::canCompletecircuit(vector<int> &gas, vector<int> &cost)
+{
+    int total_rest = 0; // 油量总结余
+    int cur_rest = 0;   // 从始发油站到当前油站[start, i] 后的油量结余
+    int start = 0;      // 出发位置
+    for (int i = 0; i < gas.size(); ++i)
+    {
+        total_rest = total_rest + gas[i] - cost[i];
+        cur_rest = cur_rest + gas[i] - cost[i];
+        if (cur_rest < 0)
+        {
+            start = i + 1;
+            cur_rest = 0;
+        }
+    }
+    // total_res 小于0 ，说明没有解
+    return total_rest < 0 ? -1 : start;
+}
+
+//
+
+// leetcode136 只出现一次的数字
+
+int leetcode136::singleNumber(vector<int> &nums)
+{
+    int res = 0;
+    for (auto i : nums)
+    {
+        // 利用异或运算 a = a ^ 0 = a ^ b ^ b;
+        // 0 = b ^ b;
+        res = res ^ i;
+    }
+    cout << "the only once is: " << res << endl;
+    return res;
+}
+
+//
+
+int leetcode136::singleNumber2(vector<int> &nums)
+{
+    unordered_map<int, int> map;
+    for (int i = 0; i < nums.size(); ++i)
+    {
+        map[nums[i]]++;
+    }
+    for (int i = 0; i < nums.size(); ++i)
+    {
+        if (map[nums[i]] == 1)
+        {
+            cout << "the only once num: " << nums[i] << endl;
+        }
+    }
+    return 0;
+}
