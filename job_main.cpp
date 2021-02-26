@@ -2201,12 +2201,24 @@ int main() {
 */
 
 // leetcode605
-
+/*
 int main() {
   leetcode605 solu;
   vector<int> nums = {0, 1, 0, 0, 0, 1};
   int n = 2;
   solu.canPlaceFlower(nums, n);
+
+  return 0;
+}
+*/
+
+// leetcode452
+
+int main() {
+  leetcode452 solu;
+
+  vector<vector<int>> points = {{10, 16}, {2, 8}, {1, 6}, {7, 12}};
+  solu.findminArrowShot(points);
 
   return 0;
 }

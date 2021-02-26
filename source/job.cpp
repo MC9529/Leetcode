@@ -4276,4 +4276,20 @@ bool leetcode605::canPlaceFlower(vector<int> &flowered, int n) {
 
 //
 
-int leetcode452::findminArrowShot(vector<vector<int>> &points) {}
+int leetcode452::findminArrowShot(vector<vector<int>> &points) {
+  int ans = 1;
+  auto comp = [](vector<int> &a, vector<int> &b) { return a[0] < b[0]; };
+  sort(points.begin(), points.end(), comp);
+  int cur_posi = points[0][1];
+
+  for (int i = 1; i < points.size(); ++i) {
+    // 无重复
+    // 有重复的则可以用原来那只箭射
+    if (points[i][0] > cur_posi) {
+      ans++;
+      cur_posi = points[i][1];
+    }
+  }
+  cout << "the ana: " << ans << endl;
+  return ans;
+}
