@@ -6,10 +6,10 @@
 #include <vector>
 //#include "Eigen/LU"
 #include <iostream>
-
-#include "solution.h"
-#include "job.h"
 #include <vector>
+
+#include "job.h"
+#include "solution.h"
 // #include "BiTree.h"
 // #include "LinkList.h"
 
@@ -22,7 +22,7 @@ int main() {
                               {3, 4},
                              {6, 5, 7},
                             {4, 1, 8, 3} };
-  
+
   minimumTotal_120_solution solu;
   solu.minimumTotal(nums);
 
@@ -79,17 +79,17 @@ int main() {
     LinkList list;
     list.creatLinkList_one(1);
     list.creatLinkList_one(2);
-    // 
+    //
     list.TravelLinkList();
     list.Getlen();
     list.Isempty();
-    // 
+    //
     list.insertLinkList(3, 1);
     list.insertLinkList(4, 2);
     list.TravelLinkList();
     list.Getlen();
     list.Isempty();
-    // 
+    //
     list.deleteLinkLint(1);
     list.TravelLinkList();
     list.deleteLinkLint(2);
@@ -105,7 +105,7 @@ int main() {
     list.Getlen();
     list.Isempty();
     list.TravelLinkList();
-    // 
+    //
      list.ByeLinkList();
      list.Getlen();
     list.Isempty();
@@ -126,7 +126,7 @@ int main() {
     list.TravelLinkList();
     offer06 solu;
     solu.reverseprint(list.head);
-    
+
     return 0;
 }
 */
@@ -192,8 +192,8 @@ int main() {
         }
         cout << endl;
     }
-    
-   
+
+
     return 0;
 }
 */
@@ -223,9 +223,9 @@ int main() {
      cout << "the top: " << solu.top() << endl;
      cout << "the top1: " << solu.top_element << endl;
      solu.pop();
-      
+
      solu.pop();
-     
+
 
 
     return 0;
@@ -235,7 +235,7 @@ int main() {
 /*
 int main () {
     stack2queue solu;
-    
+
     int temp = 1;
      solu.push(temp);
 
@@ -244,7 +244,7 @@ int main () {
      solu.push(4);
      solu.pop();
 
-     
+
      cout << "the top: " << solu.front() << endl;
      // cout << "the top1: " << solu.top_element << endl;
       solu.push(5);
@@ -266,9 +266,9 @@ int main () {
      cout << "the top: " << solu.front() << endl;
      // cout << "the top1: " << solu.top_element << endl;
      solu.pop();
-      
+
      solu.pop();
-    
+
 
 
     return 0;
@@ -456,7 +456,7 @@ int main() {
   //   D
   Bitnode<char>* root = my_tree.GetRoot();
   // Bitnode<char>* root2 = my_tree_2.GetRoot();
-  
+
   cout << "the res in inorder:" << endl;
   my_tree.InOrder(root);
   /*
@@ -558,9 +558,9 @@ int main() {
 int main() {
 
     vector<vector<int>> matrix = { {1, 2, 3},
-                                    {4, 5, 6}, 
+                                    {4, 5, 6},
                                     {7, 8, 9} };
-    
+
 
    offer29 solu;
    solu.spiralOrder(matrix);
@@ -592,7 +592,7 @@ int main() {
 
     offer321 solu;
     solu.levelorder(root);
-    
+
 
     return 0;
 
@@ -622,7 +622,7 @@ int main() {
 
     offer322 solu;
     solu.levelorder(root);
-    
+
     return 0;
 
 }
@@ -658,7 +658,7 @@ int main() {
 
     offer323 solu;
     solu.levelorder(root);
-    
+
     return 0;
 
 }
@@ -668,7 +668,7 @@ int main() {
 
 /*
 int main() {
-    
+
     Tree<char> my_tree;
   // Tree<char> my_tree_2;
   //A{ B {C, },  D} ->ABC# ## D##
@@ -689,7 +689,7 @@ int main() {
     offer34 solu;
     int sum = 6;
     solu.pathSum(root, sum);
-    
+
     return 0;
 }
 
@@ -713,7 +713,7 @@ int main() {
 // offer37 序列化二叉树
 /*
 int main() {
-    
+
     Tree<char> my_tree;
   // Tree<char> my_tree_2;
   //A{ B {C, },  D} ->ABC# ## D##
@@ -733,7 +733,7 @@ int main() {
     cout << "pass in 691" << endl;
     offer37 solu;
     solu.serialize(root);
-    
+
     return 0;
 }
 
@@ -904,7 +904,7 @@ int main() {
 int main() {
 
    offer55 solu;
-    
+
     Tree<char> my_tree;
   // Tree<char> my_tree_2;
   //A{ B {C, },  D} ->ABC# ## D##
@@ -1199,14 +1199,14 @@ int main() {
     list.creatLinkList_one(3);
     list.creatLinkList_one(4);
     list.TravelLinkList();
-    
+
     LinkList list1;
     list1.creatLinkList_one(5);
     list1.creatLinkList_one(6);
     list1.creatLinkList_one(7);
     list1.creatLinkList_one(8);
     list1.TravelLinkList();
-    
+
     leetcode2 solu;
 
     solu.addTwonumbers(list.head, list1.head);
@@ -1219,7 +1219,7 @@ int main() {
 //  // // 无重复字符的最长子串
 /*
 int main() {
-  
+
     string str = "pwwkew";
     leetcode3 solu;
     solu.lenoflongestsubstring(str);
@@ -1432,14 +1432,14 @@ int main() {
     list.creatLinkList_one(1);
     list.creatLinkList_one(2);
     list.creatLinkList_one(3);
-   
+
     list.TravelLinkList();
-    
+
     LinkList list2;
     list2.creatLinkList_one(2);
     list2.creatLinkList_one(4);
     list2.creatLinkList_one(5);
-   
+
     list2.TravelLinkList();
     cout << "pass in 1451" << endl;
     solu.merge2Node(list.head, list2.head);
@@ -1578,7 +1578,7 @@ int main() {
 int main() {
     mergeSort solu;
     vector<int> nums = {2, 5, 3, 6, 1, 7, 4, 8};
-    
+
     solu.mergesort(nums, 0, nums.size() - 1);
 
     for (int i = 0; i < nums.size(); ++i) {
@@ -1675,7 +1675,7 @@ int main() {
 /*
 int main() {
     leetcode50 solu;
-    int n = 5; 
+    int n = 5;
     double x = 4.0;
     //solu.myPow(x, n);
     solu.myPow2(x, n);
@@ -1754,7 +1754,7 @@ int main() {
 // 旋转链表  leetcode61
 /*
 int main() {
-    
+
     LinkList list;
     list.creatLinkList_one(1);
     list.creatLinkList_one(2);
@@ -1779,7 +1779,7 @@ int main() {
     // solu.uniquePath(m, n);
 
     solu.uniquePath2(m, n);
-    
+
 
 
     return 0;
@@ -1803,8 +1803,8 @@ int main() {
 // leetcode64  最小路径和
 /*
 int main() {
-    vector<vector<int>> nums = {{1, 3, 1}, 
-                                {1, 5, 1}, 
+    vector<vector<int>> nums = {{1, 3, 1},
+                                {1, 5, 1},
                                 {4, 2, 1}};
 
     leetcode64 solu;
@@ -1859,8 +1859,8 @@ int main() {
 int main() {
     leetcode74 solu;
     int target = 16;
-    vector<vector<int>> matrix = {{1, 3, 5, 7}, 
-                                {10, 11, 16, 20}, 
+    vector<vector<int>> matrix = {{1, 3, 5, 7},
+                                {10, 11, 16, 20},
                                 {23, 30, 34, 60}};
 
 
@@ -1896,7 +1896,7 @@ int main() {
 // // 子集 leetcode78
 /*
 int main() {
-    
+
     vector<int> nums = {1, 2, 3};
     leetcode78 solu;
     solu.subsets(nums);
@@ -2038,7 +2038,7 @@ int main() {
     leetcode122 solu;
 
     solu.maxProfit(prices);
-    
+
     return 0;
 }
 */
@@ -2124,13 +2124,89 @@ int main()
 */
 
 // leetcode136 只出现一次的数字
-
+/*
 int main()
 {
     leetcode136 solu;
-    vector<int> nums = {1, 2, 3, 1, 2};
+    vector<int> nums = {1, 2, 3, 1, 2, 0};
     solu.singleNumber(nums);
     cout << "the second way" << endl;
     solu.singleNumber2(nums);
     return 0;
+}
+*/
+
+// leetcode137
+
+/*
+int main()
+{
+    leetcode137 solu;
+    vector<int> nums = {0, 1, 0, 1, 99};
+    solu.singlenum(nums);
+
+    return 0;
+}
+*/
+
+// leetcode 1081
+/*
+int main() {
+  leetcode1081 solu;
+  string s = "bcabc";
+  solu.smallestSubsequence(s);
+
+  return 0;
+}
+*/
+
+/****************************************************************************
+ * 贪心算法
+ * **************************************************************************/
+
+/*
+int main() {
+  leetcode455 solu;
+  vector<int> g = {1, 2};
+  vector<int> s = {1, 2, 3};
+
+  solu.findContentChildren2(g, s);
+  solu.findContentChildren(g, s);
+
+  return 0;
+}
+*/
+
+//
+/*
+int main() {
+  leetcode135 solu;
+  vector<int> child = {1, 2, 2};
+  solu.candy(child);
+
+  return 0;
+}
+*/
+
+// leetcode435
+/*
+int main() {
+  leetcode435 solu;
+  vector<vector<int>> nums = {{1, 2}, {2, 4}, {1, 3}};
+  solu.eraseOverlapIntervals(nums);
+
+  return 0;
+}
+
+*/
+
+// leetcode605
+
+int main() {
+  leetcode605 solu;
+  vector<int> nums = {0, 1, 0, 0, 0, 1};
+  int n = 2;
+  solu.canPlaceFlower(nums, n);
+
+  return 0;
 }
