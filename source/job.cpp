@@ -4156,6 +4156,7 @@ int leetcode455::findContentChildren(vector<int> &g, vector<int> &s) {
   sort(s.begin(), s.end());
   int len_g = g.size(), len_s = s.size();
   for (int i = 0, j = 0; i < len_g && j < len_s; ++i, ++j) {
+    // 找第一个s[j] > g[i-]
     while (j < len_s && g[i] > s[j]) {
       j++;
     }
@@ -4291,5 +4292,370 @@ int leetcode452::findminArrowShot(vector<vector<int>> &points) {
     }
   }
   cout << "the ana: " << ans << endl;
+  return ans;
+}
+
+//  贪心算法， 相当于寻找x个不相交区间[l, r]，使得
+//  max{a[r] - a[l]}
+
+int leetcode122_1::maxProfit(vector<int> &prices) {
+  int ans = 0;
+  int n = prices.size();
+  for (int i = 0; i < n; ++i) {
+    ans = ans + max(0, prices[i] - prices[i - 1]);
+  }
+  cout << "the ans: " << ans << endl;
+  return ans;
+}
+
+// leetcode122
+int leetcode122_1::maxProfit2(vector<int> &prices) {
+  int ans = 0;
+  int n = prices.size();
+  int dp[n][2];
+  dp[0][0] = 0, dp[0][1] = -1 * prices[0];
+  for (int i = 0; i < n; ++i) {
+    dp[i][0] = max(dp[i - 1][0], dp[i - 1][1] + prices[i]);
+    dp[i][1] = max(dp[i - 1][1], dp[i - 1][0] - prices[i]);
+  }
+  ans = dp[n - 1][0];
+  cout << "the ans : " << ans << endl;
+  return ans;
+}
+
+// leetcode121
+// 只能买卖一次
+int leetcode121_1::maxprofit(vector<int> &prices) {
+  int maxprofit = 0;
+  int minprices = INT_MAX;
+  for (int i = 0; i < prices.size(); ++i) {
+    // 先求得最低价格
+    minprices = min(minprices, prices[i]);
+    maxprofit = max(maxprofit, prices[i] - minprices);
+  }
+  cout << "the maxprofit: " << maxprofit << endl;
+  return maxprofit;
+}
+
+// leetcode 406
+
+vector<vector<int>> leetcode406::ReConstructQueue(vector<vector<int>> peoples) {
+  auto comp = [](const vector<int> &u, const vector<int> &v) {
+    return u[0] > v[0] || (u[0] == v[0] && u[1] < v[1]);
+  };
+  sort(peoples.begin(), peoples.end(), comp);
+
+  for (int i = 0; i < peoples.size(); ++i) {
+    cout << peoples[i][0] << " " << peoples[i][1] << endl;
+  }
+  cout << endl;
+  vector<vector<int>> ans;
+  for (const vector<int> &person : peoples) {
+    ans.insert(ans.begin() + person[1], person);
+    cout << "in inter" << endl;
+    for (int i = 0; i < ans.size(); ++i) {
+      cout << ans[i][0] << " " << ans[i][1] << endl;
+    }
+    cout << endl;
+  }
+
+  for (int i = 0; i < ans.size(); ++i) {
+    cout << ans[i][0] << " " << ans[i][1] << endl;
+  }
+  cout << endl;
+  return ans;
+}
+
+/**********************************************************************
+ * 双指针
+ *
+ ***********************************************************************/
+vector<int> leetcode167::Twosum(vector<int> nums, int target) {
+  int l = 0, r = nums.size() - 1;
+  int sum = 0;
+  while (l < r) {
+    sum = nums[l] + nums[r];
+    if (sum == target) {
+      break;
+    }
+    if (sum < target) {
+      ++l;
+    } else {
+      r--;
+    }
+  }
+  vector<int> ans;
+  cout << "l : " << l << " "
+       << "r : " << r << endl;
+  ans.push_back(l + 1);
+  ans.push_back(r + 1);
+
+  return ans;
+}
+
+vector<vector<int>> leetcode15_1::Threesum(vector<int> nums, int target) {
+  int n = nums.size();
+  sort(nums.begin(), nums.end());
+  vector<vector<int>> ans;
+  for (int first = 0; first < n; ++first) {
+    // 如果第一元素大于target,则后面的元素肯定大于target
+    if (nums[first] > target) {
+      continue;
+    }
+    if (first > 0 && nums[first] == nums[first - 1]) {
+      continue;
+    }
+    int third = n - 1;
+    for (int second = first + 1; second < n; ++second) {
+      if (second > first + 1 && nums[second] == nums[second - 1]) {
+        continue;
+      }
+      while (second < third &&
+             (nums[first] + nums[second] + nums[third]) > target) {
+        --third;
+      }
+      if (second == third) {
+        break;
+      }
+      if ((nums[first] + nums[second] + nums[third]) == target) {
+        ans.push_back({nums[first], nums[second], nums[third]});
+      }
+    }
+  }
+  for (int i = 0; i < ans.size(); ++i) {
+    vector<int> temp_vec = ans[i];
+    for (int j = 0; j < temp_vec.size(); ++j) {
+      cout << temp_vec[j] << " ";
+    }
+    cout << endl;
+  }
+  return ans;
+}
+
+vector<vector<int>> leetcode15_1::Threesum2(vector<int> nums, int target) {
+  vector<vector<int>> res;
+  int n = nums.size();
+  sort(nums.begin(), nums.end());
+  for (int first = 0; first < n; ++first) {
+    if (nums[first] > target) {
+      continue;
+    }
+    if (first > 0 && nums[first] == nums[first - 1]) {
+      continue;
+    }
+    int left = first + 1, right = n - 1;
+    while (left < right) {
+      if (nums[first] + nums[left] + nums[right] > target) {
+        right--;
+      } else if (nums[first] + nums[left] + nums[right] < target) {
+        left++;
+      } else {
+        res.push_back({nums[first], nums[left], nums[right]});
+        while (right > left && nums[right] == nums[right - 1]) {
+          right--;
+        }
+        while (right > left && nums[left] == nums[left + 1]) {
+          left++;
+        }
+        right--;
+        left++;
+      }
+    }
+  }
+  for (int i = 0; i < res.size(); ++i) {
+    vector<int> temp_vec = res[i];
+    for (int j = 0; j < temp_vec.size(); ++j) {
+      cout << temp_vec[j] << " ";
+    }
+    cout << endl;
+  }
+  cout << endl;
+  return res;
+}
+
+// leetcode18 四数之和
+
+vector<vector<int>> leetcode18_1::Foursum(vector<int> &nums, int target) {
+  sort(nums.begin(), nums.end());
+  vector<vector<int>> res;
+  if (nums.size() < 4) {
+    return res;
+  }
+  int a, b, c, d, len = nums.size();
+  for (int a = 0; a < len - 4; ++a) {
+    if (a > 0 && nums[a] == nums[a - 1]) {
+      continue;
+    }
+    for (b = a + 1; b < len - 3; ++b) {
+      if (b > a + 1 && nums[b] == nums[b - 1]) {
+        continue;
+      }
+      c = b + 1;
+      d = len - 1;
+      while (c < d) {
+        if (nums[a] + nums[b] + nums[c] + nums[d] < target) {
+          c++;
+        } else if (nums[a] + nums[b] + nums[c] + nums[d] > target) {
+          d--;
+        } else {
+          res.push_back({nums[a], nums[b], nums[c], nums[d]});
+          while (c < d && nums[c + 1] == nums[c]) {
+            c++;
+          }
+          while (c < d && nums[d - 1] == nums[d]) {
+            d--;
+          }
+          c++;
+          d--;
+        }
+      }
+    }
+  }
+  for (int i = 0; i < res.size(); ++i) {
+    vector<int> temp_res = res[i];
+    for (auto iter : temp_res) {
+      cout << iter << " ";
+    }
+    cout << endl;
+  }
+  cout << endl;
+  return res;
+}
+
+// leetcode16
+int leetcode16_1::threeSumClosest(vector<int> &nums, int target) {
+  int ans = 0;
+  vector<int> ans_vector{3, 0};
+  int n = nums.size();
+  int mincut = nums[0] + nums[1] + nums[2];
+  sort(nums.begin(), nums.end());
+  for (int first = 0; first < n; ++first) {
+    if (first > 0 && nums[first] == nums[first - 1]) {
+      continue;
+    }
+    int left = first + 1, right = n - 1;
+    while (left < right) {
+      cout << "the  first and right and second: " << first << " " << left << " "
+           << right << endl;
+      int threesum = nums[first] + nums[left] + nums[right];
+      if (abs(threesum - target) < abs(mincut - target)) {
+        mincut = threesum;
+        ans_vector[0] = first, ans_vector[1] = left, ans_vector[2] = right;
+
+      } else if (threesum < target) {
+        while (left < right && nums[right] == nums[right - 1]) {
+          right--;
+        }
+      } else if (threesum > target) {
+        while (left < right && nums[left] == nums[left + 1]) {
+          left++;
+        }
+      }
+      left++;
+      right--;
+    }
+  }
+  cout << "the ans: " << mincut << endl;
+  for (int i = 0; i < ans_vector.size(); ++i) {
+    cout << ans_vector[i] << " ";
+  }
+  cout << endl;
+  return mincut;
+}
+
+// leetcode88
+
+void leetcode88_1::merge(vector<int> &nums1, int m, vector<int> &nums2, int n) {
+  int m_iter = 0, n_iter = 0;
+  vector<int> ans;
+  while (m_iter < m && n_iter < n) {
+    if (nums1[m_iter] < nums2[n_iter]) {
+      ans.push_back(nums1[m_iter]);
+      ++m_iter;
+    } else if (nums1[m_iter] > nums2[n_iter]) {
+      ans.push_back(nums2[n_iter]);
+      ++n_iter;
+    } else {
+      ans.push_back(nums1[m_iter]);
+      ans.push_back(nums2[n_iter]);
+      ++m_iter;
+      ++n_iter;
+    }
+  }
+  for (int i = m_iter; i < m; ++i) {
+    ans.push_back(nums1[i]);
+  }
+  for (int j = n_iter; j < n; ++j) {
+    ans.push_back(nums2[j]);
+  }
+
+  for (int i = 0; i < ans.size(); ++i) {
+    cout << ans[i] << " ";
+  }
+  cout << endl;
+  return;
+}
+
+// leetcode142
+
+Node *leetcode142::detectCycle(Node *head) {
+  unordered_set<Node *> visited;
+  while (head != nullptr) {
+    if (visited.count(head)) {
+      cout << "the val: " << head->val << endl;
+      return head;
+    }
+    visited.insert(head);
+    head = head->next;
+  }
+  return nullptr;
+}
+
+// leetcode141
+
+bool leetcode141_1::hascycle(Node *head) {
+  if (head == nullptr || head->next == nullptr) {
+    return false;
+  }
+  Node *slow = head;
+  Node *fast = head->next;
+  while (slow != fast) {
+    if (fast == nullptr || fast->next == nullptr) {
+      return false;
+    }
+    slow = slow->next;
+    fast = fast->next->next;
+  }
+  return true;
+}
+
+/*************************************************
+ * 滑动窗口
+ *
+ * ********************************************/
+int leetcode3_1::lengthOfLongestSubstring(string s) {
+  unordered_set<char> occ;
+  int n = s.size();
+  int rk = -1, ans = 0;
+  for (int i = 0; i < n; ++i) {
+    if (i != 0) {
+      occ.erase(s[i - 1]);
+    }
+    while (rk + 1 < n && !occ.count(s[rk + 1])) {
+      occ.insert(s[rk + 1]);
+      ++rk;
+      cout << "the rk in 4647: " << rk << endl;
+    }
+    cout << "the rk: " << rk << endl;
+    for (int j = i; j < rk + 1; ++j) {
+      cout << s[j];
+    }
+    cout << endl;
+
+    cout << "i and rk+1 : " << i << "-> " << rk + 1 << " "
+         << "the rk - i + 1: " << rk + 1 - i << endl;
+    ans = max(ans, rk - i + 1);
+  }
+  cout << "the ans: " << ans << endl;
   return ans;
 }

@@ -2214,11 +2214,116 @@ int main() {
 
 // leetcode452
 
+/*
 int main() {
   leetcode452 solu;
 
   vector<vector<int>> points = {{10, 16}, {2, 8}, {1, 6}, {7, 12}};
   solu.findminArrowShot(points);
+
+  return 0;
+}
+
+*/
+
+// leetcode122
+/*
+int main() {
+    leetcode122 solu;
+    vector<int> prices = {7, 1, 5, 3, 6, 4};
+    solu.maxProfit(prices);
+
+
+    return 0;
+}
+*/
+
+// leetcode121
+
+/*
+int main() {
+  leetcode121_1 solu;
+  vector<int> prices = {7, 1, 5, 3, 6, 4};
+  solu.maxprofit(prices);
+
+  return 0;
+}
+*/
+
+// leetcode406
+
+/*
+int main() {
+  leetcode406 solu;
+  vector<vector<int>> peoples = {{7, 0}, {4, 4}, {7, 1},
+                                 {5, 0}, {6, 1}, {5, 2}};
+
+  solu.ReConstructQueue(peoples);
+
+  return 0;
+}
+*/
+
+// leetcode167
+
+/*
+int main() {
+  leetcode167 solu;
+  vector<int> nums = {2, 7, 11, 15};
+  int target = 9;
+
+  solu.Twosum(nums, target);
+
+  return 0;
+}
+*/
+
+// leetcode15
+
+/*
+int main() {
+  leetcode15_1 solu;
+  vector<int> nums = {-1, 0, 1, 2, -1, -4};
+  int target = 0;
+  // solu.Threesum2(nums, target);
+  solu.Threesum(nums, target);
+  return 0;
+}
+*/
+
+// leetcode18
+
+/*
+int main() {
+  leetcode18_1 solu;
+  vector<int> nums = {1, 0, -1, 0, -2, 2};
+  int target = 0;
+  solu.Foursum(nums, target);
+
+  return 0;
+}
+*/
+
+// leetcode88 归并排序有序数组
+
+/*
+int main() {
+  leetcode88_1 solu;
+  vector<int> nums1 = {1, 2, 3};
+  int m = 3;
+  vector<int> nums2 = {2, 5, 6};
+  int n = 3;
+  solu.merge(nums1, m, nums2, n);
+
+  return 0;
+}
+*/
+
+// leetcode3
+int main() {
+  leetcode3_1 solu;
+  string s = "abcabcbb";
+  solu.lengthOfLongestSubstring(s);
 
   return 0;
 }

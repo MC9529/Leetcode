@@ -1019,3 +1019,81 @@ class leetcode452 {
  public:
   int findminArrowShot(vector<vector<int>> &points);
 };
+// leetcode122
+class leetcode122_1 {
+ public:
+  // 贪心算法
+  int maxProfit(vector<int> &prices);
+  // 动态规划
+  int maxProfit2(vector<int> &prices);
+};
+
+// leetcode121
+class leetcode121_1 {
+ public:
+  int maxprofit(vector<int> &prices);
+};
+
+// leetcode406
+
+class leetcode406 {
+ public:
+  vector<vector<int>> ReConstructQueue(vector<vector<int>> peoples);
+};
+
+// leetcode167
+
+/**********************************************************************
+ * 双指针
+ ***********************************************************************/
+class leetcode167 {
+ public:
+  vector<int> Twosum(vector<int> nums, int target);
+};
+
+class leetcode15_1 {
+ public:
+  vector<vector<int>> Threesum(vector<int> nums, int target);
+  vector<vector<int>> Threesum2(vector<int> nums, int target);
+};
+
+// 四个数之和
+class leetcode18_1 {
+ public:
+  vector<vector<int>> Foursum(vector<int> &nums, int target);
+};
+
+// leetcode16 三个数最接近的和
+class leetcode16_1 {
+ public:
+  int threeSumClosest(vector<int> &nums, int target);
+};
+// leetcode88 归并两个有序的数组
+
+class leetcode88_1 {
+ public:
+  void merge(vector<int> &nums1, int m, vector<int> &nums2, int n);
+};
+
+// 快慢指针 leetcode142
+
+class leetcode142 {
+ public:
+  Node *detectCycle(Node *head);
+};
+
+// leetcode141
+class leetcode141_1 {
+ public:
+  bool hascycle(Node *head);
+};
+
+/*************************************************
+ * 滑动窗口
+ *
+ * ********************************************/
+// leetcode3
+class leetcode3_1 {
+ public:
+  int lengthOfLongestSubstring(string s);
+};
