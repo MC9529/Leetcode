@@ -1097,3 +1097,37 @@ class leetcode3_1 {
  public:
   int lengthOfLongestSubstring(string s);
 };
+
+// leetcode239 滑动窗口最大值
+
+class leetcode239 {
+ public:
+  vector<int> maxSlidingWindow(vector<int> &nums, int k);
+};
+
+// leetcode76 最小覆盖子串
+class leetcode76 {
+ public:
+  string minWindow(string s, string t);
+};
+
+/***********************************************
+ * 二分查找
+ *
+ * **********************************************/
+
+// leetcode69 x的平方根
+
+class leetcode69_1 {
+ public:
+  int mySqrt(int x);
+};
+
+// leetcode34 查找区间
+class leetcode34_1 {
+ public:
+  vector<int> searchRange(vector<int> &nums, int target);
+  vector<int> searchRange2(vector<int> &nums, int target);
+  int low_bound(vector<int> &nums, int target);
+  int upp_bound(vector<int> &nums, int target);
+};

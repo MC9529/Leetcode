@@ -4641,6 +4641,7 @@ int leetcode3_1::lengthOfLongestSubstring(string s) {
     if (i != 0) {
       occ.erase(s[i - 1]);
     }
+    // 不含重复字符
     while (rk + 1 < n && !occ.count(s[rk + 1])) {
       occ.insert(s[rk + 1]);
       ++rk;
@@ -4658,4 +4659,150 @@ int leetcode3_1::lengthOfLongestSubstring(string s) {
   }
   cout << "the ans: " << ans << endl;
   return ans;
+}
+
+//
+
+vector<int> leetcode239::maxSlidingWindow(vector<int> &nums, int k) {
+  vector<int> ans;
+  int l = 0, r = k - 1;
+  // int temp = accumulate(nums.begin() + l, nums.begin() + r, 0.0);
+  while (r < nums.size()) {
+    auto temp = max_element(nums.begin() + l, nums.begin() + r + 1);
+    cout << "the max: " << nums[temp - nums.begin()] << endl;
+    ans.push_back(nums[temp - nums.begin()]);
+    r++, l++;
+  }
+  for (int i = 0; i < ans.size(); ++i) {
+    cout << ans[i] << " ";
+  }
+  cout << endl;
+
+  return ans;
+}
+
+//
+
+string leetcode76::minWindow(string s, string t) {
+  string ans;
+  int start = 0, minlen = INT_MAX;
+  int left, right = 0;
+  // 记录当前窗口的字母情况
+  unordered_map<char, int> window;
+  unordered_map<char, int> need;
+  for (char c : t) {
+    need[c]++;
+  }
+  int match = 0;
+  while (left < right) {
+    char cl = s[right];
+    if (need.count(cl)) {
+      window[cl]++;
+      // 元素cl匹配完毕， match + 1
+      if (window[cl] == need[cl]) {
+        match++;
+      }
+    }
+    right++;
+    // 完全匹配完了，开始缩小空间
+    while (match == need.size()) {
+      if (right - left < minlen) {
+        start = left;
+        minlen = right - left;
+      }
+      char c2 = s[left];
+      if (need.count(c2)) {
+        window[c2]--;
+        if (window[c2] < need[c2]) {
+          match--;
+        }
+      }
+      left++;
+    }
+  }
+  ans = minlen == INT_MAX ? " " : s.substr(start, minlen);
+  cout << "the ans: " << ans << endl;
+  return ans;
+}
+
+/***********************************************
+ * 二分查找
+ *
+ ***********************************************/
+
+int leetcode69_1::mySqrt(int x) {
+  int l = 0, r = x, ans = -1;
+  while (l <= r) {
+    int mid = l + (r - l) / 2;
+    cout << "the mid: " << mid << endl;
+    if (mid * mid <= x) {
+      ans = mid;
+      l = mid + 1;
+    } else {
+      // ans = mid;
+      r = mid - 1;
+    }
+  }
+  cout << "the ans: " << ans << endl;
+
+  return ans;
+}
+
+// leetcode34
+
+vector<int> leetcode34_1::searchRange(vector<int> &nums, int target) {
+  vector<int> ans;
+  if (nums.empty()) {
+    return vector<int>{-1, -1};
+  }
+  int low = (lower_bound(nums.begin(), nums.end(), target) - nums.begin());
+  int upper =
+      (upper_bound(nums.begin(), nums.end(), target) - nums.begin()) - 1;
+
+  if (low == nums.size() || nums[low] != target) {
+    return vector<int>{-1, -1};
+  }
+  return vector<int>{low, upper};
+}
+
+vector<int> leetcode34_1::searchRange2(vector<int> &nums, int target) {
+  vector<int> ans;
+  if (nums.empty()) {
+    return vector<int>{-1, -1};
+  }
+  int low = low_bound(nums, target);
+  int upper = upp_bound(nums, target);
+
+  if (low == nums.size() || nums[low] != target) {
+    return vector<int>{-1, -1};
+  }
+  return vector<int>{low, upper};
+}
+int leetcode34_1::low_bound(vector<int> &nums, int target) {
+  int l = 0, r = nums.size(), mid;
+  while (l < r) {
+    mid = l + (r - l) / 2;
+    if (nums[mid] >= target) {
+      r = mid;
+    } else if (nums[mid] < target) {
+      l = mid + 1;
+    }
+  }
+  return l;
+}
+int leetcode34_1::upp_bound(vector<int> &nums, int target) {
+  int l = 0, r = nums.size(), mid;
+  // 区间是[left, right)
+  while (l < r) {
+    mid = l + (r - l) / 2;
+    if (nums[mid] > target) {
+      // 缩小范围
+      r = mid;
+    } else if (nums[mid] <= target) {
+      // 当mid检测完后，下一个检测范围[mid, right)
+      // 小于等于
+      l = mid + 1;
+    }
+  }
+  return l - 1;
 }

@@ -2320,10 +2320,72 @@ int main() {
 */
 
 // leetcode3
+
+/*
 int main() {
   leetcode3_1 solu;
   string s = "abcabcbb";
   solu.lengthOfLongestSubstring(s);
 
+  return 0;
+}
+*/
+
+// leetcode239
+
+/*
+int main() {
+  leetcode239 solu;
+
+  vector<int> nums = {1, 3, -1, -3, 5, 3, 6, 7};
+  int k = 3;
+  solu.maxSlidingWindow(nums, k);
+
+  return 0;
+}
+*/
+
+// leetcode76
+
+/*
+int main() {
+  string s = "ADOBECODEBANC";
+  string t = "ABC";
+  leetcode76 solu;
+  solu.minWindow(s, t);
+
+  return 0;
+}
+*/
+
+// leetcode69
+
+/*
+int main() {
+  leetcode69_1 solu;
+
+  int x = 8;
+  solu.mySqrt(x);
+
+  return 0;
+}
+*/
+// leetcode34
+
+int main() {
+  leetcode34_1 solu;
+  vector<int> nums = {5, 7, 7, 8, 8, 8, 10};
+  int target = 8;
+  vector<int> ans = solu.searchRange(nums, target);
+  vector<int> ans1 = solu.searchRange2(nums, target);
+  for (int i = 0; i < ans.size(); ++i) {
+    cout << ans[i] << " ";
+  }
+  cout << endl;
+
+  for (int i = 0; i < ans1.size(); ++i) {
+    cout << ans1[i] << " ";
+  }
+  cout << endl;
   return 0;
 }
