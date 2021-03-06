@@ -1131,3 +1131,149 @@ class leetcode34_1 {
   int low_bound(vector<int> &nums, int target);
   int upp_bound(vector<int> &nums, int target);
 };
+
+// leetcode81  旋转数组查找数字
+
+class leetcode81_1 {
+ public:
+  bool search(vector<int> &nums, int target);
+};
+
+// leetcode540  有序数组中的单一元素
+
+class leetcode540 {
+ public:
+  int singleNonDuplicate(vector<int> &nums);
+};
+
+/******************************************
+ * 排序
+ *
+ * ****************************************/
+
+// 快速排序
+
+class quickSort_1 {
+ public:
+  void QuickSort(vector<int> &nums, int l, int r);
+};
+
+// 归并排序
+class MergeSort_1 {
+ public:
+  void mergesort(vector<int> &nums, int low, int high);
+  void merge(vector<int> &nums, int low, int mid, int high);
+};
+
+// 冒泡排序
+class bubblesort {
+ public:
+  void Bubblesort(vector<int> &nums);
+};
+
+class leetcode215 {
+ public:
+  void findKthlargest(vector<int> &nums, int k);
+  // 优先队列
+  void findKthlargest2(vector<int> &nums, int k);
+};
+
+/***************************************************
+ * 搜索
+ *
+ * ************************************************/
+// 深度优先
+class leetcode695 {
+ public:
+  int maxAreaOfIsland(vector<vector<int>> &grid);
+  int dfs(vector<vector<int>> &grid, int cur_i, int cur_j);
+};
+
+// 深度优先  leetcode547
+
+class leetcode547 {
+ public:
+  // 深度优先搜索
+  int findCircleNum(vector<vector<int>> &friends);
+  void dfs(vector<vector<int>> &friends, int i, vector<bool> &visited);
+  // 广度优先搜索
+  int findCircleNum2(vector<vector<int>> &friends);
+};
+
+// leetcode417 水流入太平洋和大西洋
+
+class leetcode417 {
+ public:
+  vector<int> direct = {-1, 0, 1, 0, -1};
+  vector<vector<int>> pacificAtlantic(vector<vector<int>> &matrix);
+  void dfs(vector<vector<int>> &matix, vector<vector<bool>> &can_reach, int i,
+           int j);
+};
+
+/****************************************
+ * 回溯算法
+ *
+ * *************************************/
+class leetcode46_1 {
+ public:
+  vector<vector<int>> permutation(vector<int> nums);
+  void dfs(vector<int> &ans, vector<int> &nums, vector<bool> &visited);
+
+  //
+  vector<vector<int>> permutation2(vector<int> nums);
+  void dfs2(vector<int> &temp_ans, vector<int> &nums, int i);
+
+ private:
+  vector<vector<int>> ans;
+};
+
+class leetcode77_1 {
+ public:
+  vector<vector<int>> combine(int n, int k);
+  void dfs(vector<int> &temp_ans, int n, int k, vector<bool> &visited,
+           int cur_posi);
+
+ private:
+  vector<vector<int>> ans;
+};
+
+// leetcode51
+class leetcode51_1 {
+ public:
+  vector<vector<string>> solveNqueue(int n);
+  void dfs(vector<string> &temp_ans, int n, int r);
+  bool valid(int row, int col, vector<string> &temp, int n);
+
+ private:
+  vector<vector<string>> ans;
+};
+
+// leetcode130
+
+class leetcode130_1 {
+ public:
+  void solve(vector<vector<char>> &board);
+  void dfs(vector<vector<char>> &board, int row, int col);
+};
+
+// leetcode47
+class leetcode47_1 {
+ public:
+  vector<vector<int>> permuteUnique(vector<int> &nums);
+  void dfs(vector<int> &temp_ans, vector<bool> &visited, int n,
+           vector<int> &nums);
+
+ private:
+  vector<vector<int>> ans;
+};
+
+// leetcode40
+class leetcode40_1 {
+ public:
+  vector<vector<int>> combinationSum2(vector<int> &nums, int target);
+  void dfs(vector<int> &nums, vector<int> &temp_ans, int target, int &cur_sum,
+           vector<bool> &visited, int &cur_posi);
+
+ private:
+  vector<vector<int>> ans;
+};

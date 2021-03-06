@@ -2372,6 +2372,7 @@ int main() {
 */
 // leetcode34
 
+/*
 int main() {
   leetcode34_1 solu;
   vector<int> nums = {5, 7, 7, 8, 8, 8, 10};
@@ -2387,5 +2388,209 @@ int main() {
     cout << ans1[i] << " ";
   }
   cout << endl;
+  return 0;
+}
+*/
+
+// leetcode81
+
+/*
+int main() {
+  leetcode81_1 solu;
+  vector<int> nums = {2, 5, 6, 0, 0, 1, 2};
+  int target = 4;
+  bool ans = solu.search(nums, target);
+  if (ans) {
+    cout << "yes" << endl;
+  } else {
+    cout << "no" << endl;
+  }
+
+  return 0;
+}
+
+*/
+
+// leetcode540
+/*
+int main() {
+  leetcode540 solu;
+  vector<int> nums = {1, 1, 2, 3, 3, 4, 4, 8, 8};
+  solu.singleNonDuplicate(nums);
+
+  return 0;
+}
+*/
+
+// 快速排序
+
+/*
+int main() {
+  quickSort_1 solu;
+  vector<int> nums = {4, 7, 6, 5, 3, 2, 8, 1};
+  solu.QuickSort(nums, 0, nums.size() - 1);
+  for (int iter : nums) {
+    cout << iter << " ";
+  }
+  cout << endl;
+
+  return 0;
+}
+*/
+
+//
+
+/*
+int main() {
+  MergeSort_1 solu;
+  vector<int> nums = {4, 7, 6, 5, 3, 2, 8, 1};
+  solu.mergesort(nums, 0, nums.size());
+  for (int iter : nums) {
+    cout << iter << " ";
+  }
+  cout << endl;
+
+  return 0;
+}
+*/
+
+/*
+int main() {
+  bubblesort solu;
+  vector<int> nums = {4, 7, 6, 5, 3, 2, 8, 1};
+  solu.Bubblesort(nums);
+  for (int i = 0; i < nums.size(); ++i) {
+    cout << nums[i] << " ";
+  }
+  cout << endl;
+  return 0;
+}
+*/
+
+// leetcode215
+/*
+int main() {
+  leetcode215 solu;
+  vector<int> nums = {4, 7, 6, 5, 3, 2, 8, 1};
+  int k = 2;
+  solu.findKthlargest(nums, k);
+  solu.findKthlargest2(nums, k);
+  return 0;
+}
+*/
+
+// leetcode695
+
+/*
+int main() {
+    leetcode695 solu;
+    vector<vector<int>> grid = { {1, 0, 1, 1, 0, 1, 0, 1},
+                                 {1, 0, 1, 1, 0, 1, 1, 1},
+                                 {0, 0, 0, 0, 0, 0, 0, 1} };
+    solu.maxAreaOfIsland(grid);
+
+
+
+    return 0;
+}
+
+*/
+
+// leetcode547
+/*
+int main() {
+  leetcode547 solu;
+  vector<vector<int>> friends = {{1, 1, 0}, {1, 1, 0}, {0, 0, 1}};
+  solu.findCircleNum(friends);
+  solu.findCircleNum2(friends);
+
+  return 0;
+}
+*/
+
+// leetcode417
+/*
+int main() {
+  leetcode417 solu;
+  vector<vector<int>> friends = {
+      {1, 2, 2, 3, 5}, {3, 2, 3, 4, 4}, {2, 4, 5, 3, 1},
+      {6, 7, 1, 4, 5}, {5, 1, 1, 2, 4},
+  };
+  solu.pacificAtlantic(friends);
+  return 0;
+}
+*/
+
+/// 回溯算法
+
+/*
+int main() {
+  leetcode46_1 solu;
+  vector<int> nums = {1, 2, 3};
+  solu.permutation(nums);
+  return 0;
+}
+*/
+
+// leetcode77
+
+/*
+int main() {
+  leetcode77_1 solu;
+  int n = 4, k = 2;
+  solu.combine(n, k);
+
+  return 0;
+}
+*/
+
+// leetcode51
+
+/*
+int main() {
+  leetcode51_1 solu;
+  int n = 4;
+  solu.solveNqueue(n);
+
+  return 0;
+}
+*/
+
+// leetcode130
+
+/*
+int main() {
+  leetcode130_1 solu;
+  vector<vector<char>> friends = {{'X', 'X', 'X', 'X'},
+                                  {'X', 'O', 'O', 'X'},
+                                  {'X', 'X', 'O', 'X'},
+                                  {'X', 'O', 'X', 'X'}
+
+  };
+  solu.solve(friends);
+
+  return 0;
+}
+*/
+
+// leetcode47
+
+/*
+int main() {
+  leetcode47_1 solu;
+  vector<int> nums = {1, 2, 1};
+  solu.permuteUnique(nums);
+
+  return 0;
+}
+*/
+
+// leetcode40
+int main() {
+  leetcode40_1 solu;
+  int target = 8;
+  vector<int> nums = {10, 1, 2, 7, 6, 1, 5};
+  solu.combinationSum2(nums, target);
+
   return 0;
 }

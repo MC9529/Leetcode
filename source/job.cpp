@@ -2654,7 +2654,7 @@ void mergeSort::merge(vector<int> &nums, int low, int mid, int high) {
   while (j <= high) {
     nums_c.push_back(nums[j++]);
   }
-
+  //
   k = nums_c.size();
   for (int i = low, j = 0; i <= high, j < k; ++i, ++j) {
     nums[i] = nums_c[j];
@@ -4805,4 +4805,639 @@ int leetcode34_1::upp_bound(vector<int> &nums, int target) {
     }
   }
   return l - 1;
+}
+
+// leetcode81
+bool leetcode81_1::search(vector<int> &nums, int target) {
+  int left = 0, right = nums.size();
+  if (nums.empty()) {
+    return false;
+  }
+  while (left < right) {
+    int mid = left + (right - left) / 2;
+    if (nums[mid] == target) {
+      cout << "the posi: " << mid << endl;
+      return true;
+    }
+    //
+    if (nums[mid] > nums[left]) {  // left -> mid 有序
+      if (target >= nums[left] && target < nums[mid]) {
+        right = mid;
+      } else {
+        left = mid + 1;
+      }
+    } else if (nums[mid] < nums[left]) {
+      if (target > nums[mid] && target <= nums[right - 1]) {
+        left = mid + 1;
+      } else {
+        right = mid;
+      }
+
+    } else if (nums[mid] == nums[left]) {
+      left++;
+    }
+  }
+  return false;
+}
+
+// leetcode540
+// 因为总数为奇数，则单个数肯定出现在奇数个数那1组
+int leetcode540::singleNonDuplicate(vector<int> &nums) {
+  int ans = -4040404;
+  int l = 0, r = nums.size() - 1;
+  while (l <= r) {
+    int mid = l + (r - l) / 2;
+    if (nums[mid + 1] == nums[mid]) {
+      int right_len = r - mid - 1;
+      // 右边长度是2的倍数
+      // 则在左边
+      if (right_len % 2 == 0) {
+        r = mid - 1;
+      } else {
+        // 在右边
+        l = mid + 2;
+      }
+
+    } else if (nums[mid - 1] == nums[mid]) {
+      int right_len = r - mid;
+      // 右边长度是2的倍数，则在左边
+      if (right_len % 2 == 0) {
+        r = mid - 2;
+      } else {
+        // 在右边
+        l = mid + 1;
+      }
+
+    } else {
+      // 没有和nums[mid]相等的数
+      cout << "the ans: " << nums[mid] << endl;
+      return nums[mid];
+    }
+  }
+
+  return ans;
+}
+
+// 快速排序
+
+void quickSort_1::QuickSort(vector<int> &nums, int l, int r) {
+  if (l > r) {
+    return;
+  }
+  int i = l, j = r;
+  // 基准数
+  // 大于基准的数放在基准的右边，小于的数放在基准的左边
+  int key = nums[i];
+  while (i < j) {
+    // 大于等于基准的数，放在右边，则不需要动，只需要j--
+    while (j > i && nums[j] >= key) {
+      j--;
+    }
+    // 找到的第一个小于基准的数放在坑中(此时的坑为i)
+    if (i < j) {
+      // 此时的坑为j
+      nums[i] = nums[j];
+      ++i;
+    }
+    // 小于基准的数放在左边，只需要 i++
+    while (j > i && nums[i] <= key) {
+      i++;
+    }
+    if (i < j) {
+      // 放置后， 坑为i
+      nums[j] = nums[i];
+      j--;
+    }
+  }
+  //  将 key 放入 i中
+  nums[i] = key;
+  // 分治算法
+  QuickSort(nums, l, i - 1);
+  QuickSort(nums, i + 1, r);
+}
+
+// 归并排序
+
+void MergeSort_1::mergesort(vector<int> &nums, int low, int high) {
+  if (low >= high) {
+    return;
+  }
+  int mid = low + (high - low) / 2;
+  mergesort(nums, low, mid);
+  mergesort(nums, mid + 1, high);
+  merge(nums, low, mid, high);
+}
+void MergeSort_1::merge(vector<int> &nums, int low, int mid, int high) {
+  int i = low, j = mid + 1, k = 0;
+  vector<int> nums_change;
+  while (i <= mid && j < high) {
+    if (nums[i] < nums[j]) {
+      /// 先push nums[i], 在 i++;
+      nums_change.push_back(nums[i++]);
+    } else {
+      nums_change.push_back(nums[j++]);
+    }
+  }
+  while (i <= mid) {
+    nums_change.push_back(nums[i++]);
+  }
+  while (j <= high) {
+    nums_change.push_back(nums[j++]);
+  }
+  // 将 nums_change 插入 low->high
+  k = nums_change.size();
+  for (int i = low, j = 0; i < high, j < k; ++i, j++) {
+    nums[i] = nums_change[j];
+  }
+}
+
+void bubblesort::Bubblesort(vector<int> &nums) {
+  if (nums.empty()) {
+    return;
+  }
+  for (int i = 0; i < nums.size(); ++i) {
+    for (int j = 0; j < nums.size() - 1 - i; ++j) {
+      if (nums[j] > nums[j + 1]) {
+        int temp = nums[j + 1];
+        nums[j + 1] = nums[j];
+        nums[j] = temp;
+      }
+    }
+  }
+}
+
+// leetcode
+
+void leetcode215::findKthlargest(vector<int> &nums, int k) {
+  MergeSort_1 Solu;
+  Solu.mergesort(nums, 0, nums.size());
+  cout << nums[k - 1] << endl;
+  return;
+}
+
+void leetcode215::findKthlargest2(vector<int> &nums, int k) {
+  if (nums.size() == 0 || k > nums.size()) {
+    cout << "the len of nums is zero or k is less k" << endl;
+    return;
+  }
+  priority_queue<int, vector<int>, greater<int>> store;
+  for (int i = 0; i < nums.size(); ++i) {
+    store.push(nums[i]);
+    if (store.size() > k) {
+      store.pop();
+    }
+  }
+  //
+  cout << "the kth largest: " << store.top() << endl;
+  while (!store.empty()) {
+    if (store.size() > 1) {
+      store.pop();
+    }
+    // 最后的肯定是最小或者最大的数
+    if (store.size() == 1) {
+      int ans = store.top();
+      store.pop();
+      cout << "the kth larget in priority_queue: " << ans << endl;
+    }
+  }
+  return;
+}
+
+/*****************************************
+ * 搜素
+ *
+ * ***************************************/
+// 深度优先
+int leetcode695::maxAreaOfIsland(vector<vector<int>> &grid) {
+  int ans = 0;
+  for (int i = 0; i < grid.size(); ++i) {
+    for (int j = 0; j < grid[0].size(); ++j) {
+      if (grid[i][j] == 1) {
+        ans = max(ans, dfs(grid, i, j));
+      }
+    }
+  }
+  cout << "the ans: " << ans << endl;
+  return ans;
+}
+
+// 深度优先搜索
+int leetcode695::dfs(vector<vector<int>> &grid, int cur_i, int cur_j) {
+  if (cur_i < 0 || cur_j < 0 || cur_i == grid.size() ||
+      cur_j == grid[0].size() || grid[cur_i][cur_j] != 1) {
+    return 0;
+  }
+  grid[cur_i][cur_j] = 0;
+  int di[4] = {0, 0, 1, -1};
+  int dj[4] = {1, -1, 0, 0};
+  int ans = 1;
+  for (int index = 0; index != 4; ++index) {
+    int next_i = cur_i + di[index];
+    int next_j = cur_j + dj[index];
+    ans = ans + dfs(grid, next_i, next_j);
+  }
+
+  return ans;
+}
+//  leetcode547
+int leetcode547::findCircleNum(vector<vector<int>> &friends) {
+  int n = friends.size(), count = 0;
+  vector<bool> visited(n, false);
+  for (int i = 0; i < n; ++i) {
+    if (!visited[i]) {
+      dfs(friends, i, visited);
+      ++count;
+    }
+  }
+
+  cout << "the ans: " << count << endl;
+
+  return count;
+}
+
+void leetcode547::dfs(vector<vector<int>> &friends, int i,
+                      vector<bool> &visited) {
+  visited[i] = true;
+  for (int k = 0; k < friends.size(); ++k) {
+    if (friends[i][k] == 1 && !visited[k]) {
+      dfs(friends, k, visited);
+    }
+  }
+}
+
+//
+// 深度优先搜索一般用队列
+int leetcode547::findCircleNum2(vector<vector<int>> &friends) {
+  int n = friends.size();
+  vector<bool> visited(n, false);
+  int count = 0;
+  queue<int> Q;
+  for (int i = 0; i < n; ++i) {
+    if (!visited[i]) {
+      cout << "passed in 5077" << endl;
+      Q.push(i);
+      while (!Q.empty()) {
+        cout << "passed in 5080" << endl;
+        int j = Q.front();
+        Q.pop();
+        visited[j] = true;
+        for (int k = 0; k < n; ++k) {
+          if (friends[j][k] == 1 && !visited[k]) {
+            Q.push(k);
+          }
+        }
+      }
+      count++;
+    }
+  }
+  cout << "the ans: " << count << endl;
+  return count;
+}
+
+// leetcode417
+
+vector<vector<int>> leetcode417::pacificAtlantic(vector<vector<int>> &matrix) {
+  if (matrix.empty() || matrix[0].empty()) {
+    return {};
+  }
+  vector<vector<int>> ans;
+  int m = matrix.size(), n = matrix[0].size();
+  vector<vector<bool>> can_reach_p(m, vector<bool>(n, false));
+  vector<vector<bool>> can_reach_a(m, vector<bool>(n, false));
+  // 从边缘开始遍历， 减少复杂度
+  for (int i = 0; i < m; ++i) {
+    // 太平洋
+    dfs(matrix, can_reach_a, i, 0);
+    //大西洋
+    dfs(matrix, can_reach_p, i, n - 1);
+  }
+  //
+  for (int i = 0; i < n; ++i) {
+    // 太平洋
+    dfs(matrix, can_reach_a, 0, i);
+    // 大西洋
+    dfs(matrix, can_reach_p, m - 1, i);
+  }
+  for (int i = 0; i < m; ++i) {
+    for (int j = 0; j < n; ++j) {
+      if (can_reach_a[i][j] && can_reach_p[i][j]) {
+        ans.push_back({i, j});
+      }
+    }
+  }
+  for (int i = 0; i < ans.size(); ++i) {
+    cout << ans[i][0] << " " << ans[i][1] << endl;
+  }
+  cout << endl;
+  return ans;
+}
+
+void leetcode417::dfs(vector<vector<int>> &matix,
+                      vector<vector<bool>> &can_reach, int r, int c) {
+  if (can_reach[r][c]) {
+    return;
+  }
+  can_reach[r][c] = true;
+  int x, y;
+  for (int i = 0; i < 4; ++i) {
+    x = r + direct[i], y = c + direct[i + 1];
+    if (x >= 0 && x < matix.size() && y >= 0 && y < matix[0].size() &&
+        matix[r][c] <= matix[x][y]) {
+      dfs(matix, can_reach, x, y);
+    }
+  }
+}
+
+/***********************************************
+ * 回溯算法
+ *********************************************/
+
+vector<vector<int>> leetcode46_1::permutation(vector<int> nums) {
+  vector<int> temp_ans;
+  vector<bool> visited(nums.size(), false);
+  dfs(temp_ans, nums, visited);
+  for (int i = 0; i < ans.size(); ++i) {
+    vector<int> temp = ans[i];
+    for (int i = 0; i < temp.size(); ++i) {
+      cout << temp[i] << " ";
+    }
+    cout << endl;
+  }
+  cout << endl;
+  return ans;
+}
+
+void leetcode46_1::dfs(vector<int> &temp_ans, vector<int> &nums,
+                       vector<bool> &visited) {
+  if (temp_ans.size() == nums.size()) {
+    ans.push_back(temp_ans);
+    return;
+  }
+  for (int i = 0; i < nums.size(); ++i) {
+    if (!visited[i]) {
+      temp_ans.push_back(nums[i]);
+      visited[i] = true;
+      dfs(temp_ans, nums, visited);
+      temp_ans.pop_back();
+      visited[i] = false;
+    }
+  }
+}
+
+// 回溯算法
+
+vector<vector<int>> leetcode46_1::permutation2(vector<int> nums) {
+  vector<int> temp_ans;
+  int i = 0;
+  dfs2(temp_ans, nums, i);
+  for (int i = 0; i < ans.size(); ++i) {
+    vector<int> temp = ans[i];
+    for (int i = 0; i < temp.size(); ++i) {
+      cout << temp[i] << " ";
+    }
+    cout << endl;
+  }
+  cout << endl;
+  return ans;
+}
+void leetcode46_1::dfs2(vector<int> &temp_ans, vector<int> &nums, int i) {
+  if (temp_ans.size() == nums.size()) {
+    ans.push_back(temp_ans);
+    return;
+  }
+  for (int j = i; j < nums.size(); ++i) {
+    temp_ans.push_back(nums[j]);
+    dfs2(temp_ans, nums, j);
+    temp_ans.pop_back();
+  }
+}
+
+// leetcode77
+
+vector<vector<int>> leetcode77_1::combine(int n, int k) {
+  vector<int> temp_ans;
+  vector<bool> visited(n, false);
+  int cur_posi = 0;
+  dfs(temp_ans, n, k, visited, cur_posi);
+
+  for (int i = 0; i < ans.size(); ++i) {
+    vector<int> temp = ans[i];
+    for (int i = 0; i < temp.size(); ++i) {
+      cout << temp[i] << " ";
+    }
+    cout << endl;
+  }
+  cout << endl;
+
+  return ans;
+}
+void leetcode77_1::dfs(vector<int> &temp_ans, int n, int k,
+                       vector<bool> &visited, int cur_posi) {
+  if (temp_ans.size() == k) {
+    ans.push_back(temp_ans);
+    return;
+  }
+  for (int i = cur_posi; i < n; ++i) {
+    temp_ans.push_back(i + 1);
+    // 从下一个数开始
+    dfs(temp_ans, n, k, visited, i + 1);
+
+    temp_ans.pop_back();
+  }
+}
+
+// leetcode51 N皇后
+
+vector<vector<string>> leetcode51_1::solveNqueue(int n) {
+  string string_temp(n, '*');
+  vector<string> temp_ans(n, string_temp);
+  int row = 0;
+  dfs(temp_ans, n, row);
+
+  for (int i = 0; i < ans.size(); ++i) {
+    vector<string> iter_res = ans[i];
+    for (auto iter : iter_res) {
+      cout << iter << " " << endl;
+    }
+    cout << endl;
+  }
+  cout << endl;
+  return ans;
+}
+void leetcode51_1::dfs(vector<string> &temp_ans, int n, int r) {
+  if (r == n) {
+    ans.push_back(temp_ans);
+    return;
+  }
+  // col : i : 0 -> n-1
+  for (int i = 0; i < n; ++i) {
+    if (valid(r, i, temp_ans, n)) {
+      temp_ans[r][i] = 'Q';
+      dfs(temp_ans, n, r + 1);
+      temp_ans[r][i] = '*';
+    }
+  }
+}
+
+bool leetcode51_1::valid(int row, int col, vector<string> &temp, int n) {
+  // 检查 列
+  for (int i = 0; i < row; ++i) {
+    if (temp[i][col] == 'Q') {
+      return false;
+    }
+  }
+  // 右上
+  for (int i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) {
+    if (temp[i][j] == 'Q') {
+      return false;
+    }
+  }
+  // 左上
+  for (int i = row - 1, j = col + 1; i >= 0 && j < n; i--, j++) {
+    if (temp[i][j] == 'Q') {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+// leetcode130
+
+void leetcode130_1::solve(vector<vector<char>> &board) {
+  int n = board.size();
+  if (board.size() == 0) {
+    cout << "the len is zero" << endl;
+    return;
+  }
+  int m = board[0].size();
+  for (int i = 0; i < n; ++i) {
+    dfs(board, i, 0);
+    dfs(board, i, m - 1);
+  }
+  for (int i = 0; i < m; ++i) {
+    dfs(board, 0, i);
+    dfs(board, n - 1, i);
+  }
+  // 将所有不能通，标记为X
+  for (int i = 0; i < n; ++i) {
+    vector<char> temp = board[i];
+    for (int j = 0; j < m; ++j) {
+      if (board[i][j] != 'A') {
+        board[i][j] = 'X';
+      }
+    }
+  }
+  // 将所有能通的标记为O
+  for (int i = 0; i < n; ++i) {
+    vector<char> temp = board[i];
+    for (int j = 0; j < m; ++j) {
+      if (board[i][j] == 'A') {
+        board[i][j] = 'O';
+      }
+    }
+  }
+
+  for (int i = 0; i < n; ++i) {
+    vector<char> temp = board[i];
+    for (int j = 0; j < m; ++j) {
+      cout << board[i][j] << " ";
+    }
+    cout << endl;
+  }
+  cout << endl;
+}
+void leetcode130_1::dfs(vector<vector<char>> &board, int row, int col) {
+  if (row < 0 || row >= board.size() || col < 0 || col >= board[0].size() ||
+      board[row][col] != 'O') {
+    return;
+  }
+  // 能通的先标记为A
+  board[row][col] = 'A';
+  dfs(board, row + 1, col);
+  dfs(board, row - 1, col);
+  dfs(board, row, col + 1);
+  dfs(board, row, col - 1);
+}
+
+// leetcode47
+
+vector<vector<int>> leetcode47_1::permuteUnique(vector<int> &nums) {
+  sort(nums.begin(), nums.end());
+  int n = nums.size();
+  vector<int> temp_ans;
+  vector<bool> visited(n, false);
+  dfs(temp_ans, visited, n, nums);
+
+  for (int i = 0; i < ans.size(); ++i) {
+    vector<int> temp = ans[i];
+    for (int j = 0; j < temp.size(); ++j) {
+      cout << temp[j] << " ";
+    }
+    cout << endl;
+  }
+  cout << endl;
+
+  return ans;
+}
+
+void leetcode47_1::dfs(vector<int> &temp_ans, vector<bool> &visited, int n,
+                       vector<int> &nums) {
+  if (temp_ans.size() == n) {
+    ans.push_back(temp_ans);
+    return;
+  }
+  for (int i = 0; i < n; ++i) {
+    // 已经访问过的， 或者重复的且前一个还未访问
+    if ((i > 0 && nums[i] == nums[i - 1] && !visited[i - 1]) || visited[i]) {
+      continue;
+    }
+    temp_ans.push_back(nums[i]);
+    visited[i] = true;
+    dfs(temp_ans, visited, n, nums);
+    temp_ans.pop_back();
+    visited[i] = false;
+  }
+}
+
+vector<vector<int>> leetcode40_1::combinationSum2(vector<int> &nums,
+                                                  int target) {
+  vector<int> temp_ans;
+  sort(nums.begin(), nums.end());
+  vector<bool> visited(nums.size(), false);
+  int sum = 0;
+  int cur_posi = 0;
+  dfs(nums, temp_ans, target, sum, visited, cur_posi);
+  for (int i = 0; i < ans.size(); ++i) {
+    vector<int> temp = ans[i];
+    for (int j = 0; j < temp.size(); ++j) {
+      cout << temp[j] << " ";
+    }
+    cout << endl;
+  }
+  cout << endl;
+  return ans;
+}
+
+void leetcode40_1::dfs(vector<int> &nums, vector<int> &temp_ans, int target,
+                       int &cur_sum, vector<bool> &visited, int &cur_posi) {
+  if (cur_sum == target) {
+    ans.push_back(temp_ans);
+    return;
+  }
+  if (cur_sum > target) {
+    return;
+  }
+  for (int i = cur_posi; i < nums.size(); ++i) {
+    if (i > cur_posi && nums[i] == nums[i - 1]) {
+      continue;
+    }
+    temp_ans.push_back(nums[i]);
+    visited[i] = true;
+    int new_sum = cur_sum + nums[i];
+    int new_posi = cur_posi + 1;
+    dfs(nums, temp_ans, target, new_sum, visited, new_posi);
+    temp_ans.pop_back();
+    visited[i] = false;
+  }
 }
